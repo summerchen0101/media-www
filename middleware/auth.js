@@ -1,2 +1,5 @@
-export default function ({ store, error }) {
+export default function ({ store, redirect }) {
+  if (!store.state.user.token) {
+    redirect('/')
+  }
 }
