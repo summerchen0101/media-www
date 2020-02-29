@@ -1,4 +1,4 @@
-import errCodes from '@/config/errCodes'
+import { errCodes } from '@/lib/errCode/index'
 
 export default ({ app, store, $axios, redirect }, inject) => {
   // axios回傳值調整
