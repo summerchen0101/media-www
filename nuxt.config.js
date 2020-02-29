@@ -5,8 +5,9 @@
 const session = require('express-session')
 const webpack = require('webpack')
 const MemoryStore = require('memorystore')(session)
+const env = process.env.NODE_ENV || 'dev'
 
-require('dotenv').config()
+require('dotenv').config({ path: '.env.' + env })
 
 module.exports = {
   env: {
@@ -84,8 +85,7 @@ module.exports = {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/eslint-module'
   ],
   /*
   ** Nuxt.js modules
