@@ -1,6 +1,6 @@
 /**
- * TODO: 加上element-ui 客製化色系
- * TODO: 加上vee-validate 做表單驗證
+ * TODO: 做api proxy代理
+ * TODO: env檔依照node_env環境判斷對應檔案
  */
 const session = require('express-session')
 const webpack = require('webpack')
@@ -13,7 +13,14 @@ module.exports = {
     ...process.env
   },
   router: {
-    linkActiveClass: 'select'
+    linkActiveClass: 'select',
+    extendRoutes (routes, resolve) {
+      routes.push({
+        name: 'custom',
+        path: '*',
+        component: resolve(__dirname, 'pages/404.vue')
+      })
+    }
   },
   mode: 'universal',
   /*
