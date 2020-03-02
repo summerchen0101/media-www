@@ -5,52 +5,10 @@
     </div>
     <div class="company_content">
       <div class="qa_container">
-        <div class="qa_box">
-          <a><span class="q_icon">Q.</span>如何收藏视频、专辑、相册视频？</a>
+        <div v-for="(qa, i) in $store.getters['site/faq']" :key="i" class="qa_box">
+          <a><span class="q_icon">Q.</span>{{ qa.title }}</a>
           <div class="qa_content">
-            收藏视频：在视频播放页播放器下方点击“收藏”收藏相册视频：在相册视频播放页播放器下方点击“收藏”。收藏相册视频：在相册视频播放页播放器下方点击“收藏”。
-          </div>
-        </div>
-        <div class="qa_box">
-          <a><span class="q_icon">Q.</span>如何关注别人？关注别人有什么用？？</a>
-          <div class="qa_content">
-            收藏视频：在视频播放页播放器下方点击“收藏”收藏相册视频：在相册视频播放页播放器下方点击“收藏”。收藏相册视频：在相册视频播放页播放器下方点击“收藏”。
-          </div>
-        </div>
-        <div class="qa_box">
-          <a><span class="q_icon">Q.</span>如何关注别人？关注别人有什么用？？</a>
-          <div class="qa_content">
-            收藏视频：在视频播放页播放器下方点击“收藏”收藏相册视频：在相册视频播放页播放器下方点击“收藏”。收藏相册视频：在相册视频播放页播放器下方点击“收藏”。
-          </div>
-        </div>
-        <div class="qa_box">
-          <a><span class="q_icon">Q.</span>如何关注别人？关注别人有什么用？？</a>
-          <div class="qa_content">
-            收藏视频：在视频播放页播放器下方点击“收藏”收藏相册视频：在相册视频播放页播放器下方点击“收藏”。收藏相册视频：在相册视频播放页播放器下方点击“收藏”。
-          </div>
-        </div>
-        <div class="qa_box">
-          <a><span class="q_icon">Q.</span>如何关注别人？关注别人有什么用？？</a>
-          <div class="qa_content">
-            收藏视频：在视频播放页播放器下方点击“收藏”收藏相册视频：在相册视频播放页播放器下方点击“收藏”。收藏相册视频：在相册视频播放页播放器下方点击“收藏”。
-          </div>
-        </div>
-        <div class="qa_box">
-          <a><span class="q_icon">Q.</span>如何关注别人？关注别人有什么用？？</a>
-          <div class="qa_content">
-            收藏视频：在视频播放页播放器下方点击“收藏”收藏相册视频：在相册视频播放页播放器下方点击“收藏”。收藏相册视频：在相册视频播放页播放器下方点击“收藏”。
-          </div>
-        </div>
-        <div class="qa_box">
-          <a><span class="q_icon">Q.</span>如何关注别人？关注别人有什么用？？</a>
-          <div class="qa_content">
-            收藏视频：在视频播放页播放器下方点击“收藏”收藏相册视频：在相册视频播放页播放器下方点击“收藏”。收藏相册视频：在相册视频播放页播放器下方点击“收藏”。
-          </div>
-        </div>
-        <div class="qa_box">
-          <a><span class="q_icon">Q.</span>如何关注别人？关注别人有什么用？？</a>
-          <div class="qa_content">
-            收藏视频：在视频播放页播放器下方点击“收藏”收藏相册视频：在相册视频播放页播放器下方点击“收藏”。收藏相册视频：在相册视频播放页播放器下方点击“收藏”。
+            {{ qa.contents }}
           </div>
         </div>
       </div>
@@ -62,6 +20,10 @@
 export default {
   name: 'Faq',
   components: {},
+  async asyncData ({ store, redirect }) {
+    await store.dispatch('site/getFaq')
+    return {}
+  },
   data () {
     return {}
   },

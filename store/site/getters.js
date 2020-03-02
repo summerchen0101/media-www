@@ -4,6 +4,10 @@ export default {
     .reduce((obj, next) => {
       obj[next.code] = next
       return obj
-    }, {})
+    }, {}),
+  faq: (state) => {
+    return state.faq
+      .filter(t => t.status === 'Y')
+  }
 
 }
