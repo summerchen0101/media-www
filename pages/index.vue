@@ -276,15 +276,18 @@ export default {
     BlockAd: () => import('@/components/index/BlockAd')
   },
   async asyncData ({ store, redirect }) {
-    try {
-      await store.dispatch('ad/getAds')
-    } catch (err) {
-      console.log(err)
-    }
+    await store.dispatch('ad/getAds')
     return {}
   },
   data () {
     return {
+    }
+  },
+  watch: {
+    topAds (d) {
+      if (d.length > 0) {
+        this.jqFix()
+      }
     }
   },
   computed: {
@@ -305,9 +308,6 @@ export default {
   created () {
   },
   mounted () {
-    setTimeout(() => {
-      this.jqFix()
-    }, 100)
     this.$store.dispatch('ad/getAds')
   },
   methods: {
