@@ -1,18 +1,24 @@
 import { errCodes } from '@/lib/errCode/index'
 
-export default ({ app, store, $axios, redirect }, inject) => {
+export default ({ app, store, $axios, redirect, error }, inject) => {
   // axios回傳值調整
   const axiosInstance = $axios.create({
     baseURL: `${process.env.PROTOCOL}://${process.env.PHP_API_BASE_URL}`,
     validateStatus (status) {
-      if (status === 401) {
-        store.dispatch('user/clear')
-        redirect('/')
-      }
-      return status < 500 // Reject only if the status code is greater than or equal to 500
+      return true
     }
   })
   axiosInstance.onResponse((res) => {
+    const status = res.status
+    if (status === 401) {
+      store.dispatch('user/clear')
+      redirect('/')
+    } else if (status === 403) {
+      // redirect('/404', { a: 123 })
+      error({ statusCode: 403, message: 'ohoh403' })
+    } else if (status === 500) {
+      error({ statusCode: 500, message: 'ohoh500' })
+    }
     handleErrorCode(app, store, res)
     return res.data
   }, (error) => {
