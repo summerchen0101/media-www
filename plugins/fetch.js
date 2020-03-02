@@ -19,6 +19,10 @@ export default ({ app, store, $axios, redirect, error }, inject) => {
     } else if (status === 500) {
       error({ statusCode: 500, message: 'ohoh500' })
     }
+    store.commit('log/addLog', res)
+    // if (!process.client) {
+    //   store.commit('log/addLog', res)
+    // }
     handleErrorCode(app, store, res)
     return res.data
   }, (error) => {

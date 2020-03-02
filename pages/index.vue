@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="banner-box">
+    <div class="banner-box" style="max-height: 300px; overflow: hidden">
       <a
         v-for="(ad, index) in topAds"
         :key="index"
@@ -275,9 +275,8 @@ export default {
   components: {
     BlockAd: () => import('@/components/index/BlockAd')
   },
-  async asyncData ({ store, redirect }) {
+  async fetch ({ app, store, redirect }) {
     await store.dispatch('ad/getAds')
-    return {}
   },
   data () {
     return {
@@ -302,7 +301,6 @@ export default {
   },
   mounted () {
     setTimeout(this.jqFix, 800)
-    this.$store.dispatch('ad/getAds')
   },
   methods: {
     jqFix () {
