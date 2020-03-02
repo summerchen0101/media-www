@@ -17,6 +17,10 @@ router.use((req, res, next) => {
   next()
 })
 
+router.post('/host', (req, res) => {
+  req.session.host = req.get('host')
+  return res.json({ ok: true, host: req.session.host })
+})
 router.post('/auth', (req, res) => {
   req.session.auth = req.body.token
   return res.json({ ok: true, data: req.session.auth })

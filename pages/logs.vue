@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>LOGs TEST</h1>
+    <pre>{{ $store.state.log.host }}</pre>
     <pre>{{ $store.getters['log/logs'] }}</pre>
   </div>
 </template>
