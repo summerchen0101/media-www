@@ -1,15 +1,13 @@
 <template>
   <div class="company_right col-xs-12 col-sm-9 col-md-9">
     <div class="company_title">
-      <i class="icon-discuss-issue" /><span>常见问题</span>
+      <i class="icon-discuss-issue" /><span>常觝问题</span>
     </div>
     <div class="company_content">
       <div class="qa_container">
         <div v-for="(qa, i) in $store.getters['site/faq']" :key="i" class="qa_box">
           <a><span class="q_icon">Q.</span>{{ qa.title }}</a>
-          <div class="qa_content">
-            {{ qa.contents }}
-          </div>
+          <div class="qa_content" v-html="qa.contents" />
         </div>
       </div>
     </div>
