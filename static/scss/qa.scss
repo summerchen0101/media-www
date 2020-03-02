@@ -1,3 +1,47 @@
+.qa{
+    &-tabs{
+        border: none;
+        color: #999999;
+        position: relative;
+        margin-bottom: 15px;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow: auto;
+        overflow-y: hidden;
+        > li{
+            float: inherit;
+            margin-bottom: 0;
+            > a{
+                display: block;
+                // min-width: 80px;
+                border: none;
+                color: #999;
+                border-radius: 4px;
+                padding: 5px 10px;
+                margin-right: 10px;
+                background-color: #eee;
+                border: 1px solid #cccccc;
+                &:hover, &:focus{
+                    background-color: #ff443f;
+                    color: #fff;
+                    border-color: #ff443f;
+                }
+            }
+            &.active{
+                > a{
+                    background-color: #ff443f;
+                    border-color: #ff443f;
+                    color: #fff;
+                    &:hover, &:focus{
+                        background-color: #ff443f;
+                        border-color: #ff443f;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
 .qa_container {
     position: relative;
     height: auto;

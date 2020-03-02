@@ -307,9 +307,14 @@ input:focus{
 	margin-right: 0;
 	margin-bottom: 20px;
 }
-.fancybox-login .fancybox-skin{
+.fancybox-login .fancybox-skin, .dialog_box{
 	background: #182029;
 	border:1px solid #34495d;
+}
+.dialog_box{
+	padding: 40px;
+	max-width: 372px;
+	border-radius: 4px;
 }
 .login_dialog_title{
 	margin-bottom: 35px;
@@ -357,17 +362,19 @@ input:focus{
 	display: block;
 	cursor: pointer;
 }
-.fancybox-login .dialog_form_btn{
+.dialog_form_btn{
 	text-align: center;
 }
-.fancybox-login .dialog_form_btn button,
-.fancybox-login .dialog_form_btn a{
+.dialog_form_btn button,
+.dialog_form_btn a,
+.dialog_form_btn a[disabled]:hover,
+.dialog_form_btn a[disabled]:focus{
 	width: calc(100% - 30px);
 	background: #ff443f;
 	border:none;
 }
-.fancybox-login .dialog_form_btn button:hover,
-.fancybox-login .dialog_form_btn a:hover{
+.dialog_form_btn button:hover,
+.dialog_form_btn a:hover{
 	background: #de2d28;
 }
 .fancybox-login .fancybox-close{
@@ -531,12 +538,12 @@ input:focus{
 					i{
 						color: #333;
 					}
-
+					
 				}
 				i{
 					font-size: 18px;
 					color: #fff;
-
+					
 				}
 				span{
 					position: relative;
@@ -556,10 +563,10 @@ input:focus{
 						&:nth-child(1){
 							margin-right: 0;
 							margin-bottom: 4px;
-
+							
 						}
 					}
-
+					
 				}
 				a {
 					padding: 10px 0;
@@ -572,7 +579,7 @@ input:focus{
 					line-height: 1.5;
 					font-weight: 400;
 					cursor: pointer;
-
+					
 				}
 				&:hover{
 					> a{
@@ -615,7 +622,7 @@ input:focus{
 							position: relative;
 						}
 					}
-
+					
 				}
 			}
 			@media(max-width:900px){
@@ -651,7 +658,7 @@ input:focus{
 					}
 				}
 			}
-
+			
 		}
 	}
 	@media(max-width:900px){
@@ -927,7 +934,8 @@ body {
 
 .page_container{
     background: #f5f5f5;
-    padding: 60px 0;
+	padding: 60px 0;
+	min-height: 600px;
 }
 .page_banner{
     height: 307px;
@@ -1031,7 +1039,7 @@ ul.page_tabs li.active {
 		}
 	}
 }
-.index_mtitle,
+.index_mtitle, 
 .rank_mtitle{
 	color: #333333;
 	display: inline-block;
@@ -1056,7 +1064,7 @@ ul.page_tabs li.active {
     margin-right: 15px;
 	margin-bottom: 20px;
 	position: relative;
-
+	
 	@media(max-width:767px){
 		width: calc(100% / 4 - 12px);
 		&:nth-child(4n+4){
@@ -1250,7 +1258,7 @@ ul.page_tabs li.active {
 	.top > span.index_top_search_box{
 		display: inline-block;
 		margin-right: 10px;
-
+		
 	}
 	.company_left{
 		padding-right: 40px;
