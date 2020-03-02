@@ -283,13 +283,6 @@ export default {
     return {
     }
   },
-  watch: {
-    topAds (d) {
-      if (d.length > 0) {
-        this.jqFix()
-      }
-    }
-  },
   computed: {
     ...mapGetters({
       topAds: 'ad/indexTopAds',
@@ -308,6 +301,7 @@ export default {
   created () {
   },
   mounted () {
+    setTimeout(this.jqFix, 800)
     this.$store.dispatch('ad/getAds')
   },
   methods: {
