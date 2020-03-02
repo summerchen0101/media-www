@@ -35,6 +35,7 @@ export default {
     return {}
   },
   mounted () {
+    $('.imgLiquidFill').imgLiquid()
   },
   head () {
     return {
