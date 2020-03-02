@@ -38,7 +38,7 @@ export default ({ app, store, $axios, redirect, error }, inject) => {
       data,
       headers: {
         Authorization: `Bearer ${store.state.user.token}`,
-        Referer: store.state.log.host
+        Referer: !process.client ? `${process.env.PROTOCOL}://${store.state.log.host}` : undefined
       },
       ...config
     })
