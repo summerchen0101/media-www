@@ -106,7 +106,7 @@
               :title="ad.title"
               class="item"
               :href="ad.url"
-              :target="ad.is_blank == 'Y' ? '_blank' : 'self'"
+              :target="ad.is_blank == 'Y' ? '_blank' : '_self'"
             >
               <img :src="ad.image_url">
             </a>
@@ -146,7 +146,7 @@
               :title="ad.title"
               class="item"
               :href="ad.url"
-              :target="ad.is_blank == 'Y' ? '_blank' : 'self'"
+              :target="ad.is_blank == 'Y' ? '_blank' : '_self'"
             >
               <img :src="ad.image_url">
             </a>
