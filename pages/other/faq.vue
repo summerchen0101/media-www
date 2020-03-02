@@ -1,7 +1,7 @@
 <template>
   <div class="company_right col-xs-12 col-sm-9 col-md-9">
     <div class="company_title">
-      <i class="icon-discuss-issue" /><span>常觝问题</span>
+      <i class="icon-discuss-issue" /><span>常见问题</span>
     </div>
     <div class="company_content">
       <div class="qa_container">
@@ -18,9 +18,11 @@
 export default {
   name: 'Faq',
   components: {},
-  async asyncData ({ store, redirect }) {
-    await store.dispatch('site/getFaq')
-    return {}
+  async fetch ({ app, store, redirect }) {
+    const res = await app.$api.getFaq()
+    if (res.code === '0') {
+      store.commit('site/gotFaq', res.data)
+    }
   },
   data () {
     return {}
