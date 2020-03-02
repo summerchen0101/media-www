@@ -1,13 +1,9 @@
-/**
- * TODO: 做api proxy代理
- * TODO: env檔依照node_env環境判斷對應檔案
- */
 const session = require('express-session')
 const webpack = require('webpack')
 const MemoryStore = require('memorystore')(session)
-const env = process.env.NODE_ENV || 'dev'
+const customEnv = process.env.CUSTOM_ENV
 
-require('dotenv').config({ path: '.env.' + env })
+require('dotenv').config({ path: customEnv || '.env' })
 
 module.exports = {
   env: {
