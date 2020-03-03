@@ -5,6 +5,7 @@
 <script>
 export default {
   name: 'Message',
+  scrollToTop: true,
   components: {
   },
   data () {

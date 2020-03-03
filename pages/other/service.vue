@@ -11,6 +11,7 @@
 import { mapGetters } from 'vuex'
 export default {
   name: 'Service',
+  scrollToTop: true,
   components: {
   },
   async asyncData ({ store, redirect }) {

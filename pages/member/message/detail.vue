@@ -23,6 +23,7 @@
 <script>
 export default {
   name: 'MessageDetail',
+  scrollToTop: true,
   data () {
     return {}
   },

@@ -48,6 +48,7 @@
 <script>
 export default {
   name: 'Favorite',
+  scrollToTop: true,
   components: {
   },
   data () {
