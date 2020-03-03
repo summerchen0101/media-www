@@ -4,6 +4,9 @@ export default ({ app, store, $axios, redirect, error }, inject) => {
   // axios回傳值調整
   const axiosInstance = $axios.create({
     baseURL: `${process.env.PROTOCOL}://${process.env.PHP_API_BASE_URL}`,
+    headers: {
+      Authorization: `Bearer ${store.state.user.token}`
+    },
     validateStatus (status) {
       return true
     }
@@ -32,14 +35,13 @@ export default ({ app, store, $axios, redirect, error }, inject) => {
   const fetch = function ({ method, url }, data, config) {
     // 帶入url的變數值
     const _url = url.replace(/\$\{\s*([$#@\-\d\w]+)\s*\}/gim, (v, val) => data[val])
+    if (!process.client) {
+      axiosInstance.defaults.headers.common.Referer = `${process.env.PROTOCOL}://${store.state.log.host}`
+    }
     return axiosInstance({
       method,
       url: _url,
       data,
-      headers: {
-        Authorization: `Bearer ${store.state.user.token}`,
-        Referer: !process.client ? `${process.env.PROTOCOL}://${store.state.log.host}` : undefined
-      },
       ...config
     })
   }
