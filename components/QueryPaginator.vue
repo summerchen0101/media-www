@@ -1,7 +1,7 @@
 <template>
   <div v-if="paginator.count > 0" class="page_list">
     <a v-if="paginator.page === 1 " disabled><i class="fa fa-angle-left" aria-hidden="true" /></a>
-    <a v-else href="" @click.prevent="onPageChange(paginator.page - 1)"><i class="fa fa-angle-left" aria-hidden="true" /></a>
+    <a v-else :href="`${$route.path}?p=${paginator.page - 1}`"><i class="fa fa-angle-left" aria-hidden="true" /></a>
     <template v-for="p in paginator.totalPages">
       <a
         v-if="p === paginator.page"
@@ -11,13 +11,12 @@
       <a
         v-else
         :key="p"
-        href=""
-        @click.prevent="onPageChange(p)"
+        :href="`${$route.path}?p=${p}`"
       >{{ p }}</a>
     </template>
 
     <a v-if="paginator.page === paginator.totalPages" disabled><i class="fa fa-angle-right" aria-hidden="true" /></a>
-    <a v-else href="" @click.prevent="onPageChange(paginator.page + 1)"><i class="fa fa-angle-right" aria-hidden="true" /></a>
+    <a v-else :href="`${$route.path}?p=${paginator.page + 1}`"><i class="fa fa-angle-right" aria-hidden="true" /></a>
   </div>
 </template>
 <script>
@@ -31,11 +30,6 @@ export default {
         count: 0,
         totalPages: 0
       })
-    }
-  },
-  methods: {
-    onPageChange (page) {
-      this.$emit('change', page)
     }
   }
 }
