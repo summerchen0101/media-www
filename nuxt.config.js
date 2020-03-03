@@ -10,14 +10,14 @@ module.exports = {
     ...process.env
   },
   router: {
-    linkActiveClass: 'select',
-    extendRoutes (routes, resolve) {
-      routes.push({
-        name: 'custom',
-        path: '*',
-        component: resolve(__dirname, 'pages/404.vue')
-      })
-    }
+    linkActiveClass: 'select'
+    // extendRoutes (routes, resolve) {
+    //   routes.push({
+    //     name: 'custom',
+    //     path: '*',
+    //     component: resolve(__dirname, 'pages/404.vue')
+    //   })
+    // }
   },
   mode: 'universal',
   /*
@@ -68,7 +68,7 @@ module.exports = {
   plugins: [
     '@/plugins/element-ui',
     '@/plugins/storage',
-    // { src: '@/plugins/vuex-persist', ssr: false },
+    '@/plugins/utils',
     '@/plugins/vee-validate',
     '@/plugins/mixins',
     '@/plugins/components',
