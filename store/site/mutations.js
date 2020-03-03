@@ -4,5 +4,8 @@ export default {
   },
   gotFaq (state, data) {
     state.faq = data
+  },
+  gotFaqTotal (state, data) {
+    state.faqTotal = data
   }
 }

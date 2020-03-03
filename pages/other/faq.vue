@@ -10,25 +10,49 @@
           <div class="qa_content" v-html="qa.contents" />
         </div>
       </div>
+      <paginator :paginator="paginator" @change="onPageChange" />
     </div>
   </div>
 </template>
 
 <script>
+const faqPaginator = {
+  page: 1,
+  perpage: 20
+}
 export default {
   name: 'Faq',
+  watchQuery: true,
   components: {},
-  async fetch ({ app, store, redirect }) {
-    const res = await app.$api.getFaq()
-    if (res.code === '0') {
-      store.commit('site/gotFaq', res.data)
+  async asyncData ({ app, query, store, redirect }) {
+    await store.dispatch('site/getFaq', faqPaginator)
+    await store.dispatch('site/getFaqTotal', faqPaginator)
+    return {
+      paginator: app.$utils.toPaginator({
+        ...faqPaginator,
+        count: store.state.site.faqTotal
+      })
     }
   },
   data () {
-    return {}
+    return {
+    }
   },
   mounted () {
     jqFix()
+  },
+  methods: {
+    async onPageChange (page) {
+      this.$nuxt.$loading.start()
+      await this.$store.dispatch('site/getFaq', { ...faqPaginator, page })
+      await this.$store.dispatch('site/getFaqTotal', { ...faqPaginator, page })
+      this.paginator = this.$utils.toPaginator({
+        ...faqPaginator,
+        page,
+        count: this.$store.state.site.faqTotal
+      })
+      this.$nuxt.$loading.finish()
+    }
   },
   head () {
     return {

@@ -4,31 +4,6 @@ import DeviceDetector from 'device-detector-js'
 // const hostConfig = require('@/config/host')
 const dd = new DeviceDetector()
 
-const loadCSS = function (path) {
-  const ele = document.createElement('link')
-  ele.rel = 'stylesheet'
-  ele.href = path
-  document.body.appendChild(ele)
-}
-const unloadCSS = function (path) {
-  const oldEle = document.querySelector(`link[href="${path}"]`)
-  if (oldEle) {
-    oldEle.remove()
-  }
-}
-const loadScript = function (path) {
-  const ele = document.createElement('script')
-  ele.src = path
-  document.body.appendChild(ele)
-}
-const unloadScript = function (path) {
-  // console.log('unloadScript')
-  const oldEle = document.querySelector(`script[src="${path}"]`)
-  if (oldEle) {
-    oldEle.remove()
-  }
-}
-
 const host = function () {
   return window.location.hostname
 }
@@ -45,11 +20,5 @@ Vue.mixin({
   computed: {
     host,
     device
-  },
-  methods: {
-    loadCSS,
-    unloadCSS,
-    loadScript,
-    unloadScript
   }
 })
