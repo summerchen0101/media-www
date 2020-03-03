@@ -136,6 +136,7 @@ module.exports = {
       saveUninitialized: false,
       cookie: { maxAge: 86400000 }
     }),
-    { path: '/session', handler: '~/server/api' }
+    '~/server/api'
+    // { path: '/session', handler: '~/server/api' }
   ]
 }
