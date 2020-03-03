@@ -170,23 +170,19 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 export default {
   name: 'FilterPage',
   layout: 'main',
   components: {},
   async asyncData ({ store, redirect }) {
     await store.dispatch('ad/getAds')
-    return {}
+    return {
+      topAd: store.getters['ad/filterTopAd'],
+      bottomAd: store.getters['ad/filterBottomAd']
+    }
   },
   data () {
     return {}
-  },
-  computed: {
-    ...mapGetters({
-      topAd: 'ad/filterTopAd',
-      bottomAd: 'ad/filterBottomAd'
-    })
   },
   mounted () {
     $('.imgLiquidFill').imgLiquid()

@@ -397,27 +397,19 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 export default {
   name: 'VideoDetail',
   layout: 'main',
   components: {},
   async asyncData ({ store, redirect }) {
-    try {
-      await store.dispatch('ad/getAds')
-    } catch (err) {
-      console.log(err)
+    await store.dispatch('ad/getAds')
+    return {
+      rightAd: store.getters['ad/videoRightAd'],
+      blockAd: store.getters['ad/videoBlockAd']
     }
-    return {}
   },
   data () {
     return {}
-  },
-  computed: {
-    ...mapGetters({
-      rightAd: 'ad/videoRightAd',
-      blockAd: 'ad/videoBlockAd'
-    })
   },
   mounted () {
     $('.imgLiquidFill').imgLiquid()
