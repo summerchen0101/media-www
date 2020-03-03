@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="banner-box" style="max-height: 300px; overflow: hidden">
+    <div class="banner-box">
       <a
         v-for="(ad, index) in topAds"
         :key="index"
