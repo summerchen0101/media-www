@@ -10,7 +10,7 @@ const apiModules = {
 export default ({ app }, inject) => {
   function makeApis (apiObj) {
     return Object.keys(apiObj).reduce((obj, key) => {
-      obj[key] = data => app.$fetch(apiObj[key], data)
+      obj[key] = (data, config) => app.$fetch(apiObj[key], data, config)
       return obj
     }, {})
   }
