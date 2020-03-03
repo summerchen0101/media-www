@@ -22,7 +22,6 @@ const faqPaginator = {
 }
 export default {
   name: 'Faq',
-  watchQuery: true,
   components: {},
   async asyncData ({ app, query, store, redirect }) {
     await store.dispatch('site/getFaq', faqPaginator)
