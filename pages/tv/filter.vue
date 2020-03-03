@@ -105,6 +105,7 @@
               class="item"
               :href="topAd.url"
               :target="topAd.is_blank == 'Y' ? '_blank' : '_self'"
+              @click="topAd.url ? $api.getAdInfo(null, {params: {id: topAd.id}}) : null"
             >
               <img :src="topAd.image_url">
             </a>
@@ -143,6 +144,7 @@
               class="item"
               :href="bottomAd.url"
               :target="bottomAd.is_blank == 'Y' ? '_blank' : '_self'"
+              @click="bottomAd.url ? $api.getAdInfo(null, {params: {id: bottomAd.id}}) : null"
             >
               <img :src="bottomAd.image_url">
             </a>

@@ -256,6 +256,7 @@
                 class="item"
                 :href="blockAd.url"
                 :target="blockAd.is_blank == 'Y' ? '_blank' : '_self'"
+                @click="blockAd.url ? $api.getAdInfo(null, {params: {id: blockAd.id}}) : null"
               >
                 <img :src="blockAd.image_url">
               </a>
@@ -308,6 +309,7 @@
                 class="item"
                 :href="rightAd.url"
                 :target="rightAd.is_blank == 'Y' ? '_blank' : '_self'"
+                @click="rightAd.url ? $api.getAdInfo(null, {params: {id: rightAd.id}}) : null"
               >
                 <img :src="rightAd.image_url">
               </a>
