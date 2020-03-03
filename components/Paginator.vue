@@ -1,6 +1,6 @@
 <template>
   <div v-if="paginator.count > 0" class="page_list">
-    <a v-if="paginator.page === 1 " disabled><i class="fa fa-angle-left" aria-hidden="true" /></a>
+    <a v-if="paginator.page === 1 " class="disabled"><i class="fa fa-angle-left" aria-hidden="true" /></a>
     <a v-else href="" @click.prevent="onPageChange(paginator.page - 1)"><i class="fa fa-angle-left" aria-hidden="true" /></a>
     <template v-for="p in paginator.totalPages">
       <a
@@ -16,7 +16,7 @@
       >{{ p }}</a>
     </template>
 
-    <a v-if="paginator.page === paginator.totalPages" disabled><i class="fa fa-angle-right" aria-hidden="true" /></a>
+    <a v-if="paginator.page === paginator.totalPages" class="disabled"><i class="fa fa-angle-right" aria-hidden="true" /></a>
     <a v-else href="" @click.prevent="onPageChange(paginator.page + 1)"><i class="fa fa-angle-right" aria-hidden="true" /></a>
   </div>
 </template>

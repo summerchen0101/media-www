@@ -963,6 +963,14 @@ body {
   transition: all .2s;
 }
 
+.page_list a.disabled {
+  color: #6c757d;
+  pointer-events: none;
+  cursor: auto;
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+
 .page_list a:hover, .page_list a.select {
   background: #ff443f;
   border: 1px solid #ff443f;
@@ -1077,7 +1085,7 @@ ul.page_tabs li.active {
     display: none;
   }
   .video_unit.index_slide_unit {
-    margin: 0 7px;
+    margin: 0 7px 15px;
   }
   .video_unit.index_slide_unit:nth-child(4n+4) {
     margin-right: 7px;
