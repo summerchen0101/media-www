@@ -252,14 +252,12 @@
             <!--tv_detail_hot_select end-->
             <div class="ad-box mb-20">
               <a
-                v-for="(ad, index) in ads[6]"
-                :key="index"
-                :title="ad.title"
+                :title="blockAd.title"
                 class="item"
-                :href="ad.url"
-                :target="ad.is_blank == 'Y' ? '_blank' : '_self'"
+                :href="blockAd.url"
+                :target="blockAd.is_blank == 'Y' ? '_blank' : '_self'"
               >
-                <img :src="ad.image_url">
+                <img :src="blockAd.image_url">
               </a>
             </div>
             <div class="tv_detail_comment">
@@ -306,14 +304,12 @@
           <div class="tv_detail_right col-xs-12 col-sm-4 col-md-3">
             <div class="ad-box mb-20">
               <a
-                v-for="(ad, index) in ads[5]"
-                :key="index"
-                :title="ad.title"
+                :title="rightAd.title"
                 class="item"
-                :href="ad.url"
-                :target="ad.is_blank == 'Y' ? '_blank' : '_self'"
+                :href="rightAd.url"
+                :target="rightAd.is_blank == 'Y' ? '_blank' : '_self'"
               >
-                <img :src="ad.image_url">
+                <img :src="rightAd.image_url">
               </a>
             </div>
             <div class="maybe_like_box">
@@ -419,7 +415,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      ads: 'ad/ads'
+      rightAd: 'ad/videoRightAd',
+      blockAd: 'ad/videoBlockAd'
     })
   },
   mounted () {

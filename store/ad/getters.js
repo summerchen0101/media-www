@@ -18,5 +18,29 @@ export default {
     return i > -1 ? state.ads[i].advertisement.filter((ad) => {
       return ad.status === 'Y'
     }) : []
+  },
+  filterTopAd: (state) => {
+    const i = _.findIndex(state.ads, { id: 3 })
+    return i > -1
+      ? _(state.ads[i].advertisement).filter({ status: 'Y' }).shuffle().head()
+      : []
+  },
+  filterBottomAd: (state) => {
+    const i = _.findIndex(state.ads, { id: 4 })
+    return i > -1
+      ? _(state.ads[i].advertisement).filter({ status: 'Y' }).shuffle().head()
+      : []
+  },
+  videoRightAd: (state) => {
+    const i = _.findIndex(state.ads, { id: 5 })
+    return i > -1
+      ? _(state.ads[i].advertisement).filter({ status: 'Y' }).shuffle().head()
+      : []
+  },
+  videoBlockAd: (state) => {
+    const i = _.findIndex(state.ads, { id: 6 })
+    return i > -1
+      ? _(state.ads[i].advertisement).filter({ status: 'Y' }).shuffle().head()
+      : []
   }
 }

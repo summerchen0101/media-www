@@ -101,14 +101,12 @@
         <div class="tv_sub_right col-xs-12 col-sm-9 col-md-10">
           <div class="ad-box mb-20">
             <a
-              v-for="(ad, index) in ads[3]"
-              :key="index"
-              :title="ad.title"
+              :title="topAd.title"
               class="item"
-              :href="ad.url"
-              :target="ad.is_blank == 'Y' ? '_blank' : '_self'"
+              :href="topAd.url"
+              :target="topAd.is_blank == 'Y' ? '_blank' : '_self'"
             >
-              <img :src="ad.image_url">
+              <img :src="topAd.image_url">
             </a>
           </div>
           <div class="filter_box">
@@ -141,14 +139,12 @@
           </div>
           <div class="ad-box mb-20">
             <a
-              v-for="(ad, index) in ads[4]"
-              :key="index"
-              :title="ad.title"
+              :title="bottomAd.title"
               class="item"
-              :href="ad.url"
-              :target="ad.is_blank == 'Y' ? '_blank' : '_self'"
+              :href="bottomAd.url"
+              :target="bottomAd.is_blank == 'Y' ? '_blank' : '_self'"
             >
-              <img :src="ad.image_url">
+              <img :src="bottomAd.image_url">
             </a>
           </div>
           <div class="page_list">
@@ -188,7 +184,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      ads: 'ad/ads'
+      topAd: 'ad/filterTopAd',
+      bottomAd: 'ad/filterBottomAd'
     })
   },
   mounted () {
