@@ -1,7 +1,7 @@
 <template>
   <div class="company_right col-xs-12 col-sm-9 col-md-9">
     <div class="company_title">
-      <i class="icon-discuss-issue" /><span>常觝问题</span>
+      <i class="icon-discuss-issue" /><span>常见问题</span>
     </div>
     <div class="company_content">
       <div class="qa_container">
