@@ -11,7 +11,7 @@
           <div class="row">
             <SideMenu />
             <!--member_left end-->
-            <nuxt-child />>
+            <nuxt-child />
           </div>
           <!--page_content_s end-->
         </div>
