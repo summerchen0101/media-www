@@ -69,6 +69,23 @@ input:focus {
   right: 5px;
 }
 
+.searchModal .search-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.searchModal .search-sort {
+  width: 80px;
+  padding-right: 5px;
+}
+
+.searchModal .search-input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
 .searchModal h4 {
   text-align: center;
   font-weight: bold;

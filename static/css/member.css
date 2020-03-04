@@ -76,7 +76,8 @@
   color: #666666;
 }
 
-.pw_form {
+.pw_form,
+.contact_form {
   padding-top: 15px;
 }
 
