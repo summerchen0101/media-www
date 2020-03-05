@@ -31,26 +31,7 @@
               </div>
             </div>
             <div class="search_tv_list">
-              <div v-for="i in 10" :key="i" class="search_tv_unit">
-                <div class="search_tv_img">
-                  <img src="/images/member/collect_img1.jpg" alt="">
-                  <div>
-                    <div class="search_tv_view">
-                      <i class="fa fa-play" />3,534
-                    </div>
-                    <div class="search_tv_time">
-                      05:56
-                    </div>
-                  </div>
-                </div>
-                <a href="tv_korea_detail.html" class="search_tv_txt">
-                  <div class="search_tv_title">李钟硕《<span class="search_keyword">W</span><span class="search_keyword">两</span><span class="search_keyword">个</span><span class="search_keyword">世</span><span class="search_keyword">界</span> 》韩剧电视剧海报拍摄</div>
-                  <div class="search_tv_user_info">
-                    <div class="search_tv_user_name"><i class="fa fa-user" aria-hidden="true" />Sunny</div>
-                    <div class="search_tv_user_post"><i class="fa fa-clock-o" aria-hidden="true" />2月前</div>
-                  </div>
-                </a>
-              </div>
+              <RelateVideoItem v-for="i in 10" :key="i" :keyword="keyword" />
             </div>
             <!--search_tv_detail_resultBox end-->
             <div class="search_tv_relative">
@@ -58,20 +39,11 @@
                 相关搜索
               </div>
               <div class="search_tv_relative_content">
-                <a href="">两个世界</a>
-                <a href="">W两个世界韩剧</a>
-                <a href="">韩国电视剧</a>
-                <a href="">W两个世界韩剧电视剧</a>
-                <a href="">韩剧</a>
-                <a href="">李钟硕</a>
-                <a href="">李钟硕电视剧</a>
-                <a href="">W的两个世界</a>
-                <a href="">两个世界韩剧</a>
-                <a href="">韩孝周</a>
+                <a v-for="(item, i) in 10" :key="i" href="">两个世界</a>
               </div>
             </div>
             <!--search_tv_relative end-->
-            <Paginator />
+            <Paginator :page="page" :count="count" @change="onPageChange" />
           </div>
           <!--page_content_s end-->
         </div>
@@ -84,15 +56,29 @@
 </template>
 
 <script>
+import UtilMixin from '@/plugins/mixins'
 export default {
   name: 'SearchResult',
+  components: {
+    RelateVideoItem: () => import('@/components/tv/RelateVideoItem')
+  },
+  mixins: [UtilMixin],
   layout: 'main',
-  components: {},
+  watchQuery: true,
+  key: to => to.fullPath,
+  asyncData ({ store, redirect, query }) {
+    const page = parseInt(query.p) || 1
+    return {
+      page,
+      count: 100
+    }
+  },
   data () {
-    return {}
+    return {
+      keyword: '两个世界'
+    }
   },
   mounted () {
-
   },
   head () {
     return {

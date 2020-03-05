@@ -21,45 +21,12 @@
             热门搜寻：
           </div>
           <div class="searchModal_body">
-            <a class="" href="">
-              <div class="searchModal_num first">1</div>
+            <a v-for="(item, i) in 10" :key="i" class="" href="">
+              <div
+                class="searchModal_num"
+                :class="{first: i === 0, second: i ===1, third: i === 2}"
+              >{{ i+1 }}</div>
               <div class="searchModal_name">雪暴</div>
-            </a>
-            <a class="" href="">
-              <div class="searchModal_num second">2</div>
-              <div class="searchModal_name">俗女养成记</div>
-            </a>
-            <a class="" href="">
-              <div class="searchModal_num third">3</div>
-              <div class="searchModal_name">G杀事件</div>
-            </a>
-            <a class="" href="">
-              <div class="searchModal_num">4</div>
-              <div class="searchModal_name">大唐荣耀</div>
-            </a>
-            <a class="" href="">
-              <div class="searchModal_num">5</div>
-              <div class="searchModal_name">秘密精品店</div>
-            </a>
-            <a class="" href="">
-              <div class="searchModal_num">6</div>
-              <div class="searchModal_name">萌兽宠物店</div>
-            </a>
-            <a class="" href="">
-              <div class="searchModal_num">7</div>
-              <div class="searchModal_name">秘密精品店</div>
-            </a>
-            <a class="" href="">
-              <div class="searchModal_num">8</div>
-              <div class="searchModal_name">萌兽宠物店</div>
-            </a>
-            <a class="" href="">
-              <div class="searchModal_num">9</div>
-              <div class="searchModal_name">秘密精品店</div>
-            </a>
-            <a class="" href="">
-              <div class="searchModal_num">10</div>
-              <div class="searchModal_name">秘密精品店</div>
             </a>
           </div>
         </div>
