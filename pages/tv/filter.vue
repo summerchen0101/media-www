@@ -124,19 +124,7 @@
             <a href="">最新发佈</a>
           </div>
           <div class="tv_sub_list">
-            <nuxt-link v-for="i in 20" :key="i" :to="{name: 'tv-video-detail'}" class="index_tv_unit video_unit">
-              <div class="index_tv_img index_unit_img imgLiquidFill imgLiquid">
-                <img src="/images/index/tv_img1.jpg" alt="">
-              </div>
-              <div class="index_info">
-                <div class="index_unit_title">
-                  明天和你
-                </div>
-                <div class="index_unit_txt">
-                  更新至6集
-                </div>
-              </div>
-            </nuxt-link>
+            <VideoItem v-for="(item, i) in 20" :key="i" />
           </div>
           <div class="ad-box mb-20">
             <a

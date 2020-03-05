@@ -21,69 +21,17 @@
           <a id="section1" />
           <div class="head_title">
             <span class="index_mtitle"><i class="icon-television" />戏剧</span>
-            <a href="tv_list.html" class="index_more">更多</a>
+            <nuxt-link :to="{name: 'tv-filter'}" class="index_more">
+              更多
+            </nuxt-link>
           </div>
           <!--head_title end-->
           <div class="index_contentBox index_contentBox_column">
             <div class="index_tv_list">
-              <nuxt-link v-for="i in 10" :key="i" :to="{name: 'tv-video-detail'}" class="index_tv_unit video_unit">
-                <div class="index_tv_img index_unit_img imgLiquidFill imgLiquid">
-                  <img src="/images/index/tv_img1.jpg" alt="">
-                </div>
-                <div class="index_info">
-                  <div class="index_unit_title">
-                    明天和你
-                  </div>
-                  <div class="index_unit_txt">
-                    更新至6集
-                  </div>
-                </div>
-              </nuxt-link>
+              <VideoItem v-for="(item, i) in 10" :key="i" />
             </div>
             <!--index_tv_list end-->
-            <div class="rank_box">
-              <div class="rank_mtitle">
-                <i class="icon-ranking" />排行榜
-              </div>
-              <div class="rank_content">
-                <div class="rank_img imgLiquidFill imgLiquid">
-                  <img src="/images/index/rank_img1.jpg" alt="">
-                </div>
-                <div class="rank_list">
-                  <a href="tv_korea_detail.html" class="rank_unit first_unit">
-                    <i class="first">1</i><span>W－两个世界</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i class="second">2</i><span>孤单又灿烂的神-鬼怪</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i class="third">3</i><span>如朕亲临</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i>4</i><span>植剧场：荼蘼</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i>5</i><span>太阳的后裔</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i>6</i><span>浮士德的微笑</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i>7</i><span>独家保镳</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i>8</i><span>蓝色海洋的传说</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i>9</i><span>植剧场：天黑请闭眼</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i>10</i><span>THE K2</span>
-                  </a>
-                </div>
-              </div>
-              <!--rank_content end-->
-            </div>
+            <RankBox />
             <!--rank_box end-->
           </div>
           <!--index_content end-->
@@ -98,31 +46,17 @@
           <div class="head_title">
             <span class="index_mtitle"><i class="icon-movie-symbol-of-video-camera" />电影</span>
 
-            <a href="tv_list.html" class="index_more">更多</a>
+            <nuxt-link :to="{name: 'tv-filter'}" class="index_more">
+              更多
+            </nuxt-link>
           </div>
           <!--head_title end-->
           <div class="index_contentBox index_contentBox_column">
             <div class="index_variety_list_big">
-              <a href="tv_korea_detail.html" class="index_variety_unit video_unit">
-                <div class="index_variety_img index_unit_img imgLiquidFill imgLiquid">
-                  <img src="/images/index/variety_img1.jpg" alt="">
-                </div>
-                <div class="index_info">
-                  <div class="index_unit_title">明天和你</div>
-                  <div class="index_unit_txt">更新至6集</div>
-                </div>
-              </a>
+              <MovieVideoItem />
             </div>
             <div class="index_variety_list">
-              <a v-for="i in 3" :key="i" href="tv_korea_detail.html" class="index_variety_unit video_unit">
-                <div class="index_variety_img index_unit_img imgLiquidFill imgLiquid">
-                  <img src="/images/index/variety_img2.jpg" alt="">
-                </div>
-                <div class="index_info">
-                  <div class="index_unit_title">明天和你</div>
-                  <div class="index_unit_txt">更新至6集</div>
-                </div>
-              </a>
+              <MovieVideoItem v-for="(item, i) in 8" :key="i" />
             </div>
           </div>
           <!--index_content end-->
@@ -136,69 +70,17 @@
           <a id="section3" />
           <div class="head_title">
             <span class="index_mtitle"><i class="icon-karaoke-microphone-icon" />综艺</span>
-            <a href="tv_list.html" class="index_more">更多</a>
+            <nuxt-link :to="{name: 'tv-filter'}" class="index_more">
+              更多
+            </nuxt-link>
           </div>
           <!--head_title end-->
           <div class="index_contentBox index_contentBox_column">
             <div class="index_movie_list">
-              <a v-for="i in 10" :key="i" href="tv_korea_detail.html" class="index_movie_unit video_unit">
-                <div class="index_movie_img index_unit_img imgLiquidFill imgLiquid">
-                  <img src="/images/index/movie_img1.jpg" alt="">
-                </div>
-                <div class="index_info">
-                  <div class="index_unit_title index_movie_title">
-                    明天和你
-                    <b class="comment_num">8.1</b>
-                  </div>
-                  <div class="index_unit_txt">更新至6集</div>
-                </div>
-              </a>
+              <VideoItem v-for="(item, i) in 10" :key="i" />
             </div>
             <!--index_tv_list end-->
-            <div class="rank_box">
-              <div class="rank_mtitle">
-                <i class="icon-ranking" />排行榜
-              </div>
-              <div class="rank_content">
-                <div class="rank_img imgLiquidFill imgLiquid">
-                  <img src="/images/index/rank_img2.jpg" alt="">
-                </div>
-                <div class="rank_list">
-                  <a href="tv_korea_detail.html" class="rank_unit first_unit">
-                    <i class="first">1</i><span>W－两个世界</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i class="second">2</i><span>孤单又灿烂的神-鬼怪</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i class="third">3</i><span>如朕亲临</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i>4</i><span>植剧场：荼蘼</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i>5</i><span>太阳的后裔</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i>6</i><span>浮士德的微笑</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i>7</i><span>独家保镳</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i>8</i><span>蓝色海洋的传说</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i>9</i><span>植剧场：天黑请闭眼</span>
-                  </a>
-                  <a href="tv_korea_detail.html" class="rank_unit">
-                    <i>10</i><span>THE K2</span>
-                  </a>
-                </div>
-              </div>
-              <!--rank_content end-->
-            </div>
-            <!--rank_box end-->
+            <RankBox />
           </div>
           <!--index_content end-->
           <BlockAd :ad="fixedBlockAds[2]" />
@@ -212,51 +94,18 @@
           <div class="head_title">
             <span class="index_mtitle"><i class="icon-cartoons-character-with-big-eyes" />动漫</span>
 
-            <a href="tv_list.html" class="index_more">更多</a>
+            <nuxt-link :to="{name: 'tv-filter'}" class="index_more">
+              更多
+            </nuxt-link>
           </div>
           <!--head_title end-->
           <div class="index_contentBox">
             <div class="index_smovie_list">
-              <a v-for="i in 10" :key="i" href="tv_korea_detail.html" class="index_slide_unit video_unit">
-                <div class="index_smovie_img index_unit_img imgLiquidFill imgLiquid">
-                  <img src="/images/index/smovie_img1.jpg" alt="">
-                </div>
-                <div class="index_info">
-                  <div class="index_unit_title"> 明天和你</div>
-                  <div class="index_unit_txt">更新至6集</div>
-                </div>
-              </a>
+              <VideoItem v-for="(item, i) in 10" :key="i" />
             </div>
           </div>
           <!--index_content end-->
           <BlockAd :ad="fixedBlockAds[3]" />
-        </div>
-        <!--container end-->
-      </div>
-      <!--index block end-->
-      <div class="index_block">
-        <div class="container">
-          <a id="section5" />
-          <div class="head_title">
-            <span class="index_mtitle"><i class="icon-18" />成人</span>
-            <a href="tv_list.html" class="index_more">更多</a>
-          </div>
-          <!--head_title end-->
-          <div class="index_contentBox">
-            <div class="index_cartoons_list">
-              <a v-for="i in 10" :key="i" href="tv_korea_detail.html" class="index_slide_unit video_unit">
-                <div class="index_smovie_img index_unit_img imgLiquidFill imgLiquid">
-                  <img src="/images/index/smovie_img1.jpg" alt="">
-                </div>
-                <div class="index_info">
-                  <div class="index_unit_title"> 明天和你</div>
-                  <div class="index_unit_txt">更新至6集</div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <!--index_content end-->
-          <BlockAd :ad="fixedBlockAds[4]" />
         </div>
         <!--container end-->
       </div>
@@ -274,7 +123,9 @@ export default {
   name: 'Index',
   layout: 'main',
   components: {
-    BlockAd: () => import('@/components/index/BlockAd')
+    BlockAd: () => import('@/components/index/BlockAd'),
+    RankBox: () => import('@/components/index/RankBox'),
+    MovieVideoItem: () => import('@/components/index/MovieVideoItem')
   },
   async fetch ({ app, store, redirect }) {
     await store.dispatch('ad/getAds')

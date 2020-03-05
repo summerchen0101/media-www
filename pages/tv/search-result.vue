@@ -19,15 +19,7 @@
             </form>
           </div><!-- search_bar_head end -->
           <div class="search_tv_detail">
-            <a v-for="i in 15" :key="i" href="tv_korea_detail.html" class="search_unit video_unit">
-              <div class="index_tv_img index_unit_img imgLiquidFill imgLiquid">
-                <img src="/images/index/tv_img2.jpg" alt="">
-              </div>
-              <div class="index_info">
-                <div class="index_unit_title">明天和你</div>
-                <div class="index_unit_txt">更新至6集</div>
-              </div>
-            </a>
+            <VideoItem v-for="(item, i) in 15" :key="i" />
           </div>
           <div class="search_tv_detail_resultBox">
             <div class="search_tv_detail_head">
