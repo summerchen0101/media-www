@@ -33,7 +33,7 @@ export default {
     },
     count: {
       type: Number,
-      default: () => 100
+      default: () => 0
     }
   },
   computed: {
