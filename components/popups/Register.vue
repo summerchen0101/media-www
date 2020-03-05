@@ -101,10 +101,7 @@ export default {
   },
   methods: {
     async onSubmit () {
-      const data = Object.assign({}, this.form, {
-        domain: this.host
-      })
-      await this.$store.dispatch('user/register', data)
+      await this.$store.dispatch('user/register', this.form)
     }
   }
 }

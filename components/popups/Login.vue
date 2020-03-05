@@ -91,9 +91,9 @@ export default {
     async onClickedLogin (invalid) {
       if (invalid) { return }
       this.loading = true
-      await this.$store.dispatch('user/login', { ...this.form, device: this.device })
+      await this.$store.dispatch('user/login', this.form)
       this.loading = false
-      if (this.device !== 'web') {
+      if (this.$utils.device !== 'web') {
         $('.menuBg').trigger('click')
       }
     }

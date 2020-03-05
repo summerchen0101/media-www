@@ -17,7 +17,7 @@ export default {
       password: _d.pw,
       client_id: process.env.CLIENT_ID,
       client_secret: process.env.CLIENT_SECRET,
-      device: _d.device,
+      device: this.$utils.device,
       grant_type: 'password'
     }
     const res = await this.$api.login(data)
@@ -42,7 +42,7 @@ export default {
       account: _d.account,
       password: _d.pw,
       password_confirmation: _d.pw_c,
-      domain: _d.domain
+      domain: this.$utils.host
     }
     const res = await this.$api.register(data)
     if (res.code === '0') {

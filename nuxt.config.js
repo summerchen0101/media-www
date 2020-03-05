@@ -69,7 +69,7 @@ module.exports = {
     '@/plugins/storage',
     '@/plugins/utils',
     '@/plugins/vee-validate',
-    '@/plugins/mixins',
+    // '@/plugins/mixins',
     '@/plugins/components',
     '@/plugins/fetch',
     '@/plugins/nFetch',
