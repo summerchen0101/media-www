@@ -57,9 +57,6 @@ export default {
 }
 
 function jqFix () {
-  /* imgLiquid */
-  $('.imgLiquidFill').imgLiquid()
-
   /* tab accordion */
   $('.tab_content').hide()
   $('.tab_content:first').show()

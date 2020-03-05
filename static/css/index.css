@@ -100,6 +100,9 @@
 
 .rank_img {
   height: 130px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .rank_list {

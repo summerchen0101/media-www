@@ -2,9 +2,7 @@
   <div id="wrapper">
     <div id="page-content-wrapper">
       <!--banner start-->
-      <div class="page_banner imgLiquidFill imgLiquid">
-        <img src="/images/page_banner.jpg" alt="">
-      </div>
+      <div class="page_banner" style="background-image: url('/images/page_banner.jpg');" />
       <!--banner end-->
       <div class="page_container">
         <div class="container">
@@ -36,7 +34,7 @@ export default {
     return {}
   },
   mounted () {
-    $('.imgLiquidFill').imgLiquid()
+
   },
   head () {
     return {

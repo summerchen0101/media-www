@@ -1,8 +1,6 @@
 <template>
   <nuxt-link :to="{name: 'tv-video-detail'}" class="index_variety_unit video_unit">
-    <div class="index_variety_img index_unit_img imgLiquidFill imgLiquid">
-      <img src="/images/index/variety_img2.jpg" alt="">
-    </div>
+    <div class="index_variety_img index_unit_img " style="background-image: url('/images/index/variety_img1.jpg');" />
     <div class="index_info">
       <div class="index_unit_title">
         明天和你

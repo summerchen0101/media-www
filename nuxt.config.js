@@ -44,7 +44,6 @@ module.exports = {
       { type: 'text/javascript', src: '/plugins/jquery.min.js' },
       { type: 'text/javascript', src: '/bootstrap/js/bootstrap.min.js' },
       { type: 'text/javascript', src: '/plugins/modernizr.js' },
-      { type: 'text/javascript', src: '/plugins/imgLiquid-min.js' },
       { type: 'text/javascript', src: '/plugins/fancyBox/jquery.fancybox.pack.js' },
       { type: 'text/javascript', src: '/plugins/slick/slick.js' },
       { type: 'text/javascript', src: '/js/script.js' }

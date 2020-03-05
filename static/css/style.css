@@ -1171,6 +1171,9 @@ ul.page_tabs li.active {
 .video_unit .index_unit_img {
   position: relative;
   height: 240px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
 .video_unit .index_unit_img:before {

@@ -73,7 +73,7 @@ export default {
     }
   },
   mounted () {
-    $('.imgLiquidFill').imgLiquid()
+
   },
   methods: {
     onPageChange (page) {

@@ -28,7 +28,7 @@
     <div class="member_video_list">
       <div v-for="i in 10" :key="i" class="member_video_unit">
         <a href="" class="member_delete"><i class="fa fa-times" /></a>
-        <div class="member_video_img imgLiquidFill imgLiquid">
+        <div class="member_video_img">
           <img src="/images/member/collect_img1.jpg" alt="">
           <div class="member_video_time">
             05:56
@@ -55,7 +55,7 @@ export default {
     return {}
   },
   mounted () {
-    $('.imgLiquidFill').imgLiquid()
+
   },
   head () {
     return {

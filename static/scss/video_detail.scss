@@ -493,6 +493,9 @@ ul.page_tabs.video_play_side_tabs {
     overflow: hidden;
     border:1px solid #cbcbcb;
     vertical-align: top;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 .comment_txt{
     display: inline-block;
@@ -579,6 +582,9 @@ ul.page_tabs.video_play_side_tabs {
     position: relative;
     height: 75px;
     overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
 }
 .maybe_like_date {
     position: absolute;

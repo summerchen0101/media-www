@@ -1,7 +1,7 @@
 <template>
   <div class="member_left col-xs-12 col-sm-3 col-md-3">
     <div class="intro_info">
-      <div class="member_bigImg imgLiquidFill imgLiquid">
+      <div class="member_bigImg">
         <img src="/images/member/member_bigImg.jpg" alt="">
       </div>
       <div class="user_name">

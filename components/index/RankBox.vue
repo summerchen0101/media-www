@@ -4,7 +4,7 @@
       <i class="icon-ranking" />排行榜
     </div>
     <div class="rank_content">
-      <div class="rank_img imgLiquidFill imgLiquid">
+      <div class="rank_img">
         <img src="/images/index/rank_img1.jpg" alt="">
       </div>
       <div class="rank_list">

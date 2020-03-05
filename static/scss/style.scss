@@ -1157,6 +1157,9 @@ ul.page_tabs li.active {
 	.index_unit_img{
 		position: relative;
 		height: 240px;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
 		&:before {
 			content:  url('../images/hover_icon.png');
 			width: 60px;

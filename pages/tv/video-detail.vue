@@ -239,7 +239,7 @@
               </div>
               <div class="tv_detail_hot_select_list">
                 <a v-for="i in 10" :key="i" href="tv_korea_detail.html" class="video_unit">
-                  <div class="tv_detail_hot_select_img imgLiquidFill imgLiquid">
+                  <div class="tv_detail_hot_select_img">
                     <img src="/images/index/tv_img1.jpg" alt="">
                   </div>
                   <div class="tv_detail_hot_select_info">
@@ -281,7 +281,7 @@
               </div>
               <div class="comment_list">
                 <div v-for="i in 4" :key="i" class="comment_unit">
-                  <div class="comment_img imgLiquidFill imgLiquid">
+                  <div class="comment_img">
                     <img src="/images/tv_korea_detail/comment_img2.jpg" alt="">
                   </div>
                   <div class="comment_txt">
@@ -320,7 +320,7 @@
               </div>
               <div class="maybe_like_list">
                 <a v-for="i in 10" :key="i" href="" class="maybe_like_unit">
-                  <div class="maybe_like_img imgLiquidFill imgLiquid">
+                  <div class="maybe_like_img">
                     <img src="/images/member/collect_img1.jpg" alt="">
                     <div class="maybe_like_date">2017-01-09</div>
                   </div>
@@ -414,7 +414,7 @@ export default {
     return {}
   },
   mounted () {
-    $('.imgLiquidFill').imgLiquid()
+
   },
   head () {
     return {

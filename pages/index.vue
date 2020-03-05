@@ -156,7 +156,6 @@ export default {
   },
   methods: {
     jqFix () {
-      $('.imgLiquidFill').imgLiquid()
       $('.banner-box').slick({
         infinite: true,
         slidesToShow: 1,
