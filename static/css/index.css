@@ -200,10 +200,6 @@
   margin-right: 0;
 }
 
-.index_variety_list .index_variety_unit:last-child {
-  display: none;
-}
-
 .index_variety_list .index_variety_img {
   height: 141px;
 }
@@ -248,9 +244,6 @@
   }
   .index_variety_list .index_variety_unit:nth-child(6n+6) {
     margin-right: 0;
-  }
-  .index_variety_list .index_variety_unit:last-child {
-    display: none;
   }
   .index_variety_list .index_variety_img {
     height: 130px;
