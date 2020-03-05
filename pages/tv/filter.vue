@@ -54,16 +54,18 @@
 </template>
 
 <script>
+import UtilMixin from '@/plugins/mixins'
 export default {
   name: 'FilterPage',
-  layout: 'main',
   components: {
-    FilterSideBar: () => import('@/components/filter/FilterSideBar')
+    FilterSideBar: () => import('@/components/tv/FilterSideBar')
   },
+  mixins: [UtilMixin],
+  layout: 'main',
   watchQuery: true,
   key: to => to.fullPath,
-  async asyncData ({ store, redirect, params }) {
-    const page = params.p || 1
+  async asyncData ({ store, redirect, query }) {
+    const page = parseInt(query.p) || 1
     await store.dispatch('ad/getAds', { page })
     return {
       topAd: store.getters['ad/filterTopAd'],
@@ -76,9 +78,6 @@ export default {
 
   },
   methods: {
-    onPageChange (page) {
-      this.$router.push({ name: this.$route.name, query: { ...this.$route.query, p: page } })
-    }
   },
   head () {
     return {
