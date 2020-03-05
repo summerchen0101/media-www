@@ -30,7 +30,7 @@ extend('account', {
   message: '帐号格式错误'
 })
 extend('pw', {
-  validate: val => /^\w{6,16}$/.test(val),
+  validate: val => /^\w{4,16}$/.test(val),
   message: '密码格式错误'
 })
 extend('phone', {

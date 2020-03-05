@@ -14,7 +14,7 @@
         <label for="new_pw" class="control-label">新密码</label>
         <div>
           <ValidationProvider v-slot="v" rules="required|pw" name="new_pw">
-            <input id="new_pw" v-model="form.pw" type="password" class="form-control">
+            <input id="new_pw" v-model="form.pw" type="password" class="form-control" placeholder="密码(4-16位字母、数字和符号)">
             <span class="text-danger">{{ v.errors[0] }}</span>
           </ValidationProvider>
         </div>

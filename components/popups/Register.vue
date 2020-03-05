@@ -24,7 +24,7 @@
             <div class="form-group">
               <div class="col-xs-12">
                 <ValidationProvider v-slot="v" rules="required|pw" name="pw">
-                  <input v-model="form.pw" type="password" class="form-control" placeholder="密码(6-16位字母、数字和符号)">
+                  <input v-model="form.pw" type="password" class="form-control" placeholder="密码(4-16位字母、数字和符号)">
                   <span class="text-danger">{{ v.errors[0] }}</span>
                 </ValidationProvider>
               </div>
