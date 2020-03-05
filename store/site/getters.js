@@ -8,6 +8,9 @@ export default {
   faq: (state) => {
     return state.faq
       .filter(t => t.status === 'Y')
+  },
+  faqTotal: (state) => {
+    return parseInt(state.faqTotal)
   }
 
 }

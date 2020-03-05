@@ -10,28 +10,25 @@
           <div class="qa_content" v-html="qa.contents" />
         </div>
       </div>
-      <paginator :paginator="paginator" @change="onPageChange" />
+      <paginator :page="page" :perpage="perpage" :count="count" @change="onPageChange" />
     </div>
   </div>
 </template>
 
 <script>
-const faqPaginator = {
-  page: 1,
-  perpage: 20
-}
+const perpage = 20
 export default {
   name: 'Faq',
   scrollToTop: true,
   components: {},
   async asyncData ({ app, query, store, redirect }) {
-    await store.dispatch('site/getFaq', faqPaginator)
-    await store.dispatch('site/getFaqTotal', faqPaginator)
+    const page = 1
+    await store.dispatch('site/getFaq', { page, perpage })
+    await store.dispatch('site/getFaqTotal', { page, perpage })
     return {
-      paginator: app.$utils.toPaginator({
-        ...faqPaginator,
-        count: store.state.site.faqTotal
-      })
+      page,
+      perpage,
+      count: store.getters['site/faqTotal']
     }
   },
   data () {
@@ -44,13 +41,10 @@ export default {
   methods: {
     async onPageChange (page) {
       this.$nuxt.$loading.start()
-      await this.$store.dispatch('site/getFaq', { ...faqPaginator, page })
-      await this.$store.dispatch('site/getFaqTotal', { ...faqPaginator, page })
-      this.paginator = this.$utils.toPaginator({
-        ...faqPaginator,
-        page,
-        count: this.$store.state.site.faqTotal
-      })
+      await this.$store.dispatch('site/getFaq', { perpage, page })
+      await this.$store.dispatch('site/getFaqTotal', { perpage, page })
+      this.page = page
+      this.count = this.$store.getters['site/faqTotal']
       this.$nuxt.$loading.finish()
     }
   },
