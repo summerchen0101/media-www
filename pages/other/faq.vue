@@ -16,7 +16,7 @@
 </template>
 
 <script>
-const perpage = 20
+const perpage = 10
 export default {
   name: 'Faq',
   layout: 'other',
