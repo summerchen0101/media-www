@@ -25,7 +25,7 @@
           <span class="news_sort"><i class="icon-black-envelope" />系统消息</span>
           <span class="news_date">2017-03-01</span>
         </div>
-        <nuxt-link :to="{name: 'member-message-detail'}" class="news_txt">
+        <nuxt-link :to="{name: 'user-message-detail'}" class="news_txt">
           见元戏这得节建时随的。会找错客着学人满应有防，试天张，的话玩运定更议故预陆是间得却了们有，受家来的资年的成长时高便病向领，财我的育；规配和下体。宝大世大、件或算生留有...
         </nuxt-link>
       </div>
@@ -38,6 +38,7 @@
 <script>
 export default {
   name: 'MessageIndex',
+  layout: 'user',
   scrollToTop: true,
   components: {
   },

@@ -12,33 +12,33 @@
       </div>
     </div>
     <div class="member_list_pc">
-      <nuxt-link :to="{name: 'member-record'}">
+      <nuxt-link :to="{name: 'user-record'}">
         <i class="fa fa-history" />观看纪录
       </nuxt-link>
-      <nuxt-link :to="{name: 'member-favorite'}">
+      <nuxt-link :to="{name: 'user-favorite'}">
         <i class="fa fa-heart-o" />我的收藏
       </nuxt-link>
-      <nuxt-link :to="{name: 'member-message'}">
+      <nuxt-link :to="{name: 'user-message'}">
         <i class="icon-commenting" />我的消息
       </nuxt-link>
-      <nuxt-link :to="{name: 'member-profile'}">
+      <nuxt-link :to="{name: 'user-profile'}">
         <i class="fa fa-cog" />帐号设置
       </nuxt-link>
     </div>
-    <select name="here" onchange="location.href=this.options[this.selectedIndex].value;" class="member_list_mb">
+    <select name="here" class="member_list_mb" @change="onSelectedMenu">
       <option value="">
         请选择
       </option>
-      <option value="record.html">
+      <option value="user-record">
         观看纪录
       </option>
-      <option value="collect.html">
+      <option value="user-favorite">
         我的收藏
       </option>
-      <option value="message.html">
+      <option value="user-message">
         我的消息
       </option>
-      <option value="setting.html">
+      <option value="user-profile">
         帐号设置
       </option>
     </select>
@@ -50,6 +50,11 @@ export default {
   name: 'MemberSideMenu',
   components: {},
   mounted () {
+  },
+  methods: {
+    onSelectedMenu (e) {
+      this.$router.push({ name: e.target.value })
+    }
   }
 }
 </script>

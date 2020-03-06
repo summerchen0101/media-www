@@ -21,15 +21,13 @@
           <li><a href="#">其他</a></li>
         </ul>
       </div>
-      <!--member_select end-->
-      <a href="#" class="member_clearBtn"><i class="fa fa-trash-o" />清除所有收藏</a>
+      <a href="#" class="member_clearBtn"><i class="fa fa-trash-o" />清除所有纪录</a>
     </div>
-    <!--member_head end-->
     <div class="member_video_list">
-      <div v-for="i in 10" :key="i" class="member_video_unit">
+      <div v-for="i in 7" :key="i" class="member_video_unit">
         <a href="" class="member_delete"><i class="fa fa-times" /></a>
         <div class="member_video_img">
-          <img src="/images/member/collect_img1.jpg" alt="">
+          <img src="/images/member/collect_img2.jpg" alt="">
           <div class="member_video_time">
             05:56
           </div>
@@ -40,14 +38,14 @@
         </a>
       </div>
     </div>
-    <!--member_video_list end-->
     <Paginator />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Favorite',
+  name: 'Record',
+  layout: 'user',
   scrollToTop: true,
   components: {
   },

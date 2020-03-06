@@ -27,6 +27,7 @@
 <script>
 export default {
   name: 'Profile',
+  layout: 'user',
   scrollToTop: true,
   components: {
     Basic: () => import('@/components/profile/Basic.vue'),

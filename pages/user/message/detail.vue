@@ -13,7 +13,7 @@
       见元戏这得节建时随的。会找错客着学人满应有防，试天张，的话玩运定更议故预陆是间得却了们有，受家来的资年的成长时高便病向领，财我的育；规配和下体。宝大世大、件或算生留有...见元戏这得节建时随的。会找错客着学人满应有防，试天张，的话玩运定更议故预陆是间得却了们有，受家来的资年的成长时高便病向领，财我的育；规配和下体。宝大世大、件或算生留有...见元戏这得节建时随的。会找错客着学人满应有防，试天张，的话玩运定更议故预陆是间得却了们有，受家来的资年的成长时高便病向领，财我的育；规配和下体。宝大世大、件或算生留有
     </div>
     <div class="page_list news_page">
-      <nuxt-link :to="{name: 'member-message'}">
+      <nuxt-link :to="{name: 'user-message'}">
         <i class="fa fa-chevron-left" />回列表
       </nuxt-link>
     </div>
@@ -23,6 +23,7 @@
 <script>
 export default {
   name: 'MessageDetail',
+  layout: 'user',
   scrollToTop: true,
   data () {
     return {}
