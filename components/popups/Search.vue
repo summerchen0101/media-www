@@ -11,12 +11,7 @@
           </h4>
         </div>
         <div class="modal-body">
-          <div class="input-group">
-            <input type="text" class="form-control" aria-describedby="basic-addon2">
-            <span id="basic-addon2" class="input-group-addon">
-              <a href="" @click.prevent="onClickedSearch"><i class="fa fa-search" /></a>
-            </span>
-          </div>
+          <SearchBar :on-search="onClickedSearch" />
           <div class="searchModal_head">
             热门搜寻：
           </div>
@@ -38,7 +33,9 @@
 <script>
 export default {
   name: 'SearchPopup',
-  components: {},
+  components: {
+    SearchBar: () => import('@/components/SearchBar')
+  },
   mounted () {},
   methods: {
     onClickedSearch () {
