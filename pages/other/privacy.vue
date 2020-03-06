@@ -11,6 +11,7 @@
 import { mapGetters } from 'vuex'
 export default {
   name: 'Privacy',
+  layout: 'other',
   scrollToTop: true,
   components: {
   },

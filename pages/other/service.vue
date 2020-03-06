@@ -11,6 +11,7 @@
 import { mapGetters } from 'vuex'
 export default {
   name: 'Service',
+  layout: 'other',
   scrollToTop: true,
   components: {
   },

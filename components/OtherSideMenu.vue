@@ -37,6 +37,7 @@
 <script>
 export default {
   name: 'OtherSideMenu',
+  layout: 'other',
   components: {},
   mounted () {},
   methods: {

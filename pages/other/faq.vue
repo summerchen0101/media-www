@@ -19,6 +19,7 @@
 const perpage = 20
 export default {
   name: 'Faq',
+  layout: 'other',
   scrollToTop: true,
   components: {},
   async asyncData ({ app, query, store, redirect }) {

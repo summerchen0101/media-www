@@ -10,8 +10,9 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  scrollToTop: true,
   name: 'About',
+  layout: 'other',
+  scrollToTop: true,
   components: {
   },
   async asyncData ({ store, redirect }) {
