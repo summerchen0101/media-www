@@ -1,49 +1,44 @@
 import { errCodes } from '@/lib/errCode/index'
 
-export default ({ app, store, $axios, redirect, error }, inject) => {
-  // axios回傳值調整
+export default ({ app, store, $axios, redirect, error, req }, inject) => {
   const axiosInstance = $axios.create({
     baseURL: `${process.env.PROTOCOL}://${process.env.PHP_API_BASE_URL}`,
     validateStatus (status) {
       return true
     }
   })
+  axiosInstance.onRequest((config) => {
+    return {
+      ...config,
+      url: config.url.replace(/\$\{\s*([$#@\-\d\w]+)\s*\}/gim, (v, val) => config.data[val]),
+      headers: {
+        Authorization: `Bearer ${process.server ? req.session.token : store.state.user.token}`,
+        Referer: process.server ? `${process.env.PROTOCOL}://${req.headers.host}` : undefined
+      }
+    }
+  }, (error) => {
+    console.log(error)
+    return Promise.reject(error)
+  })
+  // axios回傳值調整
   axiosInstance.onResponse((res) => {
     const status = res.status
     if (status === 401) {
       store.dispatch('user/clear')
       redirect('/')
     } else if (status === 403) {
-      // redirect('/404', { a: 123 })
       error({ statusCode: 403, message: 'ohoh403' })
     } else if (status === 500) {
       error({ statusCode: 500, message: 'ohoh500' })
     }
     store.commit('log/addLog', res)
-    // if (!process.client) {
-    //   store.commit('log/addLog', res)
-    // }
     handleErrorCode(app, store, res)
     return res.data
   }, (error) => {
     console.log(error)
     return Promise.reject(error)
   })
-  const fetch = function ({ method, url }, data, config) {
-    // 帶入url的變數值
-    const _url = url.replace(/\$\{\s*([$#@\-\d\w]+)\s*\}/gim, (v, val) => data[val])
-    return axiosInstance({
-      method,
-      url: _url,
-      data,
-      headers: {
-        Authorization: `Bearer ${store.state.user.token}`,
-        Referer: `${process.env.PROTOCOL}://${store.state.log.host}`
-      },
-      ...config
-    })
-  }
-  inject('fetch', fetch)
+  inject('fetch', axiosInstance)
 }
 
 function handleErrorCode (app, store, { data, config }) {

@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-
+import rq from 'request-promise'
+const baseUrl = `${process.env.PROTOCOL}://${process.env.PHP_API_BASE_URL}`
 // Create express router
 const router = express.Router()
 
@@ -16,19 +17,42 @@ router.use((req, res, next) => {
   res.req = req
   next()
 })
-
-router.post('/host', (req, res) => {
-  req.session.host = req.get('host')
-  return res.json({ ok: true, host: req.session.host })
+router.use((req, res, next) => {
+  req.fetch = function (path) {
+    const options = {
+      method: req.method,
+      body: req.method === 'POST' ? req.body : undefined,
+      uri: baseUrl + path,
+      headers: {
+        Authorization: req.headers.authorization,
+        Referer: req.headers.referer,
+        'User-Agent': req.headers['user-agent']
+      },
+      json: true
+    }
+    return rq(options)
+  }
+  next()
 })
-router.post('/auth', (req, res) => {
-  req.session.auth = req.body.token
-  return res.json({ ok: true, data: req.session.auth })
+
+router.post('/login', (req, res) => {
+  return req.fetch('/passport/member/login')
+    .then((apiRes) => {
+      if (apiRes.code === '0') {
+        req.session.token = apiRes.data.access_token
+      }
+      res.json(apiRes)
+    })
 })
 
-router.delete('/auth', (req, res) => {
-  delete req.session.auth
-  res.json({ ok: true })
+router.get('/logout', (req, res) => {
+  return req.fetch('/client/logout')
+    .then((apiRes) => {
+      if (apiRes.code === '0') {
+        delete req.session.token
+      }
+      res.json(apiRes)
+    })
 })
 
 // Export the server middleware

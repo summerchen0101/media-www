@@ -1,9 +1,9 @@
 export default {
-  async nuxtServerInit ({ commit, dispatch }, { req }) {
-    await dispatch('log/getHost')
-    if (req.session && req.session.auth) {
+  nuxtServerInit ({ commit, dispatch }, { req }) {
+    console.log('nuxtServerInit', req.session)
+    if (req.session && req.session.token) {
       commit('user/switchLoginStatus', true)
-      commit('user/gotToken', req.session.auth)
+      commit('user/gotToken', req.session.token)
     }
   }
 }

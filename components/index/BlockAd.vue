@@ -5,7 +5,7 @@
       class="item"
       :href="ad.url"
       :target="ad.is_blank == 'Y' ? '_blank' : '_self'"
-      @click="ad.url ? $api.getAdInfo(null, {params: {id: ad.id}}) : null"
+      @click="ad.url ? $api.getAdInfo({params: {id: ad.id}}) : null"
     >
       <img :src="ad.image_url">
     </a>

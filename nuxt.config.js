@@ -10,7 +10,8 @@ module.exports = {
     ...process.env
   },
   router: {
-    linkActiveClass: 'select'
+    linkActiveClass: 'select',
+    middleware: ['auth']
     // extendRoutes (routes, resolve) {
     //   routes.push({
     //     name: 'custom',

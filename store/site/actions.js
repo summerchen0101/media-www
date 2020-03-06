@@ -10,7 +10,7 @@ export default {
       page: _d.page,
       perpage: _d.perpage
     }
-    const res = await this.$api.getFaq(null, { params: data })
+    const res = await this.$api.getFaq({ params: data })
     if (res.code === '0') {
       commit('gotFaq', res.data)
     }
@@ -20,7 +20,7 @@ export default {
       page: _d.page,
       perpage: _d.perpage
     }
-    const res = await this.$api.getFaqTotal(null, { params: data })
+    const res = await this.$api.getFaqTotal({ params: data })
     if (res.code === '0') {
       commit('gotFaqTotal', res.data)
     }
