@@ -15,11 +15,7 @@ export default {
   components: {
   },
   async asyncData ({ store, redirect }) {
-    try {
-      await store.dispatch('site/getInfo')
-    } catch (err) {
-      console.log(err)
-    }
+    await store.dispatch('site/getInfo')
     return {}
   },
   data () {
