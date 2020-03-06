@@ -100,8 +100,24 @@
           </div>
           <!--head_title end-->
           <div class="index_contentBox">
-            <div class="index_smovie_list">
-              <VideoItem v-for="(item, i) in 10" :key="i" />
+            <div class="slider_list">
+              <nuxt-link
+                v-for="(item, i) in 10"
+                :key="i"
+                :to="{name: 'tv-video-detail'}"
+                class="index_slide_unit video_unit"
+              >
+                <div class="index_variety_img index_unit_img " style="background-image: url('/images/index/tv_img1.jpg');" />
+                <div class="index_info">
+                  <div class="index_unit_title">
+                    明天和你
+                  </div>
+                  <div class="index_unit_txt">
+                    更新至6集
+                  </div>
+                </div>
+              </nuxt-link>
+              <!-- <VideoItem v-for="(item, i) in 10" :key="i" /> -->
             </div>
           </div>
           <!--index_content end-->
@@ -161,7 +177,7 @@ export default {
         slidesToShow: 1,
         slidesToScroll: 1
       })
-      $('.tv_list, .index_cartoons_list, .index_smovie_list').slick({
+      $('.slider_list').slick({
         infinite: true,
         speed: 300,
         slidesToShow: 6,
