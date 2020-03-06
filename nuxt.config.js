@@ -72,7 +72,6 @@ module.exports = {
     // '@/plugins/mixins',
     '@/plugins/components',
     '@/plugins/fetch',
-    '@/plugins/nFetch',
     '@/plugins/apiHub'
   ],
   /*

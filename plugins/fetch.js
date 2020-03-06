@@ -1,44 +1,52 @@
 import { errCodes } from '@/lib/errCode/index'
 
 export default ({ app, store, $axios, redirect, error, req }, inject) => {
-  const axiosInstance = $axios.create({
-    baseURL: `${process.env.PROTOCOL}://${process.env.PHP_API_BASE_URL}`,
-    validateStatus (status) {
-      return true
-    }
-  })
-  axiosInstance.onRequest((config) => {
-    return {
-      ...config,
-      url: config.url.replace(/\$\{\s*([$#@\-\d\w]+)\s*\}/gim, (v, val) => config.data[val]),
-      headers: {
-        Authorization: `Bearer ${process.server ? req.session.token : store.state.user.token}`,
-        Referer: process.server ? `${process.env.PROTOCOL}://${req.headers.host}` : undefined
+  const baseUrl = {
+    normal: `${process.env.PROTOCOL}://${process.env.PHP_API_BASE_URL}`,
+    node: `${process.env.PROTOCOL}://${process.env.NODE_API_BASE_URL}`
+  }
+  const makeAxiosInstance = (baseURL) => {
+    const axiosInstance = $axios.create({
+      baseURL,
+      validateStatus (status) {
+        return true
       }
-    }
-  }, (error) => {
-    console.log(error)
-    return Promise.reject(error)
-  })
-  // axios回傳值調整
-  axiosInstance.onResponse((res) => {
-    const status = res.status
-    if (status === 401) {
-      store.dispatch('user/clear')
-      redirect('/')
-    } else if (status === 403) {
-      error({ statusCode: 403, message: 'ohoh403' })
-    } else if (status === 500) {
-      error({ statusCode: 500, message: 'ohoh500' })
-    }
-    store.commit('log/addLog', res)
-    handleErrorCode(app, store, res)
-    return res.data
-  }, (error) => {
-    console.log(error)
-    return Promise.reject(error)
-  })
-  inject('fetch', axiosInstance)
+    })
+    axiosInstance.onRequest((config) => {
+      return {
+        ...config,
+        url: config.url.replace(/\$\{\s*([$#@\-\d\w]+)\s*\}/gim, (v, val) => config.data[val]),
+        headers: {
+          Authorization: `Bearer ${process.server ? req.session.token : store.state.user.token}`,
+          Referer: process.server ? `${process.env.PROTOCOL}://${req.headers.host}` : undefined
+        }
+      }
+    }, (error) => {
+      console.log(error)
+      return Promise.reject(error)
+    })
+    // axios回傳值調整
+    axiosInstance.onResponse((res) => {
+      const status = res.status
+      if (status === 401) {
+        store.dispatch('user/clear')
+        redirect('/')
+      } else if (status === 403) {
+        error({ statusCode: 403, message: 'ohoh403' })
+      } else if (status === 500) {
+        error({ statusCode: 500, message: 'ohoh500' })
+      }
+      store.commit('log/addLog', res)
+      handleErrorCode(app, store, res)
+      return res.data
+    }, (error) => {
+      console.log(error)
+      return Promise.reject(error)
+    })
+    return axiosInstance
+  }
+  inject('fetch', makeAxiosInstance(baseUrl.normal))
+  inject('nFetch', makeAxiosInstance(baseUrl.node))
 }
 
 function handleErrorCode (app, store, { data, config }) {
