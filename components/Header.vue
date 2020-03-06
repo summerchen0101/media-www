@@ -88,10 +88,18 @@
                 <i class="arr-icon fa fa-caret-down" />
               </a>
               <div class="dropdown">
-                <a href="record.html">观看纪录</a>
-                <a href="collect.html">我的收藏</a>
-                <a href="message.html">我的消息</a>
-                <a href="/member/profile" class="select">帐号设置</a>
+                <nuxt-link :to="{name: 'member-record'}">
+                  观看纪录
+                </nuxt-link>
+                <nuxt-link :to="{name: 'member-favorite'}">
+                  我的收藏
+                </nuxt-link>
+                <nuxt-link :to="{name: 'member-message'}">
+                  我的消息
+                </nuxt-link>
+                <nuxt-link :to="{name: 'member-profile'}" class="select">
+                  帐号设置
+                </nuxt-link>
                 <a href="" @click.prevent="$store.dispatch('user/logout')">登出</a>
               </div>
             </li>
