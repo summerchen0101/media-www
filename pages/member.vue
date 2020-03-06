@@ -25,6 +25,7 @@
 import SideMenu from '@/components/MemberSideMenu'
 export default {
   name: 'Member',
+  middleware: 'auth',
   layout: 'main',
   components: {
     SideMenu
