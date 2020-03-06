@@ -101,23 +101,7 @@
           <!--head_title end-->
           <div class="index_contentBox">
             <div class="slider_list">
-              <nuxt-link
-                v-for="(item, i) in 10"
-                :key="i"
-                :to="{name: 'tv-video-detail'}"
-                class="index_slide_unit video_unit"
-              >
-                <div class="index_variety_img index_unit_img " style="background-image: url('/images/index/tv_img1.jpg');" />
-                <div class="index_info">
-                  <div class="index_unit_title">
-                    明天和你
-                  </div>
-                  <div class="index_unit_txt">
-                    更新至6集
-                  </div>
-                </div>
-              </nuxt-link>
-              <!-- <VideoItem v-for="(item, i) in 10" :key="i" /> -->
+              <SlideVideoItem v-for="(item, i) in 10" :key="i" />
             </div>
           </div>
           <!--index_content end-->
@@ -141,7 +125,8 @@ export default {
   components: {
     BlockAd: () => import('@/components/index/BlockAd'),
     RankBox: () => import('@/components/index/RankBox'),
-    MovieVideoItem: () => import('@/components/index/MovieVideoItem')
+    MovieVideoItem: () => import('@/components/index/MovieVideoItem'),
+    SlideVideoItem: () => import('@/components/index/SlideVideoItem')
   },
   async fetch ({ app, store, redirect }) {
     await store.dispatch('ad/getAds')
