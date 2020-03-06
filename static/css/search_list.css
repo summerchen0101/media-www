@@ -136,6 +136,9 @@
 .search_tv_img {
   position: relative;
   height: 135px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 }
 
 .search_tv_img > div {
