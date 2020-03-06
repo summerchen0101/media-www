@@ -1,48 +1,33 @@
-const path = require('path')
-const Koa = require('koa')
+const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
-const serve = require('koa-static')
-// const opn = require('opn')
-
-const app = new Koa()
+const app = express()
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
-config.dev = app.env !== 'production'
+config.dev = process.env.NODE_ENV !== 'production'
 
 async function start () {
-  // Instantiate nuxt.js
+  // Init Nuxt.js
   const nuxt = new Nuxt(config)
 
-  const {
-    host = process.env.HOST || '127.0.0.1',
-    port = process.env.PORT || 3000
-  } = nuxt.options.server
+  const { host, port } = nuxt.options.server
 
   await nuxt.ready()
-  // Build in development
+  // Build only in dev mode
   if (config.dev) {
     const builder = new Builder(nuxt)
     await builder.build()
   }
 
-  app.use(serve(path.join(__dirname, '/static')), '/static')
+  // Give nuxt middleware to express
+  app.use(nuxt.render)
 
-  app.use((ctx) => {
-    ctx.status = 200
-    ctx.respond = false // Bypass Koa's built-in response handling
-    ctx.req.ctx = ctx // This might be useful later on, e.g. in nuxtServerInit or with nuxt-stash
-    nuxt.render(ctx.req, ctx.res)
-  })
-
+  // Listen the server
   app.listen(port, host)
-  const url = `${process.env.PROTOCOL}://${host}:${port}`
-  // opn(url, { app: 'google chrome' })
   consola.ready({
-    message: `Server listening on ${url}`,
+    message: `Server listening on http://${host}:${port}`,
     badge: true
   })
 }
-
 start()
