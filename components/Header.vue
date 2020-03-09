@@ -31,49 +31,6 @@
               </nuxt-link>
             </li>
             <li>
-              <a>
-                <span><i class="icon-18" /></span><span>成人</span>
-              </a>
-              <span class="arr"><i class="fa fa-caret-down" /></span>
-              <ul class="submenu_list">
-                <li>
-                  <nuxt-link :to="{name: 'tv-filter'}">
-                    长片
-                  </nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link :to="{name: 'tv-filter'}">
-                    短片
-                  </nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link :to="{name: 'tv-filter'}">
-                    自拍
-                  </nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link :to="{name: 'tv-filter'}">
-                    写真
-                  </nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link :to="{name: 'tv-filter'}">
-                    漫画
-                  </nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link :to="{name: 'tv-filter'}">
-                    文学
-                  </nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link :to="{name: 'tv-filter'}">
-                    说书
-                  </nuxt-link>
-                </li>
-              </ul>
-            </li>
-            <li>
               <nuxt-link :to="{name: 'tv-rank'}">
                 <span><i class="icon-ranking" /></span><span>排行</span>
               </nuxt-link>
