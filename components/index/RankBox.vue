@@ -8,15 +8,16 @@
         <img src="/images/index/rank_img1.jpg" alt="">
       </div>
       <div class="rank_list">
-        <a
+        <nuxt-link
           v-for="(item,i) in 10"
           :key="i"
-          href="tv_korea_detail.html"
+          :to="{name: 'tv-video-detail'}"
           class="rank_unit"
           :class="{'first_unit': i+1 === 1}"
         >
           <i :class="{first: i+1 === 1, second: i+1 === 2, third: i+1 === 3}">{{ i+1 }}</i><span>两个世界</span>
-        </a>
+          </a>
+        </nuxt-link>
       </div>
     </div>
     <!--rank_content end-->

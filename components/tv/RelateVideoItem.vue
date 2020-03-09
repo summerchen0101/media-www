@@ -10,16 +10,20 @@
         </div>
       </div>
     </div>
-    <a href="tv_korea_detail.html" class="search_tv_txt">
+    <nuxt-link :to="{name: 'tv-video-detail'}" class="search_tv_txt">
       <div
         class="search_tv_title"
         v-html="$utils.markKeyword('李钟硕《两个世界》韩剧电视剧海报拍摄', keyword)"
       />
       <div class="search_tv_user_info">
-        <div class="search_tv_user_name"><i class="fa fa-user" aria-hidden="true" />Sunny</div>
-        <div class="search_tv_user_post"><i class="fa fa-clock-o" aria-hidden="true" />2月前</div>
+        <div class="search_tv_user_name">
+          <i class="fa fa-user" aria-hidden="true" />Sunny
+        </div>
+        <div class="search_tv_user_post">
+          <i class="fa fa-clock-o" aria-hidden="true" />2月前
+        </div>
       </div>
-    </a>
+    </nuxt-link>
   </div>
 </template>
 

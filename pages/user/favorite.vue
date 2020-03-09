@@ -34,10 +34,14 @@
             05:56
           </div>
         </div>
-        <a href="tv_korea_detail.html" class="member_video_txt">
-          <div class="member_video_title">李钟硕《W 两个世界》韩剧电视剧海报拍摄</div>
-          <div class="member_video_view"><i class="fa fa-play" />已看到00分05秒</div>
-        </a>
+        <nuxt-link :to="{name: 'tv-video-detail'}" class="member_video_txt">
+          <div class="member_video_title">
+            李钟硕《W 两个世界》韩剧电视剧海报拍摄
+          </div>
+          <div class="member_video_view">
+            <i class="fa fa-play" />已看到00分05秒
+          </div>
+        </nuxt-link>
       </div>
     </div>
     <!--member_video_list end-->

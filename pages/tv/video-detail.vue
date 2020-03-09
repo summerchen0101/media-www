@@ -1,15 +1,7 @@
 <template>
   <div id="wrapper">
     <div id="page-content-wrapper">
-      <div class="video_player_info_path">
-        <div class="container">
-          <ul>
-            <li><a href="index.html">首页</a></li> >
-            <li><a href="tv_list.html">电视剧</a></li> >
-            <li><a href="tv_korea_detail.html">太阳的后裔</a></li>
-          </ul>
-        </div>
-      </div>
+      <Breadcrumb />
       <div class="page_container video_container">
         <div class="video_player_box">
           <div class="container video_player_info_title">
@@ -83,6 +75,7 @@ export default {
     AddToFavorite: () => import('@/components/tv/video-detail/AddToFavorite'),
     VideoPlayer: () => import('@/components/tv/video-detail/VideoPlayer'),
     HotList: () => import('@/components/tv/video-detail/HotList'),
+    Breadcrumb: () => import('@/components/tv/video-detail/Breadcrumb'),
     BlockAd: () => import('@/components/BlockAd')
   },
   async asyncData ({ store, redirect, query }) {
