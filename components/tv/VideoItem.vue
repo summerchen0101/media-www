@@ -1,5 +1,8 @@
 <template>
-  <nuxt-link :to="{name: 'tv-video-detail'}" class="video_unit">
+  <nuxt-link
+    :to="{name: 'tv-video-detail', query: {id: video.id, episode: video.episodeCount || undefined}}"
+    class="video_unit"
+  >
     <div class="index_variety_img index_unit_img " :style="`background-image: url('${video.imgUrl}');`" />
     <div class="index_info">
       <div class="index_unit_title">
@@ -19,7 +22,13 @@ export default {
   props: {
     video: {
       type: Object,
-      default: () => ({})
+      default: () => ({
+        id: 123,
+        imgUrl: 'https://fakeimg.pl/218x290',
+        title: 'XXXX',
+        episodeCount: 99,
+        episodeStatus: 'serializing'
+      })
     }
   },
   methods: {

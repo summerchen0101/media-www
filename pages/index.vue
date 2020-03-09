@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{ $store.getters['drama/test'] }}
     <div class="banner-box">
       <a
         v-for="(ad, index) in topAds"
