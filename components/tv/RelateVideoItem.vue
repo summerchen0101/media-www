@@ -1,7 +1,6 @@
 <template>
   <div class="search_tv_unit">
-    <div class="search_tv_img">
-      <img src="/images/member/collect_img1.jpg" alt="">
+    <div class="search_tv_img" style="background-image: url('/images/member/collect_img1.jpg');">
       <div>
         <div class="search_tv_view">
           <i class="fa fa-play" />3,534
