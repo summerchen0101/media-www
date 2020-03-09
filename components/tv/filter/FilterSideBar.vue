@@ -1,33 +1,6 @@
 <template>
   <div class="tv_sub_left col-xs-12 col-sm-3 col-md-2">
-    <div class="tv_sub_lTitle">
-      <div class="dropdown">
-        <button
-          id="dropdownMenu1"
-          class="dropdown-toggle"
-          type="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="true"
-        >
-          电视剧
-          <span class="caret" />
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li>
-            <a href="">电视剧</a>
-          </li>
-          <li><a href="">综艺</a></li>
-          <li><a href="">电影</a></li>
-          <li><a href="">微电影</a></li>
-          <li><a href="">动漫</a></li>
-          <li><a href="">音乐</a></li>
-          <li><a href="">搞笑</a></li>
-          <li><a href="">体育</a></li>
-          <li><a href="">时尚</a></li>
-        </ul>
-      </div>
-    </div>
+    <FilterEntranceSelector />
     <div class="tb_sub_select_box">
       <div class="tv_sub_stitle">
         类别：
@@ -97,6 +70,9 @@
 </template>
 <script>
 export default {
+  components: {
+    FilterEntranceSelector: () => import('@/components/tv/filter/FilterEntranceSelector')
+  },
   props: {
   }
 }
