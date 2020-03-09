@@ -28,7 +28,7 @@
           <!--head_title end-->
           <div class="index_contentBox index_contentBox_column">
             <div class="index_tv_list">
-              <VideoItem v-for="(item, i) in 10" :key="i" />
+              <VideoItem v-for="(video, i) in dramaList" :key="i" :video="video" />
             </div>
             <!--index_tv_list end-->
             <RankBox />
@@ -53,10 +53,15 @@
           <!--head_title end-->
           <div class="index_contentBox index_contentBox_column">
             <div class="index_variety_list_big">
-              <MovieVideoItem />
+              <VideoItem :video="latestMovie" class="index_variety_unit" />
             </div>
             <div class="index_variety_list">
-              <MovieVideoItem v-for="(item, i) in 8" :key="i" />
+              <VideoItem
+                v-for="(video, i) in movieList"
+                :key="i"
+                :video="video"
+                class="index_variety_unit"
+              />
             </div>
           </div>
           <!--index_content end-->
@@ -77,7 +82,7 @@
           <!--head_title end-->
           <div class="index_contentBox index_contentBox_column">
             <div class="index_movie_list">
-              <VideoItem v-for="(item, i) in 10" :key="i" />
+              <VideoItem v-for="(video, i) in varietyList" :key="i" :video="video" />
             </div>
             <!--index_tv_list end-->
             <RankBox />
@@ -101,7 +106,12 @@
           <!--head_title end-->
           <div class="index_contentBox">
             <div class="slider_list">
-              <SlideVideoItem v-for="(item, i) in 10" :key="i" />
+              <VideoItem
+                v-for="(video, i) in animeList"
+                :key="i"
+                :video="video"
+                class="index_slide_unit"
+              />
             </div>
           </div>
           <!--index_content end-->
@@ -124,12 +134,14 @@ export default {
   layout: 'main',
   components: {
     BlockAd: () => import('@/components/BlockAd'),
-    RankBox: () => import('@/components/index/RankBox'),
-    MovieVideoItem: () => import('@/components/index/MovieVideoItem'),
-    SlideVideoItem: () => import('@/components/index/SlideVideoItem')
+    RankBox: () => import('@/components/index/RankBox')
   },
   async fetch ({ app, store, redirect }) {
     await store.dispatch('ad/getAds')
+    await store.dispatch('drama/getLatestList')
+    await store.dispatch('movie/getLatestList')
+    await store.dispatch('anime/getLatestList')
+    await store.dispatch('variety/getLatestList')
   },
   data () {
     return {
@@ -138,7 +150,12 @@ export default {
   computed: {
     ...mapGetters({
       topAds: 'ad/indexTopAds',
-      blockAds: 'ad/indexBlockAds'
+      blockAds: 'ad/indexBlockAds',
+      dramaList: 'drama/latestList',
+      latestMovie: 'movie/latest',
+      movieList: 'movie/latestList',
+      animeList: 'anime/latestList',
+      varietyList: 'variety/latestList'
     }),
     fixedBlockAds () {
       const blockNum = 5

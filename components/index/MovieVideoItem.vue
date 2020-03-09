@@ -14,6 +14,10 @@
 <script>
 export default {
   props: {
+    video: {
+      type: Object,
+      default: () => ({})
+    }
   },
   methods: {
   }
