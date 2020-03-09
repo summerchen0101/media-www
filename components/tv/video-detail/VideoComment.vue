@@ -23,7 +23,7 @@
 <script>
 export default {
   components: {
-    CommentList: () => import('@/components/tv/CommentList')
+    CommentList: () => import('@/components/tv/video-detail/CommentList')
   },
   props: {
   },
