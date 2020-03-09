@@ -1,28 +1,24 @@
-import { AD } from '~/lib/api/ad'
-import { USER } from '~/lib/api/user'
-import { SITE } from '~/lib/api/site'
 
-const apiModules = {
-  AD,
-  USER,
-  SITE
-}
+import path from 'path'
+import * as apiModules from '@/lib/api'
+
 export default ({ app }, inject) => {
-  function makeApis (apiObj) {
-    return Object.keys(apiObj).reduce((obj, key) => {
-      const { method, url } = apiObj[key]
-      obj[key] = (...args) => app.$fetch[method](url, ...args)
+  function makeApis (module) {
+    return Object.keys(module.apis).reduce((obj, key) => {
+      const { method, url } = module.apis[key]
+      const _url = path.join(module.baseUrl, url)
+      obj[key] = (...args) => app.$fetch[method](_url, ...args)
       return obj
     }, {})
   }
 
   const apis = Object.keys(apiModules)
     .reduce((obj, moduleName) => {
-      const _module = apiModules[moduleName]
-      if (_module.namespaced) {
-        obj[moduleName] = makeApis(_module.apis)
+      const module = apiModules[moduleName]
+      if (module.namespaced) {
+        obj[moduleName] = makeApis(module)
       } else {
-        obj = Object.assign({}, obj, makeApis(_module.apis))
+        obj = Object.assign({}, obj, makeApis(module))
       }
       return obj
     }, {})
