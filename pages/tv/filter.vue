@@ -5,17 +5,7 @@
       <div class="container tv_sub_container row">
         <FilterSideBar />
         <div class="tv_sub_right col-xs-12 col-sm-9 col-md-10">
-          <div class="ad-box mb-20">
-            <a
-              :title="topAd.title"
-              class="item"
-              :href="topAd.url"
-              :target="topAd.is_blank == 'Y' ? '_blank' : '_self'"
-              @click="topAd.url ? $api.getAdInfo({params: {id: topAd.id}}) : null"
-            >
-              <img :src="topAd.image_url">
-            </a>
-          </div>
+          <BlockAd :ad="topAd" />
           <div class="filter_box">
             <span class="filter_title">筛选条件：</span>
             <a href="">悬疑<i class="fa fa-times-circle" /></a>
@@ -32,17 +22,7 @@
           <div class="tv_sub_list">
             <VideoItem v-for="(item, i) in 20" :key="i" />
           </div>
-          <div class="ad-box mb-20">
-            <a
-              :title="bottomAd.title"
-              class="item"
-              :href="bottomAd.url"
-              :target="bottomAd.is_blank == 'Y' ? '_blank' : '_self'"
-              @click="bottomAd.url ? $api.getAdInfo({params: {id: bottomAd.id}}) : null"
-            >
-              <img :src="bottomAd.image_url">
-            </a>
-          </div>
+          <BlockAd :ad="bottomAd" />
           <paginator :page="page" :count="count" @change="onPageChange" />
         </div>
       </div>
@@ -58,7 +38,8 @@ import UtilMixin from '@/plugins/mixins'
 export default {
   name: 'FilterPage',
   components: {
-    FilterSideBar: () => import('@/components/tv/FilterSideBar')
+    FilterSideBar: () => import('@/components/tv/FilterSideBar'),
+    BlockAd: () => import('@/components/BlockAd')
   },
   mixins: [UtilMixin],
   layout: 'main',

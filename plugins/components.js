@@ -4,7 +4,7 @@ import ScrollTop from '../components/ScrollTop'
 import IndexScrollTop from '../components/IndexScrollTop'
 import Dashboard from '../components/Dashboard'
 import Paginator from '../components/Paginator'
-import VideoItem from '../components/VideoItem'
+import VideoItem from '../components/tv/VideoItem'
 
 Vue.component('Dashboard', Dashboard)
 Vue.component('Footer', Footer)

@@ -123,7 +123,7 @@ export default {
   name: 'Index',
   layout: 'main',
   components: {
-    BlockAd: () => import('@/components/index/BlockAd'),
+    BlockAd: () => import('@/components/BlockAd'),
     RankBox: () => import('@/components/index/RankBox'),
     MovieVideoItem: () => import('@/components/index/MovieVideoItem'),
     SlideVideoItem: () => import('@/components/index/SlideVideoItem')
