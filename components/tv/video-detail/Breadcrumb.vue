@@ -8,7 +8,7 @@
           </nuxt-link>
         </li> >
         <li>
-          <nuxt-link :to="{name: 'tv-filter'}">
+          <nuxt-link :to="{name: 'tv-filter-category', params: {category: 'drama'}}">
             电视剧
           </nuxt-link>
         </li> >

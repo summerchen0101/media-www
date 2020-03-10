@@ -9,28 +9,28 @@
         aria-haspopup="true"
         aria-expanded="true"
       >
-        电视剧
+        {{ $enum('Category', $route.params.category) }}
         <span class="caret" />
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li>
-          <a href="">电视剧</a>
+        <li v-for="(c, i) in Category" :key="i">
+          <nuxt-link :to="`/tv/filter/${c.code}`">
+            {{ c.label }}
+          </nuxt-link>
         </li>
-        <li><a href="">综艺</a></li>
-        <li><a href="">电影</a></li>
-        <li><a href="">微电影</a></li>
-        <li><a href="">动漫</a></li>
-        <li><a href="">音乐</a></li>
-        <li><a href="">搞笑</a></li>
-        <li><a href="">体育</a></li>
-        <li><a href="">时尚</a></li>
       </ul>
     </div>
   </div>
 </template>
 <script>
+import { Category } from '@/lib/constants/Category'
 export default {
   props: {
+  },
+  data () {
+    return {
+      Category
+    }
   },
   methods: {
   }

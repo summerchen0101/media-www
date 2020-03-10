@@ -1,13 +1,13 @@
 <template>
   <div class="tv_sub_left col-xs-12 col-sm-3 col-md-2">
-    <FilterEntranceSelector />
+    <CategorySelector />
     <SidebarSearchType v-for="(rule, i) in searchRules" :key="i" :rule="rule" />
   </div>
 </template>
 <script>
 export default {
   components: {
-    FilterEntranceSelector: () => import('@/components/tv/filter/FilterEntranceSelector'),
+    CategorySelector: () => import('@/components/tv/filter/CategorySelector'),
     SidebarSearchType: () => import('@/components/tv/filter/SidebarSearchType')
   },
   props: {

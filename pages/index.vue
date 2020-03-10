@@ -22,7 +22,7 @@
           <a id="section1" />
           <div class="head_title">
             <span class="index_mtitle"><i class="icon-television" />戏剧</span>
-            <nuxt-link :to="{name: 'tv-filter'}" class="index_more">
+            <nuxt-link :to="{name: 'tv-filter-category', params: {category: 'drama'}}" class="index_more">
               更多
             </nuxt-link>
           </div>
@@ -47,7 +47,7 @@
           <div class="head_title">
             <span class="index_mtitle"><i class="icon-movie-symbol-of-video-camera" />电影</span>
 
-            <nuxt-link :to="{name: 'tv-filter'}" class="index_more">
+            <nuxt-link :to="{name: 'tv-filter-category', params: {category: 'movie'}}" class="index_more">
               更多
             </nuxt-link>
           </div>
@@ -76,7 +76,7 @@
           <a id="section3" />
           <div class="head_title">
             <span class="index_mtitle"><i class="icon-karaoke-microphone-icon" />综艺</span>
-            <nuxt-link :to="{name: 'tv-filter'}" class="index_more">
+            <nuxt-link :to="{name: 'tv-filter-category', params: {category: 'variety'}}" class="index_more">
               更多
             </nuxt-link>
           </div>
@@ -100,7 +100,7 @@
           <div class="head_title">
             <span class="index_mtitle"><i class="icon-cartoons-character-with-big-eyes" />动漫</span>
 
-            <nuxt-link :to="{name: 'tv-filter'}" class="index_more">
+            <nuxt-link :to="{name: 'tv-filter-category', params: {category: 'anime'}}" class="index_more">
               更多
             </nuxt-link>
           </div>

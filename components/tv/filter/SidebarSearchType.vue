@@ -8,7 +8,9 @@
         <nuxt-link
           exact
           :class="{select: $route.query[rule.code] === undefined}"
-          :to="{name: 'tv-filter', query: {...$route.query, [rule.code]: undefined}}"
+          :to="{name: 'tv-filter-category',
+                params: $route.params,
+                query: {...$route.query, [rule.code]: undefined}}"
         >
           全部
         </nuxt-link>
@@ -16,7 +18,9 @@
       <li v-for="(t,i) in rule.types" :key="i">
         <nuxt-link
           exact
-          :to="{name: 'tv-filter', query: {...$route.query, [rule.code]: t.id}}"
+          :to="{name: 'tv-filter-category',
+                params: $route.params,
+                query: {...$route.query, [rule.code]: t.id}}"
         >
           {{ t.label }}
         </nuxt-link>
