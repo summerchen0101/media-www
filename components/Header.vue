@@ -10,24 +10,9 @@
       <nav class="menuBar">
         <div class="nav-content">
           <ul class="menu_list">
-            <li>
-              <nuxt-link :to="{name: 'tv-filter-category', params: {category: 'drama'}}">
-                <span><i class="icon-television" /></span><span>戏剧</span>
-              </nuxt-link>
-            </li>
-            <li>
-              <nuxt-link :to="{name: 'tv-filter-category', params: {category: 'movie'}}">
-                <span><i class="icon-movie-symbol-of-video-camera" /></span><span>电影</span>
-              </nuxt-link>
-            </li>
-            <li>
-              <nuxt-link :to="{name: 'tv-filter-category', params: {category: 'anime'}}">
-                <span><i class="icon-cartoons-character-with-big-eyes" /></span><span>动漫</span>
-              </nuxt-link>
-            </li>
-            <li>
-              <nuxt-link :to="{name: 'tv-filter-category', params: {category: 'variety'}}">
-                <span><i class="icon-karaoke-microphone-icon" /></span><span>综艺</span>
+            <li v-for="(c,i) in cates" :key="i">
+              <nuxt-link :to="{name: 'tv-filter-category', params: {category: c.code}}">
+                <span><i :class="c.icon" /></span><span>{{ c.label }}</span>
               </nuxt-link>
             </li>
             <li>
@@ -94,9 +79,15 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { Category } from '@/lib/constants/Category'
 export default {
   name: 'Header',
   components: {},
+  data () {
+    return {
+      cates: Category
+    }
+  },
   computed: {
     ...mapGetters({
       isLogin: 'user/login'
