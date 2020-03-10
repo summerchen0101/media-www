@@ -13,14 +13,17 @@ export default ({ app, store, $axios, redirect, error, req }, inject) => {
       }
     })
     axiosInstance.onRequest((config) => {
-      return {
+      const requestConfig = {
         ...config,
         url: config.url.replace(/\$\{\s*([$#@\-\d\w]+)\s*\}/gim, (v, val) => config.data[val]),
         headers: {
-          Authorization: `Bearer ${process.server ? req.session.token : store.state.user.token}`,
-          Referer: process.server ? `${process.env.PROTOCOL}://${req.headers.host}` : undefined
+          Authorization: `Bearer ${process.server ? req.session.token : store.state.user.token}`
         }
       }
+      if (process.server) {
+        requestConfig.headers.Referer = `${process.env.PROTOCOL}://${req.headers.host}`
+      }
+      return requestConfig
     }, (error) => {
       console.log(error)
       return Promise.reject(error)
