@@ -73,7 +73,8 @@ module.exports = {
     '@/plugins/components',
     '@/plugins/fetch',
     '@/plugins/apiHub',
-    '@/plugins/query-string'
+    '@/plugins/query-string',
+    '@/plugins/enum'
   ],
   /*
   ** Nuxt.js dev-modules
