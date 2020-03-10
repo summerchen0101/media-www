@@ -15,7 +15,7 @@
           全部
         </nuxt-link>
       </li>
-      <li v-for="(t,i) in rule.types" :key="i">
+      <li v-for="(t,i) in rule.items" :key="i">
         <nuxt-link
           exact
           :to="{name: 'tv-filter-category',
@@ -36,7 +36,7 @@ export default {
       default: () => ({
         title: '',
         code: '',
-        types: []
+        items: []
       })
     }
   },

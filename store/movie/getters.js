@@ -19,5 +19,9 @@ export default {
       episodeCount: t.episodes_count,
       episodeStatus: t.episode_status
     }))
-    .value()
+    .value(),
+  region: state => state.region,
+  lang: state => state.lang,
+  genres: state => state.genres,
+  year: state => state.year
 }

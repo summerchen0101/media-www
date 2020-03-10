@@ -13,40 +13,7 @@ export default {
   props: {
     searchRules: {
       type: Array,
-      default: () => [
-        {
-          title: '类别',
-          code: 'genres',
-          types: [
-            {
-              label: '武打',
-              id: 21
-            },
-            {
-              label: '愛情',
-              id: 20
-            }
-          ]
-        },
-        {
-          title: '地区',
-          code: 'region',
-          types: [
-            {
-              label: '台灣',
-              id: 5
-            },
-            {
-              label: '日本',
-              id: 7
-            },
-            {
-              label: '美國',
-              id: 8
-            }
-          ]
-        }
-      ]
+      default: () => []
     }
   }
 }

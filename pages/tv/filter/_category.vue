@@ -3,7 +3,7 @@
     <!-- /#sidebar-wrapper -->
     <div class="page_container">
       <div class="container tv_sub_container row">
-        <FilterSideBar />
+        <FilterSideBar :search-rules="searchRules" />
         <div class="tv_sub_right col-xs-12 col-sm-9 col-md-10">
           <BlockAd :ad="topAd" />
           <FilterKeys />
@@ -24,6 +24,7 @@
 
 <script>
 import UtilMixin from '@/plugins/mixins'
+import { Types } from '@/lib/constants/Types'
 export default {
   name: 'FilterPage',
   components: {
@@ -44,6 +45,20 @@ export default {
       bottomAd: store.getters['ad/filterBottomAd'],
       page,
       count: 100
+    }
+  },
+  computed: {
+    category () {
+      return this.$route.params.category
+    },
+    searchRules () {
+      return Types.map((t) => {
+        return {
+          title: t.label,
+          code: t.code,
+          items: this.$store.getters[`${this.category}/${t.code}`]
+        }
+      })
     }
   },
   mounted () {

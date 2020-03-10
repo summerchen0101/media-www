@@ -1,5 +1,10 @@
 export default function () {
   return {
-    latestList: []
+    latestList: [],
+    region: [],
+    lang: [],
+    years: [],
+    genres: [],
+    source: []
   }
 }
