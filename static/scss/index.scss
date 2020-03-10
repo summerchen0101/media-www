@@ -25,6 +25,7 @@
 .index_contentBox_column{
 	display: flex;
 	flex-wrap: wrap;
+	margin-bottom: 20px;	
 }
 .index_contentBox::after{
 	content: "";
@@ -101,7 +102,7 @@
 .rank_content{
 	border: 1px solid #cccccc;
 	background: #fff;
-	height: calc(100% - 68px);
+	min-height: calc(100% - 68px);
 }
 .rank_img{
 	height: 130px;
@@ -170,7 +171,7 @@
 		width: 100%;
 		margin-bottom: 0;
 		margin-left: 0;
-		height: calc(100% - 20px);
+		min-height: calc(100% - 20px);
 	}
 	.index_variety_img{
 		height: 354px;

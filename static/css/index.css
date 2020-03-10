@@ -28,6 +28,7 @@
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .index_contentBox::after {
@@ -95,7 +96,7 @@
 .rank_content {
   border: 1px solid #cccccc;
   background: #fff;
-  height: calc(100% - 68px);
+  min-height: calc(100% - 68px);
 }
 
 .rank_img {
@@ -177,7 +178,7 @@
   width: 100%;
   margin-bottom: 0;
   margin-left: 0;
-  height: calc(100% - 20px);
+  min-height: calc(100% - 20px);
 }
 
 .index_variety_list_big .index_variety_img {
@@ -268,4 +269,3 @@
     font-size: 12px;
   }
 }
-/*# sourceMappingURL=index.css.map */
