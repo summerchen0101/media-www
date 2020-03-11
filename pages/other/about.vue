@@ -15,9 +15,8 @@ export default {
   scrollToTop: true,
   components: {
   },
-  async asyncData ({ store, redirect }) {
+  async fetch ({ store, redirect }) {
     await store.dispatch('site/getInfo')
-    return {}
   },
   data () {
     return {}
