@@ -16,7 +16,8 @@ export default {
     state.profile = Object.assign({}, state.profile, {
       account: _d.account,
       phone: _d.phone,
-      email: _d.mail
+      email: _d.mail,
+      id: _d.id
     })
   }
 }
