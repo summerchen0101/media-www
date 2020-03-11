@@ -59,6 +59,7 @@
             <div class="index_variety_list">
               <VideoItem
                 v-for="(video, i) in movieList"
+                v-show="$utils.device === 'web' ? i > 0 : true"
                 :key="i"
                 :video="video"
                 class="index_variety_unit"
