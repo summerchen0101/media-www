@@ -9,7 +9,11 @@
         05:56
       </div> -->
     </div>
-    <nuxt-link :to="{name: 'tv-video-detail'}" class="member_video_txt">
+    <nuxt-link
+      :to="{name: 'tv-video-detail',
+            query: {cate: video.category, id: video.id}}"
+      class="member_video_txt"
+    >
       <div class="member_video_title">
         {{ video.title }}
       </div>
