@@ -22,10 +22,16 @@ export default {
   components: {
     VideoRecordItem: () => import('@/components/record/VideoRecordItem')
   },
-  props: {
-    recordList: {
-      type: Array,
-      default: () => []
+  data () {
+    return {
+      category: this.$route.query.category
+    }
+  },
+  computed: {
+    recordList () {
+      return this.category
+        ? this.$store.getters['record/listByCategory'][this.category]
+        : this.$store.getters['record/list']
     }
   }
 }
