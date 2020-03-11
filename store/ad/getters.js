@@ -7,40 +7,22 @@ export default {
       obj[next.id] = items || []
       return obj
     }, {}),
-  indexTopAds: (state) => {
-    const i = _.findIndex(state.ads, { id: 1 })
-    return i > -1 ? state.ads[i].advertisement.filter((ad) => {
-      return ad.status === 'Y'
-    }) : []
+  indexTopAds: (state, getters) => {
+    return getters.ads[1] || []
   },
-  indexBlockAds: (state) => {
-    const i = _.findIndex(state.ads, { id: 2 })
-    return i > -1 ? state.ads[i].advertisement.filter((ad) => {
-      return ad.status === 'Y'
-    }) : []
+  indexBlockAds: (state, getters) => {
+    return getters.ads[2] || []
   },
-  filterTopAd: (state) => {
-    const i = _.findIndex(state.ads, { id: 3 })
-    return i > -1
-      ? _(state.ads[i].advertisement).filter({ status: 'Y' }).shuffle().head()
-      : []
+  filterTopAd: (state, getters) => {
+    return _(getters.ads[3]).shuffle().head() || {}
   },
-  filterBottomAd: (state) => {
-    const i = _.findIndex(state.ads, { id: 4 })
-    return i > -1
-      ? _(state.ads[i].advertisement).filter({ status: 'Y' }).shuffle().head()
-      : []
+  filterBottomAd: (state, getters) => {
+    return _(getters.ads[4]).shuffle().head() || {}
   },
-  videoRightAd: (state) => {
-    const i = _.findIndex(state.ads, { id: 5 })
-    return i > -1
-      ? _(state.ads[i].advertisement).filter({ status: 'Y' }).shuffle().head()
-      : []
+  videoRightAd: (state, getters) => {
+    return _(getters.ads[5]).shuffle().head() || {}
   },
-  videoBlockAd: (state) => {
-    const i = _.findIndex(state.ads, { id: 6 })
-    return i > -1
-      ? _(state.ads[i].advertisement).filter({ status: 'Y' }).shuffle().head()
-      : []
+  videoBlockAd: (state, getters) => {
+    return _(getters.ads[6]).shuffle().head() || {}
   }
 }
