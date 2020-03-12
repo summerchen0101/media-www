@@ -27,6 +27,7 @@ export default function () {
         id: 20
       }
     ],
-    source: []
+    source: [],
+    topList: []
   }
 }

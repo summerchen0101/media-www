@@ -5,6 +5,7 @@ export default function () {
     lang: [],
     years: [],
     genres: [],
-    source: []
+    source: [],
+    topList: []
   }
 }

@@ -4,5 +4,8 @@ export default {
   },
   gotRegion (state, list) {
     state.region = list
+  },
+  gotTopList (state, list) {
+    state.topList = list
   }
 }

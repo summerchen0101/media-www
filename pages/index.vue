@@ -32,7 +32,7 @@
               <VideoItem v-for="(video, i) in dramaList" :key="i" :video="video" />
             </div>
             <!--index_tv_list end-->
-            <RankBox />
+            <RankBox category="drama" />
             <!--rank_box end-->
           </div>
           <!--index_content end-->
@@ -87,7 +87,7 @@
               <VideoItem v-for="(video, i) in varietyList" :key="i" :video="video" />
             </div>
             <!--index_tv_list end-->
-            <RankBox />
+            <RankBox category="variety" />
           </div>
           <!--index_content end-->
           <BlockAd :ad="fixedBlockAds[2]" />
@@ -144,6 +144,8 @@ export default {
     await store.dispatch('movie/getLatestList')
     await store.dispatch('anime/getLatestList')
     await store.dispatch('variety/getLatestList')
+    await store.dispatch('drama/getTopList')
+    await store.dispatch('variety/getTopList')
   },
   data () {
     return {

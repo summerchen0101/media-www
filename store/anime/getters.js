@@ -9,5 +9,9 @@ export default {
   region: state => state.region,
   lang: state => state.lang,
   genres: state => state.genres,
-  year: state => state.year
+  year: state => state.year,
+  topList: state => state.topList.map(t => ({
+    id: t.id,
+    title: t.title
+  }))
 }
