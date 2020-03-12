@@ -22,9 +22,8 @@ export default {
     ClearBtn: () => import('@/components/favorite/ClearBtn')
   },
   async fetch ({ isDev, route, store, env, params, query, req, res, redirect, error }) {
-    await store.dispatch('record/getTypes')
-    await store.dispatch('record/getList')
-    await store.dispatch('record/getTotal')
+    await store.dispatch('favorite/getList')
+    await store.dispatch('favorite/getTotal')
   },
   mounted () {
   },
