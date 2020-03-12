@@ -12,10 +12,12 @@ export default {
       category: this.$route.query.category
     }
   },
-  handleClearRecord () {
-    return this.category
-      ? this.$store.dispatch('record/removeByCategory', this.category)
-      : this.$store.dispatch('record/removeAll')
+  methods: {
+    handleClearRecord () {
+      return this.category
+        ? this.$store.dispatch('record/removeByCategory', this.category)
+        : this.$store.dispatch('record/removeAll')
+    }
   }
 }
 </script>
