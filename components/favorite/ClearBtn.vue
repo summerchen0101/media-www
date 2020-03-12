@@ -1,5 +1,5 @@
 <template>
-  <a href="#" class="member_clearBtn" @click.prevent="handleClearRecord">
+  <a href="#" class="member_clearBtn" @click.prevent="handleClearFavorite">
     <i class="fa fa-trash-o" />清除所有收藏
   </a>
 </template>
@@ -12,10 +12,12 @@ export default {
       category: this.$route.query.category
     }
   },
-  handleClearRecord () {
-    return this.category
-      ? this.$store.dispatch('record/removeByCategory', this.category)
-      : this.$store.dispatch('record/removeAll')
+  methods: {
+    handleClearFavorite () {
+      return this.category
+        ? this.$store.dispatch('favorite/removeByCategory', this.category)
+        : this.$store.dispatch('favorite/removeAll')
+    }
   }
 }
 </script>
