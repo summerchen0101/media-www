@@ -9,7 +9,7 @@ export default {
     state.list = []
   },
   removeByCategory (state, category) {
-    state.list = state.list.filter(t => t.media.media_type !== category)
+    state.list = state.list.filter(t => t.media_type !== category)
   },
   removeById (state, id) {
     state.list = state.list.filter(t => t.id !== id)

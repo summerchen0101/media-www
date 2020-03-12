@@ -29,7 +29,12 @@
           <!--head_title end-->
           <div class="index_contentBox index_contentBox_column">
             <div class="index_tv_list">
-              <VideoItem v-for="(video, i) in dramaList" :key="i" :video="video" />
+              <VideoItem
+                v-for="(video, i) in dramaList"
+                :key="i"
+                :video="video"
+                category="drama"
+              />
             </div>
             <!--index_tv_list end-->
             <RankBox category="drama" />
@@ -54,7 +59,7 @@
           <!--head_title end-->
           <div class="index_contentBox index_contentBox_column">
             <div class="index_variety_list_big">
-              <VideoItem :video="latestMovie" class="index_variety_unit" />
+              <VideoItem :video="latestMovie" class="index_variety_unit" category="movie" />
             </div>
             <div class="index_variety_list">
               <VideoItem
@@ -63,6 +68,7 @@
                 :key="i"
                 :video="video"
                 class="index_variety_unit"
+                category="movie"
               />
             </div>
           </div>
@@ -84,7 +90,7 @@
           <!--head_title end-->
           <div class="index_contentBox index_contentBox_column">
             <div class="index_movie_list">
-              <VideoItem v-for="(video, i) in varietyList" :key="i" :video="video" />
+              <VideoItem v-for="(video, i) in varietyList" :key="i" :video="video" category="variety" />
             </div>
             <!--index_tv_list end-->
             <RankBox category="variety" />
@@ -113,6 +119,7 @@
                 :key="i"
                 :video="video"
                 class="index_slide_unit"
+                category="anime"
               />
             </div>
           </div>

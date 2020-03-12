@@ -3,10 +3,9 @@ export default {
   types: state => state.types,
   list: state => state.list.map(t => ({
     id: t.id,
-    imgUrl: t.media.media.image_url,
-    title: t.media.media.name || t.media.media.title,
-    category: t.media.media_type,
-    episode: t.media.title
+    imgUrl: t.media.image_url,
+    title: t.media.name || t.media.title,
+    category: t.media_type
   })),
   listByCategory: (state, getters) => {
     return Category.reduce((obj, next) => {

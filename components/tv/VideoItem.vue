@@ -1,6 +1,7 @@
 <template>
   <nuxt-link
-    :to="{name: 'tv-video-detail', query: {id: video.id, episode: video.episodeCount || undefined}}"
+    :to="{name: 'tv-video-detail',
+          query: {id: video.id, category: category || undefined}}"
     class="video_unit"
   >
     <div class="index_variety_img index_unit_img " :style="`background-image: url('${video.imgUrl}');`" />
@@ -20,6 +21,10 @@
 <script>
 export default {
   props: {
+    category: {
+      type: String,
+      default: () => ''
+    },
     video: {
       type: Object,
       default: () => ({

@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'VideoRecordList',
+  name: 'VideoFavList',
   components: {
     VideoFavItem: () => import('@/components/favorite/VideoFavItem')
   },

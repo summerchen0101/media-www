@@ -5,9 +5,6 @@
     </a>
     <div class="member_video_img">
       <img :src="video.imgUrl" alt="">
-      <!-- <div class="member_video_time">
-        05:56
-      </div> -->
     </div>
     <nuxt-link
       :to="{name: 'tv-video-detail',
@@ -18,12 +15,8 @@
         {{ video.title }}
       </div>
       <div class="member_video_view">
-        <!-- {{ $enum('Category', video.category) }} -->
         {{ video.episode }}
       </div>
-      <!-- <div class="member_video_view">
-        <i class="fa fa-play" />已看到00分05秒
-      </div> -->
     </nuxt-link>
   </div>
 </template>
