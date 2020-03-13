@@ -6,14 +6,22 @@ export default {
       commit('gotTypes', res.data)
     }
   },
-  async getList ({ commit }) {
-    const res = await this.$api[apiModule].getList()
+  async getList ({ commit }, _d = {}) {
+    const params = {
+      type: _d.category,
+      page: _d.page || 1,
+      perpage: _d.perpage
+    }
+    const res = await this.$api[apiModule].getList({ params })
     if (res.code === '0') {
       commit('gotList', res.data)
     }
   },
-  async getTotal ({ commit }) {
-    const res = await this.$api[apiModule].getTotal()
+  async getTotal ({ commit }, _d = {}) {
+    const params = {
+      type: _d.category
+    }
+    const res = await this.$api[apiModule].getTotal({ params })
     if (res.code === '0') {
       commit('gotTotal', res.data)
     }
@@ -25,17 +33,17 @@ export default {
       this.$router.app.$message('刪除成功')
     }
   },
-  async removeById ({ commit }, id) {
+  async removeById ({ commit, dispatch }, id) {
     const res = await this.$api[apiModule].delete({ params: { id } })
     if (res.code === '0') {
       commit('removeById', id)
       this.$router.app.$message('刪除成功')
     }
   },
-  async removeByCategory ({ commit }, category) {
+  async removeByCategory ({ commit, dispatch }, category) {
     const res = await this.$api[apiModule].delete({ params: { type: category } })
     if (res.code === '0') {
-      commit('removeByCategory', category)
+      commit('removeAll')
       this.$router.app.$message('刪除成功')
     }
   },

@@ -7,16 +7,27 @@
 <script>
 export default {
   name: 'ClearBtn',
-  data () {
-    return {
-      category: this.$route.query.category
+  props: {
+    count: {
+      type: Number,
+      default: () => 0
+    },
+    category: {
+      type: String,
+      default: () => ''
     }
   },
   methods: {
-    handleClearRecord () {
-      return this.category
-        ? this.$store.dispatch('record/removeByCategory', this.category)
-        : this.$store.dispatch('record/removeAll')
+    async  handleClearRecord () {
+      if (this.count.length === 0) {
+        this.$alert('尚无影片纪录')
+        return
+      }
+      if (this.category) {
+        await this.$store.dispatch('record/removeByCategory', this.category)
+      } else {
+        await this.$store.dispatch('record/removeAll')
+      }
     }
   }
 }

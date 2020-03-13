@@ -1,6 +1,6 @@
 <template>
   <div class="member_video_list">
-    <div v-if="recordList.length === 0" class="member_noMsg">
+    <div v-if="list.length === 0" class="member_noMsg">
       <div class="member_noImg">
         <i class="fa fa-history" />
       </div>
@@ -9,7 +9,7 @@
       </div>
     </div>
     <VideoRecordItem
-      v-for="(video, i) in recordList"
+      v-for="(video, i) in list"
       :key="i"
       :video="video"
     />
@@ -18,20 +18,14 @@
 
 <script>
 export default {
-  name: 'VideoRecordList',
+  name: 'Videolist',
   components: {
     VideoRecordItem: () => import('@/components/record/VideoRecordItem')
   },
-  data () {
-    return {
-      category: this.$route.query.category
-    }
-  },
-  computed: {
-    recordList () {
-      return this.category
-        ? this.$store.getters['record/listByCategory'][this.category]
-        : this.$store.getters['record/list']
+  props: {
+    list: {
+      type: Array,
+      default: () => []
     }
   }
 }

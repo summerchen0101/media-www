@@ -10,11 +10,10 @@ export default {
   },
   removeAll (state) {
     state.list = []
-  },
-  removeByCategory (state, category) {
-    state.list = state.list.filter(t => t.media.media_type !== category)
+    state.total = 0
   },
   removeById (state, id) {
     state.list = state.list.filter(t => t.id !== id)
+    state.total = state.total - 1
   }
 }
