@@ -9,7 +9,7 @@
       </div>
       <div class="comment_txt">
         <ValidationObserver v-slot="{ invalid }">
-          <form @submit.prevent="handleSubmit">
+          <form>
             <ValidationProvider v-slot="v" :rules="`max:${maxLength}`" name="comment">
               <textarea id="msg" v-model="comment" class="form-control" rows="3" />
               <span class="text-danger">{{ v.errors[0] }}</span>
@@ -17,7 +17,7 @@
             <div class="comment_btn">
               <span>还可以输入{{ maxLength - comment.length }}个字</span>
               <span>
-                <button type="submit" class="btn submit_btn" :disabled="invalid">发表评论</button>
+                <button class="btn submit_btn" :disabled="invalid" @click.prevent="handleSubmit">发表评论</button>
               </span>
             </div>
           </form>
@@ -43,7 +43,8 @@ export default {
     }
   },
   methods: {
-    async handleSubmit () {
+    async handleSubmit (e) {
+      e.target.blur()
       if (!this.comment) { return }
       const res = await this.$store.dispatch(`${this.category}/addComment`, {
         id: this.id,
@@ -53,6 +54,7 @@ export default {
         this.$alert('新增成功', { type: 'success' })
         this.comment = ''
       }
+      e.target.blur()
     }
   }
 }
