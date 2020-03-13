@@ -1,6 +1,6 @@
 <template>
   <a href="#" class="member_clearBtn" @click.prevent="handleClearRecord">
-    <i class="fa fa-trash-o" />清除所有纪录
+    <i class="fa fa-trash-o" />清除所有纪录 {{ count }}
   </a>
 </template>
 
@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     async  handleClearRecord () {
-      if (this.count.length === 0) {
+      if (!this.count) {
         this.$alert('尚无影片纪录')
         return
       }

@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     async handleClearFavorite () {
-      if (this.count.length === 0) {
+      if (!this.count) {
         this.$alert('尚无收藏纪录')
         return
       }
