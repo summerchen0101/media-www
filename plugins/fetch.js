@@ -1,6 +1,6 @@
 import { errCodes } from '@/lib/errCode/index'
 
-export default ({ app, store, $axios, redirect, error, req }, inject) => {
+export default ({ app, store, route, $axios, redirect, error, req }, inject) => {
   const baseUrl = {
     normal: `${process.env.PROTOCOL}://${process.env.PHP_API_BASE_URL}`,
     node: `${process.env.PROTOCOL}://${process.env.NODE_API_BASE_URL}`
@@ -32,8 +32,10 @@ export default ({ app, store, $axios, redirect, error, req }, inject) => {
     axiosInstance.onResponse((res) => {
       const status = res.status
       if (status === 401) {
-        store.dispatch('user/clear')
-        redirect('/')
+        store.dispatch('user/logout')
+        if (route.name !== 'index') {
+          redirect('/')
+        }
       } else if (status === 403) {
         error({ statusCode: 403, message: 'ohoh403' })
       } else if (status === 500) {
@@ -60,7 +62,7 @@ function handleErrorCode (app, store, { data, config }) {
     const code = resCode[0]
     // 有錯誤碼的對應路徑就以其為主
     const msg = (errCodes[code] && errCodes[code][url]) || errCodes[code] || errCodes.default
-    if (code === '00001-1' && url === 'client/logout') {
+    if (code === '00001-1' && url === 'session/logout') {
       app.router.push({ name: 'index' })
       store.dispatch('user/clear')
     }

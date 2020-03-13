@@ -48,9 +48,7 @@ router.post('/login', (req, res) => {
 router.get('/logout', (req, res) => {
   return req.fetch('/client/logout')
     .then((apiRes) => {
-      if (apiRes.code === '0') {
-        delete req.session.token
-      }
+      delete req.session.token
       res.json(apiRes)
     })
 })
