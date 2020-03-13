@@ -38,5 +38,8 @@ export default {
       commit('removeByCategory', category)
       this.$router.app.$message('刪除成功')
     }
+  },
+  async add ({ commit }, id) {
+    await this.$api[apiModule].add({ id })
   }
 }
