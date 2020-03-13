@@ -1,15 +1,16 @@
 import Vue from 'vue'
+import * as rules from 'vee-validate/dist/rules'
 import { ValidationProvider, ValidationObserver, extend, localize } from 'vee-validate'
 import zhCN from 'vee-validate/dist/locale/zh_CN.json'
 import { fields } from '@/lib/validate/field'
 
 localize('zh_CN', {
   ...zhCN,
-  names: {
-    account: '帐号',
-    pw: '密码',
-    pw_c: '密码確認'
-  }
+  names: fields
+})
+
+_(rules).forEach((rule, name) => {
+  extend(name, rule)
 })
 
 extend('required', {

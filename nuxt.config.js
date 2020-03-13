@@ -107,7 +107,10 @@ module.exports = {
         _: 'lodash'
       })
     ],
-    transpile: [/^element-ui/],
+    transpile: [
+      /^element-ui/,
+      'vee-validate/dist/rules'
+    ],
     /*
     ** You can extend webpack config here
     */
