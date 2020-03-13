@@ -37,7 +37,7 @@ export default {
   async removeByCategory ({ commit }, category) {
     const res = await this.$api[apiModule].removeAll({ params: { media_type: category } })
     if (res.code === '0') {
-      commit('removeByCategory', category)
+      commit('removeAll')
       this.$router.app.$message('刪除成功')
     }
   }

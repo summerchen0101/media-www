@@ -18,15 +18,15 @@ export default {
     }
   },
   methods: {
-    handleClearFavorite () {
-      if (!this.count.length) {
+    async handleClearFavorite () {
+      if (this.count.length === 0) {
         this.$alert('尚无收藏纪录')
         return
       }
       if (this.category) {
-        return this.category
-          ? this.$store.dispatch('favorite/removeByCategory', this.category)
-          : this.$store.dispatch('favorite/removeAll')
+        await this.$store.dispatch('favorite/removeByCategory', this.category)
+      } else {
+        await this.$store.dispatch('favorite/removeAll')
       }
     }
   }

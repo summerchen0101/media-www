@@ -2,7 +2,10 @@
   <div class="member_right col-xs-12 col-sm-9 col-md-9">
     <div class="member_head">
       <TypeSelector />
-      <ClearBtn :count="list.length" :category="$route.query.category" />
+      <button @click="addFav">
+        ADD(test)
+      </button>
+      <ClearBtn :count="count" :category="$route.query.category" />
     </div>
     <VideoFavList :list="list" />
     <Paginator :page="page" :perpage="perpage" :count="count" @change="onPageChange" />
@@ -11,7 +14,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-const perpage = 10
+const perpage = 2
 export default {
   name: 'Favorite',
   layout: 'user',
@@ -29,25 +32,45 @@ export default {
     await store.dispatch('favorite/getTotal', { category: query.category })
     return {
       page,
-      perpage,
-      count: store.getters['favorite/total']
+      perpage
     }
   },
   computed: {
     ...mapGetters({
-      list: 'favorite/list'
+      list: 'favorite/list',
+      count: 'favorite/total'
     })
   },
-  mounted () {
+  created () {
+    this.$bus.$on('favorite/update', this.updateList)
   },
   methods: {
-    async onPageChange (page) {
+    async updateList () {
       this.$nuxt.$loading.start()
-      await this.$store.dispatch('favorite/getList', { category: this.$route.query.category, perpage, page })
+      await this.$store.dispatch('favorite/getList',
+        { category: this.$route.query.category, perpage, page: this.page })
       await this.$store.dispatch('favorite/getTotal', { category: this.$route.query.category })
-      this.page = page
-      this.count = this.$store.getters['favorite/total']
       this.$nuxt.$loading.finish()
+    },
+    onPageChange (page) {
+      this.page = page
+      this.updateList()
+    },
+
+    /**
+     * 新增收藏紀錄(測試用)
+     */
+    async addFav () {
+      this.$nuxt.$loading.start()
+      await this.$store.dispatch('drama/addToFav', 2)
+      await this.$store.dispatch('drama/addToFav', 3)
+      await this.$store.dispatch('drama/addToFav', 4)
+      await this.$store.dispatch('anime/addToFav', 7)
+      await this.$store.dispatch('anime/addToFav', 8)
+      await this.$store.dispatch('anime/addToFav', 9)
+      this.$nuxt.$loading.finish()
+      this.page = 1
+      this.updateList()
     }
   },
   head () {

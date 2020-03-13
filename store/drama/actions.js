@@ -12,17 +12,11 @@ export default {
       commit('gotTopList', res.data)
     }
   },
-  async addToFav ({ commit }, id) {
-    const res = await this.$api[apiModule].addToFav({ media_id: id })
-    if (res.code === '0') {
-      this.$router.app.$alert('收藏成功', { type: 'success' })
-    }
+  addToFav ({ commit }, id) {
+    return this.$api[apiModule].addToFav({ media_id: id })
   },
-  async removeFromFav ({ commit }, id) {
-    const res = await this.$api[apiModule].removeFromFav({ media_id: id })
-    if (res.code === '0') {
-      this.$router.app.$alert('已移除收藏', { type: 'success' })
-    }
+  removeFromFav ({ commit }, id) {
+    return this.$api[apiModule].removeFromFav({ media_id: id })
   },
   addComment ({ commit }, { id, comment }) {
     const data = {

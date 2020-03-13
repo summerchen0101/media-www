@@ -1,6 +1,6 @@
 <template>
   <div class="member_video_unit">
-    <a href="" class="member_delete" @click.prevent="$store.dispatch('favorite/removeById', video.id)">
+    <a href="" class="member_delete" @click.prevent="handleRemove">
       <i class="fa fa-times" />
     </a>
     <div class="member_video_img" :style="`background-image: url(${video.imgUrl});`" />
@@ -26,6 +26,12 @@ export default {
     video: {
       type: Object,
       default: () => ({})
+    }
+  },
+  methods: {
+    async handleRemove () {
+      await this.$store.dispatch('favorite/removeById', this.video.id)
+      this.$bus.$emit('favorite/update')
     }
   }
 }
