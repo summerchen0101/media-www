@@ -1,11 +1,13 @@
 export default {
-  latestList: state => state.latestList.map(t => ({
-    id: t.id,
-    imgUrl: t.image_url,
-    title: t.title,
-    episodeCount: t.episodes_count,
-    episodeStatus: t.episode_status
-  })),
+  latestList: state => _(state.latestList)
+    .map(t => ({
+      id: t.id,
+      imgUrl: t.image_url,
+      title: t.title,
+      episodeCount: t.episodes_count,
+      episodeStatus: t.episode_status
+    }))
+    .take(6),
   region: state => state.region,
   lang: state => state.lang,
   genres: state => state.genres,

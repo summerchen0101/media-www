@@ -16,7 +16,6 @@
       </a>
     </div>
     <div class="index_container">
-      <!--index block start-->
       <div class="index_block">
         <div class="container">
           <a id="section1" />
@@ -45,39 +44,34 @@
         </div>
         <!--container end-->
       </div>
-      <!--index block end-->
       <div class="index_block">
         <div class="container">
-          <a id="section2" />
+          <a id="section1" />
           <div class="head_title">
-            <span class="index_mtitle"><i class="icon-movie-symbol-of-video-camera" />电影</span>
-
+            <span class="index_mtitle"><i class="icon-television" />电影</span>
             <nuxt-link :to="{name: 'tv-filter-category', params: {category: 'movie'}}" class="index_more">
               更多
             </nuxt-link>
           </div>
           <!--head_title end-->
           <div class="index_contentBox index_contentBox_column">
-            <div class="index_variety_list_big">
-              <VideoItem :video="latestMovie" class="index_variety_unit" category="movie" />
-            </div>
-            <div class="index_variety_list">
+            <div class="index_tv_list">
               <VideoItem
                 v-for="(video, i) in movieList"
-                v-show="$utils.device === 'web' ? i > 0 : true"
                 :key="i"
                 :video="video"
-                class="index_variety_unit"
                 category="movie"
               />
             </div>
+            <!--index_tv_list end-->
+            <RankBox category="movie" />
+            <!--rank_box end-->
           </div>
           <!--index_content end-->
           <BlockAd :ad="fixedBlockAds[1]" />
         </div>
         <!--container end-->
       </div>
-      <!--index block end-->
       <div class="index_block">
         <div class="container">
           <a id="section3" />
@@ -153,6 +147,7 @@ export default {
     await store.dispatch('variety/getLatestList')
     await store.dispatch('drama/getTopList')
     await store.dispatch('variety/getTopList')
+    await store.dispatch('movie/getTopList')
   },
   data () {
     return {
@@ -189,42 +184,6 @@ export default {
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1
-      })
-      $('.slider_list').slick({
-        infinite: true,
-        speed: 300,
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        responsive: [
-          {
-            breakpoint: 1200,
-            settings: {
-              slidesToShow: 5,
-              slidesToScroll: 1
-            }
-          },
-          {
-            breakpoint: 767,
-            settings: {
-              slidesToShow: 4,
-              slidesToScroll: 1
-            }
-          },
-          {
-            breakpoint: 575,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 1
-            }
-          },
-          {
-            breakpoint: 400,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1
-            }
-          }
-        ]
       })
     }
   },

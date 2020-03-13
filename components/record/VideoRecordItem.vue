@@ -3,9 +3,7 @@
     <a href="" class="member_delete" @click.prevent="$store.dispatch('record/removeById', video.id)">
       <i class="fa fa-times" />
     </a>
-    <div class="member_video_img">
-      <img :src="video.imgUrl" alt="">
-    </div>
+    <div class="member_video_img" :style="`background-image: url(${video.imgUrl});`" />
     <nuxt-link
       :to="{name: 'tv-video-detail',
             query: {cate: video.category, id: video.id}}"
