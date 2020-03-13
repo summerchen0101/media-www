@@ -23,5 +23,15 @@ export default {
     if (res.code === '0') {
       this.$router.app.$alert('已移除收藏', { type: 'success' })
     }
+  },
+  async addComment ({ commit }, { id, comment }) {
+    const data = {
+      media_id: id,
+      contents: comment
+    }
+    const res = await this.$api[apiModule].addComment(data)
+    if (res.code === '0') {
+      this.$router.app.$alert('新增成功', { type: 'success' })
+    }
   }
 }
