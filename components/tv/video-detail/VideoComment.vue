@@ -43,11 +43,16 @@ export default {
     }
   },
   methods: {
-    handleSubmit () {
-      this.$store.dispatch(`${this.category}/addComment`, {
+    async handleSubmit () {
+      if (!this.comment) { return }
+      const res = await this.$store.dispatch(`${this.category}/addComment`, {
         id: this.id,
         comment: this.comment
       })
+      if (res.code === '0') {
+        this.$alert('新增成功', { type: 'success' })
+        this.comment = ''
+      }
     }
   }
 }
