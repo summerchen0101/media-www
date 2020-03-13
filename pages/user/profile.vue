@@ -34,11 +34,7 @@ export default {
     Password: () => import('@/components/profile/Password.vue')
   },
   async asyncData ({ store, redirect }) {
-    try {
-      await store.dispatch('user/getProfile')
-    } catch (err) {
-      redirect({ name: 'index' })
-    }
+    await store.dispatch('user/getProfile')
     return {
       form: Object.assign({}, store.state.user.profile)
     }
