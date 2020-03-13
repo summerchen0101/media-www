@@ -7,16 +7,27 @@
 <script>
 export default {
   name: 'ClearBtn',
-  data () {
-    return {
-      category: this.$route.query.category
+  props: {
+    count: {
+      type: Number,
+      default: () => 0
+    },
+    category: {
+      type: String,
+      default: () => ''
     }
   },
   methods: {
     handleClearFavorite () {
-      return this.category
-        ? this.$store.dispatch('favorite/removeByCategory', this.category)
-        : this.$store.dispatch('favorite/removeAll')
+      if (!this.count.length) {
+        this.$alert('尚无收藏纪录')
+        return
+      }
+      if (this.category) {
+        return this.category
+          ? this.$store.dispatch('favorite/removeByCategory', this.category)
+          : this.$store.dispatch('favorite/removeAll')
+      }
     }
   }
 }

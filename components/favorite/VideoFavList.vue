@@ -1,6 +1,6 @@
 <template>
   <div class="member_video_list">
-    <div v-if="favList.length === 0" class="member_noMsg">
+    <div v-if="list.length === 0" class="member_noMsg">
       <div class="member_noImg">
         <i class="fa fa-history" />
       </div>
@@ -9,7 +9,7 @@
       </div>
     </div>
     <VideoFavItem
-      v-for="(video, i) in favList"
+      v-for="(video, i) in list"
       :key="i"
       :video="video"
     />
@@ -22,16 +22,10 @@ export default {
   components: {
     VideoFavItem: () => import('@/components/favorite/VideoFavItem')
   },
-  data () {
-    return {
-      category: this.$route.query.category
-    }
-  },
-  computed: {
-    favList () {
-      return this.category
-        ? this.$store.getters['favorite/listByCategory'][this.category]
-        : this.$store.getters['favorite/list']
+  props: {
+    list: {
+      type: Array,
+      default: () => []
     }
   }
 }

@@ -1,13 +1,21 @@
 const apiModule = 'FAVORITE'
 export default {
-  async getList ({ commit }) {
-    const res = await this.$api[apiModule].getList()
+  async getList ({ commit }, _d = {}) {
+    const params = {
+      media_type: _d.category,
+      page: _d.page || 1,
+      perpage: _d.perpage
+    }
+    const res = await this.$api[apiModule].getList({ params })
     if (res.code === '0') {
       commit('gotList', res.data)
     }
   },
-  async getTotal ({ commit }) {
-    const res = await this.$api[apiModule].getTotal()
+  async getTotal ({ commit }, _d) {
+    const params = {
+      media_type: _d.category
+    }
+    const res = await this.$api[apiModule].getTotal({ params })
     if (res.code === '0') {
       commit('gotTotal', res.data)
     }
