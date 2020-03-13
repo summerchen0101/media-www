@@ -65,6 +65,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '@/plugins/bus',
     '@/plugins/element-ui',
     '@/plugins/storage',
     '@/plugins/utils',
