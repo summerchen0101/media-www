@@ -10,7 +10,13 @@
           <div class="form-group">
             <div class="col-xs-12">
               <ValidationProvider v-slot="v" rules="required|account" name="account">
-                <input v-model="form.account" type="text" class="form-control" placeholder="帐号">
+                <input
+                  v-model="form.account"
+                  type="text"
+                  class="form-control"
+                  placeholder="帐号"
+                  @keyup.enter="onClickedLogin($event, invalid)"
+                >
                 <span class="text-danger">{{ v.errors[0] }}</span>
               </ValidationProvider>
             </div>
@@ -18,7 +24,13 @@
           <div class="form-group">
             <div class="col-xs-12">
               <ValidationProvider v-slot="v" rules="required|pw" name="pw">
-                <input v-model="form.pw" type="password" class="form-control" placeholder="密码">
+                <input
+                  v-model="form.pw"
+                  type="password"
+                  class="form-control"
+                  placeholder="密码"
+                  @keyup.enter="onClickedLogin($event, invalid)"
+                >
                 <span class="text-danger">{{ v.errors[0] }}</span>
               </ValidationProvider>
             </div>
@@ -28,13 +40,11 @@
           </div>
           <div class="form-group">
             <div class="dialog_form_btn">
-              <a v-if="loading" class="btn btn-primary" href="" disabled>登入中...</a>
               <a
-                v-else
                 href=""
                 class="btn btn-primary"
                 :disabled="invalid"
-                @click.prevent="onClickedLogin(invalid)"
+                @click.prevent="onClickedLogin($event, invalid)"
               >
                 登入</a>
             </div>
@@ -61,8 +71,7 @@ export default {
   components: {},
   data () {
     return {
-      form: initForm(),
-      loading: false
+      form: initForm()
     }
   },
   mounted () {
@@ -88,11 +97,12 @@ export default {
     })
   },
   methods: {
-    async onClickedLogin (invalid) {
+    async onClickedLogin (e, invalid) {
+      e.target.blur()
       if (invalid) { return }
-      this.loading = true
+      this.$nuxt.$loading.start()
       await this.$store.dispatch('user/login', this.form)
-      this.loading = false
+      this.$nuxt.$loading.finish()
       if (this.$utils.device !== 'web') {
         $('.menuBg').trigger('click')
       }
