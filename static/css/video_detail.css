@@ -454,6 +454,12 @@ ul.page_tabs.video_play_side_tabs li.active {
   padding-bottom: 20px;
 }
 
+.tv_detail_hot_select::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
 .tv_detail_mtitle {
   color: #333333;
   display: inline-block;

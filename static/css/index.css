@@ -170,87 +170,35 @@
 }
 
 /*綜藝*/
-.index_variety_list_big {
-  width: 35%;
+.slider_list .video_unit {
+  width: calc(100% / 6 - 13px);
 }
 
-.index_variety_list_big .index_variety_unit {
-  width: 100%;
-  margin-bottom: 0;
-  margin-left: 0;
-  min-height: calc(100% - 20px);
-}
-
-.index_variety_list_big .index_variety_img {
-  height: 354px;
-}
-
-@media (max-width: 767px) {
-  .index_variety_list_big {
-    display: none;
-  }
-}
-
-.index_variety_list {
-  width: 65%;
-  padding-left: 20px;
-}
-
-.index_variety_list .index_variety_unit {
-  width: calc(100% / 4 - 12px);
-}
-
-.index_variety_list .index_variety_unit:nth-child(4n+4) {
+.slider_list .video_unit:nth-child(6n+6) {
   margin-right: 0;
 }
 
-.index_variety_list .index_variety_img {
-  height: 141px;
-}
-
 @media (max-width: 767px) {
-  .index_variety_list {
-    padding-left: 0;
-    width: 100%;
+  .slider_list .video_unit {
+    width: calc(100% / 3 - 13px);
   }
-  .index_variety_list .index_variety_img {
-    height: 180px;
-  }
-}
-
-@media (max-width: 575px) {
-  .index_variety_list .index_variety_unit {
-    width: calc(100% / 3 - 11px);
-  }
-  .index_variety_list .index_variety_unit:nth-child(3n+3) {
+  .slider_list .video_unit:nth-child(3n+3), .slider_list .video_unit:nth-child(6n+6) {
     margin-right: 0;
-  }
-  .index_variety_list .index_variety_unit:nth-child(4n+4) {
-    margin-right: 15px;
-  }
-  .index_variety_list .index_variety_unit:last-child {
-    display: block;
-  }
-  .index_variety_list .index_variety_img {
-    height: 130px;
   }
 }
 
 @media (max-width: 400px) {
-  .index_variety_list .index_variety_unit {
-    width: calc(100% / 2 - 8px);
+  .slider_list .video_unit {
+    width: calc(100% / 2 - 13px);
   }
-  .index_variety_list .index_variety_unit:nth-child(2n+2) {
+  .slider_list .video_unit:nth-child(2n+2) {
     margin-right: 0;
   }
-  .index_variety_list .index_variety_unit:nth-child(3n+3) {
-    margin-right: 15px;
+  .slider_list .video_unit:nth-child(3n+3) {
+    margin-right: 7px;
   }
-  .index_variety_list .index_variety_unit:nth-child(6n+6) {
+  .slider_list .video_unit:nth-child(6n+6) {
     margin-right: 0;
-  }
-  .index_variety_list .index_variety_img {
-    height: 130px;
   }
 }
 

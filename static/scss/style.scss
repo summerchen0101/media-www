@@ -210,6 +210,20 @@ input:focus{
 // 		}
 // 	}
 // }
+.ad-box{
+	a{
+		display: block;
+		padding-top: 13%;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center center;
+	}
+}
+.ad-box-s{
+	a{
+		padding-top: 80%;
+	}
+}
 .searchModal{
 	.search{
 		&-bar{
@@ -1163,6 +1177,7 @@ ul.page_tabs li.active {
 		background-repeat: no-repeat;
 		background-position: center center;
 		background-size: cover;
+		overflow: hidden;
 		&:before {
 			content:  url('../images/hover_icon.png');
 			width: 60px;

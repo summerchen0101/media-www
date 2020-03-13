@@ -168,6 +168,13 @@
         }
     }
 }
+.tv_sub_list{
+    &::after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
 .tv_sub_unit{
     width: calc(100% / 5 - 14px);
     &:nth-child(5n+5){

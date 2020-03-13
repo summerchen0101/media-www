@@ -253,25 +253,16 @@
 }
 .member_video_img{
     position: relative;
-    height: 115px;
+    height: 240px;
     overflow: hidden;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    @media(max-width:767px){
+        height: 180px;
+    }
 }
-.member_video_time{
-    position: absolute;
-    width: 100%;
-    height: 25px;
-    bottom: 0;
-    background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0) 4%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 4%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 4%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
-    color: #fff;
-    text-align: right;
-    padding:0 5px;
-}
+
 .member_video_txt{
     padding: 8px;
     display: block;
@@ -289,13 +280,6 @@
 }
 .member_video_txt:hover .member_video_title{
     color: #ff920b;
-}
-.member_video_view{
-    font-size: 12px;
-    color: #999999;
-}
-.member_video_view i{
-    margin-right: 3px;
 }
 //setting
 .sex_box{

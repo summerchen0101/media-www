@@ -392,8 +392,10 @@ ul.page_tabs.video_play_side_tabs {
 .tv_detail_head{
     padding-bottom: 20px;
 }
-.tv_detail_hot_select{
-    // margin-bottom: 15px;
+.tv_detail_hot_select::after {
+    clear: both;
+    content: "";
+    display: block;
 }
 .tv_detail_mtitle {
     color: #333333;

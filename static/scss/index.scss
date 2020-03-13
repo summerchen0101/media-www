@@ -164,79 +164,106 @@
 	width: calc(100% - 52px);
 	vertical-align: middle;
 }
+
 /*綜藝*/
-.index_variety_list_big {
-	width: 35%;
-	.index_variety_unit{
-		width: 100%;
-		margin-bottom: 0;
-		margin-left: 0;
-		min-height: calc(100% - 20px);
-	}
-	.index_variety_img{
-		height: 354px;
-	}
-	@media(max-width:767px){
-		display: none;
-	}
-}
-.index_variety_list{
-	width: 65%;
-	padding-left: 20px;
-	.index_variety_unit{
-		width: calc(100% / 4 - 12px);
-		&:nth-child(4n+4){
+// .index_variety_list_big {
+// 	width: 35%;
+// 	.index_variety_unit{
+// 		width: 100%;
+// 		margin-bottom: 0;
+// 		margin-left: 0;
+// 		min-height: calc(100% - 20px);
+// 	}
+// 	.index_variety_img{
+// 		height: 354px;
+// 	}
+// 	@media(max-width:767px){
+// 		display: none;
+// 	}
+// }
+// .index_variety_list{
+// 	width: 65%;
+// 	padding-left: 20px;
+// 	.index_variety_unit{
+// 		width: calc(100% / 4 - 12px);
+// 		&:nth-child(4n+4){
+// 			margin-right: 0;
+// 		}
+// 		&:last-child{
+// 			// display: none;
+// 		}
+// 	}
+// 	.index_variety_img{
+// 		height: 141px;
+// 	}
+// 	@media(max-width:767px){
+// 		padding-left: 0;
+// 		width: 100%;
+// 		.index_variety_img {
+// 			height: 180px;
+// 		}
+// 	}
+// 	@media(max-width:575px){
+// 		.index_variety_unit{
+// 			width: calc(100% / 3 - 11px);
+// 			&:nth-child(3n+3){
+// 				margin-right: 0;
+// 			}
+// 			&:nth-child(4n+4){
+// 				margin-right: 15px;
+// 			}
+// 			&:last-child{
+// 				display: block;
+// 			}
+// 		}
+// 		.index_variety_img {
+// 			height: 130px;
+// 		}
+// 	}
+// 	@media(max-width:400px){
+// 		.index_variety_unit{
+// 			width: calc(100% / 2 - 8px);
+// 			&:nth-child(2n+2){
+// 				margin-right: 0;
+// 			}
+// 			&:nth-child(3n+3){
+// 				margin-right: 15px;
+// 			}
+// 			&:nth-child(6n+6){
+// 				margin-right: 0;
+// 			}
+// 			&:last-child{
+// 				// display: none;
+// 			}
+// 		}
+// 		.index_variety_img {
+// 			height: 130px;
+// 		}
+// 	}
+// }
+.slider_list {
+	.video_unit{
+		width: calc(100% / 6 - 13px);
+		&:nth-child(6n+6){
 			margin-right: 0;
 		}
-		&:last-child{
-			// display: none;
-		}
-	}
-	.index_variety_img{
-		height: 141px;
-	}
-	@media(max-width:767px){
-		padding-left: 0;
-		width: 100%;
-		.index_variety_img {
-			height: 180px;
-		}
-	}
-	@media(max-width:575px){
-		.index_variety_unit{
-			width: calc(100% / 3 - 11px);
-			&:nth-child(3n+3){
+		@media(max-width:767px){
+			width: calc(100% / 3 - 13px);
+			&:nth-child(3n+3), &:nth-child(6n+6){
 				margin-right: 0;
 			}
-			&:nth-child(4n+4){
-				margin-right: 15px;
-			}
-			&:last-child{
-				display: block;
-			}
 		}
-		.index_variety_img {
-			height: 130px;
-		}
-	}
-	@media(max-width:400px){
-		.index_variety_unit{
-			width: calc(100% / 2 - 8px);
+		@media(max-width:400px){
+			width: calc(100% / 2 - 13px);
 			&:nth-child(2n+2){
 				margin-right: 0;
 			}
 			&:nth-child(3n+3){
-				margin-right: 15px;
+				margin-right: 7px;
 			}
 			&:nth-child(6n+6){
 				margin-right: 0;
 			}
-			&:last-child{
-				// display: none;
-			}
-		}
-		.index_variety_img {
-			height: 130px;
 		}
 	}
 }
