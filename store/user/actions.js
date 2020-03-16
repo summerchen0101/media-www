@@ -1,15 +1,4 @@
 export default {
-  clear ({ commit }) {
-    commit('clearToken')
-    commit('clearUser')
-    commit('switchLoginStatus', false)
-  },
-  async checkLogin ({ commit, dispatch }) {
-    const res = await this.$api.getProfile()
-    if (res.code !== '0') {
-      commit('switchLoginStatus', true)
-    }
-  },
   async login ({ commit, dispatch }, _d) {
     const data = {
       username: _d.account,
@@ -19,21 +8,15 @@ export default {
       device: this.$utils.device,
       grant_type: 'password'
     }
-    const res = await this.$nFetch.post('session/login', data)
+    const res = await this.$auth.loginWith('local', { data })
     if (res.code === '0') {
       $.fancybox.close()
       this.$router.push(this.$router.app.$route.fullPath)
-      commit('switchLoginStatus', true)
-      commit('gotToken', res.data.access_token)
     }
   },
   async logout ({ commit, dispatch }) {
-    const res = await this.$nFetch.get('session/logout')
-    if (res.code === '0') {
-      this.$router.push({ name: 'index' })
-      this.$router.app.$alert('登出成功', { type: 'success' })
-      dispatch('clear')
-    }
+    await this.$auth.logout('local')
+    this.$router.push('/')
   },
   async register ({ commit, dispatch }, _d) {
     const data = {

@@ -23,7 +23,7 @@
             <li>
               <a data-toggle="modal" data-target="#searchModal"><span><i class="fa fa-search" /></span><span>搜寻</span></a>
             </li>
-            <li v-if="isLogin" class="login-img show-pc">
+            <li v-if="$auth.loggedIn" class="login-img show-pc">
               <a>
                 <b class="img" style="background-image:url(/images/member/member_bigImg.jpg)" />
                 <span>会员</span>
@@ -51,7 +51,7 @@
           </ul><a />
         </div>
         <li class="login-img show-mb">
-          <a v-if="isLogin">
+          <a v-if="$auth.loggedIn">
             <b class="img" style="background-image:url(/images/member/member_bigImg.jpg)" />
             <i class="arr-icon fa fa-caret-down" />
           </a>
@@ -78,7 +78,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import { Category } from '@/lib/constants/Category'
 export default {
   name: 'Header',
@@ -87,11 +86,6 @@ export default {
     return {
       cates: Category
     }
-  },
-  computed: {
-    ...mapGetters({
-      isLogin: 'user/login'
-    })
   },
   mounted () {}
 }

@@ -1,6 +1,4 @@
-const session = require('express-session')
 const webpack = require('webpack')
-const MemoryStore = require('memorystore')(session)
 const customEnv = process.env.CUSTOM_ENV
 
 require('dotenv').config({ path: customEnv || '.env' })
@@ -67,14 +65,11 @@ module.exports = {
   plugins: [
     '@/plugins/bus',
     '@/plugins/element-ui',
-    '@/plugins/storage',
     '@/plugins/utils',
     '@/plugins/vee-validate',
-    // '@/plugins/mixins',
     '@/plugins/components',
-    '@/plugins/fetch',
+    '@/plugins/axios',
     '@/plugins/apiHub',
-    '@/plugins/query-string',
     '@/plugins/enum'
   ],
   /*
@@ -90,14 +85,35 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    '@nuxtjs/auth'
   ],
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/passport/member/login', method: 'post', propertyName: 'access_token' },
+          logout: { url: '/client/logout', method: 'get' },
+          user: { url: '/client/profile', method: 'get', propertyName: '' }
+        }
+      }
+    },
+    localStorage: false,
+    watchLoggedIn: false,
+    redirect: {
+      login: '/',
+      logout: '/',
+      callback: '/',
+      home: '/'
+    }
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    withCredentials: true
+    withCredentials: true,
+    baseURL: `${process.env.PROTOCOL}://${process.env.PHP_API_BASE_URL}`
   },
   /*
   ** Build configuration
@@ -128,19 +144,5 @@ module.exports = {
     }
   },
   serverMiddleware: [
-    // body-parser middleware
-    // bodyParser.json(),
-    // session middleware
-    session({
-      store: new MemoryStore({
-        checkPeriod: 86400000 // prune expired entries every 24h
-      }),
-      secret: 'summer-is-cool',
-      resave: false,
-      saveUninitialized: false,
-      cookie: { maxAge: 86400000 }
-    }),
-    '~/server/api'
-    // { path: '/session', handler: '~/server/api' }
   ]
 }

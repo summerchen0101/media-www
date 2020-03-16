@@ -5,8 +5,6 @@ export const initProfile = () => ({
 })
 export default function () {
   return {
-    login: false,
-    token: '',
     profile: initProfile()
   }
 }

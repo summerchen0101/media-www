@@ -2,12 +2,12 @@
 import path from 'path'
 import * as apiModules from '@/lib/api'
 
-export default ({ app }, inject) => {
+export default ({ app, $axios }, inject) => {
   function makeApis (module) {
     return Object.keys(module.apis).reduce((obj, key) => {
       const { method, url } = module.apis[key]
       const _url = path.join(module.baseUrl, url)
-      obj[key] = (...args) => app.$fetch[method](_url, ...args)
+      obj[key] = (...args) => app.$axios[method](_url, ...args)
       return obj
     }, {})
   }
