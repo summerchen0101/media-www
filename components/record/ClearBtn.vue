@@ -1,6 +1,6 @@
 <template>
   <a href="#" class="member_clearBtn" @click.prevent="handleClearRecord">
-    <i class="fa fa-trash-o" />清除所有纪录 {{ count }}
+    <i class="fa fa-trash-o" />清除所有纪录
   </a>
 </template>
 
