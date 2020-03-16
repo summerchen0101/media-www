@@ -18,7 +18,7 @@
               <span class="text-danger">{{ v.errors[0] }}</span>
             </ValidationProvider>
             <div class="comment_btn">
-              <span>还可以输入{{ maxLength - comment.length }}个字</span>
+              <span>还可以输入{{ restText }}个字</span>
               <span>
                 <button class="btn submit_btn" :disabled="invalid" @click.prevent="handleSubmit">发表评论</button>
               </span>
@@ -43,6 +43,13 @@ export default {
       id: this.$route.query.id,
       maxLength: 140,
       comment: ''
+    }
+  },
+  computed: {
+    restText () {
+      return this.maxLength - this.comment.length > 0
+        ? this.maxLength - this.comment.length
+        : 0
     }
   },
   methods: {
