@@ -487,6 +487,14 @@ ul.page_tabs.video_play_side_tabs {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.comment_nologin{
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+}
 .comment_img{
     width: 49px;
     height: 49px;
