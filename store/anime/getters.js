@@ -7,7 +7,8 @@ export default {
       episodeCount: t.episodes_count,
       episodeStatus: t.episode_status
     }))
-    .take(6),
+    .take(6)
+    .value(),
   region: state => state.region,
   lang: state => state.lang,
   genres: state => state.genres,
