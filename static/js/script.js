@@ -83,42 +83,42 @@ $(function () {
 })
 
 /* tv_list */
-$('.tv_list, .index_cartoons_list, .index_smovie_list').slick({
-  infinite: true,
-  speed: 300,
-  slidesToShow: 6,
-  slidesToScroll: 1,
-  responsive: [
-    {
-      breakpoint: 1200,
-      settings: {
-        slidesToShow: 5,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 767,
-      settings: {
-        slidesToShow: 4,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 575,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 400,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1
-      }
-    }
-  ]
-})
+// $('.tv_list, .index_cartoons_list, .index_smovie_list').slick({
+//   infinite: true,
+//   speed: 300,
+//   slidesToShow: 6,
+//   slidesToScroll: 1,
+//   responsive: [
+//     {
+//       breakpoint: 1200,
+//       settings: {
+//         slidesToShow: 5,
+//         slidesToScroll: 1
+//       }
+//     },
+//     {
+//       breakpoint: 767,
+//       settings: {
+//         slidesToShow: 4,
+//         slidesToScroll: 1
+//       }
+//     },
+//     {
+//       breakpoint: 575,
+//       settings: {
+//         slidesToShow: 3,
+//         slidesToScroll: 1
+//       }
+//     },
+//     {
+//       breakpoint: 400,
+//       settings: {
+//         slidesToShow: 2,
+//         slidesToScroll: 1
+//       }
+//     }
+//   ]
+// })
 /* page sideBar */
 $(document).ready(function () {
   const trigger = $('.hamburger')
