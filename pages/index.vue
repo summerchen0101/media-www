@@ -140,14 +140,18 @@ export default {
     RankBox: () => import('@/components/index/RankBox')
   },
   async fetch ({ app, store, redirect }) {
-    await store.dispatch('ad/getAds')
-    await store.dispatch('drama/getLatestList')
-    await store.dispatch('movie/getLatestList')
-    await store.dispatch('anime/getLatestList')
-    await store.dispatch('variety/getLatestList')
-    await store.dispatch('drama/getTopList')
-    await store.dispatch('variety/getTopList')
-    await store.dispatch('movie/getTopList')
+    const actions = [
+      'ad/getAds',
+      'drama/getLatestList',
+      'movie/getLatestList',
+      'anime/getLatestList',
+      'variety/getLatestList',
+      'drama/getTopList',
+      'variety/getTopList',
+      'movie/getTopList'
+    ]
+    const promises = actions.map(actionName => store.dispatch(actionName))
+    await Promise.all(promises)
   },
   data () {
     return {
