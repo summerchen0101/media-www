@@ -24,7 +24,6 @@
 export default {
   name: 'MessageDetail',
   layout: 'user',
-  scrollToTop: true,
   data () {
     return {}
   },

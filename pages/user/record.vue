@@ -18,7 +18,6 @@ const perpage = 10
 export default {
   name: 'Record',
   layout: 'user',
-  scrollToTop: true,
   watchQuery: true,
   key: to => to.fullPath,
   components: {

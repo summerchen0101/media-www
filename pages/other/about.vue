@@ -12,7 +12,6 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'About',
   layout: 'other',
-  scrollToTop: true,
   components: {
   },
   async fetch ({ store, redirect }) {

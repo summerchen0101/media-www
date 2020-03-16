@@ -39,7 +39,6 @@
 export default {
   name: 'MessageIndex',
   layout: 'user',
-  scrollToTop: true,
   components: {
   },
   data () {
