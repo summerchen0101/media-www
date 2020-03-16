@@ -3,7 +3,10 @@
     <div class="tv_detail_head">
       <span class="tv_detail_mtitle">评论</span>
     </div>
-    <div class="comment_input_box">
+    <div v-if="!$store.getters['user/login']" class="comment_nologin">
+      撰写留言前，请先<a class="fancybox" href="#login_dialog">登入</a>
+    </div>
+    <div v-else class="comment_input_box">
       <div class="comment_img">
         <img src="/images/tv_korea_detail/comment_img.jpg" alt="">
       </div>
