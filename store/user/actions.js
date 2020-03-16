@@ -22,7 +22,7 @@ export default {
     const res = await this.$nFetch.post('session/login', data)
     if (res.code === '0') {
       $.fancybox.close()
-      this.$router.push({ name: 'index' })
+      this.$router.push(this.$router.app.$route.fullPath)
       commit('switchLoginStatus', true)
       commit('gotToken', res.data.access_token)
     }
