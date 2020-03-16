@@ -9,11 +9,8 @@
       <div class="index_unit_title">
         {{ video.title }}
       </div>
-      <div v-if="video.episodeStatus === 'serializing'" class="index_unit_txt">
-        更新至第{{ video.episodeCount }}集
-      </div>
-      <div v-else-if="video.episodeStatus === 'end'" class="index_unit_txt">
-        已完結
+      <div class="index_unit_txt">
+        {{ subText }}
       </div>
     </div>
   </nuxt-link>
@@ -34,6 +31,17 @@ export default {
         episodeCount: 99,
         episodeStatus: 'serializing'
       })
+    }
+  },
+  computed: {
+    subText () {
+      if (this.category === 'movie') {
+        return ''
+      } else if (this.episodeStatus === 'serializing') {
+        return `更新至第${this.video.episodeCount}集`
+      } else {
+        return '已完結'
+      }
     }
   },
   methods: {
