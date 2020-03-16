@@ -24,7 +24,7 @@
             <!--page_list end-->
           </div>
           <div class="tv_detail_right col-xs-12 col-sm-4 col-md-3">
-            <BlockAd :ad="rightAd" />
+            <BlockAd :ad="rightAd" class="ad-box-s" />
             <MaybeLikeList />
             <HotList />
           </div><!-- tv_detail_right end -->
