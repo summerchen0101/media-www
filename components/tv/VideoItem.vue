@@ -37,7 +37,7 @@ export default {
     subText () {
       if (this.category === 'movie') {
         return ''
-      } else if (this.episodeStatus === 'serializing') {
+      } else if (this.video.episodeStatus === 'serializing') {
         return `更新至第${this.video.episodeCount}集`
       } else {
         return '已完結'
