@@ -1,6 +1,7 @@
 export default function () {
   return {
     latestList: [],
+    filterTypes: ['region', 'lang', 'year', 'genres'],
     region: [
       {
         label: '台灣',
@@ -15,8 +16,34 @@ export default function () {
         id: 8
       }
     ],
-    lang: [],
-    years: [],
+    lang: [
+      {
+        label: '韓語',
+        id: 9
+      },
+      {
+        label: '英語',
+        id: 12
+      },
+      {
+        label: '日文',
+        id: 18
+      },
+      {
+        label: '中文',
+        id: 20
+      }
+    ],
+    year: [
+      {
+        label: '2019',
+        id: 2
+      },
+      {
+        label: '2020',
+        id: 3
+      }
+    ],
     genres: [
       {
         label: '武打',

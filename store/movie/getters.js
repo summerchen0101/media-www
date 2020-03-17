@@ -11,6 +11,7 @@ export default {
   latest: (state, getters) => {
     return getters.latestList[0] || {}
   },
+  filterTypes: state => state.filterTypes,
   region: state => state.region,
   lang: state => state.lang,
   genres: state => state.genres,

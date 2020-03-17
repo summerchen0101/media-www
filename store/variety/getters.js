@@ -6,6 +6,7 @@ export default {
     episodeCount: t.episodes_count,
     episodeStatus: t.episode_status
   })),
+  filterTypes: state => state.filterTypes,
   region: state => state.region,
   lang: state => state.lang,
   genres: state => state.genres,

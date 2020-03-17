@@ -1,9 +1,10 @@
 export default function () {
   return {
     latestList: [],
+    filterTypes: ['region', 'lang', 'year', 'genres'],
     region: [],
     lang: [],
-    years: [],
+    year: [],
     genres: [],
     source: [],
     topList: []
