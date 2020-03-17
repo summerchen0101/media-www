@@ -11,35 +11,21 @@
             <li
               v-for="(cate, index) in cates"
               :key="index"
-              role="presentation"
-              :class="{active: currentTab === index}"
+              :class="{active: $route.query.category === cate.code}"
             >
-              <a
-                :href="`#ranking${index}`"
-                :aria-controls="`#ranking${index}`"
-                role="tab"
-                data-toggle="tab"
-                @click="currentTab = index"
-              >{{ cate.label }}排行</a>
+              <nuxt-link :to="{...$route, query: {category: cate.code}}">
+                {{ cate.label }}排行
+              </nuxt-link>
             </li>
           </ul>
           <!-- Tab panes -->
           <div class="tab-content ranking-tab-content">
-            <div
-              v-for="(cate, index) in cates"
-              :id="`#ranking${index}`"
-              :key="index"
-              role="tabpanel"
-              class="tab-pane"
-              :class="{active: currentTab === index}"
-            >
-              <div class="ranking-head">
-                <i :class="cate.icon" />{{ cate.label }}排行榜 - 今日TOP20
-              </div>
-              <div class="ranking-body">
-                <div class="tv_sub_list">
-                  <VideoItem v-for="(item, i) in 20" :key="i" />
-                </div>
+            <div class="ranking-head">
+              <i :class="current.icon" />{{ current.label }}排行榜 - 今日TOP20
+            </div>
+            <div class="ranking-body">
+              <div class="tv_sub_list">
+                <VideoItem v-for="(item, i) in 20" :key="i" />
               </div>
             </div>
           </div>
@@ -53,46 +39,27 @@
 </template>
 
 <script>
+import { Category } from '@/lib/constants/Category'
 export default {
   name: 'Rank',
   layout: 'main',
   components: {},
   asyncData ({ store, redirect, params }) {
     return {
-      cates: [
-        {
-          label: '戏剧',
-          icon: 'icon-television'
-        },
-        {
-          label: '电影',
-          icon: 'icon-movie-symbol-of-video-camera'
-        },
-        {
-          label: '动漫',
-          icon: 'icon-cartoons-character-with-big-eyes'
-        },
-        {
-          label: '综艺',
-          icon: 'icon-karaoke-microphone-icon'
-        }
-      ]
+      cates: Category
     }
   },
   data () {
     return {
-      currentTab: 0
+    }
+  },
+  computed: {
+    current () {
+      return this.cates.find(t => t.code === this.$route.query.category) || {}
     }
   },
   watchQuery: true,
   key: to => to.fullPath,
-  watch: {
-    currentTab () {
-      this.$nextTick(() => {
-
-      })
-    }
-  },
   mounted () {
 
   },
