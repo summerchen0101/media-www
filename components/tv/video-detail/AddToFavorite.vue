@@ -20,6 +20,10 @@ export default {
   },
   methods: {
     async handleFavClicked () {
+      if (!this.$auth.loggedIn) {
+        this.openLoginPopup()
+        return
+      }
       if (!this.isActive) {
         await this.$store.dispatch(`${this.category}/addToFav`, this.id)
       } else {
