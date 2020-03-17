@@ -21,7 +21,9 @@
               </nuxt-link>
             </li>
             <li>
-              <a data-toggle="modal" data-target="#searchModal"><span><i class="fa fa-search" /></span><span>搜寻</span></a>
+              <a href="" @click.prevent="openSearchPopup">
+                <span><i class="fa fa-search" /></span><span>搜寻</span>
+              </a>
             </li>
             <li v-if="$auth.loggedIn" class="login-img show-pc">
               <a>
