@@ -4,7 +4,7 @@
       <span class="tv_detail_mtitle">评论</span>
     </div>
     <div v-if="!$auth.loggedIn" class="comment_nologin">
-      撰写留言前，请先<a class="fancybox" href="#login_dialog">登入</a>
+      撰写留言前，请先<a href="" @click.prevent="openLoginPopup">登入</a>
     </div>
     <div v-else class="comment_input_box">
       <div class="comment_img">

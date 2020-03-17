@@ -3,12 +3,8 @@
     <div class="menuBg" />
     <!--nav start-->
     <Header />
-    <div class="hidden">
-      <div id="login_dialog" class="modall">
-        <Login />
-        <Register />
-      </div>
-    </div><!--login_dialog end-->
+    <Login />
+    <Register />
     <Search />
     <div id="wrapper">
       <div id="page-content-wrapper">

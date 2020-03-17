@@ -56,13 +56,11 @@
 </template>
 
 <script>
-import UtilMixin from '@/plugins/mixins'
 export default {
   name: 'SearchResult',
   components: {
     RelateVideoItem: () => import('@/components/tv/RelateVideoItem')
   },
-  mixins: [UtilMixin],
   layout: 'main',
   watchQuery: true,
   key: to => to.fullPath,

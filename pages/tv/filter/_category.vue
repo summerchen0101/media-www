@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import UtilMixin from '@/plugins/mixins'
 import { Types } from '@/lib/constants/Types'
 export default {
   name: 'FilterPage',
@@ -33,7 +32,6 @@ export default {
     OrderByTypes: () => import('@/components/tv/filter/OrderByTypes'),
     BlockAd: () => import('@/components/BlockAd')
   },
-  mixins: [UtilMixin],
   layout: 'main',
   watchQuery: true,
   key: to => to.fullPath,

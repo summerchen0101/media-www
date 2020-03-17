@@ -1,6 +1,6 @@
 <template>
   <div class="hidden">
-    <div id="register_dialog" class="modall">
+    <div id="register_dialog">
       <div id="registered_dialog_inner">
         <div class="login_dialog_title">
           <span><img src="/images/login_dialog.png" alt=""></span>
@@ -52,7 +52,7 @@
             </div>
             <div class="login_link login_link_account">
               已有帐号?
-              <a class="fancybox" href="#login_dialog">立即登入</a>
+              <a href="" @click.prevent="openLoginPopup">立即登入</a>
             </div>
           </form>
         </ValidationObserver>
@@ -78,28 +78,16 @@ export default {
     }
   },
   mounted () {
-    const vm = this
-    $('.fancybox').fancybox({
-      wrapCSS: 'fancybox-login',
-      padding: 40,
-      width: 800,
-      maxWidth: '100%',
-      helpers: {
-        overlay: {
-          css: {
-            background: 'rgba(0,0,0,.8)'
-          }
-        }
-      },
-      afterClose () {
-        vm.form = initForm()
-        vm.$nextTick(() => {
-          vm.$refs.form.reset()
-        })
-      }
-    })
+    this.$bus.$on('register/clearForm', this.clearForm)
   },
   methods: {
+    clearForm () {
+      const vm = this
+      vm.form = initForm()
+      vm.$nextTick(() => {
+        vm.$refs.form.reset()
+      })
+    },
     async onSubmit () {
       await this.$store.dispatch('user/register', this.form)
     }

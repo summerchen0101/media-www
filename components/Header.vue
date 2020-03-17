@@ -46,7 +46,7 @@
               </div>
             </li>
             <li v-else>
-              <a class="fancybox" href="#login_dialog"><span><i class="icon-user" /></span><span>登入</span></a>
+              <a href="" @click.prevent="openLoginPopup"><span><i class="icon-user" /></span><span>登入</span></a>
             </li>
           </ul><a />
         </div>

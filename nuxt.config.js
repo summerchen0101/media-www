@@ -70,7 +70,8 @@ module.exports = {
     '@/plugins/components',
     '@/plugins/axios',
     '@/plugins/apiHub',
-    '@/plugins/enum'
+    '@/plugins/enum',
+    '@/plugins/mixins'
   ],
   /*
   ** Nuxt.js dev-modules
