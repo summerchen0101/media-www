@@ -10,7 +10,6 @@
   </div>
 </template>
 <script>
-// import { Types } from '@/lib/constants/Types'
 export default {
   props: {
   },

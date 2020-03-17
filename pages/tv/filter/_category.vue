@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { Types } from '@/lib/constants/Types'
+import { FilterType } from '@/lib/constants/FilterType'
 export default {
   name: 'FilterPage',
   components: {
@@ -50,7 +50,7 @@ export default {
       return this.$route.params.category
     },
     searchRules () {
-      return Types.map((t) => {
+      return FilterType.map((t) => {
         return {
           title: t.label,
           code: t.code,

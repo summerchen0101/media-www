@@ -12,6 +12,7 @@ export default {
     return getters.latestList[0] || {}
   },
   filterTypes: state => state.filterTypes,
+  orderTypes: state => state.orderTypes,
   region: state => state.region,
   lang: state => state.lang,
   genres: state => state.genres,
