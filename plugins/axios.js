@@ -26,11 +26,11 @@ export default ({ app, store, route, $axios, redirect, error, req }) => {
     } else if (status === 500) {
       error({ statusCode: 500, message: 'ohoh500' })
     }
-    store.commit('log/addLog', error.response)
-    handleErrorCode(app, store, error.response)
   })
   // axios回傳值調整
   $axios.onResponse((res) => {
+    store.commit('log/addLog', res)
+    handleErrorCode(app, store, res)
     return res.data
   }, (error) => {
     console.log(error)
