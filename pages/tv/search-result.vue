@@ -10,12 +10,20 @@
           <div class="search_bar_head">
             <span>影音<b>搜索</b></span>
             <form action="" class="search_form">
-              <input type="text">
-              <button class="btn" type="submit">
+              <select v-model="form.category" class="form-control">
+                <option value="">
+                  分类
+                </option>
+                <option v-for="(c, i) in categorys" :key="i" :value="c.code">
+                  {{ c.label }}
+                </option>
+              </select>
+              <input v-model.trim="form.keyword" type="text" class="form-control">
+              <button class="btn" type="submit" @click.prevent="onSearch">
                 <i class="fa fa-search" />搜全网
               </button>
             </form>
-          </div><!-- search_bar_head end -->
+          </div>
           <div class="search_tv_detail">
             <VideoItem v-for="(item, i) in 15" :key="i" />
           </div>
@@ -56,6 +64,7 @@
 </template>
 
 <script>
+import { Category } from '@/lib/constants/Category'
 export default {
   name: 'SearchResult',
   components: {
@@ -68,15 +77,25 @@ export default {
     const page = parseInt(query.p) || 1
     return {
       page,
-      count: 100
+      count: 100,
+      form: {
+        category: query.category,
+        keyword: query.keyword
+      }
     }
   },
   data () {
     return {
-      keyword: '两个世界'
+      keyword: '两个世界',
+      categorys: Category
     }
   },
   mounted () {
+  },
+  methods: {
+    onSearch () {
+      this.$router.push({ name: 'tv-search-result', query: { ...this.form } })
+    }
   },
   head () {
     return {

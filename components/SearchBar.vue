@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     onSearch () {
-      this.$router.push({ name: 'tv-search-result' })
+      this.$router.push({ name: 'tv-search-result', query: { ...this.form } })
       $('#searchModal').modal('hide')
     }
   }
