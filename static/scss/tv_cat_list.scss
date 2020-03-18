@@ -123,12 +123,20 @@
 .filter_box{
     background: #fff;
     border:1px solid #cccccc;
-    padding: 5px 120px 5px 75px;
+    padding: 5px;
     color: #999999;
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    .filter_result{
+        display: flex;
+        flex-wrap: wrap;
+    }
     .filter_title{
-        position: absolute;
-        left: 5px;
+        // position: absolute;
+        // left: 5px;
+        
     }
     a{
         display: inline-block;
@@ -142,10 +150,11 @@
         }
     }
     .result{
-        position: absolute;
-        right:5px;
+        // position: absolute;
+        // right:5px;
         width: 115px;
         text-align: right;
+        margin-left: auto;
     }
 }
 .sorting_box{

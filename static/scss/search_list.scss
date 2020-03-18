@@ -1,3 +1,46 @@
+.tv_sub_list{
+    &::after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+.video_unit{
+    width: calc(100% / 5 - 12px);
+    &:nth-child(5n+5){
+        margin-right: 0;
+    }
+    @media(max-width:767px){
+        width: calc(100% / 4 - 12px);
+        &:nth-child(4n+4){
+            margin-right: 0;
+        }
+        &:nth-child(5n+5){
+            margin-right: 15px;
+        }
+    }
+    @media(max-width:575px){
+		width: calc(100% / 3 - 11px);
+		&:nth-child(3n+3){
+			margin-right: 0;
+		}
+		&:nth-child(4n+4){
+			margin-right: 15px;
+        }
+    }
+    @media(max-width:400px){
+		width: calc(100% / 2 - 8px);
+		&:nth-child(2n+2){
+			margin-right: 0;
+		}
+		&:nth-child(3n+3){
+			margin-right: 15px;
+		}
+		&:nth-child(6n+6){
+			margin-right: 0;
+        }
+    }
+}
 .search_tv_header .top_search_box{
     display: none;
 }
@@ -5,51 +48,80 @@
     text-align: center;
     margin-bottom: 25px;
     padding: 0 15px;
-}
-.search_bar_head > span{
-    font-size: 30px;
-    display: inline-block;
-    vertical-align: middle;
-    color: #444444;
-}
-.search_bar_head > span b{
-    font-weight: inherit;
-    color: #ff443f;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    > span{
+        font-size: 30px;
+        display: inline-block;
+        vertical-align: middle;
+        color: #444444;
+        margin-right: 10px;
+    }
+    b{
+        font-weight: inherit;
+        color: #ff443f;
+    }
+    @media(max-width:991px){
+        span{
+            width: 100%;
+        }
+    }
 }
 .search_form{
-    display: inline-block;
-    vertical-align: middle;
+    display: flex;
+    align-items: flex-start;
     position: relative;
-}
-.search_form > input{
-    width: 800px;
-    height: 45px;
-    border-radius: 25px;
-    border: 1px solid #ccc;
-    padding: 0 15px;
-}
-.search_form > button{
-    position: absolute;
-    right:0;
-    top: 0;
-    height: 45px;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-    border:none;
-    background: #ff443f;
-    width: 100px;
-    color: #fff;
-    font-size: 16px;
-}
-.search_form > button:hover{
-    color: #fff;
-    background: #de2d28;
-}
-.search_form > button i{
-    margin-right: 3px;
-    display: inline-block;
-    position: relative;
-    top: -1px;
+    flex: 1;
+    .form-control{
+        display: initial;
+        margin-right: 10px;
+    }
+    select{
+        width: 120px;
+        height: 36px;
+    }
+    input{
+        width: calc(100% - 250px);
+        height: 36px;
+    }
+    button{
+        background: #ff443f;
+        width: 100px;
+        color: #fff;
+        font-size: 16px;
+        &:hover{
+            color: #fff;
+            background: #de2d28;
+        }
+        i{
+            margin-right: 3px;
+            display: inline-block;
+            position: relative;
+            top: -1px;
+        }
+    }
+    @media(max-width:991px){
+        .form-control{
+            margin-right: 5px;
+        }
+        select{
+            position: relative;
+            top: 1px;
+        }
+    }
+    @media(max-width:575px){
+        select, input{
+            margin-bottom:10px;
+        }
+        input.form-control{
+            width: calc(100% - 130px);
+            margin-right: 0;
+        }
+        button{
+            width: 100%;
+        }
+    }
 }
 .search_tv_detail{
     clear: both;
@@ -219,9 +291,6 @@
 	}
 	.search_bar_head > span, .search_form{
 		display: block;
-	}
-	.search_form > input{
-		width: 100%;
 	}
 	.search_tv_unit {
 		width: calc(100% / 3 - 13px);

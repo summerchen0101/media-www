@@ -154,14 +154,25 @@
 .filter_box {
   background: #fff;
   border: 1px solid #cccccc;
-  padding: 5px 120px 5px 75px;
+  padding: 5px;
   color: #999999;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
-.filter_box .filter_title {
-  position: absolute;
-  left: 5px;
+.filter_box .filter_result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .filter_box a {
@@ -178,10 +189,9 @@
 }
 
 .filter_box .result {
-  position: absolute;
-  right: 5px;
   width: 115px;
   text-align: right;
+  margin-left: auto;
 }
 
 .sorting_box {
