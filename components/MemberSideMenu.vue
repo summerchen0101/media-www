@@ -5,10 +5,10 @@
         <img src="/images/member/member_bigImg.jpg" alt="">
       </div>
       <div class="user_name">
-        {{ profile.account }}
+        {{ $auth.user.account }}
       </div>
       <div class="user_id">
-        ID:{{ profile.id }}
+        ID:{{ $auth.user.id }}
       </div>
     </div>
     <div class="member_list_pc">
@@ -49,11 +49,6 @@
 export default {
   name: 'MemberSideMenu',
   components: {},
-  computed: {
-    profile () {
-      return this.$store.getters['user/profile']
-    }
-  },
   mounted () {
   },
   methods: {
