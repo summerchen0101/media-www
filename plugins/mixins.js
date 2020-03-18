@@ -1,5 +1,4 @@
 import Vue from 'vue'
-
 Vue.mixin({
   methods: {
     openLoginPopup () {
@@ -49,6 +48,9 @@ Vue.mixin({
     },
     onPageChange (page) {
       this.$router.push({ name: this.$route.name, query: { ...this.$route.query, p: page } })
+    },
+    resolveResource (url) {
+      return `//${process.env.RESOURCE_BASE_URL}/${url}`
     }
   }
 

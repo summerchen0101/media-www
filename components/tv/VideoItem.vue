@@ -4,7 +4,10 @@
           query: {id: video.id, category: category || undefined}}"
     class="video_unit"
   >
-    <div class="index_variety_img index_unit_img " :style="`background-image: url('${video.imgUrl}');`" />
+    <div
+      class="index_variety_img index_unit_img "
+      :style="`background-image: url('${resolveResource(video.imgUrl)}');`"
+    />
     <div class="index_info">
       <div class="index_unit_title">
         {{ video.title }}

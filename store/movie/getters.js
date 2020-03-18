@@ -2,7 +2,7 @@ export default {
   latestList: state => _(state.latestList)
     .map(t => ({
       id: t.id,
-      imgUrl: t.image_url,
+      imgUrl: t.image_path,
       title: t.name,
       episodeCount: t.episodes_count,
       episodeStatus: t.episode_status
