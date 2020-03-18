@@ -1,4 +1,4 @@
-import { errCodes } from '@/lib/errCode/index'
+import { errCodes, errMsgs } from '@/lib/err'
 
 export default ({ app, store, route, $axios, redirect, error, req }) => {
   $axios.onRequest((config) => {
@@ -30,7 +30,9 @@ export default ({ app, store, route, $axios, redirect, error, req }) => {
   // axios回傳值調整
   $axios.onResponse((res) => {
     store.commit('log/addLog', res)
-    handleErrorCode(app, store, res)
+    if (res.data.code !== '0') {
+      handleErrorCode(app, store, res)
+    }
     return res.data
   }, (error) => {
     console.log(error)
@@ -39,13 +41,19 @@ export default ({ app, store, route, $axios, redirect, error, req }) => {
 }
 
 function handleErrorCode (app, store, { data, config }) {
-  const resCode = data.code
-  // const resMsg = data.data && data.data.msg
+  /**
+   * 以回傳的msg去mapping
+   */
+  const msg = data.data && data.data.msg
+  const mapMsg = errMsgs[msg]
+  /**
+   * 以回傳的code去mapping
+   */
   const url = config.url
-  if (Array.isArray(resCode)) {
-    const code = resCode[0]
-    // 有錯誤碼的對應路徑就以其為主
-    const msg = (errCodes[code] && errCodes[code][url]) || errCodes[code] || errCodes.default
-    app.router.app.$alert(msg)
-  }
+  const code = data.code[0] || 'default'
+  const mapCode = (errCodes[code] && errCodes[code][url]) || errCodes[code]
+  /**
+   * 以msg的為主，其次以code判斷
+   */
+  app.router.app.$alert(mapMsg || mapCode)
 }
