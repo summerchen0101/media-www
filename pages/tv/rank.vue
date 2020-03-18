@@ -8,15 +8,17 @@
         <div class="container">
           <!-- Nav tabs -->
           <ul class="nav nav-tabs ranking-tabs" role="tablist">
-            <li
+            <nuxt-link
               v-for="(cate, index) in cates"
               :key="index"
-              :class="{active: $route.query.category === cate.code}"
+              tag="li"
+              active-class="active"
+              :class="{active: index === 0 && !$route.query.category}"
+              exact
+              :to="{...$route, query: {category: cate.code}}"
             >
-              <nuxt-link :to="{...$route, query: {category: cate.code}}">
-                {{ cate.label }}排行
-              </nuxt-link>
-            </li>
+              <a href="">{{ cate.label }}排行</a>
+            </nuxt-link>
           </ul>
           <!-- Tab panes -->
           <div class="tab-content ranking-tab-content">
