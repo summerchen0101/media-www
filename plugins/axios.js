@@ -23,6 +23,8 @@ export default ({ app, store, route, $axios, redirect, error, req }) => {
       }
     } else if (status === 403) {
       error({ statusCode: 403, message: 'ohoh403' })
+    } else if (status === 429) {
+      error({ statusCode: 429, message: '請求次數過多' })
     } else if (status === 500) {
       error({ statusCode: 500, message: 'ohoh500' })
     }
