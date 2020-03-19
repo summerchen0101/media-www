@@ -24,34 +24,16 @@
               </button>
             </form>
           </div>
-          <div class="search_tv_detail">
-            <VideoItem v-for="(item, i) in 15" :key="i" />
+          <div v-if="list.length === 0" class="tv_sub_list no-data">
+            查无相关数据
           </div>
-          <div class="search_tv_detail_resultBox">
-            <div class="search_tv_detail_head">
-              <div class="search_tv_sort">
-                <div class="search_tv_relative_title">
-                  相关度
-                </div>
-              </div>
-              <div class="search_tv_totalResult">
-                共找到<b>15,283</b>个视频
-              </div>
-            </div>
-            <div class="search_tv_list">
-              <RelateVideoItem v-for="i in 10" :key="i" :keyword="keyword" />
-            </div>
-            <!--search_tv_detail_resultBox end-->
-            <div class="search_tv_relative">
-              <div class="search_tv_relative_title">
-                相关搜索
-              </div>
-              <div class="search_tv_relative_content">
-                <a v-for="(item, i) in 10" :key="i" href="">两个世界</a>
-              </div>
-            </div>
-            <!--search_tv_relative end-->
-            <Paginator :page="page" :count="count" @change="onPageChange" />
+          <div class="search_tv_detail">
+            <VideoItem
+              v-for="(video, i) in list"
+              :key="i"
+              :video="video"
+              :category="$route.query.category"
+            />
           </div>
           <!--page_content_s end-->
         </div>
@@ -65,19 +47,25 @@
 
 <script>
 import { Category } from '@/lib/constants/Category'
+const perpage = 20
 export default {
   name: 'SearchResult',
-  components: {
-    RelateVideoItem: () => import('@/components/tv/RelateVideoItem')
-  },
   layout: 'main',
   watchQuery: true,
-  key: to => to.fullPath,
-  asyncData ({ store, redirect, query }) {
+  key: to => to.fullPath + new Date().getTime(),
+  async asyncData ({ store, redirect, query }) {
     const page = parseInt(query.p) || 1
+    await store.dispatch('search/getList', {
+      category: query.category,
+      keyword: query.keyword,
+      page,
+      perpage
+    })
     return {
       page,
-      count: 100,
+      perpage,
+      count: store.getters['search/total'],
+      list: store.getters['search/list'],
       form: {
         category: query.category,
         keyword: query.keyword
@@ -93,8 +81,13 @@ export default {
   mounted () {
   },
   methods: {
-    onSearch () {
-      this.$router.push({ name: 'tv-search-result', query: { ...this.form } })
+    onSearch (e) {
+      e.target.blur()
+      if (!(this.form.category && this.form.keyword)) {
+        this.$alert('分类及关键字皆为必填')
+        return
+      }
+      this.$router.push({ name: 'tv-search-result', query: { ...this.form, t: new Date().getTime() } })
     }
   },
   head () {

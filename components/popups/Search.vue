@@ -11,7 +11,7 @@
           </h4>
         </div>
         <div class="modal-body">
-          <SearchBar :on-search="onClickedSearch" />
+          <SearchBar />
           <div class="searchModal_head">
             热门搜寻：
           </div>
@@ -36,12 +36,6 @@ export default {
   components: {
     SearchBar: () => import('@/components/SearchBar')
   },
-  mounted () {},
-  methods: {
-    onClickedSearch () {
-      $('#searchModal').modal('hide')
-      this.$router.push({ name: 'tv-search-result' })
-    }
-  }
+  mounted () {}
 }
 </script>

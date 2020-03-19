@@ -38,6 +38,10 @@ export default {
   },
   methods: {
     onSearch () {
+      if (!(this.form.category && this.form.keyword)) {
+        this.$alert('分类及关键字皆为必填')
+        return
+      }
       this.$router.push({ name: 'tv-search-result', query: { ...this.form } })
       $('#searchModal').modal('hide')
     }
