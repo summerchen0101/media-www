@@ -4,6 +4,14 @@
   clear: both;
 }
 
+.tv_sub_list.no-data {
+  text-align: center;
+  padding: 15% 5%;
+  background-color: #fff;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
 .video_unit {
   width: calc(100% / 5 - 12px);
 }
