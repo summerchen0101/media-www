@@ -27,7 +27,12 @@
             </div>
             <div class="ranking-body">
               <div class="tv_sub_list">
-                <VideoItem v-for="(item, i) in 20" :key="i" />
+                <VideoItem
+                  v-for="(video, i) in videoList"
+                  :key="i"
+                  :video="video"
+                  :category="current.code"
+                />
               </div>
             </div>
           </div>
@@ -46,18 +51,16 @@ export default {
   name: 'Rank',
   layout: 'main',
   components: {},
-  asyncData ({ store, redirect, params }) {
-    return {
+  async asyncData ({ store, redirect, query }) {
+    const data = {
       cates: Category
     }
-  },
-  data () {
+    const categoryCode = query.category || data.cates[0].code
+    await store.dispatch(`${categoryCode}/getRankList`, 20)
     return {
-    }
-  },
-  computed: {
-    current () {
-      return this.cates.find(t => t.code === this.$route.query.category) || {}
+      ...data,
+      current: data.cates.find(t => t.code === categoryCode),
+      videoList: store.getters[`${categoryCode}/rankList`]
     }
   },
   watchQuery: true,

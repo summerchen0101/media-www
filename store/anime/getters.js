@@ -18,5 +18,12 @@ export default {
   topList: state => state.topList.map(t => ({
     id: t.id,
     title: t.title
+  })),
+  rankList: state => state.rankList.map(t => ({
+    id: t.id,
+    imgUrl: t.image_path,
+    title: t.title,
+    episodeCount: t.episodes_count,
+    episodeStatus: t.episode_status
   }))
 }
