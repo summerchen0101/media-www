@@ -1,5 +1,27 @@
 const apiModule = 'DRAMA'
 export default {
+  async getOptions ({ commit }) {
+    const res = await this.$api[apiModule].getOptions()
+    if (res.code === '0') {
+      commit('gotOptions', res.data)
+    }
+  },
+  async getList ({ commit }, _d) {
+    const data = {
+      sort: _d.orderBy,
+      years_id: _d.year,
+      region_id: _d.region,
+      language_id: _d.lang,
+      genres_ids: _d.type,
+      episode_status: _d.status,
+      page: _d.page,
+      perpage: _d.perpage
+    }
+    const res = await this.$api[apiModule].getList({ params: data })
+    if (res.code === '0') {
+      commit('gotList', res.data)
+    }
+  },
   async getLatestList ({ commit }) {
     const res = await this.$api[apiModule].getLatestList()
     if (res.code === '0') {

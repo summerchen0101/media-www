@@ -18,14 +18,17 @@ export default {
       return this.$store.getters[`${this.$route.params.category}/filterTypes`]
     },
     filterItems () {
-      return this.filterTypes
+      return _(this.filterTypes)
         .filter((type) => {
-          return this.$route.query[type]
+          return this.$route.query[type] !== undefined
         })
+        .orderBy(type => Object.keys(this.$route.query).indexOf(type))
         .map((type) => {
           const arr = this.$store.getters[`${this.$route.params.category}/${type}`]
-          const item = arr.find(t => t.id === +this.$route.query[type]) || {}
-          item.type = type
+          const item = {
+            ...arr.find(t => t.id === (+this.$route.query[type] || this.$route.query[type])),
+            type
+          }
           return item
         })
     }

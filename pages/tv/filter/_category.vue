@@ -35,9 +35,11 @@ export default {
   layout: 'main',
   watchQuery: true,
   key: to => to.fullPath,
-  async asyncData ({ store, redirect, query }) {
+  async asyncData ({ store, redirect, query, params }) {
     const page = parseInt(query.p) || 1
-    await store.dispatch('ad/getAds', { page })
+    await store.dispatch('ad/getAds')
+    await store.dispatch(`${params.category}/getList`, { page })
+    await store.dispatch(`${params.category}/getOptions`)
     return {
       topAd: store.getters['ad/filterTopAd'],
       bottomAd: store.getters['ad/filterBottomAd'],
@@ -49,14 +51,19 @@ export default {
     category () {
       return this.$route.params.category
     },
+    categoryFilterTypes () {
+      return this.$store.getters[`${this.$route.params.category}/filterTypes`]
+    },
     searchRules () {
-      return FilterType.map((t) => {
-        return {
-          title: t.label,
-          code: t.code,
-          items: this.$store.getters[`${this.category}/${t.code}`]
-        }
-      })
+      return FilterType
+        .filter(t => this.categoryFilterTypes.includes(t.code))
+        .map((t) => {
+          return {
+            title: t.label,
+            code: t.code,
+            items: this.$store.getters[`${this.category}/${t.code}`]
+          }
+        })
     }
   },
   mounted () {
