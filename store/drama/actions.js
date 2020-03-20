@@ -22,6 +22,20 @@ export default {
       commit('gotList', res.data)
     }
   },
+  async getTotal ({ commit }, _d) {
+    const data = {
+      sort: _d.orderBy,
+      years_id: _d.year,
+      region_id: _d.region,
+      language_id: _d.lang,
+      genres_ids: _d.type,
+      episode_status: _d.status
+    }
+    const res = await this.$api[apiModule].getTotal({ params: data })
+    if (res.code === '0') {
+      commit('gotTotal', res.data)
+    }
+  },
   async getLatestList ({ commit }) {
     const res = await this.$api[apiModule].getLatestList()
     if (res.code === '0') {

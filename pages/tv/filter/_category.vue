@@ -9,7 +9,7 @@
           <FilterKeys />
           <OrderByTypes />
           <div class="tv_sub_list">
-            <VideoItem v-for="(item, i) in 20" :key="i" />
+            <VideoItem v-for="(video, i) in list" :key="i" :video="video" />
           </div>
           <BlockAd :ad="bottomAd" />
           <paginator :page="page" :count="count" @change="onPageChange" />
@@ -36,15 +36,24 @@ export default {
   watchQuery: true,
   key: to => to.fullPath,
   async asyncData ({ store, redirect, query, params }) {
-    const page = parseInt(query.p) || 1
-    await store.dispatch('ad/getAds')
-    await store.dispatch(`${params.category}/getList`, { page })
-    await store.dispatch(`${params.category}/getOptions`)
+    const page = +query.p || 1
+    const data = {
+      ...query,
+      page
+    }
+    const promiseArr = [
+      store.dispatch('ad/getAds'),
+      store.dispatch(`${params.category}/getList`, data),
+      store.dispatch(`${params.category}/getTotal`, { ...query }),
+      store.dispatch(`${params.category}/getOptions`)
+    ]
+    await Promise.all(promiseArr)
     return {
       topAd: store.getters['ad/filterTopAd'],
       bottomAd: store.getters['ad/filterBottomAd'],
       page,
-      count: 100
+      list: store.getters[`${params.category}/list`],
+      count: store.getters[`${params.category}/total`]
     }
   },
   computed: {

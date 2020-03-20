@@ -9,7 +9,10 @@ export default {
     state.rankList = list
   },
   gotList (state, list) {
-    state.rankList = list
+    state.list = list
+  },
+  gotTotal (state, total) {
+    state.total = total
   },
   gotOptions (state, options) {
     state.region = options.region

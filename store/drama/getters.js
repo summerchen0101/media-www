@@ -46,5 +46,6 @@ export default {
     title: t.title,
     episodeCount: t.episodes_count,
     episodeStatus: t.episode_status
-  }))
+  })),
+  total: state => +state.total
 }
