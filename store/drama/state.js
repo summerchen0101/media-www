@@ -18,6 +18,7 @@ export default function () {
     total: 0,
     detail: {},
     commentList: [],
-    commentTotal: 0
+    commentTotal: 0,
+    sources: []
   }
 }

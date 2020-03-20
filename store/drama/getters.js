@@ -70,5 +70,14 @@ export default {
     createdAt: t.created_at,
     content: t.contents
   })),
-  commentTotal: state => +state.commentTotal
+  commentTotal: state => +state.commentTotal,
+  sources: state => state.sources.map(t => ({
+    id: t.id,
+    name: t.title,
+    episodes: t.episode.map(e => ({
+      id: e.id,
+      title: e.title,
+      sourceUrl: e.sources_url.url
+    }))
+  }))
 }

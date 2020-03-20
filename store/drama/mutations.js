@@ -29,5 +29,8 @@ export default {
   },
   gotCommentTotal (state, total) {
     state.commentTotal = total
+  },
+  gotSources (state, list) {
+    state.sources = list
   }
 }

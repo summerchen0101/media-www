@@ -59,6 +59,7 @@ export default {
     await store.dispatch(`${query.category}/getDetail`, query.id)
     await store.dispatch(`${query.category}/getCommentList`, { id: query.id })
     await store.dispatch(`${query.category}/getCommentTotal`, { id: query.id })
+    await store.dispatch(`${query.category}/getSources`, query.id)
     return {
       rightAd: store.getters['ad/videoRightAd'],
       blockAd: store.getters['ad/videoBlockAd']

@@ -82,6 +82,12 @@ export default {
       commit('gotCommentTotal', res.data)
     }
   },
+  async getSources ({ commit }, id) {
+    const res = await this.$api[apiModule].getSources({ params: { id } })
+    if (res.code === '0') {
+      commit('gotSources', res.data)
+    }
+  },
   addToFav ({ commit }, id) {
     return this.$api[apiModule].addToFav({ media_id: id })
   },
