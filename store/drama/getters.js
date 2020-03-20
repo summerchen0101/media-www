@@ -68,7 +68,8 @@ export default {
       updateAt: _d.updated_at,
       year: _d.years.title,
       region: _d.region.name,
-      genres: _d.genres.map(t => t.title)
+      genres: _d.genres.map(t => t.title),
+      isFav: _d.my_favorite.length > 0
     }
   },
   commentList: state => state.commentList.map(t => ({
