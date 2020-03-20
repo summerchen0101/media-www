@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper">
     <div id="page-content-wrapper">
-      <Breadcrumb />
+      <Breadcrumb :title="detail.title" :category="$route.query.category" />
       <div class="page_container video_container">
         <div class="video_player_box">
           <div class="container video_player_info_title">
