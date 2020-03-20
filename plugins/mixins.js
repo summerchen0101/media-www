@@ -54,6 +54,20 @@ Vue.mixin({
     },
     resolveResource (url) {
       return url.search('http') > -1 ? url : `//resource.${process.env.BASE_URL}/${url}`
+    },
+    shareTo (type, subTitle) {
+      const url = location.href
+      let title = document.title
+      if (subTitle) {
+        title = `${title} - ${subTitle}`
+      }
+      let link
+      if (type === 'telegram') {
+        link = `https://telegram.me/share/url?url=${url}&text=${title}`
+      } else if (type === 'qq') {
+        link = `https://connect.qq.com/widget/shareqq/index.html?url=${url}&title=${title}`
+      }
+      window.open(link, '_blank', 'height=600,width=800')
     }
   }
 

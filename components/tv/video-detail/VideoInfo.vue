@@ -37,10 +37,16 @@
     <li class="share-box">
       <span class="title">分享：</span>
       <span class="txt">
-        <a href="" class="weixin"><i class="fa fa-weixin" /></a>
-        <a href="" class="twitter"><i class="fa fa-twitter" /></a>
-        <a href="" class="facebook"><i class="fa fa-facebook" /></a>
-        <a href="" class="google"><i class="fa fa-google-plus" /></a>
+        <a
+          href=""
+          class="telegram"
+          @click.prevent="shareTo('telegram', info.title)"
+        ><i class="fa fa-telegram" /></a>
+        <a
+          href=""
+          class="qq"
+          @click.prevent="shareTo('qq', info.title)"
+        ><i class="fa fa-qq" /></a>
       </span>
     </li>
   </ul>
