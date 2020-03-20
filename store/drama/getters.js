@@ -31,7 +31,10 @@ export default {
   })),
   topList: state => state.topList.map(t => ({
     id: t.id,
-    title: t.title
+    imgUrl: t.image_path,
+    title: t.title,
+    episodeCount: t.episodes_count,
+    episodeStatus: t.episode_status
   })),
   rankList: state => state.rankList.map(t => ({
     id: t.id,
@@ -53,6 +56,7 @@ export default {
     return {
       id: _d.id,
       title: _d.title,
+      views: _d.views,
       imgUrl: _d.image_path,
       episodeStatus: _d.episode_status,
       status: _d.episode_status,
@@ -79,5 +83,14 @@ export default {
       title: e.title,
       sourceUrl: e.sources_url.url
     }))
-  }))
+  })),
+  episodeBySource (state, getters) {
+    return getters.sources.reduce((obj, source) => {
+      obj[source.id] = {}
+      source.episodes.forEach((episode) => {
+        obj[source.id][episode.id] = episode
+      })
+      return obj
+    }, {})
+  }
 }

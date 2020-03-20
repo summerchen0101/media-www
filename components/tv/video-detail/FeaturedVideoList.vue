@@ -5,8 +5,9 @@
     </div>
     <div class="tv_detail_hot_select_list">
       <VideoItem
-        v-for="i in 10"
+        v-for="(video, i) in list"
         :key="i"
+        :video="video"
         :category="$route.query.category"
       />
     </div>
@@ -15,6 +16,11 @@
 <script>
 export default {
   props: {
+  },
+  computed: {
+    list () {
+      return this.$store.getters[`${this.$route.query.category}/topList`]
+    }
   },
   methods: {
   }

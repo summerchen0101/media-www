@@ -5,9 +5,7 @@
       <div v-html="desc" />
     </div>
     <ul class="hot_list">
-      <li><i class="fa fa-youtube-play" />326,365,698</li>
-      <li><a href=""><i class="fa fa-thumbs-up" />1,991,000</a></li>
-      <li><a href=""><i class="fa fa-thumbs-down" />1,025</a></li>
+      <li><i class="fa fa-youtube-play" />{{ views }}</li>
     </ul>
   </div>
 </template>
@@ -17,6 +15,10 @@ export default {
     desc: {
       type: String,
       default: () => ''
+    },
+    views: {
+      type: Number,
+      default: () => 0
     }
   },
   methods: {

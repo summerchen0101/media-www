@@ -5,13 +5,13 @@
       <div class="page_container video_container">
         <div class="video_player_box">
           <div class="container video_player_info_title">
-            {{ detail.title }}：第1集
+            {{ detail.title }}：{{ toEpisodeTitle($route.query.source, $route.query.episode ) }}
           </div>
           <div class="container video_player_container row">
             <VideoPlayer />
             <VideoInfoWrap :info="detail" />
           </div>
-          <VideoIntro :desc="detail.desc" />
+          <VideoIntro :desc="detail.desc" :views="detail.views" />
         </div>
         <div class="container tv_detail_content row">
           <div class="tv_detail_left col-xs-12 col-sm-8 col-md-9">
@@ -57,6 +57,7 @@ export default {
   async asyncData ({ store, redirect, query }) {
     await store.dispatch('ad/getAds')
     await store.dispatch(`${query.category}/getDetail`, query.id)
+    await store.dispatch(`${query.category}/getTopList`, 10)
     await store.dispatch(`${query.category}/getCommentList`, { id: query.id })
     await store.dispatch(`${query.category}/getCommentTotal`, { id: query.id })
     await store.dispatch(`${query.category}/getSources`, query.id)
@@ -71,10 +72,23 @@ export default {
   computed: {
     detail () {
       return this.$store.getters[`${this.$route.query.category}/detail`]
+    },
+    episodeBySource () {
+      return this.$store.getters[`${this.$route.query.category}/episodeBySource`]
     }
   },
   mounted () {
 
+  },
+  methods: {
+    toEpisodeTitle (source, episode) {
+      try {
+        return this.episodeBySource[source][episode].title
+      } catch (err) {
+        console.error(err)
+        return ''
+      }
+    }
   },
   head () {
     return {
