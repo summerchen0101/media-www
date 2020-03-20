@@ -4,22 +4,39 @@
       喜欢这部影片的人还喜欢
     </div>
     <div class="maybe_like_list">
-      <a v-for="i in 10" :key="i" href="" class="maybe_like_unit">
+      <nuxt-link
+        v-for="(video, i) in list"
+        :key="i"
+        :to="{name: 'tv-video-detail',
+              query: {category: $route.query.category, id: video.id}}"
+        class="maybe_like_unit"
+      >
         <div class="maybe_like_img">
-          <img src="/images/member/collect_img1.jpg" alt="">
-          <div class="maybe_like_date">2017-01-09</div>
+          <img :src="resolveResource(video.imgUrl)" alt="">
+          <!-- <div class="maybe_like_date">
+            2017-01-09
+          </div> -->
         </div>
         <div class="maybe_like_info">
-          <div class="maybe_like_title">宋仲基宋慧乔最唯美的颁奖剪辑</div>
-          <div class="maybe_like_view">播放:825,232</div>
+          <div class="maybe_like_title">
+            {{ video.title }}
+          </div>
+          <div class="maybe_like_view">
+            播放: {{ video.views }}
+          </div>
         </div>
-      </a>
+      </nuxt-link>
     </div><!-- maybe_like_list end -->
   </div><!-- maybe_like_box end -->
 </template>
 <script>
 export default {
   props: {
+  },
+  computed: {
+    list () {
+      return this.$store.getters[`${this.$route.query.category}/maybeLikeList`]
+    }
   },
   methods: {
   }

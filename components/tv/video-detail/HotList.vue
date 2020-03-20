@@ -4,12 +4,12 @@
       电视剧热播榜
     </div>
     <div class="detail_rank_list">
-      <div v-for="(item,i) in 10" :key="i">
+      <div v-for="(video,i) in list" :key="i">
         <span class="rank_num" :class="{org_num: i < 3}">{{ i+1 }}</span>
         <nuxt-link :to="{name: 'tv-video-detail'}" class="rank_title">
-          W－两个世界
+          {{ video.title }}
         </nuxt-link>
-        <span class="rank_view">253,235,896</span>
+        <span class="rank_view">{{ video.views }}</span>
       </div>
     </div>
   </div><!-- rank_box end -->
@@ -17,6 +17,11 @@
 <script>
 export default {
   props: {
+  },
+  computed: {
+    list () {
+      return this.$store.getters[`${this.$route.query.category}/topList`]
+    }
   },
   methods: {
   }
