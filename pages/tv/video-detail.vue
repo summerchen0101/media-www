@@ -55,12 +55,22 @@ export default {
     BlockAd: () => import('@/components/BlockAd')
   },
   async asyncData ({ store, redirect, query }) {
-    await store.dispatch('ad/getAds')
-    await store.dispatch(`${query.category}/getDetail`, query.id)
-    await store.dispatch(`${query.category}/getTopList`, 10)
-    await store.dispatch(`${query.category}/getCommentList`, { id: query.id })
-    await store.dispatch(`${query.category}/getCommentTotal`, { id: query.id })
     await store.dispatch(`${query.category}/getSources`, query.id)
+    const sources = store.getters[`${query.category}/sources`]
+    if (!(query.source && query.episode)) {
+      const source = sources[0].id
+      const episode = sources[0].episodes[0].id
+      redirect({ name: 'tv-video-detail', query: { ...query, source, episode } })
+    }
+    const promiseArr = [
+      store.dispatch('ad/getAds'),
+      store.dispatch(`${query.category}/getDetail`, query.id),
+      store.dispatch(`${query.category}/getTopList`, 10),
+      store.dispatch(`${query.category}/getCommentList`, { id: query.id }),
+      store.dispatch(`${query.category}/getCommentTotal`, { id: query.id })
+
+    ]
+    await Promise.all(promiseArr)
     return {
       rightAd: store.getters['ad/videoRightAd'],
       blockAd: store.getters['ad/videoBlockAd']
