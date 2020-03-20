@@ -13,7 +13,6 @@ export default function () {
 
     source: [],
     topList: [],
-    rankList: [],
     list: [],
     total: 0,
     detail: {},

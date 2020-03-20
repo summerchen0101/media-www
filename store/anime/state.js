@@ -56,7 +56,6 @@ export default function () {
       }
     ],
     source: [],
-    topList: [],
-    rankList: []
+    topList: []
   }
 }

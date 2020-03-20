@@ -38,13 +38,6 @@ export default {
     episodeStatus: t.episode_status
   })),
   maybeLikeList: (state, getters) => _.shuffle(getters.topList),
-  rankList: state => state.rankList.map(t => ({
-    id: t.id,
-    imgUrl: t.image_path,
-    title: t.title,
-    episodeCount: t.episodes_count,
-    episodeStatus: t.episode_status
-  })),
   list: state => state.list.map(t => ({
     id: t.id,
     imgUrl: t.image_path,

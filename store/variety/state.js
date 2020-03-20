@@ -8,7 +8,6 @@ export default function () {
     year: [],
     genres: [],
     source: [],
-    topList: [],
-    rankList: []
+    topList: []
   }
 }

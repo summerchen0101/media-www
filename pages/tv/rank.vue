@@ -56,11 +56,11 @@ export default {
       cates: Category
     }
     const categoryCode = query.category || data.cates[0].code
-    await store.dispatch(`${categoryCode}/getRankList`, 20)
+    await store.dispatch(`${categoryCode}/getTopList`, 20)
     return {
       ...data,
       current: data.cates.find(t => t.code === categoryCode),
-      videoList: store.getters[`${categoryCode}/rankList`]
+      videoList: store.getters[`${categoryCode}/topList`]
     }
   },
   watchQuery: true,
