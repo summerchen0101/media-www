@@ -1,9 +1,17 @@
 export default {
   ads: state => state.ads
     .reduce((obj, next) => {
-      const items = next.advertisement.filter((ad) => {
-        return ad.status === 'Y'
-      })
+      const items = next.advertisement
+        .filter((ad) => {
+          return ad.status === 'Y'
+        })
+        .map(t => ({
+          id: t.id,
+          title: t.title,
+          url: t.url,
+          imgUrl: t.image_path,
+          newWin: t.is_blank === 'Y'
+        }))
       obj[next.id] = items || []
       return obj
     }, {}),

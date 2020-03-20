@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ $store.getters['drama/test'] }}
     <div class="banner-box">
       <a
         v-for="(ad, index) in topAds"
@@ -8,11 +7,11 @@
         :title="ad.title"
         class="item"
         :href="ad.url"
-        :target="ad.is_blank == 'Y' ? '_blank' : '_self'"
+        :target="ad.newWin ? '_blank' : '_self'"
         @click="ad.url ? $api.getAdInfo({params: {id: ad.id}}) : null"
       >
-        <img :src="ad.image_url" class="show-pc">
-        <img :src="ad.image_url" alt="" class="show-mb">
+        <img :src="resolveResource(ad.imgUrl)" class="show-pc">
+        <img :src="resolveResource(ad.imgUrl)" alt="" class="show-mb">
       </a>
     </div>
     <div class="index_container">
