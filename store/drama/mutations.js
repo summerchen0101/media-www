@@ -20,5 +20,8 @@ export default {
     state.genres = options.genres
     state.lang = options.language
     state.status = options.episode_status
+  },
+  gotDetail (state, detail) {
+    state.detail = detail
   }
 }

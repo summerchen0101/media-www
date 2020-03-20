@@ -6,7 +6,7 @@
     <div class="member_video_img" :style="`background-image: url('${resolveResource(video.imgUrl)}');`" />
     <nuxt-link
       :to="{name: 'tv-video-detail',
-            query: {cate: video.category, id: video.id}}"
+            query: {category: video.category, id: video.id}}"
       class="member_video_txt"
     >
       <div class="member_video_title">

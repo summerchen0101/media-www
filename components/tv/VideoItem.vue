@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     :to="{name: 'tv-video-detail',
-          query: {id: video.id, category: category || undefined}}"
+          query: {id: video.id, category: category}}"
     class="video_unit"
   >
     <div

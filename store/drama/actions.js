@@ -55,6 +55,12 @@ export default {
       commit('gotRankList', res.data)
     }
   },
+  async getDetail ({ commit }, id) {
+    const res = await this.$api[apiModule].getDetail({ params: { id } })
+    if (res.code === '0') {
+      commit('gotDetail', res.data)
+    }
+  },
   addToFav ({ commit }, id) {
     return this.$api[apiModule].addToFav({ media_id: id })
   },
@@ -68,4 +74,5 @@ export default {
     }
     return this.$api[apiModule].addComment(data)
   }
+
 }

@@ -19,7 +19,7 @@
             <nuxt-link
               v-for="(video, i) in topList"
               :key="i"
-              :to="{name: 'tv-video-detail', query: {id: video.id}}"
+              :to="{name: 'tv-video-detail', query: {category: category, id: video.id}}"
               class=""
               href=""
             >

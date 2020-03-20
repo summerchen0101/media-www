@@ -15,6 +15,7 @@ export default function () {
     topList: [],
     rankList: [],
     list: [],
-    total: 0
+    total: 0,
+    detail: {}
   }
 }

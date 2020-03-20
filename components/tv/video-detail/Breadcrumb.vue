@@ -13,7 +13,7 @@
           </nuxt-link>
         </li> >
         <li>
-          <nuxt-link :to="{name: 'tv-video-detail'}">
+          <nuxt-link :to="$route.fullPath">
             太阳的后裔
           </nuxt-link>
         </li>

@@ -9,7 +9,12 @@
           <FilterKeys />
           <OrderByTypes />
           <div class="tv_sub_list">
-            <VideoItem v-for="(video, i) in list" :key="i" :video="video" />
+            <VideoItem
+              v-for="(video, i) in list"
+              :key="i"
+              :video="video"
+              :category="$route.params.category"
+            />
           </div>
           <BlockAd :ad="bottomAd" />
           <paginator :page="page" :count="count" @change="onPageChange" />

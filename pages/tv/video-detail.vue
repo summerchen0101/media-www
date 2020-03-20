@@ -5,13 +5,13 @@
       <div class="page_container video_container">
         <div class="video_player_box">
           <div class="container video_player_info_title">
-            太阳的后裔：第1集
+            {{ detail.title }}：第1集
           </div>
           <div class="container video_player_container row">
             <VideoPlayer />
-            <VideoInfoWrap />
+            <VideoInfoWrap :info="detail" />
           </div>
-          <VideoIntro />
+          <VideoIntro :desc="detail.desc" />
         </div>
         <div class="container tv_detail_content row">
           <div class="tv_detail_left col-xs-12 col-sm-8 col-md-9">
@@ -56,6 +56,7 @@ export default {
   },
   async asyncData ({ store, redirect, query }) {
     await store.dispatch('ad/getAds')
+    await store.dispatch(`${query.category}/getDetail`, query.id)
     return {
       rightAd: store.getters['ad/videoRightAd'],
       blockAd: store.getters['ad/videoBlockAd']
@@ -63,6 +64,11 @@ export default {
   },
   data () {
     return {}
+  },
+  computed: {
+    detail () {
+      return this.$store.getters[`${this.$route.query.category}/detail`]
+    }
   },
   mounted () {
 

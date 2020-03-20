@@ -7,7 +7,7 @@
             <h3>剧集资讯</h3>
             <AddToFavorite />
           </div>
-          <VideoInfo />
+          <VideoInfo :info="info" />
           <VideoSourceList
             :episode="$route.query.episode"
             :sources="videoSources"
@@ -25,6 +25,10 @@ export default {
     AddToFavorite: () => import('@/components/tv/video-detail/AddToFavorite')
   },
   props: {
+    info: {
+      type: Object,
+      default: () => ({})
+    }
   },
   computed: {
     videoSources () {
