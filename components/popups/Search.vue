@@ -16,13 +16,23 @@
             热门搜寻：
           </div>
           <div class="searchModal_body">
-            <a v-for="(item, i) in 10" :key="i" class="" href="">
+            <nuxt-link
+              v-for="(video, i) in topList"
+              :key="i"
+              :to="{name: 'tv-video-detail', query: {id: video.id}}"
+              class=""
+              href=""
+            >
               <div
                 class="searchModal_num"
                 :class="{first: i === 0, second: i ===1, third: i === 2}"
-              >{{ i+1 }}</div>
-              <div class="searchModal_name">雪暴</div>
-            </a>
+              >
+                {{ i+1 }}
+              </div>
+              <div class="searchModal_name">
+                {{ video.title }}
+              </div>
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -36,6 +46,28 @@ export default {
   components: {
     SearchBar: () => import('@/components/SearchBar')
   },
-  mounted () {}
+  data () {
+    return {
+      category: ''
+    }
+  },
+  computed: {
+    topList () {
+      return (this.category && this.$store.getters[`${this.category}/topList`]) || []
+    }
+  },
+  watch: {
+    $route () {
+      $('#searchModal').modal('hide')
+    }
+  },
+  mounted () {
+    this.$bus.$on('search/categoryChanged', (category) => {
+      this.category = category
+      if (this.category) {
+        this.$store.dispatch(`${this.category}/getTopList`, 10)
+      }
+    })
+  }
 }
 </script>

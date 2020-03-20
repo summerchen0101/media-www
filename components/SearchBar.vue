@@ -1,7 +1,10 @@
 <template>
   <div class="search-bar">
     <div class="search-sort">
-      <select v-model="form.category" class="form-control">
+      <select
+        v-model="form.category"
+        class="form-control"
+      >
         <option value="">
           分类
         </option>
@@ -21,29 +24,37 @@
 
 <script>
 import { Category } from '@/lib/constants/Category'
+const initForm = {
+  category: '',
+  keyword: ''
+}
 export default {
   name: 'SearchBar',
   components: {},
   data () {
     return {
       categorys: Category,
-      form: {
-        category: '',
-        keyword: ''
-      }
+      form: { ...initForm }
+    }
+  },
+  watch: {
+    'form.category' (value) {
+      this.$bus.$emit('search/categoryChanged', value)
     }
   },
   mounted () {
-
+    this.$bus.$on('search/clearForm', this.clearForm)
   },
   methods: {
+    clearForm () {
+      this.form = { ...initForm }
+    },
     onSearch () {
       if (!(this.form.category && this.form.keyword)) {
         this.$alert('分类及关键字皆为必填')
         return
       }
       this.$router.push({ name: 'tv-search-result', query: { ...this.form } })
-      $('#searchModal').modal('hide')
     }
   }
 }

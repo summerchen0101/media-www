@@ -45,6 +45,9 @@ Vue.mixin({
     },
     openSearchPopup () {
       $('#searchModal').modal('show')
+      $('#searchModal').on('hidden.bs.modal', (e) => {
+        this.$bus.$emit('search/clearForm')
+      })
     },
     onPageChange (page) {
       this.$router.push({ name: this.$route.name, query: { ...this.$route.query, p: page } })
