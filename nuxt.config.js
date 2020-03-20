@@ -114,7 +114,7 @@ module.exports = {
   */
   axios: {
     withCredentials: true,
-    baseURL: `${process.env.PROTOCOL}://${process.env.PHP_API_BASE_URL}`
+    baseURL: `${process.env.PROTOCOL}://api.${process.env.BASE_URL}`
   },
   /*
   ** Build configuration

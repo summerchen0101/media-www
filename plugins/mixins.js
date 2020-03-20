@@ -53,7 +53,7 @@ Vue.mixin({
       this.$router.push({ name: this.$route.name, query: { ...this.$route.query, p: page } })
     },
     resolveResource (url) {
-      return url.search('http') > -1 ? url : `//${process.env.RESOURCE_BASE_URL}/${url}`
+      return url.search('http') > -1 ? url : `//resource.${process.env.BASE_URL}/${url}`
     }
   }
 
