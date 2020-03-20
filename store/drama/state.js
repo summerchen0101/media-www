@@ -16,6 +16,8 @@ export default function () {
     rankList: [],
     list: [],
     total: 0,
-    detail: {}
+    detail: {},
+    commentList: [],
+    commentTotal: 0
   }
 }

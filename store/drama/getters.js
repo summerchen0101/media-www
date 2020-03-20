@@ -64,5 +64,11 @@ export default {
       region: _d.region.name,
       genres: _d.genres.map(t => t.title)
     }
-  }
+  },
+  commentList: state => state.commentList.map(t => ({
+    author: t.member.account,
+    createdAt: t.created_at,
+    content: t.contents
+  })),
+  commentTotal: state => +state.commentTotal
 }

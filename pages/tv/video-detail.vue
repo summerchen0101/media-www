@@ -20,7 +20,7 @@
             <BlockAd :ad="blockAd" />
             <VideoComment />
             <!--tv_detail_comment end-->
-            <Paginator />
+
             <!--page_list end-->
           </div>
           <div class="tv_detail_right col-xs-12 col-sm-4 col-md-3">
@@ -57,6 +57,8 @@ export default {
   async asyncData ({ store, redirect, query }) {
     await store.dispatch('ad/getAds')
     await store.dispatch(`${query.category}/getDetail`, query.id)
+    await store.dispatch(`${query.category}/getCommentList`, { id: query.id })
+    await store.dispatch(`${query.category}/getCommentTotal`, { id: query.id })
     return {
       rightAd: store.getters['ad/videoRightAd'],
       blockAd: store.getters['ad/videoBlockAd']

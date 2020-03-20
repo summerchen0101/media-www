@@ -23,5 +23,11 @@ export default {
   },
   gotDetail (state, detail) {
     state.detail = detail
+  },
+  gotCommentList (state, list) {
+    state.commentList = list
+  },
+  gotCommentTotal (state, total) {
+    state.commentTotal = total
   }
 }

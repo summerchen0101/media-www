@@ -1,18 +1,18 @@
 <template>
   <div class="comment_list">
-    <div v-for="i in 4" :key="i" class="comment_unit">
+    <div v-for="(item, i) in list" :key="i" class="comment_unit">
       <div class="comment_img">
-        <img src="/images/tv_korea_detail/comment_img2.jpg" alt="">
+        <img src="/images/tv_korea_detail/comment_img.jpg" alt="">
       </div>
       <div class="comment_txt">
         <div class="comment_user">
-          <a href="" class="user_name">Sunny</a>：
+          <a href="" class="user_name">{{ item.author }}</a>：
         </div>
         <div class="comment_user_talk">
-          以美丽的南国风光为背景展开，是一部通过处在陌生且极其恶劣环境中渴望爱情和成功的年轻军人和医生的生活
+          {{ item.content }}
         </div>
         <div class="user_post_time">
-          2017-02-23 18:30
+          {{ item.createdAt }}
         </div>
       </div>
     </div>
@@ -21,6 +21,11 @@
 <script>
 export default {
   props: {
+  },
+  computed: {
+    list () {
+      return this.$store.getters[`${this.$route.query.category}/commentList`]
+    }
   },
   methods: {
   }

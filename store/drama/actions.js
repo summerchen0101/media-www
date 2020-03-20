@@ -1,3 +1,4 @@
+import { perpage as commentPerpage } from '@/components/tv/video-detail/VideoComment.vue'
 const apiModule = 'DRAMA'
 export default {
   async getOptions ({ commit }) {
@@ -59,6 +60,26 @@ export default {
     const res = await this.$api[apiModule].getDetail({ params: { id } })
     if (res.code === '0') {
       commit('gotDetail', res.data)
+    }
+  },
+  async getCommentList ({ commit }, _d) {
+    const data = {
+      media_id: _d.id,
+      page: _d.page || 1,
+      perpage: commentPerpage
+    }
+    const res = await this.$api[apiModule].getCommentList({ params: data })
+    if (res.code === '0') {
+      commit('gotCommentList', res.data)
+    }
+  },
+  async getCommentTotal ({ commit }, _d) {
+    const data = {
+      media_id: _d.id
+    }
+    const res = await this.$api[apiModule].getCommentTotal({ params: data })
+    if (res.code === '0') {
+      commit('gotCommentTotal', res.data)
     }
   },
   addToFav ({ commit }, id) {
