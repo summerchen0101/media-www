@@ -70,7 +70,6 @@ module.exports = {
     '@/plugins/components',
     '@/plugins/axios',
     '@/plugins/apiHub',
-    '@/plugins/enum',
     '@/plugins/mixins',
     '@/plugins/filters'
   ],

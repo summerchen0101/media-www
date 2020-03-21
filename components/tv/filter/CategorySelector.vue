@@ -9,7 +9,7 @@
         aria-haspopup="true"
         aria-expanded="true"
       >
-        {{ $enum('Category', $route.params.category) }}
+        {{ $route.params.category | enum('Category') }}
         <span class="caret" />
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">

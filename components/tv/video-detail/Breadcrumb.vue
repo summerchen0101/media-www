@@ -9,7 +9,7 @@
         </li> >
         <li>
           <nuxt-link :to="{name: 'tv-filter-category', params: {category: category}}">
-            {{ $enum('Category', category) }}
+            {{ category | enum('Category') }}
           </nuxt-link>
         </li> >
         <li>

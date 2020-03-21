@@ -8,7 +8,12 @@
       aria-haspopup="true"
       aria-expanded="true"
     >
-      {{ $route.query.category ? $enum('Category', $route.query.category) : '全部' }}
+      <template v-if="$route.query.category">
+        {{ $route.query.category | enum('Category') }}
+      </template>
+      <template v-else>
+        全部
+      </template>
       <span class="caret" />
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
