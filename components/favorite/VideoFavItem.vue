@@ -13,7 +13,7 @@
         {{ video.title }}
       </div>
       <!-- <div class="member_video_view">
-        {{video.category | enum('Category')}}
+        {{video.category | enum('category')}}
       </div> -->
     </nuxt-link>
   </div>

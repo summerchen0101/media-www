@@ -9,7 +9,7 @@
       aria-expanded="true"
     >
       <template v-if="$route.query.category">
-        {{ $route.query.category | enum('Category') }}
+        {{ $route.query.category | enum('category') }}
       </template>
       <template v-else>
         全部
