@@ -8,16 +8,8 @@
       :to="{...$route, query: {...$route.query, orderBy: type}}"
       :class="{select: i === 0 && !$route.query.orderBy}"
     >
-      {{ $enum('OrderType', type) }}
+      {{ type | enum(`${$route.params.category}OrderType`) }}
     </nuxt-link>
-    <!-- <a
-      v-for="(t,i) in types"
-      :key="i"
-      href=""
-      :class="$route.query.orderBy === t"
-    >最具人气</a>
-    <a href="">最多评论</a>
-    <a href="">最新发佈</a> -->
   </div>
 </template>
 <script>
