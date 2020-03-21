@@ -9,13 +9,13 @@
       </div>
       <div class="rank_list">
         <nuxt-link
-          v-for="(item,i) in topList"
+          v-for="(video,i) in topList"
           :key="i"
-          :to="{name: 'tv-video-detail', query: {id: item.id}}"
+          :to="{name: 'tv-video-detail', query: {category: category, id: video.id}}"
           class="rank_unit"
           :class="{'first_unit': i+1 === 1}"
         >
-          <i :class="{first: i+1 === 1, second: i+1 === 2, third: i+1 === 3}">{{ i+1 }}</i><span>{{ item.title }}</span>
+          <i :class="{first: i+1 === 1, second: i+1 === 2, third: i+1 === 3}">{{ i+1 }}</i><span>{{ video.title }}</span>
           </a>
         </nuxt-link>
       </div>

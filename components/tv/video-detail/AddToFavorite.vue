@@ -10,12 +10,21 @@
 <script>
 export default {
   props: {
+    isFav: {
+      type: Boolean,
+      default: () => false
+    }
   },
   data () {
     return {
       category: this.$route.query.category,
       id: this.$route.query.id,
       isActive: false
+    }
+  },
+  watch: {
+    isFav (val) {
+      this.isActive = val
     }
   },
   methods: {

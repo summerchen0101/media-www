@@ -71,7 +71,8 @@ module.exports = {
     '@/plugins/axios',
     '@/plugins/apiHub',
     '@/plugins/enum',
-    '@/plugins/mixins'
+    '@/plugins/mixins',
+    '@/plugins/filters'
   ],
   /*
   ** Nuxt.js dev-modules

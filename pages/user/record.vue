@@ -2,9 +2,9 @@
   <div class="member_right col-xs-12 col-sm-9 col-md-9">
     <div class="member_head">
       <TypeSelector />
-      <!-- <button @click="addRecord">
+      <button @click="addRecord">
         ADD(test)
-      </button> -->
+      </button>
       <ClearBtn :count="count" :category="$route.query.category" @clear="count = 0" />
     </div>
     <VideoRecordList :list="list" />

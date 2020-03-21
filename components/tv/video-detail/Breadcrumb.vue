@@ -8,13 +8,13 @@
           </nuxt-link>
         </li> >
         <li>
-          <nuxt-link :to="{name: 'tv-filter-category', params: {category: 'drama'}}">
-            电视剧
+          <nuxt-link :to="{name: 'tv-filter-category', params: {category: category}}">
+            {{ $enum('Category', category) }}
           </nuxt-link>
         </li> >
         <li>
-          <nuxt-link :to="{name: 'tv-video-detail'}">
-            太阳的后裔
+          <nuxt-link :to="$route.fullPath">
+            {{ title }}
           </nuxt-link>
         </li>
       </ul>
@@ -24,6 +24,14 @@
 <script>
 export default {
   props: {
+    title: {
+      type: String,
+      default: () => ''
+    },
+    category: {
+      type: String,
+      default: () => ''
+    }
   },
   methods: {
   }

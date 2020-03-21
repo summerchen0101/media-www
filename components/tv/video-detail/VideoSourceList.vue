@@ -5,8 +5,7 @@
         v-for="(source, index) in sources"
         :key="index"
         :index="index"
-        :info="source"
-        :episode="episode"
+        :source="source"
       />
     </div>
   </div>
@@ -17,13 +16,10 @@ export default {
     VideoSourceItem: () => import('@/components/tv/video-detail/VideoSourceItem')
   },
   props: {
-    episode: {
-      type: Number,
-      default: () => 1
-    },
-    sources: {
-      type: Array,
-      default: () => []
+  },
+  computed: {
+    sources () {
+      return this.$store.getters[`${this.$route.query.category}/sources`]
     }
   },
   methods: {

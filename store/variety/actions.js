@@ -13,12 +13,6 @@ export default {
       commit('gotTopList', res.data)
     }
   },
-  async getRankList ({ commit }, num = 10) {
-    const res = await this.$api[apiModule].getTopList({ params: { top_count: num } })
-    if (res.code === '0') {
-      commit('gotRankList', res.data)
-    }
-  },
   addToFav ({ commit }, id) {
     return this.$api[apiModule].addToFav({ media_id: id })
   },

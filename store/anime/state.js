@@ -2,7 +2,7 @@ export default function () {
   return {
     latestList: [],
     filterTypes: ['region', 'lang', 'year', 'genres'],
-    orderTypes: ['popular', 'comments', 'latest'],
+    orderTypes: ['hot', 'comment', 'new'],
     region: [
       {
         label: '台灣',
@@ -56,7 +56,6 @@ export default function () {
       }
     ],
     source: [],
-    topList: [],
-    rankList: []
+    topList: []
   }
 }

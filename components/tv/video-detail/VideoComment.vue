@@ -28,9 +28,16 @@
       </div>
     </div>
     <CommentList />
+    <Paginator
+      :page="page"
+      :perpage="perpage"
+      :count="count"
+      @change="onPageChange"
+    />
   </div>
 </template>
 <script>
+export const perpage = 5
 export default {
   components: {
     CommentList: () => import('@/components/tv/video-detail/CommentList')
@@ -42,7 +49,9 @@ export default {
       category: this.$route.query.category,
       id: this.$route.query.id,
       maxLength: 140,
-      comment: ''
+      comment: '',
+      page: 1,
+      perpage
     }
   },
   computed: {
@@ -50,9 +59,20 @@ export default {
       return this.maxLength - this.comment.length > 0
         ? this.maxLength - this.comment.length
         : 0
+    },
+    count () {
+      return this.$store.getters[`${this.$route.query.category}/commentTotal`]
     }
   },
   methods: {
+    async onPageChange (page) {
+      this.page = page
+      this.$nuxt.$loading.start()
+      await this.$store.dispatch(`${this.category}/getCommentList`,
+        { id: this.$route.query.id, page: this.page, perpage })
+      await this.$store.dispatch(`${this.category}/getCommentTotal`, { id: this.$route.query.id })
+      this.$nuxt.$loading.finish()
+    },
     async handleSubmit (e) {
       e.target.blur()
       if (!this.comment) { return }
@@ -65,6 +85,8 @@ export default {
         this.comment = ''
       }
       e.target.blur()
+      await this.$store.dispatch(`${this.category}/getCommentList`, { id: this.$route.query.id, perpage })
+      await this.$store.dispatch(`${this.category}/getCommentTotal`, { id: this.$route.query.id })
     }
   }
 }

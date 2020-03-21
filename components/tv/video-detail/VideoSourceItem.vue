@@ -10,18 +10,25 @@
           aria-expanded="false"
           :aria-controls="`collapse${index}`"
         >
-          <i class="fa fa-youtube-play" /> 播放位置{{ index+1 }}
+          <i class="fa fa-youtube-play" /> {{ source.name }}
         </a>
       </h4>
     </div>
     <div :id="`collapse${index}`" class="panel-collapse collapse" role="tabpanel" :aria-labelledby="`heading${index}`">
       <div class="panel-body">
-        <a
-          v-for="(item, i) in info.episodeList"
+        <span v-if="source.episodes.length === 0">(空)</span>
+        <nuxt-link
+          v-for="(episode, i) in source.episodes"
           :key="i"
-          href=""
-          :class="{active: episode === i+1}"
-        >第{{ i+1 }}集</a>
+          active-class="active"
+          exact
+          :to="{...$route, query: {...$route.query,
+                                   source: source.id,
+                                   episode: episode.id}}"
+          :class="{active: episode.id === $route.query.episode}"
+        >
+          {{ episode.title }}
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -29,11 +36,7 @@
 <script>
 export default {
   props: {
-    episode: {
-      type: Number,
-      default: () => 1
-    },
-    info: {
+    source: {
       type: Object,
       default: () => ({})
     },

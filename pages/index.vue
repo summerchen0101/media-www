@@ -83,7 +83,12 @@
           <!--head_title end-->
           <div class="index_contentBox index_contentBox_column">
             <div class="index_movie_list">
-              <VideoItem v-for="(video, i) in varietyList" :key="i" :video="video" category="variety" />
+              <VideoItem
+                v-for="(video, i) in varietyList"
+                :key="i"
+                :video="video"
+                category="variety"
+              />
             </div>
             <!--index_tv_list end-->
             <RankBox category="variety" />
