@@ -6,7 +6,11 @@
     <div class="detail_rank_list">
       <div v-for="(video,i) in list" :key="i">
         <span class="rank_num" :class="{org_num: i < 3}">{{ i+1 }}</span>
-        <nuxt-link :to="{name: 'tv-video-detail'}" class="rank_title">
+        <nuxt-link
+          :to="{name: 'tv-video-detail',
+                query: {category: $route.query.category, id: video.id}}"
+          class="rank_title"
+        >
           {{ video.title }}
         </nuxt-link>
         <span class="rank_view">{{ video.views }}</span>

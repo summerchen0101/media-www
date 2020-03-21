@@ -11,7 +11,7 @@
         <nuxt-link
           v-for="(video,i) in topList"
           :key="i"
-          :to="{name: 'tv-video-detail', query: {category: video.category, id: video.id}}"
+          :to="{name: 'tv-video-detail', query: {category: category, id: video.id}}"
           class="rank_unit"
           :class="{'first_unit': i+1 === 1}"
         >
