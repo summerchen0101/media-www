@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { FilterType } from '@/lib/constants/FilterType'
+import { FilterType } from '@/lib/constants'
 export default {
   name: 'FilterPage',
   components: {

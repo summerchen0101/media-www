@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { Category } from '@/lib/constants/Category'
+import { Category } from '@/lib/constants'
 const perpage = 20
 export default {
   name: 'SearchResult',

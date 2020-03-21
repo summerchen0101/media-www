@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { Category } from '@/lib/constants/Category'
+import { Category } from '@/lib/constants'
 export default {
   name: 'TypeSelector',
   data () {
