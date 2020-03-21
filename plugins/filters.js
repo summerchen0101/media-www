@@ -8,10 +8,12 @@ export const capitalize = (val) => {
   val = val.toString()
   return val.charAt(0).toUpperCase() + val.slice(1)
 }
-export const enumMap = (code, cate) => {
+export const enumMap = (code, cate, category) => {
   const _cate = capitalize(cate)
-  console.log(code, _cate)
   const i = consts[_cate] && consts[_cate].findIndex(t => t.code === code)
+  if (category) {
+    return i > -1 ? consts[_cate][category][i].label : '?'
+  }
   return i > -1 ? consts[_cate][i].label : '?'
 }
 
