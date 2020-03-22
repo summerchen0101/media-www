@@ -31,7 +31,7 @@ export default {
   topList: state => state.topList.map(t => ({
     id: t.id,
     imgUrl: t.image_path,
-    title: t.title,
+    title: t.name,
     views: t.views,
     episodeCount: t.episodes_count,
     episodeStatus: t.episode_status
@@ -40,7 +40,7 @@ export default {
   list: state => state.list.map(t => ({
     id: t.id,
     imgUrl: t.image_path,
-    title: t.title,
+    title: t.name,
     episodeCount: t.episodes_count,
     episodeStatus: t.episode_status
   })),
