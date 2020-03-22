@@ -5,7 +5,7 @@
       <div class="page_container video_container">
         <div class="video_player_box">
           <div class="container video_player_info_title">
-            {{ detail.title }}：{{ toEpisodeTitle($route.query.source, $route.query.episode ) }}
+            {{ detail.title }}：{{ episodeTitle }}
           </div>
           <div class="container video_player_container row">
             <VideoPlayer />
@@ -54,14 +54,18 @@ export default {
     Breadcrumb: () => import('@/components/tv/video-detail/Breadcrumb'),
     BlockAd: () => import('@/components/BlockAd')
   },
-  async asyncData ({ store, redirect, query }) {
+  async middleware ({ store, redirect, query }) {
     await store.dispatch(`${query.category}/getSources`, query.id)
     const sources = store.getters[`${query.category}/sources`]
-    if (!(query.source && query.episode)) {
+    const episodeBySource = store.getters[`${query.category}/episodeBySource`]
+    if (!(episodeBySource[query.source] && episodeBySource[query.source][query.episode])) {
       const source = sources[0].id
       const episode = sources[0].episodes[0].id
       redirect({ name: 'tv-video-detail', query: { ...query, source, episode } })
     }
+  },
+  async asyncData ({ store, redirect, query }) {
+    const episodeBySource = store.getters[`${query.category}/episodeBySource`]
     const promiseArr = [
       store.dispatch('ad/getAds'),
       store.dispatch(`${query.category}/getDetail`, query.id),
@@ -73,7 +77,8 @@ export default {
     await Promise.all(promiseArr)
     return {
       rightAd: store.getters['ad/videoRightAd'],
-      blockAd: store.getters['ad/videoBlockAd']
+      blockAd: store.getters['ad/videoBlockAd'],
+      episodeTitle: episodeBySource[query.source][query.episode].title
     }
   },
   data () {
@@ -82,23 +87,12 @@ export default {
   computed: {
     detail () {
       return this.$store.getters[`${this.$route.query.category}/detail`]
-    },
-    episodeBySource () {
-      return this.$store.getters[`${this.$route.query.category}/episodeBySource`]
     }
   },
   mounted () {
 
   },
   methods: {
-    toEpisodeTitle (source, episode) {
-      try {
-        return this.episodeBySource[source][episode].title
-      } catch (err) {
-        console.error(err)
-        return ''
-      }
-    }
   },
   head () {
     return {
