@@ -4,7 +4,13 @@ export default ({ app, store, route, $axios, redirect, error, req }) => {
   $axios.onRequest((config) => {
     const requestConfig = {
       ...config,
-      url: config.url.replace(/\$\{\s*([$#@\-\d\w]+)\s*\}/gim, (v, val) => config.data[val])
+      url: config.url.replace(/\{\s*([$#@\-\d\w]+)\s*\}/gim, (v, val) => {
+        if (config.data) {
+          return config.data[val]
+        } else {
+          return config.params[val]
+        }
+      })
     }
     if (process.server) {
       requestConfig.headers.Referer = `${process.env.PROTOCOL}://${req.headers.host}`

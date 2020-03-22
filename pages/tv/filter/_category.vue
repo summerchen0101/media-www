@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { FilterType } from '@/lib/constants'
+import { FilterType, OrderType } from '@/lib/constants'
 export default {
   name: 'FilterPage',
   components: {
@@ -41,6 +41,14 @@ export default {
   watchQuery: true,
   key: to => to.fullPath,
   async asyncData ({ store, redirect, query, params }) {
+    if (!query.orderBy) {
+      redirect({
+        name: 'tv-filter-category',
+        params,
+        query: { ...query, orderBy: OrderType[params.category][0].code }
+      })
+      return
+    }
     const page = +query.p || 1
     const data = {
       ...query,
