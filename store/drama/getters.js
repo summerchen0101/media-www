@@ -1,4 +1,4 @@
-import { EpisodeStatus } from '@/lib/constants/EpisodeStatus'
+import { EpisodeStatus } from '@/lib/constants'
 export default {
   latestList: state => state.latestList.map(t => ({
     id: t.id,
@@ -8,7 +8,6 @@ export default {
     episodeStatus: t.episode_status
   })),
   filterTypes: state => state.filterTypes,
-  orderTypes: state => state.orderTypes,
   region: state => state.region.map(t => ({
     id: t.id,
     label: t.name

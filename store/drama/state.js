@@ -2,7 +2,6 @@ export default function () {
   return {
     latestList: [],
     filterTypes: ['region', 'year', 'genres', 'lang', 'status'],
-    orderTypes: ['hot', 'comment', 'new'],
 
     // 搜尋項目
     region: [],

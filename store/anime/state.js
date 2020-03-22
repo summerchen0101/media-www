@@ -2,7 +2,6 @@ export default function () {
   return {
     latestList: [],
     filterTypes: ['region', 'lang', 'year', 'genres'],
-    orderTypes: ['hot', 'comment', 'new'],
     region: [
       {
         label: '台灣',
