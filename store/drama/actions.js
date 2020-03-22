@@ -13,7 +13,7 @@ export default {
       years_id: _d.year,
       region_id: _d.region,
       language_id: _d.lang,
-      genres_ids: _d.type,
+      genres_ids: _d.genres,
       episode_status: _d.status,
       page: _d.page,
       perpage: _d.perpage
@@ -29,7 +29,7 @@ export default {
       years_id: _d.year,
       region_id: _d.region,
       language_id: _d.lang,
-      genres_ids: _d.type,
+      genres_ids: _d.genres,
       episode_status: _d.status
     }
     const res = await this.$api[apiModule].getTotal({ params: data })
