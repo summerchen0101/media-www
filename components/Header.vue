@@ -89,6 +89,22 @@ export default {
       cates: Category
     }
   },
-  mounted () {}
+  watch: {
+    $route: 'hidenMobileMenu'
+  },
+  mounted () {
+    $('.navbar-hamburger').click(this.hidenMobileMenu)
+    $('.menuBg').click(this.hidenMobileMenu)
+    const wdth = $(window).width()
+    const leftPos = ($('.menuBar').width() - $('.container').width())
+    $('.nav-content li ul.dropdown').width(wdth).css({ left: -leftPos / 2, 'padding-left': leftPos / 2 })
+  },
+  methods: {
+    hidenMobileMenu () {
+      $('.nav-content').toggleClass('visible')
+      $('.menuBg').toggleClass('cover-bg')
+      $('body').toggleClass('menu_open_body')
+    }
+  }
 }
 </script>
