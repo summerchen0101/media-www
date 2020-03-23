@@ -5,7 +5,7 @@
         <div id="" class="tab_intro">
           <div class="tab_head">
             <h3>剧集资讯</h3>
-            <AddToFavorite :is-fav="info.isFav" />
+            <AddToFavorite />
           </div>
           <VideoInfo :info="info" />
           <VideoSourceList
