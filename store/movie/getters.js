@@ -84,5 +84,6 @@ export default {
       })
       return obj
     }, {})
-  }
+  },
+  isFav: state => state.isFav
 }

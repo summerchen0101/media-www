@@ -118,5 +118,17 @@ export default {
     if (res.code === '0') {
       commit('gotSources', res.data)
     }
+  },
+  async get ({ commit }, id) {
+    const res = await this.$api[apiModule].getSources({ params: { id } })
+    if (res.code === '0') {
+      commit('gotSources', res.data)
+    }
+  },
+  async getFavStatus ({ commit }, id) {
+    const res = await this.$api[apiModule].getFavStatus({ params: { id } })
+    if (res.code === '0') {
+      commit('gotFavStatus', res.data)
+    }
   }
 }

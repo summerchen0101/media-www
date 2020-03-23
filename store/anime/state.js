@@ -17,6 +17,8 @@ export default function () {
     detail: {},
     commentList: [],
     commentTotal: 0,
-    sources: []
+    sources: [],
+
+    isFav: false
   }
 }

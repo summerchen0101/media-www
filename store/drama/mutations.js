@@ -29,5 +29,8 @@ export default {
   },
   gotSources (state, list) {
     state.sources = list
+  },
+  gotFavStatus (state, boolean) {
+    state.isFav = boolean
   }
 }

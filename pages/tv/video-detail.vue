@@ -68,7 +68,7 @@ export default {
     const episodeBySource = store.getters[`${query.category}/episodeBySource`]
     const promiseArr = [
       store.dispatch('ad/getAds'),
-      store.dispatch('favorite/check', query.id),
+      store.dispatch(`${query.category}/getFavStatus`, query.id),
       store.dispatch(`${query.category}/getDetail`, query.id),
       store.dispatch(`${query.category}/getTopList`, 10),
       store.dispatch(`${query.category}/getCommentList`, { id: query.id }),

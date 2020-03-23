@@ -17,7 +17,7 @@ export default {
     }
   },
   mounted () {
-    this.isActive = this.$store.getters['favorite/isFav']
+    this.isActive = this.$store.getters[`${this.category}/isFav`]
   },
   methods: {
     async handleFavClicked () {

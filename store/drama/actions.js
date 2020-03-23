@@ -94,6 +94,12 @@ export default {
       contents: comment
     }
     return this.$api[apiModule].addComment(data)
+  },
+  async getFavStatus ({ commit }, id) {
+    const res = await this.$api[apiModule].getFavStatus({ params: { media_id: id } })
+    if (res.code === '0') {
+      commit('gotFavStatus', res.data.my_favorite.length > 0)
+    }
   }
 
 }

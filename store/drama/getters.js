@@ -4,8 +4,8 @@ export default {
     id: t.id,
     imgUrl: t.image_path,
     title: t.title,
-    episodeCount: t.episodes_count,
-    episodeStatus: t.episode_status
+    episodeStatus: t.episode_status,
+    latestEpisode: _.orderBy(t.episodes, 'opening_time', 'desc')[0].title
   })),
   filterTypes: state => state.filterTypes,
   region: state => state.region.map(t => ({
@@ -33,8 +33,8 @@ export default {
     imgUrl: t.image_path,
     title: t.title,
     views: t.views,
-    episodeCount: t.episodes_count,
-    episodeStatus: t.episode_status
+    episodeStatus: t.episode_status,
+    latestEpisode: _.orderBy(t.episodes, 'opening_time', 'desc')[0].title
   })),
   maybeLikeList: (state, getters) => _.shuffle(getters.topList),
   list: state => state.list.map(t => ({
@@ -86,5 +86,6 @@ export default {
       })
       return obj
     }, {})
-  }
+  },
+  isFav: state => state.isFav
 }

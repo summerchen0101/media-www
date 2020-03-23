@@ -7,6 +7,5 @@ export default {
     title: t.media.name || t.media.title,
     category: t.media_type
   })),
-  total: state => +state.total,
-  isFav: state => state.isFav
+  total: state => +state.total
 }
