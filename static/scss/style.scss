@@ -228,6 +228,7 @@ input:focus{
 	.search{
 		&-bar{
 			display: flex;
+			flex-wrap: wrap;
 		}
 		&-sort{
 			width: 80px;
