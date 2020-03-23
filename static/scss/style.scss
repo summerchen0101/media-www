@@ -1106,17 +1106,17 @@ ul.page_tabs li.active {
 		&:nth-child(4n+4){
 			margin-right: 0;
 		}
-		&:nth-child(n+9){
-			display: none;
-		}
+		// &:nth-child(n+9){
+		// 	display: none;
+		// }
 		&.index_slide_unit{
 			margin: 0 7px 15px;
 			&:nth-child(4n+4){
 				margin-right: 7px;
 			}
-			&:nth-child(n+9){
-				display: block;
-			}
+			// &:nth-child(n+9){
+			// 	display: block;
+			// }
 		}
 	}
 	@media(max-width:575px){
@@ -1127,12 +1127,12 @@ ul.page_tabs li.active {
 		&:nth-child(4n+4){
 			margin-right: 15px;
 		}
-		&:nth-child(n+9){
-			display: block;
-		}
-		&:nth-child(n+10){
-			display: none;
-		}
+		// &:nth-child(n+9){
+		// 	display: block;
+		// }
+		// &:nth-child(n+10){
+		// 	display: none;
+		// }
 		&.index_slide_unit{
 			&:nth-child(3n+3){
 				margin-right: 7px;
@@ -1150,9 +1150,9 @@ ul.page_tabs li.active {
 		&:nth-child(6n+6){
 			margin-right: 0;
 		}
-		&:nth-child(n+10){
-			display: block;
-		}
+		// &:nth-child(n+10){
+		// 	display: block;
+		// }
 		&.index_slide_unit{
 			&:nth-child(2n+2), &:nth-child(6n+6){
 				margin-right: 7px;
