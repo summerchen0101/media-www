@@ -11,5 +11,8 @@ export default {
   },
   removeById (state, id) {
     state.list = state.list.filter(t => t.id !== id)
+  },
+  gotFavStatus (state, boolean) {
+    state.isFav = boolean
   }
 }

@@ -2,6 +2,7 @@ export default () => {
   return {
     types: [],
     list: [],
-    total: 0
+    total: 0,
+    isFav: false
   }
 }

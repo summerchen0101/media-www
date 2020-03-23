@@ -9,12 +9,6 @@
 </template>
 <script>
 export default {
-  props: {
-    isFav: {
-      type: Boolean,
-      default: () => false
-    }
-  },
   data () {
     return {
       category: this.$route.query.category,
@@ -23,7 +17,7 @@ export default {
     }
   },
   mounted () {
-    this.isActive = this.isFav
+    this.isActive = this.$store.getters['favorite/isFav']
   },
   methods: {
     async handleFavClicked () {

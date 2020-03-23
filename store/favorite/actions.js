@@ -40,5 +40,12 @@ export default {
       commit('removeAll')
       this.$router.app.$message('刪除成功')
     }
+  },
+  async check ({ commit, rootState }, id) {
+    if (!rootState.auth.loggedIn) { return }
+    const res = await this.$api[apiModule].check({ params: { media_id: id } })
+    if (res.code === '0') {
+      commit('gotFavStatus', res.data)
+    }
   }
 }
