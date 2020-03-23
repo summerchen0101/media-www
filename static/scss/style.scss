@@ -235,7 +235,8 @@ input:focus{
 			padding-right: 5px;
 		}
 		&-input{
-			flex: 1;
+			width: calc(100% - 80px);
+			display: flex;
 		}
 	}
 	h4{
@@ -250,11 +251,15 @@ input:focus{
 		}
 		&-body{
 			.input-group-addon{
+				width: 30px;
 				background-color: #ff443f;
 				border: 1px solid #ff443f;;
 			}
 			i{
 				color:#fff;
+				position: relative;
+				left: -4px;
+				top: 2px;
 			}
 		}
 	}
