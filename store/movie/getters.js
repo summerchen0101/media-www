@@ -4,7 +4,6 @@ export default {
       id: t.id,
       imgUrl: t.image_path,
       title: t.name,
-      episodeCount: t.episodes_count,
       episodeStatus: t.episode_status
     }))
     .value(),
@@ -33,7 +32,6 @@ export default {
     imgUrl: t.image_path,
     title: t.name,
     views: t.views,
-    episodeCount: t.episodes_count,
     episodeStatus: t.episode_status
   })),
   maybeLikeList: (state, getters) => _.shuffle(getters.topList),
@@ -41,7 +39,6 @@ export default {
     id: t.id,
     imgUrl: t.image_path,
     title: t.name,
-    episodeCount: t.episodes_count,
     episodeStatus: t.episode_status
   })),
   total: state => +state.total,

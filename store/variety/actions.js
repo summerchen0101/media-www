@@ -1,3 +1,4 @@
+import { perpage as commentPerpage } from '@/components/tv/video-detail/VideoComment.vue'
 const apiModule = 'VARIETY'
 export default {
   async getLatestList ({ commit }) {
@@ -25,5 +26,80 @@ export default {
       contents: comment
     }
     return this.$api[apiModule].addComment(data)
+  },
+  async getOptions ({ commit }) {
+    const res = await this.$api[apiModule].getOptions()
+    if (res.code === '0') {
+      commit('gotOptions', res.data)
+    }
+  },
+  async getList ({ commit }, _d) {
+    const data = {
+      sort: _d.orderBy,
+      years_id: _d.year,
+      region_id: _d.region,
+      language_id: _d.lang,
+      genres_id: _d.genres,
+      episode_status: _d.status,
+      page: _d.page,
+      perpage: _d.perpage
+    }
+    const res = await this.$api[apiModule].getList({ params: data })
+    if (res.code === '0') {
+      commit('gotList', res.data)
+    }
+  },
+  async getTotal ({ commit }, _d) {
+    const data = {
+      sort: _d.orderBy,
+      years_id: _d.year,
+      region_id: _d.region,
+      language_id: _d.lang,
+      genres_id: _d.genres,
+      episode_status: _d.status
+    }
+    const res = await this.$api[apiModule].getTotal({ params: data })
+    if (res.code === '0') {
+      commit('gotTotal', res.data)
+    }
+  },
+  async getDetail ({ commit }, id) {
+    const res = await this.$api[apiModule].getDetail({ params: { id } })
+    if (res.code === '0') {
+      commit('gotDetail', res.data)
+    }
+  },
+  async getCommentList ({ commit }, _d) {
+    const data = {
+      variety_id: _d.id,
+      page: _d.page || 1,
+      perpage: commentPerpage
+    }
+    const res = await this.$api[apiModule].getCommentList({ params: data })
+    if (res.code === '0') {
+      commit('gotCommentList', res.data.comments)
+    }
+  },
+  async getCommentTotal ({ commit }, _d) {
+    const data = {
+      variety_id: _d.id
+    }
+    const res = await this.$api[apiModule].getCommentTotal({ params: data })
+    if (res.code === '0') {
+      commit('gotCommentTotal', res.data)
+    }
+  },
+  async getSources ({ commit }, id) {
+    const res = await this.$api[apiModule].getSources({ params: { id } })
+    if (res.code === '0') {
+      commit('gotSources', res.data)
+    }
+  },
+  async getFavStatus ({ commit, rootState }, id) {
+    if (!rootState.auth.loggedIn) { return }
+    const res = await this.$api[apiModule].getFavStatus({ params: { id } })
+    if (res.code === '0') {
+      commit('gotFavStatus', res.data)
+    }
   }
 }
