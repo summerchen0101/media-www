@@ -199,6 +199,20 @@ ul.page_tabs.video_play_side_tabs li.active {
   line-height: 20px;
 }
 
+.share-box a.qq {
+  background-color: #e31a26;
+}
+
+.share-box a.telegram {
+  background-color: #1c96c8;
+}
+
+.share-box a.telegram i {
+  position: relative;
+  top: 1px;
+  left: -1px;
+}
+
 .share-box a.weixin {
   background-color: #4fbd31;
 }

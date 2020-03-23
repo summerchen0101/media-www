@@ -172,7 +172,17 @@ ul.page_tabs.video_play_side_tabs {
         align-items: center;
         justify-content: center;
         line-height: 20px;
-    
+        &.qq{
+            background-color: #e31a26;
+        }
+        &.telegram{
+            background-color: #1c96c8;
+            i{
+                position: relative;
+                top: 1px;
+                left: -1px;
+            }
+        }
         &.weixin{
             background-color: #4fbd31;
         }
