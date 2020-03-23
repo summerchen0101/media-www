@@ -84,7 +84,7 @@ export default {
     onSearch (e) {
       e.target.blur()
       if (!(this.form.category && this.form.keyword)) {
-        this.$alert('分类及关键字皆为必填')
+        this.$alert('请选择分类及输入关键字必填')
         return
       }
       this.$router.push({ name: 'tv-search-result', query: { ...this.form, t: new Date().getTime() } })

@@ -3,7 +3,7 @@ export default {
   list: state => state.list.map(t => ({
     id: t.id,
     imgUrl: t.image_path,
-    title: t.title,
+    title: t.title || t.name,
     category: t.media_type
   })),
   total: state => +state.total
