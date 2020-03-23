@@ -1,15 +1,10 @@
+import { perpage as commentPerpage } from '@/components/tv/video-detail/VideoComment.vue'
 const apiModule = 'ANIME'
 export default {
   async getLatestList ({ commit }) {
     const res = await this.$api[apiModule].getLatestList()
     if (res.code === '0') {
       commit('gotLatestList', res.data)
-    }
-  },
-  async getRegion ({ commit }) {
-    const res = await this.$api[apiModule].getLatestList()
-    if (res.code === '0') {
-      commit('gotRegion', res.data)
     }
   },
   async getTopList ({ commit }, num = 10) {
@@ -30,5 +25,98 @@ export default {
       contents: comment
     }
     return this.$api[apiModule].addComment(data)
+  },
+
+  async getRegionOptions ({ commit }) {
+    const res = await this.$api[apiModule].getRegionOptions()
+    if (res.code === '0') {
+      commit('gotRegionOptions', res.data)
+    }
+  },
+  async getYearOptions ({ commit }) {
+    const res = await this.$api[apiModule].getYearOptions()
+    if (res.code === '0') {
+      commit('gotYearOptions', res.data)
+    }
+  },
+  async getGenresOptions ({ commit }) {
+    const res = await this.$api[apiModule].getGenresOptions()
+    if (res.code === '0') {
+      commit('gotGenresOptions', res.data)
+    }
+  },
+  async getStatusOptions ({ commit }) {
+    const res = await this.$api[apiModule].getStatusOptions()
+    if (res.code === '0') {
+      commit('gotStatusOptions', res.data)
+    }
+  },
+  getOptions ({ dispatch }) {
+    dispatch('getRegionOptions')
+    dispatch('getYearOptions')
+    dispatch('getGenresOptions')
+    dispatch('getStatusOptions')
+  },
+  async getList ({ commit }, _d) {
+    const data = {
+      sort: _d.orderBy,
+      years_id: _d.year,
+      region_id: _d.region,
+      language_id: _d.lang,
+      genres_ids: _d.genres ? [_d.genres] : [],
+      episode_status: _d.status,
+      page: _d.page,
+      perpage: _d.perpage
+    }
+    const res = await this.$api[apiModule].getList({ params: data })
+    if (res.code === '0') {
+      commit('gotList', res.data)
+    }
+  },
+  async getTotal ({ commit }, _d) {
+    const data = {
+      sort: _d.orderBy,
+      years_id: _d.year,
+      region_id: _d.region,
+      language_id: _d.lang,
+      genres_ids: _d.genres ? [_d.genres] : [],
+      episode_status: _d.status
+    }
+    const res = await this.$api[apiModule].getTotal({ params: data })
+    if (res.code === '0') {
+      commit('gotTotal', res.data)
+    }
+  },
+  async getDetail ({ commit }, id) {
+    const res = await this.$api[apiModule].getDetail({ params: { id } })
+    if (res.code === '0') {
+      commit('gotDetail', res.data)
+    }
+  },
+  async getCommentList ({ commit }, _d) {
+    const data = {
+      id: _d.id,
+      page: _d.page || 1,
+      perpage: commentPerpage
+    }
+    const res = await this.$api[apiModule].getCommentList({ params: data })
+    if (res.code === '0') {
+      commit('gotCommentList', res.data)
+    }
+  },
+  async getCommentTotal ({ commit }, _d) {
+    const data = {
+      id: _d.id
+    }
+    const res = await this.$api[apiModule].getCommentTotal({ params: data })
+    if (res.code === '0') {
+      commit('gotCommentTotal', res.data)
+    }
+  },
+  async getSources ({ commit }, id) {
+    const res = await this.$api[apiModule].getSources({ params: { id } })
+    if (res.code === '0') {
+      commit('gotSources', res.data)
+    }
   }
 }

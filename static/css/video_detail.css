@@ -199,6 +199,20 @@ ul.page_tabs.video_play_side_tabs li.active {
   line-height: 20px;
 }
 
+.share-box a.qq {
+  background-color: #e31a26;
+}
+
+.share-box a.telegram {
+  background-color: #1c96c8;
+}
+
+.share-box a.telegram i {
+  position: relative;
+  top: 1px;
+  left: -1px;
+}
+
 .share-box a.weixin {
   background-color: #4fbd31;
 }
@@ -502,9 +516,6 @@ ul.page_tabs.video_play_side_tabs li.active {
   .video_unit:nth-child(5n+5) {
     margin-right: 15px;
   }
-  .video_unit:nth-child(n+9) {
-    display: none;
-  }
 }
 
 @media (max-width: 575px) {
@@ -516,12 +527,6 @@ ul.page_tabs.video_play_side_tabs li.active {
   }
   .video_unit:nth-child(4n+4) {
     margin-right: 15px;
-  }
-  .video_unit:nth-child(n+9) {
-    display: block;
-  }
-  .video_unit:nth-child(n+10) {
-    display: none;
   }
 }
 
@@ -537,9 +542,6 @@ ul.page_tabs.video_play_side_tabs li.active {
   }
   .video_unit:nth-child(6n+6) {
     margin-right: 0;
-  }
-  .video_unit:nth-child(n+10) {
-    display: block;
   }
 }
 

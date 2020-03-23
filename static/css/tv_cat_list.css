@@ -16,9 +16,6 @@
   .video_unit:nth-child(5n+5) {
     margin-right: 15px;
   }
-  .video_unit:nth-child(n+9) {
-    display: none;
-  }
 }
 
 @media (max-width: 575px) {
@@ -30,12 +27,6 @@
   }
   .video_unit:nth-child(4n+4) {
     margin-right: 15px;
-  }
-  .video_unit:nth-child(n+9) {
-    display: block;
-  }
-  .video_unit:nth-child(n+10) {
-    display: none;
   }
 }
 
@@ -51,9 +42,6 @@
   }
   .video_unit:nth-child(6n+6) {
     margin-right: 0;
-  }
-  .video_unit:nth-child(n+10) {
-    display: block;
   }
 }
 
