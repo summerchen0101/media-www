@@ -77,7 +77,7 @@ export default {
     }
     const res = await this.$api[apiModule].getCommentList({ params: data })
     if (res.code === '0') {
-      commit('gotCommentList', res.data)
+      commit('gotCommentList', res.data.comments)
     }
   },
   async getCommentTotal ({ commit }, _d) {

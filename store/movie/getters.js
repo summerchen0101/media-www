@@ -58,14 +58,14 @@ export default {
       updateAt: _d.updated_at,
       year: _d.years.title,
       region: _d.region.name,
-      genres: _d.genres.map(t => t.title)
-      // isFav: _d.my_favorite.length > 0
+      genres: _d.genres.map(t => t.title),
+      isFav: _d.my_favorite.length > 0
     }
   },
   commentList: state => state.commentList.map(t => ({
-    author: t.member.account,
-    createdAt: t.created_at,
-    content: t.contents
+    author: t.account,
+    createdAt: t.pivot.created_at,
+    content: t.pivot.contents
   })),
   commentTotal: state => +state.commentTotal,
   sources: state => state.sources.map(t => ({
