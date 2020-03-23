@@ -22,10 +22,8 @@ export default {
       isActive: false
     }
   },
-  watch: {
-    isFav (val) {
-      this.isActive = val
-    }
+  mounted () {
+    this.isActive = this.isFav
   },
   methods: {
     async handleFavClicked () {
