@@ -41,8 +41,8 @@ export default {
     id: t.id,
     imgUrl: t.image_path,
     title: t.title,
-    episodeCount: t.episodes_count,
-    episodeStatus: t.episode_status
+    episodeStatus: t.episode_status,
+    latestEpisode: _.orderBy(t.episodes, 'opening_time', 'desc')[0].title
   })),
   total: state => +state.total,
   detail: (state) => {
