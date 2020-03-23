@@ -8,5 +8,5 @@ export default {
     category: t.media_type
   })),
   total: state => +state.total,
-  isFav: state => state.isFav.my_favorite.length > 0
+  isFav: state => state.isFav
 }

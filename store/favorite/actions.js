@@ -45,7 +45,7 @@ export default {
     if (!rootState.auth.loggedIn) { return }
     const res = await this.$api[apiModule].check({ params: { media_id: id } })
     if (res.code === '0') {
-      commit('gotFavStatus', res.data)
+      commit('gotFavStatus', res.data.my_favorite.length > 0)
     }
   }
 }
