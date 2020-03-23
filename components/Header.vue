@@ -90,17 +90,21 @@ export default {
     }
   },
   watch: {
-    $route: 'hidenMobileMenu'
+    $route () {
+      if ($('.nav-content').hasClass('visible')) {
+        this.toggleMobileMenu()
+      }
+    }
   },
   mounted () {
-    $('.navbar-hamburger').click(this.hidenMobileMenu)
-    $('.menuBg').click(this.hidenMobileMenu)
+    $('.navbar-hamburger').click(this.toggleMobileMenu)
+    $('.menuBg').click(this.toggleMobileMenu)
     const wdth = $(window).width()
     const leftPos = ($('.menuBar').width() - $('.container').width())
     $('.nav-content li ul.dropdown').width(wdth).css({ left: -leftPos / 2, 'padding-left': leftPos / 2 })
   },
   methods: {
-    hidenMobileMenu () {
+    toggleMobileMenu () {
       $('.nav-content').toggleClass('visible')
       $('.menuBg').toggleClass('cover-bg')
       $('body').toggleClass('menu_open_body')
