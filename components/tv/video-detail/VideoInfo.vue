@@ -41,7 +41,7 @@
           href=""
           class="telegram"
           @click.prevent="shareTo('telegram', info.title)"
-        ><i class="fa fa-telegram" /></a>
+        ><i class="fa icon-telegram" /></a>
         <a
           href=""
           class="qq"
