@@ -46,7 +46,7 @@ export default {
     title: t.title,
     episodeCount: t.episodes_count,
     episodeStatus: t.episode_status,
-    latestEpisode: t.episodes && t.episodes[0].title
+    latestEpisode: _.orderBy(t.episodes, 'opening_time', 'desc')[0].title
   })),
   total: state => +state.total,
   detail: (state) => {
@@ -77,10 +77,10 @@ export default {
   sources: state => state.sources.map(t => ({
     id: t.id,
     name: t.title,
-    episodes: t.episode.map(e => ({
+    episodes: t.quote.map(e => ({
       id: e.id,
       title: e.title,
-      sourceUrl: e.sources_url.url
+      sourceUrl: e.pivot.url
     }))
   })),
   episodeBySource (state, getters) {

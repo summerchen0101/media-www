@@ -41,7 +41,10 @@ export default {
       if (this.category === 'movie') {
         return ''
       } else if (this.video.episodeStatus === 'serializing') {
-        return `更新至第${this.video.episodeCount}集`
+        if (this.video.episodeCount) {
+          return `更新至第${this.video.episodeCount}集`
+        }
+        return `更新至${this.video.latestEpisode}`
       } else {
         return '已完結'
       }
