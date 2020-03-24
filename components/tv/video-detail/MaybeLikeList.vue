@@ -8,7 +8,7 @@
         v-for="(video, i) in list"
         :key="i"
         :to="{name: 'tv-video-detail',
-              query: {category: $route.query.category, id: video.id}}"
+              query: {category: $route.query.category, id: video.id, t: new Date().getTime()}}"
         class="maybe_like_unit"
       >
         <div class="maybe_like_img">
@@ -32,10 +32,9 @@
 <script>
 export default {
   props: {
-  },
-  computed: {
-    list () {
-      return this.$store.getters[`${this.$route.query.category}/maybeLikeList`]
+    list: {
+      type: Array,
+      default: () => []
     }
   },
   methods: {
