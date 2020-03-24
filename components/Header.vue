@@ -11,7 +11,7 @@
         <div class="nav-content">
           <ul class="menu_list">
             <li v-for="(c,i) in cates" :key="i">
-              <nuxt-link :to="{name: 'tv-filter-category', params: {category: c.code}, query: {t: new Date().getTime()}}">
+              <nuxt-link :to="{name: 'tv-filter-category', params: {category: c.code}}">
                 <span><i :class="c.icon" /></span><span>{{ c.label }}</span>
               </nuxt-link>
             </li>

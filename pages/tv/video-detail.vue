@@ -61,7 +61,7 @@ export default {
     if (!(episodeBySource[query.source] && episodeBySource[query.source][query.episode])) {
       const source = sources[0].id
       const episode = sources[0].episodes[0].id
-      redirect({ name: 'tv-video-detail', query: { ...query, source, episode } })
+      redirect({ name: 'tv-video-detail', query: { ...query, source, episode, t: new Date().getTime() } })
     }
   },
   async asyncData ({ store, redirect, query }) {

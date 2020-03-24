@@ -40,15 +40,16 @@ export default {
   layout: 'main',
   watchQuery: true,
   key: to => to.fullPath,
-  async asyncData ({ store, redirect, query, params }) {
+  middleware ({ store, redirect, query, params }) {
     if (!query.orderBy) {
       redirect({
         name: 'tv-filter-category',
         params,
-        query: { ...query, orderBy: OrderType[params.category][0].code }
+        query: { ...query, orderBy: OrderType[params.category][0].code, t: new Date().getTime() }
       })
-      return
     }
+  },
+  async asyncData ({ store, redirect, query, params }) {
     const page = +query.p || 1
     const data = {
       ...query,

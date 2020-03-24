@@ -8,7 +8,7 @@
         v-for="(video, i) in list"
         :key="i"
         :to="{name: 'tv-video-detail',
-              query: {category: $route.query.category, id: video.id, t: new Date().getTime()}}"
+              query: {category: $route.query.category, id: video.id}}"
         class="maybe_like_unit"
       >
         <div class="maybe_like_img">
