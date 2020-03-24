@@ -133,6 +133,10 @@ ul.page_tabs.video_play_side_tabs {
     }
     li{
         display: flex;
+        a{
+            display: inline-block;
+            margin-right: 3px;
+        }
     }
     a{
         color: #ccc;

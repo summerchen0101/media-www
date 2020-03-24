@@ -144,6 +144,11 @@ ul.page_tabs.video_play_side_tabs li.active {
   display: flex;
 }
 
+.tab_intro li a {
+  display: inline-block;
+  margin-right: 3px;
+}
+
 .tab_intro a {
   color: #ccc;
 }

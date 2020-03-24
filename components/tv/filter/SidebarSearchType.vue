@@ -4,7 +4,7 @@
       {{ rule.title }}：
     </div>
     <ul class="tv_sub_select_tab">
-      <li>
+      <li class="all">
         <nuxt-link
           exact
           :class="{select: $route.query[rule.code] === undefined}"

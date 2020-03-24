@@ -107,6 +107,9 @@
     li{
         display: inline-block;
         width:calc(100% / 3 - 3px);
+        &.all{
+            width: 50px;
+        }
     }
     a{
         color: #333333;
@@ -117,6 +120,11 @@
     @media(max-width:767px){
         li{
             width: inherit;
+            margin-right: 4px;
+            &.all{
+                width: inherit;
+                margin-right: 0px;
+            }
         }
     }
 }

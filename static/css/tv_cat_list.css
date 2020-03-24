@@ -125,6 +125,10 @@
   width: calc(100% / 3 - 3px);
 }
 
+.tv_sub_select_tab li.all {
+  width: 50px;
+}
+
 .tv_sub_select_tab a {
   color: #333333;
 }
@@ -136,6 +140,11 @@
 @media (max-width: 767px) {
   .tv_sub_select_tab li {
     width: inherit;
+    margin-right: 4px;
+  }
+  .tv_sub_select_tab li.all {
+    width: inherit;
+    margin-right: 0px;
   }
 }
 
