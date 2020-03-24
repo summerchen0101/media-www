@@ -25,7 +25,7 @@
           </div>
           <div class="tv_detail_right col-xs-12 col-sm-4 col-md-3">
             <BlockAd :ad="rightAd" class="ad-box-s" />
-            <MaybeLikeList />
+            <MaybeLikeList :list="maybeLikeList" />
             <HotList />
           </div><!-- tv_detail_right end -->
         </div>
@@ -79,7 +79,8 @@ export default {
     return {
       rightAd: store.getters['ad/videoRightAd'],
       blockAd: store.getters['ad/videoBlockAd'],
-      episodeTitle: episodeBySource[query.source][query.episode].title
+      episodeTitle: episodeBySource[query.source][query.episode].title,
+      maybeLikeList: store.getters[`${query.category}/maybeLikeList`]
     }
   },
   data () {
