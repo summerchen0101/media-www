@@ -13,10 +13,10 @@
         <span class="caret" />
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li v-for="(c, i) in Category" :key="i">
+        <li v-for="(c, i) in list" :key="i">
           <nuxt-link
             :to="{name: 'tv-filter-category',
-                  params: {category: c.code}, query: {t: new Date().getTime()}}"
+                  params: {category: c.code}}"
           >
             {{ c.label }}
           </nuxt-link>
@@ -32,7 +32,7 @@ export default {
   },
   data () {
     return {
-      Category
+      list: Category.filter(c => c.code !== this.$route.params.category)
     }
   },
   methods: {
