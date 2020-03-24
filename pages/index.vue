@@ -45,7 +45,7 @@
       </div>
       <div class="index_block">
         <div class="container">
-          <a id="section1" />
+          <a id="section2" />
           <div class="head_title">
             <span class="index_mtitle"><i class="icon-television" />电影</span>
             <nuxt-link :to="{name: 'tv-filter-category', params: {category: 'movie'}}" class="index_more">
