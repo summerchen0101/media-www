@@ -95,7 +95,8 @@ export default {
       commit('gotSources', res.data)
     }
   },
-  async getFavStatus ({ commit }, id) {
+  async getFavStatus ({ commit, rootState }, id) {
+    if (!rootState.auth.loggedIn) { return }
     const res = await this.$api[apiModule].getFavStatus({ params: { id } })
     if (res.code === '0') {
       commit('gotFavStatus', res.data)
