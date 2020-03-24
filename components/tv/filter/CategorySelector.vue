@@ -14,7 +14,10 @@
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <li v-for="(c, i) in Category" :key="i">
-          <nuxt-link :to="`/tv/filter/${c.code}`">
+          <nuxt-link
+            :to="{name: 'tv-filter-category',
+                  params: {category: c.code}, query: {t: new Date().getTime()}}"
+          >
             {{ c.label }}
           </nuxt-link>
         </li>
