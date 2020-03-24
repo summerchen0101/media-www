@@ -14,7 +14,7 @@
       </select>
     </div>
     <div class="input-group search-input">
-      <input v-model.trim="form.keyword" type="text" class="form-control" aria-describedby="basic-addon2">
+      <input v-model.trim="form.keyword" type="text" class="form-control" aria-describedby="basic-addon2" @keyup.enter="onSearch">
       <a id="basic-addon2" href="" class="input-group-addon" @click.prevent="onSearch">
         <i class="fa fa-search" />
       </a>
