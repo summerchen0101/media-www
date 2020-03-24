@@ -172,6 +172,9 @@
   .video_unit:nth-child(4n+4) {
     margin-right: 15px;
   }
+  .video_unit:nth-child(12n+12) {
+    margin-right: 0;
+  }
 }
 
 @media (max-width: 400px) {

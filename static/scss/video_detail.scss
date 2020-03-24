@@ -453,7 +453,10 @@ ul.page_tabs.video_play_side_tabs {
 		}
 		&:nth-child(4n+4){
 			margin-right: 15px;
-		}
+        }
+        &:nth-child(12n+12){
+            margin-right: 0;
+        }
 		// &:nth-child(n+9){
 		// 	display: block;
 		// }
