@@ -94,7 +94,7 @@ export default {
       await this.$store.dispatch('user/login', this.form)
       this.$nuxt.$loading.finish()
       if (this.$utils.device !== 'web') {
-        $('.menuBg').trigger('click')
+        this.$bus.$emit('closeMobileMenu')
       }
     }
   }

@@ -172,6 +172,6 @@ $(document).ready(function () {
     })
   }
   $('.login-img.show-mb').click(function () {
-    $('.dropdown').fadeToggle()
+    $('#menu-dropdown').fadeToggle()
   })
 })

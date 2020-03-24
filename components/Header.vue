@@ -57,7 +57,7 @@
             <b class="img" style="background-image:url(/images/member/member_bigImg.jpg)" />
             <i class="arr-icon fa fa-caret-down" />
           </a>
-          <div class="dropdown">
+          <div id="menu-dropdown" class="dropdown">
             <nuxt-link :to="{name: 'user-record'}">
               观看纪录
             </nuxt-link>
@@ -90,13 +90,10 @@ export default {
     }
   },
   watch: {
-    $route () {
-      if ($('.nav-content').hasClass('visible')) {
-        this.toggleMobileMenu()
-      }
-    }
+    $route: 'hideMobileMenu'
   },
   mounted () {
+    this.$bus.$on('closeMobileMenu', this.hideMobileMenu)
     $('.navbar-hamburger').click(this.toggleMobileMenu)
     $('.menuBg').click(this.toggleMobileMenu)
     const wdth = $(window).width()
@@ -108,6 +105,11 @@ export default {
       $('.nav-content').toggleClass('visible')
       $('.menuBg').toggleClass('cover-bg')
       $('body').toggleClass('menu_open_body')
+    },
+    hideMobileMenu () {
+      $('.nav-content').removeClass('visible')
+      $('.menuBg').removeClass('cover-bg')
+      $('body').removeClass('menu_open_body')
     }
   }
 }
