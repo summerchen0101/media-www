@@ -36,6 +36,7 @@
             />
           </div>
           <!--page_content_s end-->
+          <paginator :page="page" :count="count" :perpage="perpage" @change="onPageChange" />
         </div>
         <!--page_container end-->
         <Footer />
@@ -55,9 +56,9 @@ export default {
   key: to => to.fullPath + new Date().getTime(),
   async asyncData ({ store, redirect, query }) {
     const page = parseInt(query.page) || 1
+    await store.dispatch('search/getTotal', query)
     await store.dispatch('search/getList', {
-      category: query.category,
-      keyword: query.keyword,
+      ...query,
       page,
       perpage
     })
