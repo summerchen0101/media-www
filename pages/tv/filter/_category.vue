@@ -50,7 +50,7 @@ export default {
     }
   },
   async asyncData ({ store, redirect, query, params }) {
-    const page = +query.p || 1
+    const page = +query.page || 1
     const data = {
       ...query,
       page

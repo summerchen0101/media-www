@@ -54,7 +54,7 @@ export default {
   watchQuery: true,
   key: to => to.fullPath + new Date().getTime(),
   async asyncData ({ store, redirect, query }) {
-    const page = parseInt(query.p) || 1
+    const page = parseInt(query.page) || 1
     await store.dispatch('search/getList', {
       category: query.category,
       keyword: query.keyword,
