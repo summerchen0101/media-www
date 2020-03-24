@@ -51,7 +51,7 @@ export default {
     },
     onSearch () {
       if (!(this.form.category && this.form.keyword)) {
-        this.$alert('请选择分类及输入关键字必填')
+        this.$alert('请选择分类及输入关键字')
         return
       }
       this.$router.push({ name: 'tv-search-result', query: { ...this.form } })
