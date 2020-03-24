@@ -1,7 +1,7 @@
 <template>
   <div class="tv_detail_hot_select">
     <div class="tv_detail_head">
-      <span class="tv_detail_mtitle">热剧精选</span>
+      <span class="tv_detail_mtitle">{{ $route.query.category | enum('category') }}精选</span>
     </div>
     <div class="tv_detail_hot_select_list">
       <VideoItem

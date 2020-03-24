@@ -1,7 +1,7 @@
 <template>
   <div class="detail_rank_box">
     <div class="detail_rank_mtitle">
-      电视剧热播榜
+      {{ $route.query.category | enum('category') }}热播榜
     </div>
     <div class="detail_rank_list">
       <div v-for="(video,i) in list" :key="i">
