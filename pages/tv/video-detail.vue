@@ -5,10 +5,10 @@
       <div class="page_container video_container">
         <div class="video_player_box">
           <div class="container video_player_info_title">
-            {{ detail.title }}：{{ episodeTitle }}
+            {{ detail.title }}：{{ currentEpisode.title }}
           </div>
           <div class="container video_player_container row">
-            <VideoPlayer />
+            <VideoPlayer :episode="currentEpisode" />
             <VideoInfoWrap :info="detail" />
           </div>
           <VideoIntro :desc="detail.desc" :views="detail.views" />
@@ -72,14 +72,14 @@ export default {
       store.dispatch(`${query.category}/getDetail`, query.id),
       store.dispatch(`${query.category}/getTopList`, 10),
       store.dispatch(`${query.category}/getCommentList`, { id: query.id }),
-      store.dispatch(`${query.category}/getCommentTotal`, { id: query.id })
-
+      store.dispatch(`${query.category}/getCommentTotal`, { id: query.id }),
+      store.dispatch('record/add', query.episode)
     ]
     await Promise.all(promiseArr)
     return {
       rightAd: store.getters['ad/videoRightAd'],
       blockAd: store.getters['ad/videoBlockAd'],
-      episodeTitle: episodeBySource[query.source][query.episode].title,
+      currentEpisode: episodeBySource[query.source][query.episode],
       maybeLikeList: store.getters[`${query.category}/maybeLikeList`]
     }
   },
@@ -98,6 +98,7 @@ export default {
   },
   head () {
     return {
+      title: `${this.siteTitle} - ${this.detail.title}(${this.currentEpisode.title})`,
       link: [
         { rel: 'stylesheet', href: '/css/video_detail.css' }
       ]

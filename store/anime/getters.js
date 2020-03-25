@@ -78,7 +78,8 @@ export default {
     episodes: t.quote.map(e => ({
       id: e.id,
       title: e.title,
-      sourceUrl: e.pivot.url
+      sourceUrl: e.pivot.url,
+      analyzeRoot: t.analyze_address
     }))
   })),
   episodeBySource (state, getters) {

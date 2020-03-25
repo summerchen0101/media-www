@@ -1,5 +1,10 @@
 import Vue from 'vue'
 Vue.mixin({
+  data () {
+    return {
+      siteTitle: '抖影电影 DOING MOVIE'
+    }
+  },
   methods: {
     openLoginPopup () {
       const vm = this

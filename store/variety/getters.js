@@ -75,7 +75,8 @@ export default {
     episodes: t.episode.map(e => ({
       id: e.id,
       title: e.title,
-      sourceUrl: e.sources_url.url
+      sourceUrl: e.sources_url.url,
+      analyzeRoot: t.analyze_address
     }))
   })),
   episodeBySource (state, getters) {

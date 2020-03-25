@@ -47,7 +47,8 @@ export default {
       this.$router.app.$message('刪除成功')
     }
   },
-  async add ({ commit }, id) {
+  async add ({ commit, rootState }, id) {
+    if (!rootState.auth.loggedIn) { return }
     await this.$api[apiModule].add({ id })
   }
 }
