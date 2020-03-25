@@ -5,7 +5,7 @@
       v-for="(type,i) in types"
       :key="i"
       exact
-      :to="{...$route, query: {...$route.query, orderBy: type.code}}"
+      :to="{...$route, query: {...$route.query, page: 1, orderBy: type.code}}"
       :class="{select: i === 0 && !$route.query.orderBy}"
     >
       {{ type.label }}

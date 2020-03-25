@@ -10,7 +10,7 @@
           :class="{select: $route.query[rule.code] === undefined}"
           :to="{name: 'tv-filter-category',
                 params: $route.params,
-                query: {...$route.query, [rule.code]: undefined}}"
+                query: {...$route.query, page: 1,[rule.code]: undefined}}"
         >
           全部
         </nuxt-link>
@@ -20,7 +20,7 @@
           exact
           :to="{name: 'tv-filter-category',
                 params: $route.params,
-                query: {...$route.query, [rule.code]: t.id}}"
+                query: {...$route.query, page: 1, [rule.code]: t.id}}"
         >
           {{ t.label }}
         </nuxt-link>
