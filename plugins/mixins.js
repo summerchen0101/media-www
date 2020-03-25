@@ -53,7 +53,7 @@ Vue.mixin({
       this.$router.push({ ...this.$route, query: { ...this.$route.query, page } })
     },
     resolveResource (url) {
-      return url.search('http') > -1 ? url : `//resource.${process.env.BASE_URL}/${url}`
+      return url.search('http') > -1 ? url : `//${process.env.RESOURCE_BASE_URL}/${url}`
     },
     shareTo (type, subTitle) {
       const url = location.href
