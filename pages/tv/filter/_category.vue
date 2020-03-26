@@ -17,7 +17,7 @@
             />
           </div>
           <BlockAd :ad="bottomAd" />
-          <paginator :page="page" :count="count" @change="onPageChange" />
+          <paginator :page="page" :perpage="perpage" :count="count" @change="onPageChange" />
         </div>
       </div>
     </div>
@@ -29,6 +29,7 @@
 
 <script>
 import { FilterType, OrderType } from '@/lib/constants'
+const perpage = 20
 export default {
   name: 'FilterPage',
   components: {
@@ -53,6 +54,7 @@ export default {
     const page = +query.page || 1
     const data = {
       ...query,
+      perpage,
       page
     }
     const promiseArr = [
@@ -66,6 +68,7 @@ export default {
       topAd: store.getters['ad/filterTopAd'],
       bottomAd: store.getters['ad/filterBottomAd'],
       page,
+      perpage,
       list: store.getters[`${params.category}/list`],
       count: store.getters[`${params.category}/total`]
     }

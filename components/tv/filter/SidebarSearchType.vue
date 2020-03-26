@@ -6,7 +6,7 @@
     <ul class="tv_sub_select_tab">
       <li class="all">
         <nuxt-link
-          exact
+          active-class=""
           :class="{select: $route.query[rule.code] === undefined}"
           :to="{name: 'tv-filter-category',
                 params: $route.params,
@@ -17,7 +17,8 @@
       </li>
       <li v-for="(t,i) in rule.items" :key="i">
         <nuxt-link
-          exact
+          active-class=""
+          :class="{select: $route.query[rule.code] === t.id}"
           :to="{name: 'tv-filter-category',
                 params: $route.params,
                 query: {...$route.query, page: 1, [rule.code]: t.id}}"

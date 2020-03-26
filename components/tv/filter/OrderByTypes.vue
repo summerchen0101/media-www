@@ -4,9 +4,9 @@
     <nuxt-link
       v-for="(type,i) in types"
       :key="i"
-      exact
+      active-class=""
       :to="{...$route, query: {...$route.query, page: 1, orderBy: type.code}}"
-      :class="{select: i === 0 && !$route.query.orderBy}"
+      :class="{select: $route.query.orderBy === type.code}"
     >
       {{ type.label }}
     </nuxt-link>
