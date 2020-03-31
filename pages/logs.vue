@@ -10,8 +10,7 @@
 export default {
   name: 'Logs',
   async fetch ({ app, store, redirect }) {
-    await store.dispatch('ad/getAds')
-    await store.dispatch('site/getFaq')
+    await store.dispatch('site/getInfo')
   },
   mounted () {
     console.log(this.$store.getters['log/logs'])

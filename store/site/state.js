@@ -1,6 +1,7 @@
 export default function () {
   return {
-    info: [],
+    subPageContent: [],
+    info: {},
     faq: [],
     faqTotal: 0
   }

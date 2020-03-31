@@ -98,7 +98,7 @@ export default {
   },
   head () {
     return {
-      title: `${this.siteTitle} - ${this.detail.title}(${this.currentEpisode.title})`,
+      title: `${this.detail.title}(${this.currentEpisode.title})`,
       link: [
         { rel: 'stylesheet', href: '/css/video_detail.css' }
       ]

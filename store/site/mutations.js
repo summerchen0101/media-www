@@ -1,4 +1,7 @@
 export default {
+  gotSubPageContent (state, data) {
+    state.subPageContent = data
+  },
   gotInfo (state, data) {
     state.info = data
   },

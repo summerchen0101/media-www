@@ -1,9 +1,9 @@
 <template>
-  <div v-if="data" class="company_right col-xs-12 col-sm-9 col-md-9">
+  <div class="company_right col-xs-12 col-sm-9 col-md-9">
     <div class="company_title">
-      <i class="icon-customer-support" /><span>{{ data.title }}</span>
+      <i class="icon-customer-support" /><span>{{ info.title }}</span>
     </div>
-    <div class="company_content" v-html="data.contents" />
+    <div class="company_content" v-html="info.contents" />
   </div>
 </template>
 
@@ -15,18 +15,12 @@ export default {
   components: {
   },
   async fetch ({ store, redirect }) {
-    await store.dispatch('site/getInfo')
-  },
-  data () {
-    return {}
+    await store.dispatch('site/getSubPageContent')
   },
   computed: {
     ...mapGetters({
-      info: 'site/info'
-    }),
-    data () {
-      return this.info.Service
-    }
+      info: 'site/service'
+    })
   },
   mounted () {
   },

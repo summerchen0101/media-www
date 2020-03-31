@@ -22,7 +22,6 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: '抖影电影 DOING MOVIE',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
