@@ -2,6 +2,7 @@ export default {
   name: state => state.info.name,
   code: state => state.info.code,
   status: state => state.info.status === 'Y',
+  allowRegister: state => state.info.is_register === 'Y',
   subPageContent: state => state.subPageContent
     .filter(t => t.status === 'Y')
     .reduce((obj, next) => {

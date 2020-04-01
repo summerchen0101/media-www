@@ -50,7 +50,7 @@
                   登入</a>
               </div>
             </div>
-            <div class="login_link login_link_account">
+            <div v-if="$store.getters['site/allowRegister']" class="login_link login_link_account">
               没有帐号?
               <a href="" @click.prevent="openRegisterPopup">创建一个新帐号</a>
             </div>
