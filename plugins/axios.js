@@ -63,5 +63,5 @@ function handleErrorCode (app, store, { data, config }) {
   /**
    * 以msg的為主，其次以code判斷
    */
-  app.router.app.$alert(mapMsg || mapCode)
+  app.router.app.$alert(mapMsg || mapCode || '未定义错误')
 }
