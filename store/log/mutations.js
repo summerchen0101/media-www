@@ -6,8 +6,5 @@ export default {
       response: _res.data,
       request: _res.config
     })
-  },
-  gotHost (state, host) {
-    state.host = host
   }
 }
