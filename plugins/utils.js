@@ -14,8 +14,9 @@ export default ({ app, store, $axios, redirect, isDev, req }, inject) => {
   const markKeyword = function (str, keyword, className = 'search_keyword') {
     return str.replace(new RegExp(keyword, 'g'), `<span class="${className}">${keyword}</span>`)
   }
+  const host = process.client ? window.location.hostname : ''
   inject('utils', {
-    host: process.client ? window.location.hostname : '',
+    host: process.env.TARGET_HOST || host,
     device: device(),
     markKeyword
   })

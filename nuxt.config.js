@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const customEnv = process.env.CUSTOM_ENV
 
-require('dotenv').config({ path: customEnv || '.env' })
+require('dotenv').config({ path: customEnv ? `.env.${customEnv}` : '.env' })
 
 module.exports = {
   env: {
