@@ -80,7 +80,7 @@ Vue.mixin({
   head () {
     return {
       titleTemplate: (subName) => {
-        const siteName = this.$store.getters['site/name']
+        const siteName = this.$store && this.$store.getters['site/name']
         return subName ? `${siteName} - ${subName}` : siteName
       }
     }
