@@ -3,6 +3,7 @@
     <div id="accordion" class="panel-group" role="tablist" aria-multiselectable="true">
       <VideoSourceItem
         v-for="(source, index) in sources"
+        v-show="source.episodes.length > 0"
         :key="index"
         :index="index"
         :source="source"

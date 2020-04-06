@@ -1,0 +1,52 @@
+//error
+body{
+    font-family: 'Microsoft JhengHei', Tahoma, Geneva, Verdana, sans-serif;
+    background: #d9e0e7;
+}
+.error{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h4{
+        font-size: 1.6em;
+        text-shadow: 3px 5px 0px #c4ccd4;
+        color: #b11407;
+    }
+    h5{
+        font-size: .5em;
+        color: #666;
+    }
+    img{
+        width: 110px;
+        margin-right: 10px;
+    }
+    &-message {
+        color: #2b3033;
+        font-size: 40px;
+        line-height: 2.5;
+        font-weight: bold;
+        text-align: left;
+    }
+    &-code{
+        padding: 15px;
+        position: relative;
+        line-height: 20px;
+        text-shadow: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    @media(max-width:575px){
+        h4{
+            font-size: 1.1em;
+        }
+        h5{
+            font-size: .3em;
+        }
+        &-message{
+            text-align: center;
+        }
+    }
+}

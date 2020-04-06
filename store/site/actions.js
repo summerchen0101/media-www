@@ -1,4 +1,11 @@
 export default {
+  async getSubPageContent ({ commit, state }) {
+    if (state.subPageContent.length > 0) { return }
+    const res = await this.$api.getSubPageContent()
+    if (res.code === '0') {
+      commit('gotSubPageContent', res.data)
+    }
+  },
   async getInfo ({ commit }) {
     const res = await this.$api.getSiteInfo()
     if (res.code === '0') {

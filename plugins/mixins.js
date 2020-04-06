@@ -76,6 +76,14 @@ Vue.mixin({
       }
       window.open(link, '_blank', 'height=600,width=800')
     }
+  },
+  head () {
+    return {
+      titleTemplate: (subName) => {
+        const siteName = this.$store && this.$store.getters['site/name']
+        return subName ? `${siteName} - ${subName}` : siteName
+      }
+    }
   }
 
 })

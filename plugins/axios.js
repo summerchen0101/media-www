@@ -13,7 +13,7 @@ export default ({ app, store, route, $axios, redirect, error, req }) => {
       })
     }
     if (process.server) {
-      requestConfig.headers.Referer = `${process.env.PROTOCOL}://${req.headers.host}`
+      requestConfig.headers.Referer = `${process.env.PROTOCOL}://${process.env.TARGET_HOST || req.headers.host}`
     }
     return requestConfig
   }, (error) => {
@@ -63,5 +63,5 @@ function handleErrorCode (app, store, { data, config }) {
   /**
    * 以msg的為主，其次以code判斷
    */
-  app.router.app.$alert(mapMsg || mapCode)
+  app.router.app.$alert(mapMsg || mapCode || '未定义错误')
 }
