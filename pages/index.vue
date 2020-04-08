@@ -11,7 +11,7 @@
         @click="ad.url ? $api.getAdInfo({params: {id: ad.id}}) : null"
       >
         <img :src="resolveResource(ad.imgUrl)" class="show-pc">
-        <img :src="resolveResource(ad.imgUrl)" alt="" class="show-mb">
+        <img :src="resolveResource(ad.imgUrl)" alt class="show-mb">
       </a>
     </div>
     <div class="index_container">
@@ -19,20 +19,20 @@
         <div class="container">
           <a id="section1" />
           <div class="head_title">
-            <span class="index_mtitle"><i class="icon-television" />戏剧</span>
-            <nuxt-link :to="{name: 'tv-filter-category', params: {category: 'drama'}}" class="index_more">
+            <span class="index_mtitle">
+              <i class="icon-television" />戏剧
+            </span>
+            <nuxt-link
+              :to="{name: 'tv-filter-category', params: {category: 'drama'}}"
+              class="index_more"
+            >
               更多
             </nuxt-link>
           </div>
           <!--head_title end-->
           <div class="index_contentBox index_contentBox_column">
             <div class="index_tv_list">
-              <VideoItem
-                v-for="(video, i) in dramaList"
-                :key="i"
-                :video="video"
-                category="drama"
-              />
+              <VideoItem v-for="(video, i) in dramaList" :key="i" :video="video" category="drama" />
             </div>
             <!--index_tv_list end-->
             <RankBox category="drama" />
@@ -47,20 +47,20 @@
         <div class="container">
           <a id="section2" />
           <div class="head_title">
-            <span class="index_mtitle"><i class="icon-television" />电影</span>
-            <nuxt-link :to="{name: 'tv-filter-category', params: {category: 'movie'}}" class="index_more">
+            <span class="index_mtitle">
+              <i class="icon-television" />电影
+            </span>
+            <nuxt-link
+              :to="{name: 'tv-filter-category', params: {category: 'movie'}}"
+              class="index_more"
+            >
               更多
             </nuxt-link>
           </div>
           <!--head_title end-->
           <div class="index_contentBox index_contentBox_column">
             <div class="index_tv_list">
-              <VideoItem
-                v-for="(video, i) in movieList"
-                :key="i"
-                :video="video"
-                category="movie"
-              />
+              <VideoItem v-for="(video, i) in movieList" :key="i" :video="video" category="movie" />
             </div>
             <!--index_tv_list end-->
             <RankBox category="movie" />
@@ -75,8 +75,13 @@
         <div class="container">
           <a id="section3" />
           <div class="head_title">
-            <span class="index_mtitle"><i class="icon-karaoke-microphone-icon" />综艺</span>
-            <nuxt-link :to="{name: 'tv-filter-category', params: {category: 'variety'}}" class="index_more">
+            <span class="index_mtitle">
+              <i class="icon-karaoke-microphone-icon" />综艺
+            </span>
+            <nuxt-link
+              :to="{name: 'tv-filter-category', params: {category: 'variety'}}"
+              class="index_more"
+            >
               更多
             </nuxt-link>
           </div>
@@ -103,9 +108,14 @@
         <div class="container">
           <a id="section4" />
           <div class="head_title">
-            <span class="index_mtitle"><i class="icon-cartoons-character-with-big-eyes" />动漫</span>
+            <span class="index_mtitle">
+              <i class="icon-cartoons-character-with-big-eyes" />动漫
+            </span>
 
-            <nuxt-link :to="{name: 'tv-filter-category', params: {category: 'anime'}}" class="index_more">
+            <nuxt-link
+              :to="{name: 'tv-filter-category', params: {category: 'anime'}}"
+              class="index_more"
+            >
               更多
             </nuxt-link>
           </div>
@@ -158,8 +168,7 @@ export default {
     await Promise.all(promises)
   },
   data () {
-    return {
-    }
+    return {}
   },
   computed: {
     ...mapGetters({
@@ -181,8 +190,7 @@ export default {
       return _arr
     }
   },
-  created () {
-  },
+  created () {},
   mounted () {
     setTimeout(this.jqFix, 800)
   },
@@ -191,7 +199,9 @@ export default {
       $('.banner-box').slick({
         infinite: true,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        autoplay: true,
+        dots: true
       })
     }
   },
@@ -201,9 +211,7 @@ export default {
       //   { type: 'text/javascript', src: '/js/script.js', defer: true, body: true }
       // ],
 
-      link: [
-        { rel: 'stylesheet', href: '/css/index.css' }
-      ]
+      link: [{ rel: 'stylesheet', href: '/css/index.css' }]
     }
   }
 }
