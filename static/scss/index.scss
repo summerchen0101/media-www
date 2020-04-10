@@ -1,4 +1,5 @@
 .banner-box{
+	overflow: hidden;
 	img{
 		width: 100%;
 	}
@@ -12,6 +13,17 @@
 			}
 			&-mb{
 				display: block;
+			}
+		}
+	}
+	&.slick-dotted.slick-slider{
+		margin-bottom: 0;
+	}
+	.slick-dots{
+		bottom: 10px;
+		li {
+			button:before{
+				color: #fff;
 			}
 		}
 	}

@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.banner-box {
+  overflow: hidden;
+}
+
 .banner-box img {
   width: 100%;
 }
@@ -14,6 +18,18 @@
   .banner-box .show-mb {
     display: block;
   }
+}
+
+.banner-box.slick-dotted.slick-slider {
+  margin-bottom: 0;
+}
+
+.banner-box .slick-dots {
+  bottom: 10px;
+}
+
+.banner-box .slick-dots li button:before {
+  color: #fff;
 }
 
 /*index*/
