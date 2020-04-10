@@ -1,12 +1,11 @@
 <template>
   <div>
-    <div v-if="topAds.length === 0">
-      <img src="/images/index/banner-default.png">
-    </div>
     <component
       :is="slickComponent"
+      v-if="topAds.length > 0"
       ref="slick"
       :options="slickOptions"
+      class="banner-box"
     >
       <a
         v-for="(ad, index) in topAds"
@@ -20,6 +19,9 @@
         <img :src="resolveResource(ad.imgUrl)">
       </a>
     </component>
+    <div v-else>
+      <img src="/images/index/banner-default.png">
+    </div>
     <div class="index_container">
       <div class="index_block">
         <div class="container">
