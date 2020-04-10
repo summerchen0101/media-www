@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="topAds.length === 0">
-      <img :src="resolveResource(ad.imgUrl)">
+      <img src="/images/index/banner-default.png">
     </div>
     <component
       :is="slickComponent"
