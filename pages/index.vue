@@ -1,6 +1,13 @@
 <template>
   <div>
-    <div class="banner-box">
+    <div v-if="topAds.length === 0">
+      <img :src="resolveResource(ad.imgUrl)">
+    </div>
+    <component
+      :is="slickComponent"
+      ref="slick"
+      :options="slickOptions"
+    >
       <a
         v-for="(ad, index) in topAds"
         :key="index"
@@ -10,10 +17,9 @@
         :target="ad.newWin ? '_blank' : '_self'"
         @click="ad.url ? $api.getAdInfo({params: {id: ad.id}}) : null"
       >
-        <img :src="resolveResource(ad.imgUrl)" class="show-pc">
-        <img :src="resolveResource(ad.imgUrl)" alt class="show-mb">
+        <img :src="resolveResource(ad.imgUrl)">
       </a>
-    </div>
+    </component>
     <div class="index_container">
       <div class="index_block">
         <div class="container">
@@ -150,6 +156,7 @@ export default {
   name: 'Index',
   layout: 'main',
   components: {
+    Slick: () => import('vue-slick'),
     BlockAd: () => import('@/components/BlockAd'),
     RankBox: () => import('@/components/index/RankBox')
   },
@@ -168,7 +175,16 @@ export default {
     await Promise.all(promises)
   },
   data () {
-    return {}
+    return {
+      slickOptions: {
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        dots: true
+      },
+      slickComponent: ''
+    }
   },
   computed: {
     ...mapGetters({
@@ -192,18 +208,11 @@ export default {
   },
   created () {},
   mounted () {
-    setTimeout(this.jqFix, 800)
+    this.$nextTick(function () {
+      this.slickComponent = 'Slick'
+    })
   },
   methods: {
-    jqFix () {
-      $('.banner-box').slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        dots: true
-      })
-    }
   },
   head () {
     return {

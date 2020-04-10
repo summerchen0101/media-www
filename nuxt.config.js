@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const nodeExternals = require('webpack-node-externals')
 const customEnv = process.env.CUSTOM_ENV
 
 require('dotenv').config({ path: customEnv ? `.env.${customEnv}` : '.env' })
@@ -132,15 +133,23 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
-      config.module.rules.push({
-        enforce: 'pre',
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        exclude: /(node_modules)/,
-        options: {
-          fix: true
-        }
-      })
+      if (process.server) {
+        config.externals = [
+          nodeExternals({
+            whitelist: [/^vue-slick/]
+          })
+        ]
+      }
+
+      // config.module.rules.push({
+      //   enforce: 'pre',
+      //   test: /\.(js|vue)$/,
+      //   loader: 'eslint-loader',
+      //   exclude: /(node_modules)/,
+      //   options: {
+      //     fix: true
+      //   }
+      // })
     }
   },
   serverMiddleware: [
