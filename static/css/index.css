@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.banner-box {
+  overflow: hidden;
+}
+
 .banner-box img {
   width: 100%;
 }
@@ -16,10 +20,24 @@
   }
 }
 
+.banner-box.slick-dotted.slick-slider,
+.banner-box .slick-dotted.slick-slider {
+  margin-bottom: 0;
+}
+
+.banner-box .slick-dots {
+  bottom: 10px;
+}
+
+.banner-box .slick-dots li button:before {
+  color: #fff;
+}
+
 /*index*/
 .index_container {
   background: #f5f5f5;
   padding: 60px 0 30px;
+  margin-top: -8px;
 }
 
 .index_contentBox_column {

@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import { Category } from '@/lib/constants'
 Vue.mixin({
   data () {
     return {
@@ -75,6 +76,10 @@ Vue.mixin({
         link = `https://connect.qq.com/widget/shareqq/index.html?url=${url}&title=${title}`
       }
       window.open(link, '_blank', 'height=600,width=800')
+    },
+    toCategoryIcon (category) {
+      const i = Category.findIndex(t => t.code === category)
+      return i > -1 ? Category[i].icon : ''
     }
   },
   head () {
