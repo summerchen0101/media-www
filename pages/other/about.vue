@@ -26,6 +26,10 @@ export default {
     })
   },
   mounted () {
+  },
+  head () {
+    return {
+    }
   }
 }
 </script>

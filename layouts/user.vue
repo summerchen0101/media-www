@@ -50,15 +50,11 @@ export default {
   },
   mounted () {
 
+  },
+  head () {
+    return {
+      link: [{ rel: 'stylesheet', href: '/css/member.css' }]
+    }
   }
-  // head () {
-  //   return {
-  //     link: [{ rel: 'stylesheet', href: '/css/member.css' }]
-  //   }
-  // }
 }
 </script>
-
-<style lang="scss">
-@import '@/static/scss/member.scss';
-</style>

@@ -45,6 +45,13 @@ export default {
     return {}
   },
   mounted () {
+  },
+  head () {
+    return {
+      script: [
+        { type: 'text/javascript', src: '/js/script.js' }
+      ]
+    }
   }
 }
 </script>

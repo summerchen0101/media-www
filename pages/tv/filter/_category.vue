@@ -96,16 +96,13 @@ export default {
 
   },
   methods: {
+  },
+  head () {
+    return {
+      link: [
+        { rel: 'stylesheet', href: '/css/tv_cat_list.css' }
+      ]
+    }
   }
-  // head () {
-  //   return {
-  //     link: [
-  //       { rel: 'stylesheet', href: '/css/tv_cat_list.css' }
-  //     ]
-  //   }
-  // }
 }
 </script>
-<style lang="scss">
-@import '@/static/scss/tv_cat_list.scss';
-</style>
