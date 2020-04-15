@@ -16,7 +16,7 @@ export default ({ app, store, $axios, redirect, isDev, req }, inject) => {
   }
   const host = process.client ? window.location.hostname : ''
   inject('utils', {
-    host: process.env.TARGET_HOST || host,
+    host: process.env.SSR_TARGET_BRANCH || host,
     device: device(),
     markKeyword
   })

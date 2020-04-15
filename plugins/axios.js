@@ -10,7 +10,7 @@ export default ({ app, store, route, $axios, redirect, error, req }) => {
       }
     })
     if (process.server) {
-      config.headers.Referer = `${process.env.PROTOCOL}://${process.env.TARGET_HOST || req.headers.host}`
+      config.headers.referer = `${process.env.PROTOCOL}://${process.env.SSR_TARGET_BRANCH || req.headers.host}`
     }
     return config
   }, (error) => {
