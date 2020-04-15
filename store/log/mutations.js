@@ -1,16 +1,19 @@
 export default {
   addLog (state, _res) {
+    const config = _res.config
     state.logs = state.logs.concat({
-      url: _res.config.url,
+      url: config.url,
+      method: config.method,
+      baseURL: config.baseURL,
+      Referer: config.headers.Referer,
       client: process.client,
       response: _res.data,
-      request: Object.keys(_res.config)
-        .reduce((obj, next) => {
-          if (['number', 'string'].includes(typeof _res.config[next])) {
-            obj[next] = _res.config[next]
-          }
-          return obj
-        }, {})
+      request: {
+        headers: config.headers,
+        params: config.params,
+        data: config.data,
+        timeout: config.timeout
+      }
     })
   }
 }
