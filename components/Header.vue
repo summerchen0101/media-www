@@ -38,9 +38,6 @@
                 <nuxt-link :to="{name: 'user-favorite'}">
                   我的收藏
                 </nuxt-link>
-                <nuxt-link :to="{name: 'user-message'}">
-                  我的消息
-                </nuxt-link>
                 <nuxt-link :to="{name: 'user-profile'}">
                   帐号设置
                 </nuxt-link>
@@ -63,9 +60,6 @@
             </nuxt-link>
             <nuxt-link :to="{name: 'user-favorite'}">
               我的收藏
-            </nuxt-link>
-            <nuxt-link :to="{name: 'user-message'}">
-              我的消息
             </nuxt-link>
             <nuxt-link :to="{name: 'user-profile'}">
               帐号设置

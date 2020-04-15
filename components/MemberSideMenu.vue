@@ -18,9 +18,6 @@
       <nuxt-link :to="{name: 'user-favorite'}">
         <i class="fa fa-heart-o" />我的收藏
       </nuxt-link>
-      <nuxt-link :to="{name: 'user-message'}">
-        <i class="icon-commenting" />我的消息
-      </nuxt-link>
       <nuxt-link :to="{name: 'user-profile'}">
         <i class="fa fa-cog" />帐号设置
       </nuxt-link>
@@ -34,9 +31,6 @@
       </option>
       <option value="user-favorite">
         我的收藏
-      </option>
-      <option value="user-message">
-        我的消息
       </option>
       <option value="user-profile">
         帐号设置
