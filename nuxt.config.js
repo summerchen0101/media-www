@@ -93,9 +93,9 @@ module.exports = {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/passport/member/login', method: 'post', propertyName: 'access_token' },
-          logout: { url: '/client/logout', method: 'get' },
-          user: { url: '/client/profile', method: 'get', propertyName: '' }
+          login: { url: 'passport/member/login', method: 'post', propertyName: 'access_token' },
+          logout: { url: 'client/logout', method: 'get' },
+          user: { url: 'client/profile', method: 'get', propertyName: '' }
         },
         autoFetchUser: false
       }
@@ -114,8 +114,18 @@ module.exports = {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    proxy: true,
+    // proxyHeaders: true,
     withCredentials: true,
-    baseURL: `${process.env.PROTOCOL}://${process.env.API_BASE_URL}`
+    prefix: '/api/'
+  },
+  proxy: {
+    '/api/': {
+      target: `${process.env.PROTOCOL}://${process.env.API_BASE_URL}`,
+      pathRewrite: {
+        '^/api/': '/'
+      }
+    }
   },
   /*
   ** Build configuration
