@@ -4,7 +4,13 @@ export default {
       url: _res.config.url,
       client: process.client,
       response: _res.data,
-      request: _res.config
+      request: Object.keys(_res.config)
+        .reduce((obj, next) => {
+          if (['number', 'string'].includes(typeof _res.config[next])) {
+            obj[next] = _res.config[next]
+          }
+          return obj
+        }, {})
     })
   }
 }
