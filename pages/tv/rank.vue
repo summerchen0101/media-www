@@ -67,13 +67,16 @@ export default {
   key: to => to.fullPath,
   mounted () {
 
-  },
-  head () {
-    return {
-      link: [
-        { rel: 'stylesheet', href: '/css/ranking.css' }
-      ]
-    }
   }
+  // head () {
+  //   return {
+  //     link: [
+  //       { rel: 'stylesheet', href: '/css/ranking.css' }
+  //     ]
+  //   }
+  // }
 }
 </script>
+<style lang="scss">
+@import '@/static/scss/ranking.scss';
+</style>

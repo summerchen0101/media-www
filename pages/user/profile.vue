@@ -46,9 +46,6 @@ export default {
     jqFix()
   },
   methods: {
-  },
-  head () {
-    return {}
   }
 }
 

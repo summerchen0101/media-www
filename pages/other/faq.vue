@@ -47,13 +47,13 @@ export default {
       this.count = this.$store.getters['site/faqTotal']
       this.$nuxt.$loading.finish()
     }
-  },
-  head () {
-    return {
-      link: [{ rel: 'stylesheet', href: '/css/qa.css' }],
-      script: [{ type: 'text/javascript', src: '/js/script.js' }]
-    }
   }
+  // head () {
+  //   return {
+  //     link: [{ rel: 'stylesheet', href: '/css/qa.css' }],
+  //     script: [{ type: 'text/javascript', src: '/js/script.js' }]
+  //   }
+  // }
 }
 
 function jqFix () {
@@ -84,3 +84,7 @@ function jqFix () {
   })
 }
 </script>
+
+<style lang="scss">
+@import '@/static/scss/qa.scss';
+</style>

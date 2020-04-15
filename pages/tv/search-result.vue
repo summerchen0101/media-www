@@ -90,13 +90,16 @@ export default {
       }
       this.$router.push({ name: 'tv-search-result', query: { ...this.form, t: new Date().getTime() } })
     }
-  },
-  head () {
-    return {
-      link: [
-        { rel: 'stylesheet', href: '/css/search_list.css' }
-      ]
-    }
   }
+  // head () {
+  //   return {
+  //     link: [
+  //       { rel: 'stylesheet', href: '/css/search_list.css' }
+  //     ]
+  //   }
+  // }
 }
 </script>
+<style lang="scss">
+@import '@/static/scss/search_list.scss';
+</style>

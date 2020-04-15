@@ -101,15 +101,18 @@ export default {
 
   },
   methods: {
-  },
-  head () {
-    return {
-      title: `${this.detail.title}(${this.currentEpisode.title})`,
-      link: [
-        { rel: 'stylesheet', href: '/css/video_detail.css' }
-      ]
-    }
   }
+  // head () {
+  //   return {
+  //     title: `${this.detail.title}(${this.currentEpisode.title})`,
+  //     link: [
+  //       { rel: 'stylesheet', href: '/css/video_detail.css' }
+  //     ]
+  //   }
+  // }
 }
 
 </script>
+<style lang="scss">
+@import '@/static/scss/video_detail.scss';
+</style>

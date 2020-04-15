@@ -69,10 +69,6 @@ export default {
       this.page = 1
       this.updateList()
     }
-  },
-  head () {
-    return {
-    }
   }
 }
 </script>

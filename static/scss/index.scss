@@ -39,7 +39,7 @@
 .index_contentBox_column{
 	display: flex;
 	flex-wrap: wrap;
-	margin-bottom: 20px;	
+	margin-bottom: 20px;
 }
 .index_contentBox::after{
 	content: "";
@@ -88,7 +88,7 @@
 	}
 }
 .index_more::before{
-	content: url('../images/more_before_line.png');
+	content: url('~static/images/more_before_line.png');
 	margin: 0 10px 0 5px;
 	display: inline-block;
 	vertical-align: middle;
@@ -111,7 +111,7 @@
 }
 .rank_mtitle{
 	margin-bottom: 15px;
-	
+
 }
 .rank_content{
 	border: 1px solid #cccccc;
@@ -158,7 +158,7 @@
 .rank_unit i.first{
 	width: 41px;
 	height: 32px;
-	background: url(../images/index/rank_first.png) no-repeat;
+	background: url('~static/images/index/rank_first.png') no-repeat;
 	border-radius: inherit;
 	line-height: 36px;
 	font-size: 15px;

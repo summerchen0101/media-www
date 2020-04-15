@@ -12,10 +12,6 @@ export default {
     return {}
   },
   mounted () {
-  },
-  head () {
-    return {
-    }
   }
 }
 </script>

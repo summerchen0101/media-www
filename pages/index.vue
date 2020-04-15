@@ -98,14 +98,14 @@ export default {
     })
   },
   methods: {
-  },
-  head () {
-    return {
-      link: [{ rel: 'stylesheet', href: '/css/index.css' }]
-    }
   }
+  // head () {
+  //   return {
+  //     link: [{ rel: 'stylesheet', href: '/css/index.css' }]
+  //   }
+  // }
 }
 </script>
-
 <style lang="scss">
+@import '@/static/scss/index.scss';
 </style>
