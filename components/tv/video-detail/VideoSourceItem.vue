@@ -7,14 +7,19 @@
           data-toggle="collapse"
           data-parent="#accordion"
           :href="`#collapse${index}`"
-          aria-expanded="false"
           :aria-controls="`collapse${index}`"
         >
           <i class="fa fa-youtube-play" /> {{ source.name }}
         </a>
       </h4>
     </div>
-    <div :id="`collapse${index}`" class="panel-collapse collapse" role="tabpanel" :aria-labelledby="`heading${index}`">
+    <div
+      :id="`collapse${index}`"
+      class="panel-collapse collapse"
+      :class="{in: source.id === +$route.query.source}"
+      role="tabpanel"
+      :aria-labelledby="`heading${index}`"
+    >
       <div class="panel-body">
         <span v-if="source.episodes.length === 0">(空)</span>
         <nuxt-link
