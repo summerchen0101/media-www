@@ -10,6 +10,7 @@ export default {
     }
     const res = await this.$auth.loginWith('local', { data })
     if (res.code === '0') {
+      await this.$auth.fetchUser()
       $.fancybox.close()
       this.$router.push(this.$router.app.$route.fullPath)
     }

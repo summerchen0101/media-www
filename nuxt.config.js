@@ -96,7 +96,8 @@ module.exports = {
           login: { url: '/passport/member/login', method: 'post', propertyName: 'access_token' },
           logout: { url: '/client/logout', method: 'get' },
           user: { url: '/client/profile', method: 'get', propertyName: '' }
-        }
+        },
+        autoFetchUser: false
       }
     },
     localStorage: false,
