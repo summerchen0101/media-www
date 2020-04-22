@@ -6,7 +6,7 @@ export default {
       imgUrl: t.image_path,
       title: t.title,
       episodeStatus: t.episode_status,
-      latestEpisode: _.orderBy(t.episodes, 'opening_time', 'desc')[0].title
+      latestEpisode: t.episodes[t.episodes.length - 1].title
     }))
     .take(6)
     .value(),
@@ -37,7 +37,7 @@ export default {
     title: t.title,
     views: t.views,
     episodeStatus: t.episode_status,
-    latestEpisode: _.orderBy(t.episodes, 'opening_time', 'desc')[0].title
+    latestEpisode: t.episodes[t.episodes.length - 1].title
   })),
   maybeLikeList: (state, getters) => _.shuffle(getters.topList),
   list: state => state.list.map(t => ({
@@ -45,7 +45,7 @@ export default {
     imgUrl: t.image_path,
     title: t.title,
     episodeStatus: t.episode_status,
-    latestEpisode: _.orderBy(t.episodes, 'opening_time', 'desc')[0].title
+    latestEpisode: t.episodes[t.episodes.length - 1].title
   })),
   total: state => +state.total,
   detail: (state) => {

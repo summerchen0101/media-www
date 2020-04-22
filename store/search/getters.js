@@ -5,7 +5,7 @@ export default {
     imgUrl: t.image_path,
     title: t.title,
     episodeStatus: t.episode_status,
-    latestEpisode: _.orderBy(t.episodes, 'opening_time', 'desc')[0].title
+    latestEpisode: t.episodes[t.episodes.length - 1].title
   })),
   total: state => +state.total
 }
