@@ -28,7 +28,7 @@ export default {
       domain: this.$utils.host,
       verification_code: verifyCode
     }
-    return this.$api.register(data)
+    return this.$api.user.register(data)
   },
   getVerificationCode ({ commit, dispatch, state }) {
     const _d = state.registerData
@@ -36,10 +36,10 @@ export default {
       account: _d.phone,
       domain: this.$utils.host
     }
-    return this.$api.getVerificationCode(data)
+    return this.$api.user.getVerificationCode(data)
   },
   async getProfile ({ commit, dispatch }) {
-    const res = await this.$api.getProfile()
+    const res = await this.$api.user.getProfile()
     if (res.code === '0') {
       commit('gotProfile', res.data)
     }
@@ -49,7 +49,7 @@ export default {
       email: _d.email,
       phone: _d.phone
     }
-    const res = await this.$api.updateProfile(data)
+    const res = await this.$api.user.updateProfile(data)
     if (res.code === '0') {
       this.$router.app.$alert('资料更新成功', { type: 'success' })
     }
@@ -60,7 +60,7 @@ export default {
       password: _d.pw,
       password_confirmation: _d.pw_c
     }
-    const res = await this.$api.updatePw(data)
+    const res = await this.$api.user.updatePw(data)
     if (res.code === '0') {
       this.$router.app.$alert('密码更新成功', { type: 'success' })
     }

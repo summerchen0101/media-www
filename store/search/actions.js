@@ -6,7 +6,7 @@ export default {
       page: _d.page,
       perpage: _d.perpage
     }
-    const res = await this.$api.SEARCH.getList({ params: data })
+    const res = await this.$api.search.getList({ params: data })
     if (res.code === '0') {
       commit('gotList', res.data)
     }
@@ -16,7 +16,7 @@ export default {
       type: _d.category,
       keyword: _d.keyword
     }
-    const res = await this.$api.SEARCH.getTotal({ params: data })
+    const res = await this.$api.search.getTotal({ params: data })
     if (res.code === '0') {
       commit('gotTotal', res.data)
     }

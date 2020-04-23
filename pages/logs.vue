@@ -1,19 +1,25 @@
 <template>
   <div>
     <h1>LOGs TEST</h1>
-    <pre>{{ $store.state.log.host }}</pre>
-    <pre>{{ $store.getters['log/logs'] }}</pre>
+    <pre>{{ data }}</pre>
+    <!-- <pre>{{ $store.state.log.host }}</pre>
+    <pre>{{ $store.getters['log/logs'] }}</pre> -->
   </div>
 </template>
 
 <script>
 export default {
   name: 'Logs',
-  async fetch ({ app, store, redirect }) {
-    await store.dispatch('site/getInfo')
+  async asyncData ({ app, store, redirect, $api }) {
+    const res = await $api.ad.getAds()
+    return {
+      data: res.data
+    }
   },
   mounted () {
-    console.log(this.$store.getters['log/logs'])
+    this.$api.ad.getAds().then(res => console.log(res))
+    // this.$api2.user.getProfile().then(res => console.log(res))
+    this.$api.movie.getDetail().then(res => console.log(res))
   }
 }
 </script>

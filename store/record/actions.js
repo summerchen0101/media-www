@@ -1,4 +1,4 @@
-const apiModule = 'RECORD'
+const apiModule = 'record'
 export default {
   async getTypes ({ commit }) {
     const res = await this.$api[apiModule].getTypes()

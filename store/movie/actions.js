@@ -1,5 +1,5 @@
 import { perpage as commentPerpage } from '@/components/tv/video-detail/VideoComment.vue'
-const apiModule = 'MOVIE'
+const apiModule = 'movie'
 export default {
   async getLatestList ({ commit }) {
     const res = await this.$api[apiModule].getLatestList()

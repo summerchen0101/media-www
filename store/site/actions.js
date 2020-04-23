@@ -1,13 +1,13 @@
 export default {
   async getSubPageContent ({ commit, state }) {
     if (state.subPageContent.length > 0) { return }
-    const res = await this.$api.getSubPageContent()
+    const res = await this.$api.site.getSubPageContent()
     if (res.code === '0') {
       commit('gotSubPageContent', res.data)
     }
   },
   async getInfo ({ commit }) {
-    const res = await this.$api.getSiteInfo()
+    const res = await this.$api.site.getSiteInfo()
     if (res.code === '0') {
       commit('gotInfo', res.data)
     }
@@ -17,7 +17,7 @@ export default {
       page: _d.page,
       perpage: _d.perpage
     }
-    const res = await this.$api.getFaq({ params: data })
+    const res = await this.$api.site.getFaq({ params: data })
     if (res.code === '0') {
       commit('gotFaq', res.data)
     }
@@ -27,7 +27,7 @@ export default {
       page: _d.page,
       perpage: _d.perpage
     }
-    const res = await this.$api.getFaqTotal({ params: data })
+    const res = await this.$api.site.getFaqTotal({ params: data })
     if (res.code === '0') {
       commit('gotFaqTotal', res.data)
     }

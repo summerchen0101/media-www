@@ -1,4 +1,4 @@
-const apiModule = 'FAVORITE'
+const apiModule = 'favorite'
 export default {
   async getList ({ commit }, _d = {}) {
     const params = {

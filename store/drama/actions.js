@@ -1,5 +1,5 @@
 import { perpage as commentPerpage } from '@/components/tv/video-detail/VideoComment.vue'
-const apiModule = 'DRAMA'
+const apiModule = 'drama'
 export default {
   async getOptions ({ commit }) {
     const res = await this.$api[apiModule].getOptions()
