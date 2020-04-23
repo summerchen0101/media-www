@@ -34,14 +34,14 @@ export default {
     }
   },
   async removeById ({ commit, dispatch }, id) {
-    const res = await this.$api[apiModule].delete({ params: { id } })
+    const res = await this.$api[apiModule].delete({ id })
     if (res.code === '0') {
       commit('removeById', id)
       this.$router.app.$message('刪除成功')
     }
   },
   async removeByCategory ({ commit, dispatch }, category) {
-    const res = await this.$api[apiModule].delete({ params: { type: category } })
+    const res = await this.$api[apiModule].delete({ type: category })
     if (res.code === '0') {
       commit('removeAll')
       this.$router.app.$message('刪除成功')
