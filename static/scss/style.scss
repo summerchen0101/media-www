@@ -53,7 +53,12 @@ input:focus{
 		right: 5px;
 	}
 }
-
+.el-message-box__wrapper{
+	z-index: 8012 !important;
+}
+.v-modal{
+	z-index: 8011 !important;
+}
 .ad-box{
 	a{
 		display: block;
