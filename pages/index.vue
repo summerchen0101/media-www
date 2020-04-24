@@ -29,7 +29,7 @@
       <CategoryLine category="anime" :ad="fixedBlockAds[3]" :list="animeList" />
     </div>
     <Footer />
-    <IndexScrollTop />
+    <ScrollTop />
   </div>
 </template>
 
