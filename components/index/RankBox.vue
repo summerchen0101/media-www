@@ -8,16 +8,16 @@
         <img src="/images/index/rank_img1.jpg" alt="">
       </div>
       <div class="rank_list">
-        <nuxt-link
+        <a
           v-for="(video,i) in topList"
           :key="i"
-          :to="{name: 'tv-video-detail', query: {category: category, id: video.id}}"
           class="rank_unit"
           :class="{'first_unit': i+1 === 1}"
+          href=""
+          @click.prevent="routerAuthDetector({name: 'tv-video-detail', query: {category: category, id: video.id}})"
         >
           <i :class="{first: i+1 === 1, second: i+1 === 2, third: i+1 === 3}">{{ i+1 }}</i><span>{{ video.title }}</span>
-          </a>
-        </nuxt-link>
+        </a>
       </div>
     </div>
     <!--rank_content end-->

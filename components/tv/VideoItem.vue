@@ -1,8 +1,10 @@
 <template>
-  <nuxt-link
-    :to="{name: 'tv-video-detail',
-          query: {id: video.id, category: category}}"
+  <a
     class="video_unit"
+    @click.prevent="routerAuthDetector({
+      name: 'tv-video-detail',
+      query: { id: video.id, category: category }
+    })"
   >
     <div
       class="index_variety_img index_unit_img "
@@ -16,7 +18,7 @@
         {{ subText }}
       </div>
     </div>
-  </nuxt-link>
+  </a>
 </template>
 <script>
 export default {
@@ -49,8 +51,6 @@ export default {
         return '已完結'
       }
     }
-  },
-  methods: {
   }
 }
 </script>

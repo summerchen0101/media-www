@@ -16,12 +16,14 @@
             热门搜寻：
           </div>
           <div class="searchModal_body">
-            <nuxt-link
+            <a
               v-for="(video, i) in topList"
               :key="i"
-              :to="{name: 'tv-video-detail', query: {category: category, id: video.id}}"
-              class=""
               href=""
+              @click.prevent="routerAuthDetector({
+                name: 'tv-video-detail',
+                query: { id: video.id, category: category }
+              })"
             >
               <div
                 class="searchModal_num"
@@ -32,7 +34,7 @@
               <div class="searchModal_name">
                 {{ video.title }}
               </div>
-            </nuxt-link>
+            </a>
           </div>
         </div>
       </div>
