@@ -84,7 +84,7 @@ export default {
       const vm = this
       vm.form = initForm()
       vm.$nextTick(() => {
-        vm.$refs.form.reset()
+        vm.$refs.form && vm.$refs.form.reset()
       })
     },
     async onClickedLogin (e, invalid) {

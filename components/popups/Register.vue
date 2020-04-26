@@ -16,7 +16,7 @@
             <div class="form-group">
               <div class="col-xs-12">
                 <ValidationProvider v-slot="v" rules="required|account" name="account">
-                  <input v-model="form.account" type="text" class="form-control" placeholder="帐号">
+                  <input v-model="form.account" type="text" class="form-control" placeholder="手机号">
                   <span class="text-danger">{{ v.errors[0] }}</span>
                 </ValidationProvider>
               </div>
@@ -39,21 +39,21 @@
             </div>
             <div class="registered_dialog_txt">
               点击创建帐户，即表示同意相关
-              <a href="/other/service">
+              <nuxt-link :to="{name: 'other-service', query: {t: new Date().getTime()}}">
                 服务条款
-              </a>
+              </nuxt-link>
             </div>
             <div class="form-group">
               <div class="dialog_form_btn">
                 <button type="submit" class="btn btn-primary" :disabled="invalid">
-                  注册
+                  下一步
                 </button>
               </div>
             </div>
-            <div class="login_link login_link_account">
+            <!-- <div class="login_link login_link_account">
               已有帐号?
               <a href="" @click.prevent="openLoginPopup">立即登入</a>
-            </div>
+            </div> -->
           </form>
         </ValidationObserver>
       </div>
@@ -70,7 +70,7 @@ function initForm () {
   }
 }
 export default {
-  name: 'LoginPopup',
+  name: 'RegisterPopup',
   components: {},
   data () {
     return {
@@ -85,7 +85,7 @@ export default {
       const vm = this
       vm.form = initForm()
       vm.$nextTick(() => {
-        vm.$refs.form.reset()
+        vm.$refs.form && vm.$refs.form.reset()
       })
     },
     async onSubmit () {
