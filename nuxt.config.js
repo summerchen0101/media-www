@@ -73,7 +73,8 @@ module.exports = {
     '@/plugins/mixins',
     '@/plugins/filters',
     { src: '@/plugins/store2', mode: 'client' },
-    '@/plugins/modular-api'
+    '@/plugins/modular-api',
+    '@/plugins/errorHandler'
   ],
   /*
   ** Nuxt.js dev-modules

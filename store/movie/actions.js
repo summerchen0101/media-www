@@ -65,6 +65,7 @@ export default {
   },
   async getDetail ({ commit }, id) {
     const res = await this.$api[apiModule].getDetail({ id })
+    console.log(res)
     if (res.code === '0') {
       commit('gotDetail', res.data)
     }
