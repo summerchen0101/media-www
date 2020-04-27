@@ -235,3 +235,89 @@
     font-size: 12px;
   }
 }
+
+.modal-info {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.indexModal {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  left: 0;
+  top: 0;
+}
+
+.indexModal .modal-dialog {
+  line-height: 1.4;
+}
+
+@media (min-width: 575px) {
+  .indexModal .modal-dialog {
+    width: 400px;
+  }
+}
+
+.indexModal .modal-content {
+  padding: 5%;
+  color: #616161;
+  border-top: 5px solid #ff443f;
+  border-radius: 0;
+  position: relative;
+}
+
+.indexModal .close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.indexModal h2 {
+  font-size: 2em;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+.indexModal p {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+.indexModal .check-box {
+  margin-top: 15px;
+}
+
+.indexModal .link-btn {
+  display: inline-block;
+  width: 130px;
+  height: 35px;
+  line-height: 23px;
+  border-radius: 50px;
+  text-align: center;
+  color: #fff;
+  margin: 3px auto;
+}
+
+.indexModal .link-btn.android-btn {
+  background-color: #9fc137;
+}
+
+.indexModal .link-btn.ios-btn {
+  background-color: #1985ee;
+}

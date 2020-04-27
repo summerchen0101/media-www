@@ -80,6 +80,13 @@ Vue.mixin({
     toCategoryIcon (category) {
       const i = Category.findIndex(t => t.code === category)
       return i > -1 ? Category[i].icon : ''
+    },
+    routerAuthDetector (routerInfo) {
+      if (!this.$auth.loggedIn) {
+        this.openLoginPopup()
+        return
+      }
+      this.$router.push(routerInfo)
     }
   },
   head () {
