@@ -96,6 +96,7 @@ export default {
   mounted () {
     this.$nextTick(() => {
       this.slickComponent = 'Slick'
+      $('html,body').scrollTop(0)
     })
   },
   head () {
