@@ -10,10 +10,10 @@
             </h2>
             <div class="link-box">
               <a :href="androidUrl" target="_blank" class="btn link-btn android-btn">
-                <i class="fa fa-android" /> Android下載
+                <i class="fa fa-android" /> Android下载
               </a>
               <a :href="iosUrl" target="_blank" class="btn link-btn ios-btn">
-                <i class="fa fa-apple" /> IOS下載
+                <i class="fa fa-apple" /> IOS下载
               </a>
             </div>
             <div class="form-check check-box">
