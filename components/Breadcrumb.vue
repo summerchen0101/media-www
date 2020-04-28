@@ -12,7 +12,7 @@
             {{ category | enum('category') }}
           </nuxt-link>
         </li> >
-        <li>
+        <li v-if="title">
           <nuxt-link :to="$route.fullPath">
             {{ title }}
           </nuxt-link>

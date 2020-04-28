@@ -1,29 +1,30 @@
 <template>
   <div id="wrapper">
-    <!-- /#sidebar-wrapper -->
-    <div class="page_container">
-      <div class="container tv_sub_container row">
-        <FilterSideBar :search-rules="searchRules" />
-        <div class="tv_sub_right col-xs-12 col-sm-9 col-md-10">
-          <BlockAd :ad="topAd" />
-          <FilterKeys />
-          <OrderByTypes />
-          <div class="tv_sub_list">
-            <VideoItem
-              v-for="(video, i) in list"
-              :key="i"
-              :video="video"
-              :category="$route.params.category"
-            />
+    <div id="page-content-wrapper">
+      <Breadcrumb :category="$route.params.category" />
+      <div class="page_container">
+        <div class="container tv_sub_container">
+          <FilterSideBar :search-rules="searchRules" />
+          <div class="tv_sub_right">
+            <BlockAd :ad="topAd" />
+            <FilterKeys />
+            <OrderByTypes />
+            <div class="tv_sub_list">
+              <VideoItem
+                v-for="(video, i) in list"
+                :key="i"
+                :video="video"
+                :category="$route.params.category"
+              />
+            </div>
+            <BlockAd :ad="bottomAd" />
+            <paginator :page="page" :perpage="perpage" :count="count" @change="onPageChange" />
           </div>
-          <BlockAd :ad="bottomAd" />
-          <paginator :page="page" :perpage="perpage" :count="count" @change="onPageChange" />
         </div>
       </div>
+      <Footer />
+      <ScrollTop />
     </div>
-    <!--page_container end-->
-    <Footer />
-    <ScrollTop />
   </div>
 </template>
 
