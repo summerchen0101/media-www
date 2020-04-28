@@ -102,8 +102,15 @@
 
 .tb_sub_select_box {
   margin: 10px;
-  padding-bottom: 10px;
   border-bottom: 1px solid #f1f1f1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .tb_sub_select_box:last-child {
@@ -117,19 +124,24 @@
   }
 }
 
+.tv_sub_stitle {
+  font-weight: bold;
+  color: #000;
+}
+
 .tv_sub_select_tab {
   margin: 0;
   padding: 0;
   list-style: none;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .tv_sub_select_tab li {
   display: inline-block;
-  width: calc(100% / 3 - 3px);
-}
-
-.tv_sub_select_tab li.all {
-  width: 50px;
+  margin-bottom: 5px;
+  margin-right: 5px;
 }
 
 .tv_sub_select_tab a {
@@ -189,7 +201,6 @@
 }
 
 .filter_box .result {
-  width: 115px;
   text-align: right;
   margin-left: auto;
 }
