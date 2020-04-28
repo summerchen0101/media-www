@@ -32,6 +32,7 @@
       </div>
 
       <Footer />
+      <MobileFooterMenu />
     </div>
     <ScrollTop />
   </div>

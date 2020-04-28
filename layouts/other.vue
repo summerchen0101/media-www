@@ -22,6 +22,7 @@
         </div>
         <!--page_container end-->
         <Footer />
+        <MobileFooterMenu />
         <ScrollTop />
       </div>
     </div>
