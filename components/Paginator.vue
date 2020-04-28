@@ -6,6 +6,7 @@
     :total="count"
     :page-size="perpage"
     :current-page="page"
+    :pager-count="5"
     @current-change="onPageChange"
   />
 </template>
