@@ -6,13 +6,15 @@
           <nuxt-link :to="{name: 'index'}">
             首页
           </nuxt-link>
-        </li> >
+        </li>
         <li>
+          >
           <nuxt-link :to="{name: 'tv-filter-category', params: {category: category}}">
             {{ category | enum('category') }}
           </nuxt-link>
-        </li> >
+        </li>
         <li v-if="title">
+          >
           <nuxt-link :to="$route.fullPath">
             {{ title }}
           </nuxt-link>
