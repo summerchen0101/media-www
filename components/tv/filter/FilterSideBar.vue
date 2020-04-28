@@ -1,5 +1,5 @@
 <template>
-  <div class="tv_sub_left col-xs-12 col-sm-3 col-md-2">
+  <div class="tv_sub_left">
     <CategorySelector />
     <SidebarSearchType v-for="(rule, i) in searchRules" :key="i" :rule="rule" />
   </div>
