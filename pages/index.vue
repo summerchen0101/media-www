@@ -29,6 +29,7 @@
       <CategoryLine category="anime" :ad="fixedBlockAds[3]" :list="animeList" />
     </div>
     <Footer />
+    <MobileFooterMenu />
     <ScrollTop />
     <APPDownloadPopup />
   </div>

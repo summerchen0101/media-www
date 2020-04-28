@@ -28,6 +28,12 @@
 			}
 		}
 	}
+	@media(max-width:900px){
+		margin-top: 55px;
+	}
+	@media(max-width:400px){
+		margin-top: 49px;
+	}
 }
 /*index*/
 .index_container{
@@ -311,7 +317,8 @@
     align-items: center;
     justify-content: center;
     left: 0;
-    top: 0;
+	top: 0;
+	z-index: 1100;
     .modal{
         &-dialog{
             line-height: 1.4;
