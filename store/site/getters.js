@@ -18,6 +18,7 @@ export default {
   },
   faqTotal: (state) => {
     return parseInt(state.faqTotal)
-  }
+  },
+  shownAppPopup: state => state.shownAppPopup
 
 }

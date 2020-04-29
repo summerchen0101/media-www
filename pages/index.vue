@@ -98,8 +98,9 @@ export default {
       this.slickComponent = 'Slick'
       $('html,body').scrollTop(0)
     })
-    if (!this.$session('dontShowAgain')) {
+    if (!this.$session('dontShowAgain') && !this.$store.getters['site/shownAppPopup']) {
       this.$bus.$emit('open:app-download-popup', true)
+      this.$store.commit('site/changeAppPopupShownStatus', true)
     }
   },
   head () {
