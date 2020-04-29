@@ -35,6 +35,7 @@
       <MobileFooterMenu />
     </div>
     <ScrollTop />
+    <APPDownloadPopup />
   </div>
 </template>
 
