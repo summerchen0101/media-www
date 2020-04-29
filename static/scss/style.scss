@@ -809,6 +809,13 @@ input:focus{
 	left: 0;
 	bottom: 0;
 	border-top: 1px solid #ccc;
+	li{
+		a{
+			&.active{
+				color: #ff443f;
+			}
+		}
+	}
 	@media(max-width:900px){
 		display: block;
 		ul{

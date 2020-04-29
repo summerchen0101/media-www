@@ -964,6 +964,10 @@ input:focus {
   border-top: 1px solid #ccc;
 }
 
+.mb-footer-box li a.active {
+  color: #ff443f;
+}
+
 @media (max-width: 900px) {
   .mb-footer-box {
     display: block;
