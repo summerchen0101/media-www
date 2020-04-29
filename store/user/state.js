@@ -5,6 +5,7 @@ export const initProfile = () => ({
 })
 export default function () {
   return {
-    profile: initProfile()
+    profile: initProfile(),
+    registerData: {}
   }
 }
