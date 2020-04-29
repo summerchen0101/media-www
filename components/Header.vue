@@ -11,10 +11,7 @@
         <a v-if="!$auth.loggedIn" href="" class="login" @click.prevent="openLoginPopup">
           <span><i class="icon-user" /></span>
         </a>
-        <nuxt-link to="/" class="homeBtn">
-          <span><i class="fa fa-home" /></span>
-        </nuxt-link>
-        <div v-if="$auth.loggedIn" class="login-img show-mb">
+        <div v-show="$auth.loggedIn" class="login-img show-mb">
           <a>
             <b class="img" style="background-image:url(/images/member/member_bigImg.jpg)" />
             <i class="arr-icon fa fa-caret-down" />
@@ -32,6 +29,9 @@
             <a href="" @click.prevent="$store.dispatch('user/logout')">登出</a>
           </div>
         </div>
+        <nuxt-link to="/" class="homeBtn">
+          <span><i class="fa fa-home" /></span>
+        </nuxt-link>
       </div>
       <Menu />
       <!--nav end-->
