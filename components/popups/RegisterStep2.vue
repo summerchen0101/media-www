@@ -53,6 +53,7 @@ export default {
     return {
       verifyCode: '',
       lockSendBtn: false,
+      defaultCounter: 30,
       counter: 30,
       showErrorMsg: false
     }
@@ -75,24 +76,27 @@ export default {
       this.$nuxt.$loading.finish()
       this.lockSendBtn = true
       this.clearForm()
-      this.countDown()
+      this.countDown(this.defaultCounter)
     },
-    countDown () {
+    countDown (initCounter) {
+      if (initCounter) {
+        this.counter = this.defaultCounter
+      }
       if (this.counter > 0) {
         this.counter = this.counter - 1
-        setTimeout(this.countDown, 1000)
+        setTimeout(() => this.countDown(), 1000)
       } else {
         this.resetCount()
       }
     },
     resetCount () {
-      this.counter = 5
+      this.counter = this.defaultCounter
       this.lockSendBtn = false
     },
     async onSubmit () {
       const res = await this.$store.dispatch('user/register', this.verifyCode)
       if (res.code === '0') {
-        this.$bus.$emit('registerStepChanged', 'step3')
+        this.$bus.$emit('register/setStep', 'step3')
       } else {
         this.showErrorMsg = true
       }
