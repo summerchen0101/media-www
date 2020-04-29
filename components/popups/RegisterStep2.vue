@@ -31,7 +31,7 @@
         </div>
         <div class="tips mt-2">
           重新取得验证码<br>
-          <b class="text-red">{{ counter }}</b> 秒仍未收到简讯，请在点击一次按钮
+          <b class="text-red">30</b> 秒仍未收到简讯，请再点击一次按钮
         </div>
       </div>
       <div class="form-group">
