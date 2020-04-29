@@ -26,7 +26,7 @@ export default {
     }
   },
   created () {
-    this.$bus.$on('registerStepChanged', this.onRegisterStepChanged)
+    this.$bus.$on('register/setStep', this.onRegisterStepChanged)
   },
   methods: {
     onRegisterStepChanged (stepComp) {

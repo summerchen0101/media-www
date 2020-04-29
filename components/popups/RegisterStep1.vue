@@ -83,7 +83,7 @@ export default {
       this.$store.commit('user/saveRegisterData', this.form)
       const res = await this.$store.dispatch('user/getVerificationCode')
       if (res.code === '0') {
-        this.$bus.$emit('registerStepChanged', 'step2')
+        this.$bus.$emit('register/setStep', 'step2')
       }
       this.$nuxt.$loading.finish()
     }

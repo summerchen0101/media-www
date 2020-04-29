@@ -51,6 +51,7 @@ Vue.mixin({
         },
         afterClose () {
           vm.$bus.$emit('register/clearForm')
+          vm.$bus.$emit('register/setStep', 'step1')
         }
       })
     },
