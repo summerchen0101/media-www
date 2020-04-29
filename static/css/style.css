@@ -389,6 +389,10 @@ input:focus {
   margin-left: auto;
 }
 
+.mb-nav.mb-nav-login .login, .mb-nav.mb-nav-login .homeBtn {
+  top: -4px;
+}
+
 .mb-nav a {
   margin-left: 10px;
 }
@@ -397,7 +401,7 @@ input:focus {
   color: #666;
   font-size: 20px;
   position: relative;
-  top: -4px;
+  top: -2px;
 }
 
 .mb-nav .homeBtn {
@@ -405,7 +409,7 @@ input:focus {
   color: #ff443f;
   height: 25px;
   position: relative;
-  top: -4px;
+  top: -2px;
 }
 
 @media (max-width: 900px) {

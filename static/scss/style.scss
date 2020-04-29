@@ -323,6 +323,12 @@ input:focus{
 	padding: 0;
 	list-style: none;
 	margin-left: auto;
+	&.mb-nav-login{
+		.login, .homeBtn{
+			top: -4px;
+			
+		}
+	}
 	a{
 		margin-left: 10px;
 		
@@ -331,14 +337,14 @@ input:focus{
 		color: #666;
 		font-size: 20px;
 		position: relative;
-		top: -4px;
+		top: -2px;
 	}
 	.homeBtn{
 		font-size: 27px;
 		color: #ff443f;
 		height: 25px;
 		position: relative;
-		top: -4px;
+		top: -2px;
 		
 	}
 	@media(max-width:900px){
