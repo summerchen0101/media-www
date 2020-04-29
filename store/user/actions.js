@@ -19,19 +19,24 @@ export default {
     await this.$auth.logout('local')
     this.$router.push('/')
   },
-  async register ({ commit, dispatch }, _d) {
+  register ({ commit, dispatch, state }, verifyCode) {
+    const _d = state.registerData
     const data = {
-      account: _d.account,
+      account: _d.phone,
       password: _d.pw,
       password_confirmation: _d.pw_c,
+      domain: this.$utils.host,
+      verification_code: verifyCode
+    }
+    return this.$api.register(data)
+  },
+  getVerificationCode ({ commit, dispatch, state }) {
+    const _d = state.registerData
+    const data = {
+      account: _d.phone,
       domain: this.$utils.host
     }
-    const res = await this.$api.register(data)
-    if (res.code === '0') {
-      $.fancybox.close()
-      this.$router.push({ name: 'index' })
-      this.$router.app.$alert('注册成功请重新登入', { type: 'success' })
-    }
+    return this.$api.getVerificationCode(data)
   },
   async getProfile ({ commit, dispatch }) {
     const res = await this.$api.getProfile()

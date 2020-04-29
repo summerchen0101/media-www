@@ -8,8 +8,8 @@
     >
       <div class="form-group">
         <div class="col-xs-12">
-          <ValidationProvider v-slot="v" rules="required|account" name="account">
-            <input v-model="form.account" type="text" class="form-control" placeholder="手机号">
+          <ValidationProvider v-slot="v" rules="required|phone" name="phone">
+            <input v-model="form.phone" type="text" class="form-control" placeholder="手机号">
             <span class="text-danger">{{ v.errors[0] }}</span>
           </ValidationProvider>
         </div>
@@ -54,7 +54,7 @@
 <script>
 function initForm () {
   return {
-    account: '',
+    phone: '',
     pw: '',
     pw_c: ''
   }
@@ -78,11 +78,14 @@ export default {
         vm.$refs.form && vm.$refs.form.reset()
       })
     },
-    // async onSubmit () {
-    //   await this.$store.dispatch('user/register', this.form)
-    // },
-    onSubmit () {
-      this.$bus.$emit('registerStepChanged', 'step2')
+    async onSubmit () {
+      this.$nuxt.$loading.start()
+      this.$store.commit('user/saveRegisterData', this.form)
+      const res = await this.$store.dispatch('user/getVerificationCode')
+      if (res.code === '0') {
+        this.$bus.$emit('registerStepChanged', 'step2')
+      }
+      this.$nuxt.$loading.finish()
     }
   }
 }

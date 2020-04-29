@@ -6,40 +6,34 @@
       @submit.prevent="onSubmit"
       @reset.prevent="reset"
     >
-      <ValidationProvider v-slot="v" rules="required|captcha" name="captcha">
-        <div class="form-group">
-          手机号码:0912123456
-        </div>
-        <div class="form-group">
-          <!-- <label class="control-label">Company Name</label> -->
-          <div class="flex-box">
-            <input v-model="captcha" type="text" class="form-control" placeholder="请输入验证码">
-            <div class="btn-box">
-              <span v-if="lockSendBtn" class="btn btn-light">{{ counter }}s</span>
-              <span v-else class="btn btn-primary" @click="onReSend">
-                重发
-              </span>
-            </div>
+      <div class="form-group">
+        手机号码:{{ registerData.phone }}
+      </div>
+      <div class="form-group">
+        <!-- <label class="control-label">Company Name</label> -->
+        <div class="flex-box">
+          <input v-model="verifyCode" type="text" class="form-control" placeholder="请输入验证码">
+          <div class="btn-box">
+            <span v-if="lockSendBtn" class="btn btn-light">{{ counter }}s</span>
+            <span v-else class="btn btn-primary" @click="onReSend">
+              重发
+            </span>
           </div>
-          <span class="text-danger">{{ v.errors[0] }}</span>
+        </div>
 
-          <div class="modal-tips mt-2">
-            <!-- <div class="text-green">
-                                        <i class="fa fa-check-circle"></i> 验证成功
-                                    </div> -->
-            <div class="text-yellow mt-2 ">
-              <i class="fa fa-exclamation-circle" /> 验证码错误
-            </div>
-            <div class="text-red mt-2">
+        <div class="modal-tips mt-2">
+          <div v-if="showErrorMsg" class="text-yellow mt-2 ">
+            <i class="fa fa-exclamation-circle" /> 验证码错误
+          </div>
+          <!-- <div class="text-red mt-2">
               <i class="fa fa-times-circle" /> 验证失败, 请重新取得验证码
-            </div>
-          </div>
-          <div class="tips mt-2">
-            重新取得验证码<br>
-            <b class="text-red">30</b> 秒仍未收到简讯，请在点击一次按钮
-          </div>
+            </div> -->
         </div>
-      </ValidationProvider>
+        <div class="tips mt-2">
+          重新取得验证码<br>
+          <b class="text-red">{{ counter }}</b> 秒仍未收到简讯，请在点击一次按钮
+        </div>
+      </div>
       <div class="form-group">
         <div class="dialog_form_btn">
           <button class="btn btn-primary nextBtn" type="submit">
@@ -57,24 +51,30 @@ export default {
   components: {},
   data () {
     return {
-      captcha: '',
+      verifyCode: '',
       lockSendBtn: false,
-      counter: 5
+      counter: 30,
+      showErrorMsg: false
+    }
+  },
+  computed: {
+    registerData () {
+      return this.$store.getters['user/registerData']
     }
   },
   mounted () {
-    this.$bus.$on('register/clearForm', this.clearForm)
   },
   methods: {
     clearForm () {
-      const vm = this
-      vm.captcha = ''
-      vm.$nextTick(() => {
-        vm.$refs.form && vm.$refs.form.reset()
-      })
+      this.verifyCode = ''
+      this.showErrorMsg = false
     },
-    onReSend () {
+    async onReSend () {
+      this.$nuxt.$loading.start()
+      await this.$store.dispatch('user/getVerificationCode', this.form)
+      this.$nuxt.$loading.finish()
       this.lockSendBtn = true
+      this.clearForm()
       this.countDown()
     },
     countDown () {
@@ -89,12 +89,14 @@ export default {
       this.counter = 5
       this.lockSendBtn = false
     },
-    onSubmit () {
-      this.$bus.$emit('registerStepChanged', 'step3')
+    async onSubmit () {
+      const res = await this.$store.dispatch('user/register', this.verifyCode)
+      if (res.code === '0') {
+        this.$bus.$emit('registerStepChanged', 'step3')
+      } else {
+        this.showErrorMsg = true
+      }
     }
-    // async onSubmit () {
-    //   await this.$store.dispatch('user/register', this.form)
-    // }
   }
 }
 </script>
