@@ -23,18 +23,7 @@
             <span>会员</span>
             <i class="arr-icon fa fa-caret-down" />
           </a>
-          <div class="dropdown">
-            <nuxt-link :to="{name: 'user-record'}">
-              观看纪录
-            </nuxt-link>
-            <nuxt-link :to="{name: 'user-favorite'}">
-              我的收藏
-            </nuxt-link>
-            <nuxt-link :to="{name: 'user-profile'}">
-              帐号设置
-            </nuxt-link>
-            <a href="" @click.prevent="$store.dispatch('user/logout')">登出</a>
-          </div>
+          <UserDropdownMenu />
         </li>
         <li v-else>
           <a href="" @click.prevent="openLoginPopup"><span><i class="icon-user" /></span><span>登入</span></a>
@@ -48,7 +37,9 @@
 import { Category } from '@/lib/constants'
 export default {
   name: 'HeaderMenu',
-  components: {},
+  components: {
+    UserDropdownMenu: () => import('@/components/UserDropdownMenu')
+  },
   data () {
     return {
       cates: Category
