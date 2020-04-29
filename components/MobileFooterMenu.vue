@@ -5,6 +5,7 @@
         <nuxt-link
           :to="{name: 'tv-filter-category', params: {category: c.code}}"
           active-class="active"
+          :class="{active: $route.query.category === c.code}"
         >
           <span><i :class="c.icon" /></span><span>{{ c.label }}</span>
         </nuxt-link>

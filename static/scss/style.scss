@@ -323,22 +323,33 @@ input:focus{
 	padding: 0;
 	list-style: none;
 	margin-left: auto;
+	&.mb-nav-login{
+		.login, .homeBtn{
+			top: -4px;
+			
+		}
+	}
 	a{
 		margin-left: 10px;
+		
 	}
 	.login{
 		color: #666;
 		font-size: 20px;
 		position: relative;
-		top: 2px;
+		top: -2px;
 	}
 	.homeBtn{
 		font-size: 27px;
 		color: #ff443f;
+		height: 25px;
+		position: relative;
+		top: -2px;
+		
 	}
 	@media(max-width:900px){
 		display: flex;
-		align-items: center;
+		align-items: baseline;
 	}
 }
 /*login_dialog*/
@@ -529,6 +540,7 @@ input:focus{
 				transition: .3s ease-in;
 				a{
 					padding: 3px 0;
+					margin-left: 0;
 				}
 			}
 			&:hover{
@@ -726,6 +738,11 @@ input:focus{
 		position: relative;
 		width: 55px;
 		margin-left: auto;
+		.dropdown{
+			a{
+				margin-left: 0;
+			}
+		}
 		a{
 			display: block;
 			color: #333;
