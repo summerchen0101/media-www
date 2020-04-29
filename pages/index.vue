@@ -29,6 +29,7 @@
       <CategoryLine category="anime" :ad="fixedBlockAds[3]" :list="animeList" />
     </div>
     <Footer />
+    <MobileFooterMenu />
     <ScrollTop />
     <APPDownloadPopup />
   </div>
@@ -44,8 +45,7 @@ export default {
     BlockAd: () => import('@/components/BlockAd'),
     RankBox: () => import('@/components/index/RankBox'),
     CategoryBlock: () => import('@/components/index/CategoryBlock'),
-    CategoryLine: () => import('@/components/index/CategoryLine'),
-    APPDownloadPopup: () => import('@/components/popups/AppDowload')
+    CategoryLine: () => import('@/components/index/CategoryLine')
   },
   async fetch ({ app, store, redirect }) {
     const actions = [
@@ -98,6 +98,10 @@ export default {
       this.slickComponent = 'Slick'
       $('html,body').scrollTop(0)
     })
+    if (!this.$session('dontShowAgain') && !this.$store.getters['site/shownAppPopup']) {
+      this.$bus.$emit('open:app-download-popup', true)
+      this.$store.commit('site/changeAppPopupShownStatus', true)
+    }
   },
   head () {
     return {

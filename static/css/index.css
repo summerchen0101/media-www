@@ -33,6 +33,18 @@
   color: #fff;
 }
 
+@media (max-width: 900px) {
+  .banner-box {
+    margin-top: 55px;
+  }
+}
+
+@media (max-width: 400px) {
+  .banner-box {
+    margin-top: 49px;
+  }
+}
+
 /*index*/
 .index_container {
   background: #f5f5f5;
@@ -241,7 +253,6 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
 .indexModal {
@@ -260,6 +271,7 @@
           justify-content: center;
   left: 0;
   top: 0;
+  z-index: 1100;
 }
 
 .indexModal .modal-dialog {

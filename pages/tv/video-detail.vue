@@ -32,8 +32,10 @@
       </div>
 
       <Footer />
+      <MobileFooterMenu />
     </div>
     <ScrollTop />
+    <APPDownloadPopup />
   </div>
 </template>
 
@@ -52,7 +54,6 @@ export default {
     VideoPlayer: () => import('@/components/tv/video-detail/VideoPlayer'),
     HotList: () => import('@/components/tv/video-detail/HotList'),
     FeaturedVideoList: () => import('@/components/tv/video-detail/FeaturedVideoList'),
-    Breadcrumb: () => import('@/components/tv/video-detail/Breadcrumb'),
     BlockAd: () => import('@/components/BlockAd')
   },
   async asyncData ({ store, redirect, query }) {

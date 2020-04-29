@@ -171,7 +171,5 @@ $(document).ready(function () {
       $(this).find('ul').slideToggle('medium')
     })
   }
-  $('.login-img.show-mb').click(function () {
-    $('#menu-dropdown').fadeToggle()
-  })
+
 })

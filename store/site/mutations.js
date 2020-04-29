@@ -10,5 +10,8 @@ export default {
   },
   gotFaqTotal (state, data) {
     state.faqTotal = data
+  },
+  changeAppPopupShownStatus (state, boolean) {
+    state.shownAppPopup = boolean
   }
 }

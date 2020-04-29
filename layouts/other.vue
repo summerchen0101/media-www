@@ -22,7 +22,9 @@
         </div>
         <!--page_container end-->
         <Footer />
+        <MobileFooterMenu />
         <ScrollTop />
+        <APPDownloadPopup />
       </div>
     </div>
   </div>
