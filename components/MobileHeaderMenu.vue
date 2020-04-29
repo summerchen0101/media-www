@@ -1,5 +1,5 @@
 <template>
-  <div class="show-mb mb-nav">
+  <div class="show-mb mb-nav" :class="{'mb-nav-login': $auth.loggedIn}">
     <a v-if="!$auth.loggedIn" href="" class="login" @click.prevent="openLoginPopup">
       <span><i class="icon-user" /></span>
     </a>
