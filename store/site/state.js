@@ -3,6 +3,7 @@ export default function () {
     subPageContent: [],
     info: {},
     faq: [],
-    faqTotal: 0
+    faqTotal: 0,
+    shownAppPopup: false
   }
 }
