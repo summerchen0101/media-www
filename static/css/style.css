@@ -129,11 +129,11 @@ input:focus {
 }
 
 .el-message-box__wrapper {
-  z-index: 8012 !important;
+  z-index: 8500 !important;
 }
 
 .v-modal {
-  z-index: 8011 !important;
+  z-index: 8400 !important;
 }
 
 .video_player_info_path {
@@ -397,12 +397,15 @@ input:focus {
   color: #666;
   font-size: 20px;
   position: relative;
-  top: 2px;
+  top: -4px;
 }
 
 .mb-nav .homeBtn {
   font-size: 27px;
   color: #ff443f;
+  height: 25px;
+  position: relative;
+  top: -4px;
 }
 
 @media (max-width: 900px) {
@@ -410,9 +413,9 @@ input:focus {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
   }
 }
 
@@ -651,6 +654,7 @@ input:focus {
 
 .nav-content li.login-img .dropdown a {
   padding: 3px 0;
+  margin-left: 0;
 }
 
 .nav-content li.login-img:hover .dropdown {
@@ -890,6 +894,9 @@ input:focus {
     position: relative;
     width: 55px;
     margin-left: auto;
+  }
+  .login-img.show-mb .dropdown a {
+    margin-left: 0;
   }
   .login-img.show-mb a {
     display: block;
