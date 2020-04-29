@@ -24,6 +24,7 @@
         <Footer />
         <MobileFooterMenu />
         <ScrollTop />
+        <APPDownloadPopup />
       </div>
     </div>
   </div>
