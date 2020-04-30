@@ -1,34 +1,44 @@
-import ApiHub, { ErrorHandler } from 'modular-api'
+import ModularApi from 'modular-api'
+import ErrMapper from 'error-mapper'
 // import axios from 'axios'
 import apiModules from '@/lib/apis'
 
-const errConfig = {
+const errStatusHandlerConfig = {
+  templateKey: 'status',
+  map: require('~/lib/err/status'),
+  defaultMsg: '请求状态错误'
+}
+const errCodeHandlerConfig = {
   templateKey: 'code',
   path: 'data.code',
-  silentValue: ['0', 0],
-  map: require('@/lib/err/errCodes'),
-  defaultMsg: '錯誤發生',
-  handleMsg: (msg, code) => {
-    console.log(msg, code)
-  }
+  silentValue: '0',
+  map: require('~/lib/err/codes'),
+  defaultMsg: '错误发生'
 }
 
 export default (ctx, inject) => {
+  ctx.$axios.defaults.validateStatus = (status) => {
+    const isValid = status >= 200 && status < 300
+    if (!isValid) {
+      errStatusHandlerConfig.handleMsg = (msg, code) => {
+        console.warn(msg, code)
+      }
+      ErrMapper.register(status, errStatusHandlerConfig)
+    }
+    return isValid
+  }
   if (process.server) {
     ctx.$axios.setHeader('referer', `${process.env.PROTOCOL}://${process.env.SSR_TARGET_BRANCH || ctx.req.headers.host}`)
   }
 
-  const ApiHubInstance = ApiHub.bind(ctx.$axios)
-  ApiHubInstance.onResponse((res) => {
-    ErrorHandler.register(res, errConfig)
+  const ApiHubInstance = ModularApi.bind(ctx.$axios)
+  ctx.$axios.onResponse((res) => {
+    errCodeHandlerConfig.handleMsg = (msg, code) => {
+      ctx.app.router.app.$alert(msg)
+    }
+    ErrMapper.register(res, errCodeHandlerConfig)
     return res.data
   })
-  ApiHubInstance.onResponseError((err) => {
-    ctx.app.router.app.$alert(err)
-  })
-  // ApiHubInstance.onResponse((res) => {
-  //   console.log(res)
-  // })
 
   ApiHubInstance.registerMultiModule(apiModules)
   ctx.$api = ApiHubInstance.getModules()
