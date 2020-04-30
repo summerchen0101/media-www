@@ -10,9 +10,9 @@
           <form ref="form" class="form-horizontal login_dialog_form" @reset.prevent="reset">
             <div class="form-group">
               <div class="col-xs-12">
-                <ValidationProvider v-slot="v" rules="required|account" name="account">
+                <ValidationProvider v-slot="v" rules="required|phone" name="phone">
                   <input
-                    v-model="form.account"
+                    v-model="form.phone"
                     type="text"
                     class="form-control"
                     placeholder="帐号(手机号)"
@@ -64,7 +64,7 @@
 <script>
 function initForm () {
   return {
-    account: '',
+    phone: '',
     pw: ''
   }
 }
