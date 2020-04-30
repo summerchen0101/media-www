@@ -14,7 +14,7 @@
         class="item"
         :href="ad.url"
         :target="ad.newWin ? '_blank' : '_self'"
-        @click="ad.url ? $api.ad.getAdInfo({params: {id: ad.id}}) : null"
+        @click.prevent="ad.url ? $api.ad.getAdInfo({id: ad.id}) : null"
       >
         <img :src="resolveResource(ad.imgUrl)">
       </a>
