@@ -94,6 +94,10 @@ export default {
       this.lockSendBtn = false
     },
     async onSubmit () {
+      if (!this.verifyCode) {
+        this.$alert('请填写验证码')
+        return
+      }
       const res = await this.$store.dispatch('user/register', this.verifyCode)
       if (res.code === '0') {
         this.$bus.$emit('register/setStep', 'step3')
