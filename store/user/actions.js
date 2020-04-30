@@ -1,7 +1,7 @@
 export default {
   async login ({ commit, dispatch }, _d) {
     const data = {
-      username: _d.account,
+      username: _d.phone,
       password: _d.pw,
       client_id: process.env.CLIENT_ID,
       client_secret: process.env.CLIENT_SECRET,
