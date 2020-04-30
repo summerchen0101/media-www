@@ -35,7 +35,12 @@ export default (ctx, inject) => {
         ctx.app.router.app.$alert(msg)
       }
     }
-    ErrMapper.register(res, errCodeHandlerConfig)
+    const isSilent =
+    res.config.silentErr &&
+    res.config.silentErr.includes(res.data.code && res.data.code[0])
+    if (!isSilent) {
+      ErrMapper.register(res, errCodeHandlerConfig)
+    }
     return res.data
   })
 
