@@ -15,7 +15,7 @@
                     v-model="form.account"
                     type="text"
                     class="form-control"
-                    placeholder="帐号"
+                    placeholder="帐号(手机号)"
                     @keyup.enter="onClickedLogin($event, invalid)"
                   >
                   <span class="text-danger">{{ v.errors[0] }}</span>

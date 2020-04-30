@@ -9,7 +9,7 @@
       <div class="form-group">
         <div class="col-xs-12">
           <ValidationProvider v-slot="v" rules="required|phone" name="phone">
-            <input v-model="form.phone" type="text" class="form-control" placeholder="手机号">
+            <input v-model="form.phone" type="text" class="form-control" placeholder="帐号(手机号)">
             <span class="text-danger">{{ v.errors[0] }}</span>
           </ValidationProvider>
         </div>
