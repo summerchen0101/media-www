@@ -1,7 +1,7 @@
 export default {
   async login ({ commit, dispatch }, _d) {
     const data = {
-      username: _d.account,
+      username: _d.phone,
       password: _d.pw,
       client_id: process.env.CLIENT_ID,
       client_secret: process.env.CLIENT_SECRET,
@@ -19,22 +19,27 @@ export default {
     await this.$auth.logout('local')
     this.$router.push('/')
   },
-  async register ({ commit, dispatch }, _d) {
+  register ({ commit, dispatch, state }, verifyCode) {
+    const _d = state.registerData
     const data = {
-      account: _d.account,
+      account: _d.phone,
       password: _d.pw,
       password_confirmation: _d.pw_c,
+      domain: this.$utils.host,
+      verification_code: verifyCode
+    }
+    return this.$api.user.register(data)
+  },
+  getVerificationCode ({ commit, dispatch, state }) {
+    const _d = state.registerData
+    const data = {
+      account: _d.phone,
       domain: this.$utils.host
     }
-    const res = await this.$api.register(data)
-    if (res.code === '0') {
-      $.fancybox.close()
-      this.$router.push({ name: 'index' })
-      this.$router.app.$alert('注册成功请重新登入', { type: 'success' })
-    }
+    return this.$api.user.getVerificationCode(data)
   },
   async getProfile ({ commit, dispatch }) {
-    const res = await this.$api.getProfile()
+    const res = await this.$api.user.getProfile()
     if (res.code === '0') {
       commit('gotProfile', res.data)
     }
@@ -44,7 +49,7 @@ export default {
       email: _d.email,
       phone: _d.phone
     }
-    const res = await this.$api.updateProfile(data)
+    const res = await this.$api.user.updateProfile(data)
     if (res.code === '0') {
       this.$router.app.$alert('资料更新成功', { type: 'success' })
     }
@@ -55,7 +60,7 @@ export default {
       password: _d.pw,
       password_confirmation: _d.pw_c
     }
-    const res = await this.$api.updatePw(data)
+    const res = await this.$api.user.updatePw(data)
     if (res.code === '0') {
       this.$router.app.$alert('密码更新成功', { type: 'success' })
     }

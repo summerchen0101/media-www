@@ -1,4 +1,4 @@
-const apiModule = 'FAVORITE'
+const apiModule = 'favorite'
 export default {
   async getList ({ commit }, _d = {}) {
     const params = {
@@ -28,14 +28,14 @@ export default {
     }
   },
   async removeById ({ commit }, id) {
-    const res = await this.$api[apiModule].remove({ params: { id } })
+    const res = await this.$api[apiModule].remove({ id })
     if (res.code === '0') {
       commit('removeById', id)
       this.$router.app.$message('刪除成功')
     }
   },
   async removeByCategory ({ commit }, category) {
-    const res = await this.$api[apiModule].removeAll({ params: { media_type: category } })
+    const res = await this.$api[apiModule].removeAll({ media_type: category })
     if (res.code === '0') {
       commit('removeAll')
       this.$router.app.$message('刪除成功')

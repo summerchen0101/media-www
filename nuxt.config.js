@@ -68,11 +68,10 @@ module.exports = {
     '@/plugins/utils',
     '@/plugins/vee-validate',
     '@/plugins/components',
-    '@/plugins/axios',
-    '@/plugins/apiHub',
     '@/plugins/mixins',
     '@/plugins/filters',
-    { src: '@/plugins/store2', mode: 'client' }
+    { src: '@/plugins/store2', mode: 'client' },
+    '@/plugins/modular-api'
   ],
   /*
   ** Nuxt.js dev-modules

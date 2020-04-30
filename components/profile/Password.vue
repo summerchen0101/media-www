@@ -62,7 +62,7 @@ export default {
       if (res.code === '0') {
         this.form = initForm()
         this.$nextTick(() => {
-          this.$refs.form.reset()
+          this.$refs.form && this.$refs.form.reset()
         })
       }
     }

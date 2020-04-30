@@ -6,6 +6,11 @@ Vue.mixin({
       siteTitle: '抖影电影 DOING MOVIE'
     }
   },
+  watch: {
+    $route () {
+      $.fancybox.close()
+    }
+  },
   methods: {
     openLoginPopup () {
       const vm = this
@@ -46,6 +51,7 @@ Vue.mixin({
         },
         afterClose () {
           vm.$bus.$emit('register/clearForm')
+          vm.$bus.$emit('register/setStep', 'step1')
         }
       })
     },

@@ -6,5 +6,8 @@ export default {
       email: _d.mail,
       id: _d.id
     })
+  },
+  saveRegisterData (state, _d) {
+    state.registerData = _d
   }
 }
