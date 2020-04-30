@@ -7070,10 +7070,10 @@ mixin-deep@^1.2.0:
   dependencies:
     minimist "^1.2.5"
 
-modular-api@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/modular-api/-/modular-api-1.0.6.tgz#b3244e3252efb0802455406a8cdb117787d79af8"
-  integrity sha512-LOUGgcLEntodcrs81Rloczqb8ZB0fy3e+F/rNND6dcB267v21gE/lUKu9vkVyNdgmTS7vKKtJlxG81YpfnPoag==
+modular-api@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/modular-api/-/modular-api-1.0.7.tgz#bb8ffa1a075f72d08fdecad41b925d62cffe9822"
+  integrity sha512-laE27W8HNSDpxeHAroi/t3smGY6qo4M2pMDFJrEBBL0KcSACfrQWg4P831D6w1bruprILTPFov+1IBQ43y1UlQ==
   dependencies:
     axios "^0.19.2"
 
