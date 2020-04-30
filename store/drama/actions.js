@@ -1,5 +1,5 @@
 import { perpage as commentPerpage } from '@/components/tv/video-detail/VideoComment.vue'
-const apiModule = 'DRAMA'
+const apiModule = 'drama'
 export default {
   async getOptions ({ commit }) {
     const res = await this.$api[apiModule].getOptions()
@@ -18,7 +18,7 @@ export default {
       page: _d.page,
       perpage: _d.perpage
     }
-    const res = await this.$api[apiModule].getList({ params: data })
+    const res = await this.$api[apiModule].getList(data)
     if (res.code === '0') {
       commit('gotList', res.data)
     }
@@ -32,7 +32,7 @@ export default {
       genres_id: _d.genres,
       episode_status: _d.status
     }
-    const res = await this.$api[apiModule].getTotal({ params: data })
+    const res = await this.$api[apiModule].getTotal(data)
     if (res.code === '0') {
       commit('gotTotal', res.data)
     }
@@ -45,13 +45,13 @@ export default {
   },
 
   async getTopList ({ commit }, num = 10) {
-    const res = await this.$api[apiModule].getTopList({ params: { top_count: num } })
+    const res = await this.$api[apiModule].getTopList({ top_count: num })
     if (res.code === '0') {
       commit('gotTopList', res.data)
     }
   },
   async getDetail ({ commit }, id) {
-    const res = await this.$api[apiModule].getDetail({ params: { id } })
+    const res = await this.$api[apiModule].getDetail({ id })
     if (res.code === '0') {
       commit('gotDetail', res.data)
     }
@@ -62,7 +62,7 @@ export default {
       page: _d.page || 1,
       perpage: commentPerpage
     }
-    const res = await this.$api[apiModule].getCommentList({ params: data })
+    const res = await this.$api[apiModule].getCommentList(data)
     if (res.code === '0') {
       commit('gotCommentList', res.data)
     }
@@ -71,13 +71,13 @@ export default {
     const data = {
       media_id: _d.id
     }
-    const res = await this.$api[apiModule].getCommentTotal({ params: data })
+    const res = await this.$api[apiModule].getCommentTotal(data)
     if (res.code === '0') {
       commit('gotCommentTotal', res.data)
     }
   },
   async getSources ({ commit }, id) {
-    const res = await this.$api[apiModule].getSources({ params: { id } })
+    const res = await this.$api[apiModule].getSources({ id })
     if (res.code === '0') {
       commit('gotSources', res.data)
     }
@@ -97,7 +97,7 @@ export default {
   },
   async getFavStatus ({ commit, rootState }, id) {
     if (!rootState.auth.loggedIn) { return }
-    const res = await this.$api[apiModule].getFavStatus({ params: { media_id: id } })
+    const res = await this.$api[apiModule].getFavStatus({ media_id: id })
     if (res.code === '0') {
       commit('gotFavStatus', res.data.my_favorite.length > 0)
     }

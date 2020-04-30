@@ -6,7 +6,7 @@
       :href="ad.url"
       :target="ad.newWin ? '_blank' : '_self'"
       :style="`background-image: url('${resolveResource(ad.imgUrl)}');`"
-      @click="ad.url ? $api.getAdInfo({params: {id: ad.id}}) : null"
+      @click="ad.url ? $api.ad.getAdInfo({params: {id: ad.id}}) : null"
     />
   </div>
 </template>
