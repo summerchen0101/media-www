@@ -80,7 +80,7 @@ export default {
     },
     async onSubmit () {
       this.$nuxt.$loading.start()
-      this.$store.commit('user/saveRegisterData', this.form)
+      this.$store.commit('user/saveRegisterData', _.cloneDeep(this.form))
       const res = await this.$store.dispatch('user/getVerificationCode')
       if (res.code === '0') {
         this.$bus.$emit('register/setStep', 'step2')
