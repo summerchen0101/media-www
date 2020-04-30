@@ -3,25 +3,17 @@ import ErrMapper from 'error-mapper'
 // import axios from 'axios'
 import apiModules from '@/lib/apis'
 
-const errStatusHandlerConfig = {
-  templateKey: 'status',
-  map: require('~/lib/err/status'),
-  defaultMsg: '请求状态错误'
-}
-const errCodeHandlerConfig = {
-  templateKey: 'code',
-  path: 'data.code',
-  silentValue: '0',
-  map: require('~/lib/err/codes'),
-  defaultMsg: '错误发生'
-}
-
 export default (ctx, inject) => {
   ctx.$axios.defaults.validateStatus = (status) => {
     const isValid = status >= 200 && status < 300
     if (!isValid) {
-      errStatusHandlerConfig.handleMsg = (msg, code) => {
-        console.warn(msg, code)
+      const errStatusHandlerConfig = {
+        templateKey: 'status',
+        map: require('~/lib/err/status'),
+        defaultMsg: '请求状态错误',
+        handleMsg: (msg, code) => {
+          console.warn(msg, code)
+        }
       }
       ErrMapper.register(status, errStatusHandlerConfig)
     }
@@ -33,8 +25,15 @@ export default (ctx, inject) => {
 
   const ApiHubInstance = ModularApi.bind(ctx.$axios)
   ctx.$axios.onResponse((res) => {
-    errCodeHandlerConfig.handleMsg = (msg, code) => {
-      ctx.app.router.app.$alert(msg)
+    const errCodeHandlerConfig = {
+      templateKey: 'code',
+      path: 'data.code',
+      silentValue: '0',
+      map: { ...require('~/lib/err/codes'), ...res.config.errMap },
+      defaultMsg: '错误发生',
+      handleMsg: (msg, code) => {
+        ctx.app.router.app.$alert(msg)
+      }
     }
     ErrMapper.register(res, errCodeHandlerConfig)
     return res.data
