@@ -9,34 +9,37 @@
       <div class="form-group">
         手机号码:{{ registerData.phone }}
       </div>
-      <div class="form-group">
-        <!-- <label class="control-label">Company Name</label> -->
-        <div class="flex-box">
-          <input v-model="verifyCode" type="text" class="form-control" placeholder="请输入验证码">
-          <div class="btn-box">
-            <span v-if="lockSendBtn" class="btn btn-light">{{ counter }}s</span>
-            <span v-else class="btn btn-primary" @click="onReSend">
-              重发
-            </span>
+      <ValidationProvider v-slot="v" rules="required" name="phone">
+        <div class="form-group">
+          <!-- <label class="control-label">Company Name</label> -->
+          <div class="flex-box">
+            <input v-model="verifyCode" type="text" class="form-control" placeholder="帐号(手机号)">
+            <div class="btn-box">
+              <span v-if="lockSendBtn" class="btn btn-light">{{ counter }}s</span>
+              <span v-else class="btn btn-primary" @click="onReSend">
+                重发
+              </span>
+            </div>
           </div>
+          <span class="text-danger">{{ v.errors[0] }}</span>
         </div>
+      </ValidationProvider>
 
-        <div class="modal-tips mt-2">
-          <div v-if="showErrorMsg" class="text-yellow mt-2 ">
-            <i class="fa fa-exclamation-circle" /> 验证码错误
-          </div>
-          <!-- <div class="text-red mt-2">
+      <div class="modal-tips mt-2">
+        <div v-if="showErrorMsg" class="text-yellow mt-2 ">
+          <i class="fa fa-exclamation-circle" /> 验证码错误
+        </div>
+        <!-- <div class="text-red mt-2">
               <i class="fa fa-times-circle" /> 验证失败, 请重新取得验证码
             </div> -->
-        </div>
-        <div class="tips mt-2">
-          重新取得验证码<br>
-          <b class="text-red">30</b> 秒仍未收到简讯，请再点击一次按钮
-        </div>
+      </div>
+      <div class="tips mt-2">
+        重新取得验证码<br>
+        <b class="text-red">30</b> 秒仍未收到简讯，请再点击一次按钮
       </div>
       <div class="form-group">
         <div class="dialog_form_btn">
-          <button class="btn btn-primary nextBtn" type="submit">
+          <button class="btn btn-primary nextBtn" type="submit" :disabled="invalid">
             送出
           </button>
         </div>
@@ -69,6 +72,9 @@ export default {
     clearForm () {
       this.verifyCode = ''
       this.showErrorMsg = false
+      this.$nextTick(() => {
+        this.$refs.form && this.$refs.form.reset()
+      })
     },
     async onReSend () {
       this.$nuxt.$loading.start()
@@ -94,10 +100,6 @@ export default {
       this.lockSendBtn = false
     },
     async onSubmit () {
-      if (!this.verifyCode) {
-        this.$alert('请填写验证码')
-        return
-      }
       const res = await this.$store.dispatch('user/register', this.verifyCode)
       if (res.code === '0') {
         this.$bus.$emit('register/setStep', 'step3')
