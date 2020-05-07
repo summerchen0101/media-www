@@ -285,7 +285,7 @@ ul.page_tabs.video_play_side_tabs li.active {
     width: calc(100% / 5 - 4px);
   }
   .tab_series .panel .panel-body a:nth-child(5n+5) {
-    margin-right: 0;
+    /* margin-right: 0; */
   }
   .tab_series .panel .panel-body a:nth-child(4n+4) {
     margin-right: 4px;
@@ -300,7 +300,7 @@ ul.page_tabs.video_play_side_tabs li.active {
     margin-right: 0px;
   }
   .tab_series .panel .panel-body a:nth-child(5n+5) {
-    margin-right: 4px;
+    /* margin-right: 4px; */
   }
 }
 
