@@ -10,13 +10,20 @@
           :to="{name: 'tv-filter-category', params: {category}}"
           class="index_more"
         >
-          更多
+          更多{{ $utils.device }}
         </nuxt-link>
       </div>
       <!--head_title end-->
       <div class="index_contentBox index_contentBox_column">
         <div class="index_tv_list">
-          <VideoItem v-for="(video, i) in list" :key="i" :video="video" :category="category" />
+          <VideoItem
+            v-for="(video, i) in list"
+            v-show="$utils.device === 'web' ? true : i !== list.length-1"
+            :key="i"
+            :video="video"
+            :category="category"
+          />
+          <!-- WAP版時僅顯示9個(一排3個) -->
         </div>
         <!--index_tv_list end-->
         <RankBox :category="category" />
