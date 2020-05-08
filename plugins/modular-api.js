@@ -4,21 +4,6 @@ import ErrMapper from 'error-mapper'
 import apiModules from '@/lib/apis'
 
 export default (ctx, inject) => {
-  ctx.$axios.defaults.validateStatus = (status) => {
-    const isValid = status >= 200 && status < 300
-    if (!isValid) {
-      const errStatusHandlerConfig = {
-        templateKey: 'status',
-        map: require('~/lib/err/status'),
-        defaultMsg: '请求状态错误',
-        handleMsg: (msg, code) => {
-          console.warn(msg, code)
-        }
-      }
-      ErrMapper.register(status, errStatusHandlerConfig)
-    }
-    return isValid
-  }
   if (process.server) {
     ctx.$axios.setHeader('referer', `${process.env.PROTOCOL}://${process.env.SSR_TARGET_BRANCH || ctx.req.headers.host}`)
   }
@@ -42,6 +27,24 @@ export default (ctx, inject) => {
       ErrMapper.register(res, errCodeHandlerConfig)
     }
     return res.data
+  })
+
+  ctx.$axios.onResponseError((err) => {
+    if (err.isAxiosError && err.response.status) {
+      const errStatusHandlerConfig = {
+        templateKey: 'status',
+        map: require('~/lib/err/status'),
+        defaultMsg: '请求状态错误',
+        handleMsg: (msg, code) => {
+          console.warn(msg, code)
+          ctx.app.router.app.$alert(msg)
+          if (code === 401) {
+            ctx.redirect('/')
+          }
+        }
+      }
+      ErrMapper.register(err.response.status, errStatusHandlerConfig)
+    }
   })
 
   ApiHubInstance.registerMultiModule(apiModules)
