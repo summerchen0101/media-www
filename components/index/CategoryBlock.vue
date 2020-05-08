@@ -10,7 +10,7 @@
           :to="{name: 'tv-filter-category', params: {category}}"
           class="index_more"
         >
-          更多{{ $utils.device }}
+          更多
         </nuxt-link>
       </div>
       <!--head_title end-->
