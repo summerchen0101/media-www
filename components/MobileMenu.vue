@@ -6,7 +6,8 @@
         <img src="/images/ic_usericon.png" alt="">
       </div>
       <div v-if="$auth.loggedIn" class="link name">
-        {{ $auth.user.account }}
+        <span>{{ $auth.user.account }}</span>
+        <a href="" @click.prevent="$store.dispatch('user/logout') && hideMobileMenu()">登出</a>
       </div>
       <div v-else class="link">
         会员
