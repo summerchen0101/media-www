@@ -107,7 +107,8 @@ module.exports = {
       logout: '/',
       callback: '/',
       home: '/'
-    }
+    },
+    resetOnError: true
   },
   /*
   ** Axios module configuration

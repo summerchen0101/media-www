@@ -3,6 +3,6 @@ export default async function ({ app, store, redirect, query, $auth }) {
     await $auth.fetchUser()
   } catch (err) {
     redirect('/')
-    $auth.$storage.setState('loggedIn', false)
+    // $auth.$storage.setState('loggedIn', false)
   }
 }
