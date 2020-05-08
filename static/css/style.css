@@ -916,6 +916,9 @@ input:focus {
     text-align: center;
     border: none;
   }
+  .nav-content .link.name a {
+    margin-left: 10px;
+  }
   .nav-content .link a {
     color: #666;
   }
@@ -927,11 +930,12 @@ input:focus {
     font-weight: bold;
     color: #666;
     cursor: pointer;
+    margin-left: 15px;
   }
   .nav-content .user-info {
     text-align: center;
     position: relative;
-    padding: 0 20px;
+    padding: 0;
   }
   .nav-content .login-link {
     display: -webkit-box;
