@@ -284,23 +284,11 @@ ul.page_tabs.video_play_side_tabs li.active {
   .tab_series .panel .panel-body a {
     width: calc(100% / 5 - 4px);
   }
-  .tab_series .panel .panel-body a:nth-child(5n+5) {
-    margin-right: 0;
-  }
-  .tab_series .panel .panel-body a:nth-child(4n+4) {
-    margin-right: 4px;
-  }
 }
 
 @media (max-width: 450px) {
   .tab_series .panel .panel-body a {
     width: calc(100% / 4 - 3px);
-  }
-  .tab_series .panel .panel-body a:nth-child(4n+4) {
-    margin-right: 0px;
-  }
-  .tab_series .panel .panel-body a:nth-child(5n+5) {
-    margin-right: 4px;
   }
 }
 
