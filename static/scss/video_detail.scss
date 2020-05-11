@@ -150,8 +150,8 @@ ul.page_tabs.video_play_side_tabs {
         display: flex;
         margin-left: auto;
     }
-    
-    
+
+
 }
 .share-box{
     a{
@@ -235,25 +235,6 @@ ul.page_tabs.video_play_side_tabs {
                     background-color: #ff443f;
                     color: #fff;
                     border-color: #ff443f;
-                }
-                @media(max-width:991px){
-                    width:calc(100% / 5 - 4px);
-                    &:nth-child(5n+5){
-                        margin-right: 0;
-                    }
-                    &:nth-child(4n+4){
-                        margin-right: 4px;
-                    }
-                }
-                @media(max-width:450px){
-                    width:calc(100% / 4 - 3px);
-                    &:nth-child(4n+4){
-                        margin-right: 0px;
-                    }
-                    &:nth-child(5n+5){
-                        margin-right: 4px;
-                    }
-                    
                 }
             }
         }
@@ -622,7 +603,7 @@ ul.page_tabs.video_play_side_tabs {
             color: #999999;
             text-align: right;
             margin-left: auto;
-            
+
         }
     }
 }
