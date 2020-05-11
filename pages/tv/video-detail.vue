@@ -43,7 +43,7 @@
 export default {
   name: 'VideoDetail',
   layout: 'main',
-  middleware: ['auth', 'videoSourceAdapter'],
+  middleware: ['auth', 'authWithRedirect', 'videoSourceAdapter'],
   watchQuery: true,
   key: to => to.fullPath,
   components: {

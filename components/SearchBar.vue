@@ -25,7 +25,7 @@
 <script>
 import { Category } from '@/lib/constants'
 const initForm = {
-  category: '',
+  category: Category[0].code, // 預設第一個分類
   keyword: ''
 }
 export default {
@@ -43,6 +43,7 @@ export default {
     }
   },
   mounted () {
+    this.$bus.$emit('search/categoryChanged', this.form.category) // 預設撈取第一個分類的列表
     this.$bus.$on('search/clearForm', this.clearForm)
   },
   methods: {

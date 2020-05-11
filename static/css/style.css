@@ -397,11 +397,9 @@ input:focus {
   margin-left: 10px;
 }
 
-.mb-nav .login {
+.mb-nav .search {
   color: #666;
   font-size: 20px;
-  position: relative;
-  top: -2px;
 }
 
 .mb-nav .homeBtn {
@@ -593,6 +591,16 @@ input:focus {
   }
 }
 
+.nav-content .user-info {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .nav-content .user-info {
+    display: block;
+  }
+}
+
 .nav-content.visible {
   left: 0px;
   -webkit-transition: left 0.25s ease;
@@ -674,7 +682,7 @@ input:focus {
 }
 
 @media (max-width: 900px) {
-  .nav-content li.login-img.show-pc {
+  .nav-content li.show-pc, .nav-content li.login-img.show-pc {
     display: none;
   }
 }
@@ -820,10 +828,7 @@ input:focus {
 
 @media (max-width: 900px) {
   .nav-content ul.menu_list {
-    border-top: 1px solid #ccc;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
+    display: none;
     padding: 10px 0;
   }
   .nav-content ul.menu_list li {
@@ -856,15 +861,35 @@ input:focus {
   }
 }
 
+.nav-content ul.mb-menu-list {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .nav-content ul.mb-menu-list {
+    display: block;
+  }
+  .nav-content ul.mb-menu-list li {
+    padding: 3px 30px;
+  }
+  .nav-content ul.mb-menu-list li.active {
+    background-color: #ff443f;
+  }
+  .nav-content ul.mb-menu-list li.active a {
+    color: #fff;
+  }
+}
+
 @media (max-width: 900px) {
   .nav-content {
     background: #fff;
-    width: 200px;
+    width: 230px;
+    padding: 80px 0 20px;
     height: 100%;
     display: block;
     position: fixed;
-    left: -200px;
-    top: -39px;
+    left: -240px;
+    top: -93px;
     -webkit-transition: left 0.25s ease;
     transition: left 0.25s ease;
     margin: 0;
@@ -874,12 +899,60 @@ input:focus {
     overflow-x: hidden;
     height: 100%;
     margin-top: 94px;
+    -webkit-box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
   }
-}
-
-@media (max-width: 400px) {
-  .nav-content {
-    top: -45px;
+  .nav-content .img {
+    width: 80px;
+    margin: 0 auto;
+  }
+  .nav-content .link {
+    padding: 3px 30px;
+    border-radius: 5px;
+    border: 1px solid #c3c3c3;
+    margin: 10px;
+  }
+  .nav-content .link.name {
+    text-align: center;
+    border: none;
+  }
+  .nav-content .link.name a {
+    margin-left: 10px;
+  }
+  .nav-content .link a {
+    color: #666;
+  }
+  .nav-content #menu-close {
+    font-size: 30px;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    margin-left: 15px;
+  }
+  .nav-content .user-info {
+    text-align: center;
+    position: relative;
+    padding: 0;
+  }
+  .nav-content .login-link {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 15px 0;
+  }
+  .nav-content .login-link a {
+    display: block;
+    width: 50%;
+    color: #666;
+  }
+  .nav-content .login-link i {
+    margin-right: 3px;
   }
 }
 
@@ -1421,43 +1494,18 @@ ul.page_tabs li.active {
   .video_unit:nth-child(4n+4) {
     margin-right: 0;
   }
-  .video_unit.index_slide_unit {
-    margin: 0 7px 15px;
-  }
-  .video_unit.index_slide_unit:nth-child(4n+4) {
-    margin-right: 7px;
-  }
 }
 
 @media (max-width: 575px) {
   .video_unit {
-    width: calc(100% / 3 - 11px);
+    width: calc(100% / 3 - 6px);
+    margin-right: 7px;
+    margin-bottom: 7px;
   }
   .video_unit:nth-child(3n+3) {
     margin-right: 0;
   }
   .video_unit:nth-child(4n+4) {
-    margin-right: 15px;
-  }
-  .video_unit.index_slide_unit:nth-child(3n+3) {
-    margin-right: 7px;
-  }
-}
-
-@media (max-width: 400px) {
-  .video_unit {
-    width: calc(100% / 2 - 8px);
-  }
-  .video_unit:nth-child(2n+2) {
-    margin-right: 0;
-  }
-  .video_unit:nth-child(3n+3) {
-    margin-right: 15px;
-  }
-  .video_unit:nth-child(6n+6) {
-    margin-right: 0;
-  }
-  .video_unit.index_slide_unit:nth-child(2n+2), .video_unit.index_slide_unit:nth-child(6n+6) {
     margin-right: 7px;
   }
 }
@@ -1591,7 +1639,6 @@ ul.page_tabs li.active {
     width: 25px;
   }
   .cover-bg {
-    background: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 55px;
     bottom: 0;

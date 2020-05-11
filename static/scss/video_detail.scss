@@ -417,57 +417,7 @@ ul.page_tabs.video_play_side_tabs {
         clear: both;
     }
 }
-.video_unit{
-    width: calc(100% / 5 - 12px);
-    &:nth-child(5n+5){
-        margin-right: 0;
-    }
-    @media(max-width:767px){
-		width: calc(100% / 4 - 12px);
-		&:nth-child(4n+4){
-			margin-right: 0;
-        }
-        &:nth-child(5n+5){
-            margin-right: 15px;
-        }
-		// &:nth-child(n+9){
-		// 	display: none;
-		// }
-	}
-	@media(max-width:575px){
-		width: calc(100% / 3 - 11px);
-		&:nth-child(3n+3){
-			margin-right: 0;
-		}
-		&:nth-child(4n+4){
-			margin-right: 15px;
-        }
-        &:nth-child(12n+12){
-            margin-right: 0;
-        }
-		// &:nth-child(n+9){
-		// 	display: block;
-		// }
-		// &:nth-child(n+10){
-		// 	display: none;
-		// }
-	}
-	@media(max-width:400px){
-		width: calc(100% / 2 - 8px);
-		&:nth-child(2n+2){
-			margin-right: 0;
-		}
-		&:nth-child(3n+3){
-			margin-right: 15px;
-		}
-		&:nth-child(6n+6){
-			margin-right: 0;
-		}
-		// &:nth-child(n+10){
-		// 	display: block;
-		// }
-	}
-}
+
 
 .tv_detail_hot_select_img{
     height: 240px;

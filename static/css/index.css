@@ -200,38 +200,6 @@
 }
 
 /*綜藝*/
-.slider_list .video_unit {
-  width: calc(100% / 6 - 13px);
-}
-
-.slider_list .video_unit:nth-child(6n+6) {
-  margin-right: 0;
-}
-
-@media (max-width: 767px) {
-  .slider_list .video_unit {
-    width: calc(100% / 3 - 13px);
-  }
-  .slider_list .video_unit:nth-child(3n+3), .slider_list .video_unit:nth-child(6n+6) {
-    margin-right: 0;
-  }
-}
-
-@media (max-width: 400px) {
-  .slider_list .video_unit {
-    width: calc(100% / 2 - 13px);
-  }
-  .slider_list .video_unit:nth-child(2n+2) {
-    margin-right: 0;
-  }
-  .slider_list .video_unit:nth-child(3n+3) {
-    margin-right: 7px;
-  }
-  .slider_list .video_unit:nth-child(6n+6) {
-    margin-right: 0;
-  }
-}
-
 @media screen and (max-width: 768px) {
   .index_container {
     padding: 35px 0;

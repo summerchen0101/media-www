@@ -38,7 +38,7 @@ import Search from '@/components/popups/Search'
 import SideMenu from '@/components/MemberSideMenu'
 export default {
   name: 'UserLayout',
-  middleware: 'auth',
+  middleware: ['auth', 'authWithRedirect'],
   layout: 'main',
   components: {
     Header,

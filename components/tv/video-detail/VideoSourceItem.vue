@@ -16,7 +16,6 @@
     <div
       :id="`collapse${index}`"
       class="panel-collapse collapse"
-      :class="{in: source.id === +$route.query.source}"
       role="tabpanel"
       :aria-labelledby="`heading${index}`"
     >
