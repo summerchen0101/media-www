@@ -1,6 +1,7 @@
 <template>
   <div v-if="ad" class="ad-box mb-20">
     <a
+      v-if="ad.imgUrl"
       :title="ad.title"
       class="item"
       :href="ad.url"
