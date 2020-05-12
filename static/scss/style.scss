@@ -308,7 +308,7 @@ input:focus{
 				height: 35px;
 			}
 		}
-		
+
 	}
 	@media(max-width:400px){
 		.logo{
@@ -326,12 +326,12 @@ input:focus{
 	&.mb-nav-login{
 		.login, .homeBtn{
 			top: -4px;
-			
+
 		}
 	}
 	a{
 		margin-left: 10px;
-		
+
 	}
 	.search{
 		color: #666;
@@ -343,7 +343,7 @@ input:focus{
 		height: 25px;
 		position: relative;
 		top: -2px;
-		
+
 	}
 	@media(max-width:900px){
 		display: flex;
@@ -590,12 +590,12 @@ input:focus{
 					i{
 						color: #333;
 					}
-					
+
 				}
 				i{
 					font-size: 18px;
 					color: #fff;
-					
+
 				}
 				span{
 					position: relative;
@@ -615,10 +615,10 @@ input:focus{
 						&:nth-child(1){
 							margin-right: 0;
 							margin-bottom: 4px;
-							
+
 						}
 					}
-					
+
 				}
 				a {
 					padding: 10px 0;
@@ -631,7 +631,7 @@ input:focus{
 					line-height: 1.5;
 					font-weight: 400;
 					cursor: pointer;
-					
+
 				}
 				&:hover{
 					> a{
@@ -674,7 +674,7 @@ input:focus{
 							position: relative;
 						}
 					}
-					
+
 				}
 			}
 			@media(max-width:900px){
@@ -711,7 +711,7 @@ input:focus{
 					}
 				}
 			}
-			
+
 		}
 		&.mb-menu-list{
 			display: none;
@@ -759,7 +759,10 @@ input:focus{
 			margin: 10px;
 			&.name{
 				text-align: center;
-				border: none;
+        border: none;
+        a {
+          margin-left: 10px;
+        }
 			}
 			a{
 				color: #666;
@@ -772,12 +775,13 @@ input:focus{
 			top: -30px;
 			font-weight: bold;
 			color: #666;
-			cursor: pointer;
+      cursor: pointer;
+      margin-left: 15px;
 		}
 		.user-info{
 			text-align: center;
 			position: relative;
-			padding: 0 20px;
+			padding: 0;
 		}
 		.login-link{
 			display: flex;
@@ -1122,7 +1126,7 @@ body {
 			display: block;
 			margin-right: 0;
 			font-size: 16px;
-		
+
 		}
 		@media(max-width:575px){
 			padding: 5px;
@@ -1134,7 +1138,7 @@ body {
 		@media(max-width:575px){
 			padding: 5px;
 		}
-	
+
 	}
 }
 
@@ -1221,7 +1225,7 @@ ul.page_tabs li.active {
 		}
 	}
 }
-.index_mtitle, 
+.index_mtitle,
 .rank_mtitle{
 	color: #333333;
 	display: inline-block;
@@ -1246,7 +1250,7 @@ ul.page_tabs li.active {
     margin-right: 15px;
 	margin-bottom: 20px;
 	position: relative;
-	
+
 	@media(max-width:767px){
 		width: calc(100% / 4 - 12px);
 		&:nth-child(4n+4){
@@ -1445,7 +1449,7 @@ ul.page_tabs li.active {
 	.top > span.index_top_search_box{
 		display: inline-block;
 		margin-right: 10px;
-		
+
 	}
 	.company_left{
 		padding-right: 40px;
@@ -1480,15 +1484,15 @@ ul.page_tabs li.active {
     display: none;
     width: 100%;
     position: relative;
-    margin-top:40px; 
-  
+    margin-top:40px;
+
     p {
         margin-top: 10px;
     }
-  
+
     &-row {
       display: table-row;
-      
+
       &:before {
           top: 14px;
           bottom: 0;
@@ -1505,12 +1509,12 @@ ul.page_tabs li.active {
         display: table-cell;
         text-align: center;
         position: relative;
-      
+
         .btn.disabled {
             opacity: 1 !important;
             filter: alpha(opacity=100) !important;
         }
-    } 
+    }
 }
 .step-form{
 	.dialog_form_btn button,
