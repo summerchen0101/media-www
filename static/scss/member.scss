@@ -278,8 +278,13 @@
     font-size: 13px;
     transition: all .1s;
 }
-.member_video_txt:hover .member_video_title{
-    color: #ff920b;
+.member_video_view{
+    font-size: 13px;
+    color: #999999;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 23px;
 }
 //setting
 .sex_box{
