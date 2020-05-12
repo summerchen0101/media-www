@@ -1,4 +1,4 @@
-//about 
+//about
 .company_left{
     padding-right: 70px;
     @media(max-width:991px){
@@ -272,7 +272,7 @@
     line-height: 20px;
     overflow : hidden;
     text-overflow: ellipsis;
-    display: -webkit-box;
+    white-space: nowrap;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     font-size: 13px;
@@ -394,7 +394,7 @@
     text-overflow : ellipsis;
     white-space : nowrap;
     transition: all .1s;
-    
+
 }
 .news_txt:hover{
     color: #ff920b;
@@ -436,7 +436,7 @@
     .member_video_unit:nth-child(3n+3){
         margin-right: 0;
     }
-    
+
 }
 @media (max-width:767px){
     .company_left_pc, .member_list_pc{
