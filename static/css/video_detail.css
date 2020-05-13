@@ -280,18 +280,6 @@ ul.page_tabs.video_play_side_tabs li.active {
   border-color: #ff443f;
 }
 
-@media (max-width: 991px) {
-  .tab_series .panel .panel-body a {
-    width: calc(100% / 5 - 4px);
-  }
-}
-
-@media (max-width: 450px) {
-  .tab_series .panel .panel-body a {
-    width: calc(100% / 4 - 3px);
-  }
-}
-
 .video_player_info {
   padding: 10px 15px;
 }

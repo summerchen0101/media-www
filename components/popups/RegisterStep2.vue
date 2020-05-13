@@ -9,11 +9,11 @@
       <div class="form-group">
         手机号码:{{ registerData.phone }}
       </div>
-      <ValidationProvider v-slot="v" rules="required" name="phone">
+      <ValidationProvider v-slot="v" rules="required" name="verifyCode">
         <div class="form-group">
           <!-- <label class="control-label">Company Name</label> -->
           <div class="flex-box">
-            <input v-model="verifyCode" type="text" class="form-control" placeholder="帐号(手机号)">
+            <input v-model="verifyCode" type="text" class="form-control" placeholder="请输入验证码">
             <div class="btn-box">
               <span v-if="lockSendBtn" class="btn btn-light">{{ counter }}s</span>
               <span v-else class="btn btn-primary" @click="onReSend">

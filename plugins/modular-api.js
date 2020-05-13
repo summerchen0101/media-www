@@ -40,6 +40,8 @@ export default (ctx, inject) => {
           ctx.app.router.app.$alert(msg)
           if (code === 401) {
             ctx.redirect('/')
+            ctx.$auth.$storage.removeUniversal('loggedIn')
+            ctx.$auth.$storage.removeUniversal('user')
           }
         }
       }
