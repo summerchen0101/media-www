@@ -10,6 +10,6 @@ export default {
   total: state => +state.total,
   topList: state => state.topList.map(t => ({
     id: t.id,
-    title: t.title
+    title: t.title || t.name
   }))
 }
