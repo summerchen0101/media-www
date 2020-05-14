@@ -50,7 +50,7 @@
 
 <script>
 import { Category } from '@/lib/constants'
-const perpage = 20
+const perpage = 30
 export default {
   name: 'SearchResult',
   layout: 'main',
