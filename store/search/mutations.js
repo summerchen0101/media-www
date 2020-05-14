@@ -4,5 +4,8 @@ export default {
   },
   gotTotal (state, total) {
     state.total = total
+  },
+  gotTopList (state, list) {
+    state.topList = list
   }
 }

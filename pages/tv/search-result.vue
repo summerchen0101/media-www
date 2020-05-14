@@ -8,7 +8,7 @@
       <div class="page_container">
         <div class="container">
           <div class="search_bar_head">
-            <span>影音<b>搜索</b></span>
+            <span>影音<b>搜寻</b></span>
             <form action="" class="search_form">
               <select v-model="form.category" class="form-control">
                 <option value="">
@@ -50,7 +50,7 @@
 
 <script>
 import { Category } from '@/lib/constants'
-const perpage = 20
+const perpage = 30
 export default {
   name: 'SearchResult',
   layout: 'main',

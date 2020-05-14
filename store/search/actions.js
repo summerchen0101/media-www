@@ -1,4 +1,10 @@
 export default {
+  async getTopList ({ commit }, { category, count = 10 }) {
+    const res = await this.$api[category].getTopList({ top_count: count })
+    if (res.code === '0') {
+      commit('gotTopList', res.data)
+    }
+  },
   async getList ({ commit, dispatch }, _d) {
     const data = {
       type: _d.category,

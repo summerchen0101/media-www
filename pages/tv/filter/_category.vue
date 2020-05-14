@@ -32,7 +32,7 @@
 
 <script>
 import { FilterType, OrderType } from '@/lib/constants'
-const perpage = 20
+const perpage = 30
 export default {
   name: 'FilterPage',
   components: {
