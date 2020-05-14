@@ -55,7 +55,7 @@ export default {
   },
   computed: {
     topList () {
-      return (this.category && this.$store.getters[`${this.category}/topList`]) || []
+      return (this.category && this.$store.getters['search/topList']) || []
     }
   },
   watch: {
@@ -65,9 +65,10 @@ export default {
   },
   mounted () {
     this.$bus.$on('search/categoryChanged', (category) => {
+      console.log('search/categoryChanged')
       this.category = category
       if (this.category) {
-        this.$store.dispatch(`${this.category}/getTopList`, 10)
+        this.$store.dispatch('search/getTopList', { category, count: 10 })
       }
     })
   }
