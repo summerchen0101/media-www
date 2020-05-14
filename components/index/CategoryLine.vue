@@ -15,7 +15,7 @@
         </nuxt-link>
       </div>
       <!--head_title end-->
-      <div class="index_contentBox">
+      <div class="index_contentBox full-box">
         <div class="slider_list">
           <VideoItem
             v-for="(video, i) in list"

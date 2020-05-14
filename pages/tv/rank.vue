@@ -23,7 +23,7 @@
           <!-- Tab panes -->
           <div class="tab-content ranking-tab-content">
             <div class="ranking-head">
-              <i :class="current.icon" />{{ current.label }}排行榜 - 今日TOP20
+              <i :class="current.icon" />{{ current.label }}排行榜 - 今日TOP{{ topCount }}
             </div>
             <div class="ranking-body">
               <div class="tv_sub_list">
@@ -49,6 +49,7 @@
 
 <script>
 import { Category } from '@/lib/constants'
+const topCount = 30
 export default {
   name: 'Rank',
   layout: 'main',
@@ -58,9 +59,10 @@ export default {
       cates: Category
     }
     const categoryCode = query.category || data.cates[0].code
-    await store.dispatch(`${categoryCode}/getTopList`, 20)
+    await store.dispatch(`${categoryCode}/getTopList`, topCount)
     return {
       ...data,
+      topCount,
       current: data.cates.find(t => t.code === categoryCode),
       videoList: store.getters[`${categoryCode}/topList`]
     }
